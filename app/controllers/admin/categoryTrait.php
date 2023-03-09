@@ -8,13 +8,11 @@ trait categoryTrait
             $admin_permission = $this->model->admin_permission_check($func."_category_list_view", $this->checkLoginAdmin);
             if ($admin_permission) {
                 $category = $this->model->getCategory($func);
-                $getServicesTypes = $this->model->getServicesTypes();
                 $getCategoryChild = $this->model->getCategoryChild($func);
 
                 $data = array(
                     'attrId' => $func,
                     'category' => $category,
-                    'getServicesTypes' => $getServicesTypes,
                     'categoryChild' => $getCategoryChild
                 );
                 $this->view('admin/category/categories', $data);

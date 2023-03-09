@@ -146,30 +146,6 @@
                                                         </div>
                                                     </div>
                                                 <?php } ?>
-
-                                                <?php if($data['getPublicInfo']['active_user_experience'] == "1") { ?>
-                                                    <div class="relative flex items-center justify-between mb-3">
-                                                        <span class="w-4 h-4 absolute rounded-full bg-green-700 -right-34px"></span>
-                                                        <div>
-                                                            <span class="dark:text-gray-100 text-gray-300 font-bold text-sm">تجربه کاربری</span>
-                                                        </div>
-                                                        <div>
-                                                            <span class="text-green-700 font-bold text-sm">0 تجربه</span>
-                                                        </div>
-                                                    </div>
-                                                <?php } ?>
-
-                                                <?php if($data['getPublicInfo']['active_vip_account'] == "1") { ?>
-                                                    <div class="relative flex items-center justify-between">
-                                                        <span class="w-4 h-4 absolute rounded-full bg-yellow-500 -right-34px"></span>
-                                                        <div>
-                                                            <span class="dark:text-gray-100 text-gray-300 font-bold text-sm">باقیمانده اشتراک</span>
-                                                        </div>
-                                                        <div>
-                                                            <span class="text-yellow-500 font-bold text-sm">عضو ویژه نیستید</span>
-                                                        </div>
-                                                    </div>
-                                                <?php } ?>
                                             </div>
                                         </div>
                                     </div>

@@ -2142,65 +2142,6 @@ trait servicesModelTrait
         }
     }
 
-    function getServicesTypesAjax($get)
-    {
-        $columns = array(
-            array('db' => 'pt_id', 'dt' => 0),
-            array('db' => 'pt_name', 'dt' => 1),
-            array('db' => 'pt_status', 'dt' => 2,
-                'formatter' => function ($d, $row) {
-                    if($d==1){
-                        return '<button data-toggle="modal" data-target="#status-Modal" id="btn-status-' . $row['pt_id'] . '" data-id="' . $row['pt_id'] . '" class="btn btn-success btn-xs">فعال</button>';
-                    } else {
-                        return '<button data-toggle="modal" data-target="#status-Modal" id="btn-status-' . $row['pt_id'] . '" data-id="' . $row['pt_id'] . '" class="btn btn-danger btn-xs">غیرفعال</button>';
-                    }
-                }),
-            array(
-                'db' => 'pt_id', 'dt' => 3,
-                'formatter' => function ($d, $row) {
-                    $btn='';
-                    if($row['pt_removable'] == 1) {
-                        $btn .= '<button style="margin: 1px;" data-toggle="modal" title="ویرایش نوع کالا" data-target="#edit-Modal" id="btn-edit-' . $row['pt_id'] . '" data-id="' . $row['pt_id'] . '" data-name="' . $row['pt_name'] . '" data-removable="' . $row['pt_removable'] . '" class="btn btn-warning btn-xs"><i class="fa fa-pencil-square-o"></i></button>';
-                        $btn .= '<button style="margin: 1px;" data-toggle="modal" title="حذف نوع کالا" data-target="#del-Modal" id="btn-del-style-' . $row['pt_id'] . '" data-id="' . $row['pt_id'] . '" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button>';
-                    } else {
-                        $btn='-';
-                    }
-                    return $btn;
-                }
-            )
-        );
-
-        $bindings = array();
-        $where = $this->filter($get, $columns, $bindings, array(""));
-        $order = $this->order($get, $columns);
-        $limit = $this->limit($get, $columns);
-
-        $data = $this->sql_exec($bindings, "SELECT * FROM tbl_courses_types $where $order $limit");
-
-        // Data set length after filtering
-        $resFilterLength = $this->sql_exec($bindings, "SELECT count(pt_id) FROM tbl_courses_types $where");
-        $recordsFiltered = $resFilterLength[0][0];
-
-        // Total data set length
-        $resTotalLength = $this->sql_exec("SELECT count(pt_id) FROM tbl_courses_types");
-        $recordsTotal = $resTotalLength[0][0];
-
-        $dataSelect = array(
-            "draw" => isset ($get['draw']) ? intval($get['draw']) : 0,
-            "recordsTotal" => intval($recordsTotal),
-            "recordsFiltered" => intval($recordsFiltered),
-            "data" => $this->data_output($columns, $data)
-        );
-
-        echo json_encode($dataSelect);
-    }
-
-    function getServicesTypes()
-    {
-        $result = $this->doSelect("SELECT * FROM tbl_courses_types WHERE pt_status=1");
-        return $result;
-    }
-
     function getProductsList($attrId = '')
     {
         $sql = "SELECT srp.*,sp.sr_name,s.s_name FROM tbl_services_reservation_product srp

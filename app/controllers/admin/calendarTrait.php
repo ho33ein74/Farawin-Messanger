@@ -6,9 +6,7 @@ trait calendarTrait
     {
         $admin_permission = $this->model->admin_permission_check("calendar_view", $this->checkLoginAdmin);
         if ($admin_permission) {
-            $getServicesTypes = $this->model->getServicesTypes();
-            $data = array('getServicesTypes' => $getServicesTypes);
-            $this->view('admin/calendar/calendar', $data);
+            $this->view('admin/calendar/calendar');
         } else {
             $this->noaccess();
         }

@@ -3,7 +3,7 @@ trait categoryModelTrait
 {
     function getCategoryChild($type, $id=0)
     {
-        $datas = $this->doSelect("SELECT id, name FROM tbl_category WHERE id != 1 and id != 2 and status=1 and c_type=? and parent_id=? ORDER BY name ASC", array($type, $id));
+        $datas = $this->doSelect("SELECT id, name FROM tbl_category WHERE id != 1 and status=1 and c_type=? and parent_id=? ORDER BY name ASC", array($type, $id));
         $children ='';
         $arr = json_decode($children, TRUE);
         if(sizeof($datas) > 0) {
@@ -22,9 +22,9 @@ trait categoryModelTrait
     function getCategory($type='')
     {
         if($type != ''){
-            $data = $this->doSelect("SELECT * FROM tbl_category WHERE id != 1 and id != 2 and status=1 and c_type=? ORDER BY name ASC", array($type));
+            $data = $this->doSelect("SELECT * FROM tbl_category WHERE id != 1 and status=1 and c_type=? ORDER BY name ASC", array($type));
         } else {
-            $data = $this->doSelect("SELECT * FROM tbl_category WHERE id != 1 and id != 2 and status=1 ORDER BY name ASC");
+            $data = $this->doSelect("SELECT * FROM tbl_category WHERE id != 1 and status=1 ORDER BY name ASC");
         }
 
         return $data;

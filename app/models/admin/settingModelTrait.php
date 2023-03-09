@@ -131,9 +131,7 @@ trait settingModelTrait
                 $this->doQuery($sql, [$post['offline_mode'], "offline_mode"]);
                 $this->doQuery($sql, [$post['meta_description'], "meta_description"]);
                 $this->doQuery($sql, [$post['admin_path'], "admin_path"]);
-                $this->doQuery($sql, [$post['active_user_experience'], "active_user_experience"]);
                 $this->doQuery($sql, [$post['active_wallet'], "active_wallet"]);
-                $this->doQuery($sql, [$post['active_vip_account'], "active_vip_account"]);
                 $this->doQuery($sql, [$post['customJS_position'], "customJS_position"]);
                 $this->doQuery($sql, [$post['blog_item_per_page'], "blog_item_per_page"]);
                 $this->doQuery($sql, [$post['service_item_per_page'], "service_item_per_page"]);

@@ -108,7 +108,7 @@ class model_index extends Model
             foreach ($categories as $category){
                 $categoriesId .= $category.",";
                 if($sub_category==1){
-                    $datas = $this->doSelect("SELECT id FROM tbl_category WHERE id != 1 and id != 2 and status=1 and c_type=? and parent_id=?", array("blog", $category));
+                    $datas = $this->doSelect("SELECT id FROM tbl_category WHERE id != 1 and status=1 and c_type=? and parent_id=?", array("blog", $category));
 
                     foreach($datas as $item){
                         $categoriesId .= $item['id'].",";

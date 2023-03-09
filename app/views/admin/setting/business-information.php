@@ -153,32 +153,6 @@
                                                         </div>
                                                     </div>
 
-                                                    <div data-intro="در صورت فعال بودن این بخش کاربر با اتمام هر دوره بر اساس مقداری که برای هر دوره مشخص کرده اید به تجربه آن افزودن خواهد شد و می تواند نهایتا آن را به مبلغ تبدیل کرده و در خریدهای بعدی از آن استفاده نماید" class='col-md-6'>
-                                                        <div class="form-group" style="text-align:right">
-                                                            <label align="right" for="active_user_experience">:بخش تجربه کاربری</label>
-                                                            <div class="input-group">
-                                                                <select id="active_user_experience" name="active_user_experience" class="form-control" style="border-radius: 3px;width: 100%;direction: rtl" required>
-                                                                    <option <?= $data['getPublicInfo']['active_user_experience']=="1" ? "selected":""; ?> value="1">فعال</option>
-                                                                    <option <?= $data['getPublicInfo']['active_user_experience']=="0" ? "selected":""; ?> value="0">غیرفعال</option>
-                                                                </select>
-                                                                <span style="border-radius: 3px 0 0 3px" class="input-group-addon"><i class="fa fa-toggle-<?= $data['getPublicInfo']['active_user_experience'] == "1" ? "on" : "off" ?>"></i></span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div data-intro="در صورت فعال بودن این بخش بخش عضویت ویژه بر روی سایت نمایش داده خواهد شد و کاربران با خرید عضویت ویژه می توانند به صورت رایگان در دوره های آموزشی ای که برای عضویت ویژه است شرکت کنند" class='col-md-6'>
-                                                        <div class="form-group" style="text-align:right">
-                                                            <label align="right" for="active_vip_account">:عضویت ویژه</label>
-                                                            <div class="input-group">
-                                                                <select id="active_vip_account" name="active_vip_account" class="form-control" style="border-radius: 3px;width: 100%;direction: rtl" required>
-                                                                    <option <?= $data['getPublicInfo']['active_vip_account']=="1" ? "selected":""; ?> value="1">فعال</option>
-                                                                    <option <?= $data['getPublicInfo']['active_vip_account']=="0" ? "selected":""; ?> value="0">غیرفعال</option>
-                                                                </select>
-                                                                <span style="border-radius: 3px 0 0 3px" class="input-group-addon"><i class="fa fa-toggle-<?= $data['getPublicInfo']['active_vip_account'] == "1" ? "on" : "off" ?>"></i></span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
                                                     <div class='col-md-6'>
                                                         <div class="form-group" style="text-align:right">
                                                             <label align="right" for="blog_item_per_page">:تعداد مطالب وبلاگ در هر صفحه</label>
@@ -2086,9 +2060,7 @@
             formData.append("meta_description", document.getElementById("meta_description").value);
             formData.append("admin_path", document.getElementById("admin_path").value);
             formData.append("development_mode", document.getElementById("development_mode").value);
-            formData.append("active_user_experience", document.getElementById("active_user_experience").value);
             formData.append("active_wallet", document.getElementById("active_wallet").value);
-            formData.append("active_vip_account", document.getElementById("active_vip_account").value);
             formData.append("customJS_position", document.getElementById("customJS_position").value);
             formData.append("blog_item_per_page", document.getElementById("blog_item_per_page").value);
             formData.append("service_item_per_page", document.getElementById("service_item_per_page").value);

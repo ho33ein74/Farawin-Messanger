@@ -497,20 +497,6 @@ trait settingTrait
             $this->model->response_error($csrf_token['msg']);
         }
     }
-
-//    backup method
-    function backup($func = '', $attrId = 0)
-    {
-        $admin_permission = $this->model->admin_permission_check("backup_list_view", $this->checkLoginAdmin);
-        if ($admin_permission) {
-            $cashInfo = $this->model->getCashInfo();
-
-            $data = array('cashInfo' => $cashInfo);
-            $this->view('admin/setting/backup', $data);
-        } else {
-            $this->noaccess();
-        }
-    }
 }
 
 ?>

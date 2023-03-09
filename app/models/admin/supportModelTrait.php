@@ -75,8 +75,8 @@ trait supportModelTrait
             $where.=" AND c.cm_reply_admin_id is NULL";
         }
 
-        $data = $this->sql_exec($bindings, "SELECT c.*,u.c_display_name,u.customer_vids_id,n.n_id,n.slug,a.a_name,s.s_slug,co.c_slug,
-            (CASE WHEN co.c_title is not NULL THEN co.c_title WHEN s.s_title is not NULL THEN s.s_title ELSE n.title END) AS titleItem
+        $data = $this->sql_exec($bindings, "SELECT c.*,u.c_display_name,u.customer_vids_id,n.n_id,n.slug,a.a_name,s.s_slug,
+            (CASE WHEN s.s_title is not NULL THEN s.s_title ELSE n.title END) AS titleItem
             FROM tbl_comments c
             LEFT JOIN tbl_customer u ON c.cm_user_id=u.customer_vids_id 
             LEFT JOIN tbl_admin a ON c.cm_reply_admin_id=a.a_id 
@@ -113,7 +113,7 @@ trait supportModelTrait
     function submitComments($post)
     {
         try {
-            $sql = "SELECT c.cm_type,u.c_display_name,n.title,s.s_title,co.c_title
+            $sql = "SELECT c.cm_type,u.c_display_name,n.title,s.s_title
                     FROM tbl_comments c
                     LEFT JOIN tbl_customer u ON c.cm_user_id=u.customer_vids_id
                     LEFT JOIN tbl_blog n ON c.p_id=n.n_id and cm_type='blog'
@@ -177,7 +177,7 @@ trait supportModelTrait
     function commentReply($post, $admin)
     {
         try {
-            $sql = "SELECT c.cm_type,u.c_display_name,n.title,s.s_title,co.c_title,c.p_id, a.a_name
+            $sql = "SELECT c.cm_type,u.c_display_name,n.title,s.s_title,c.p_id, a.a_name
                     FROM tbl_comments c
                     LEFT JOIN tbl_customer u ON c.cm_user_id=u.customer_vids_id
                     LEFT JOIN tbl_admin a ON c.cm_reply_admin_id=a.a_id
@@ -222,7 +222,7 @@ trait supportModelTrait
         try {
             $this->doQuery("UPDATE tbl_comments SET selected=(case when selected=1 then 0 else 1 end) WHERE cm_id=?", array($post['id']));
 
-            $sql = "SELECT c.cm_type,u.c_display_name,n.title,s.s_title,co.c_title,c.p_id, a.a_name,c.selected
+            $sql = "SELECT c.cm_type,u.c_display_name,n.title,s.s_title,c.p_id, a.a_name,c.selected
                     FROM tbl_comments c
                     LEFT JOIN tbl_customer u ON c.cm_user_id=u.customer_vids_id
                     LEFT JOIN tbl_admin a ON c.cm_reply_admin_id=a.a_id
@@ -256,7 +256,7 @@ trait supportModelTrait
     function delComments($post)
     {
         try {
-            $sql = "SELECT c.cm_type,u.c_display_name,n.title,s.s_title,co.c_title
+            $sql = "SELECT c.cm_type,u.c_display_name,n.title,s.s_title
                     FROM tbl_comments c
                     LEFT JOIN tbl_customer u ON c.cm_user_id=u.customer_vids_id
                     LEFT JOIN tbl_blog n ON c.p_id=n.n_id and cm_type='blog'
