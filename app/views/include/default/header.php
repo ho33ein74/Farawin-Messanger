@@ -91,25 +91,6 @@
             <div>
                 <div class="flex items-center">
                     <?php if ($data['userId'] != FALSE) { ?>
-                        <div class="lg:flex hidden ml-4">
-                            <div wire:id="cjhuEtoWIHKwoYr76nwU" class=" flex">
-                                <div class="group flex items-center ">
-                                    <a href="user/notifications" class="group lg:w-12 lg:h-12  w-10 h-10 flex items-center relative dark:hover:bg-biscay-300 dark:bg-dark-920 justify-center rounded-full bg-gray-210 hover:bg-biscay-700 transition cursor-pointer">
-                                        <svg width="14" height="17" viewBox="0 0 14 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path class="fill-current text-biscay-700 dark:group-hover:text-dark-920 dark:text-gray-900 group-hover:text-biscay-300" d="M13.3014 8.50275C12.709 7.81089 12.4397 7.21133 12.4397 6.19274V5.8464C12.4397 4.51905 12.1342 3.66382 11.47 2.8086C10.4463 1.48043 8.72294 0.679932 7.03584 0.679932H6.9641C5.31247 0.679932 3.64311 1.44367 2.60167 2.71793C1.90119 3.59031 1.56023 4.48229 1.56023 5.8464V6.19274C1.56023 7.21133 1.30873 7.81089 0.698539 8.50275C0.249559 9.01245 0.106079 9.66755 0.106079 10.3766C0.106079 11.0864 0.339033 11.7586 0.806552 12.3051C1.41675 12.9602 2.27843 13.3784 3.15866 13.4511C4.43305 13.5965 5.70744 13.6512 7.00038 13.6512C8.2925 13.6512 9.5669 13.5598 10.8421 13.4511C11.7215 13.3784 12.5832 12.9602 13.1934 12.3051C13.6601 11.7586 13.8939 11.0864 13.8939 10.3766C13.8939 9.66755 13.7504 9.01245 13.3014 8.50275"></path>
-                                            <path class="fill-current text-biscay-700 dark:group-hover:text-dark-920 dark:text-gray-900 group-hover:text-biscay-300" opacity="0.4" d="M8.62912 14.653C8.22367 14.5664 5.75307 14.5664 5.34762 14.653C5.00101 14.733 4.62619 14.9192 4.62619 15.3277C4.64634 15.7173 4.87446 16.0612 5.19044 16.2793L5.18963 16.2801C5.59831 16.5986 6.07792 16.8012 6.5801 16.8739C6.84771 16.9107 7.12016 16.909 7.39745 16.8739C7.89883 16.8012 8.37844 16.5986 8.78711 16.2801L8.78631 16.2793C9.10229 16.0612 9.3304 15.7173 9.35055 15.3277C9.35055 14.9192 8.97573 14.733 8.62912 14.653"></path>
-                                        </svg>
-                                        <span class="absolute text-white bg-red-450 rounded-full w-6 h-6 flex items-center justify-center text-xs -top-2 -right-2 <?= $data['getNotifications']['count']['num']>0 ? "":"hidden"; ?>">
-                                            <?= $data['getNotifications']['count']['num'] ?>
-                                        </span>
-                                    </a>
-                                    <a class="lg:hidden dark:text-white text-biscay-700 mr-2" href="user/notifications">
-                                        اعلانات
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
                         <div wire:id="CDkYpYesbjvNfezVWCCx" x-data="{ userDropDown : false }" class="relative" :class="userDropDown ? 'z-50' : ' '">
                             <div @click="userDropDown = true , $dispatch('overlay-show')" href="#" class="group w-12 h-12 flex items-center justify-center rounded-full bg-gray-210 dark:bg-dark-920 hover:bg-biscay-700 transition relative cursor-pointer">
                                 <div class="w-12 h-12 bg-gray-300 rounded-full overflow-hidden border-2 border-solid border-gray-80">
@@ -344,35 +325,6 @@
                                 <span class="dark:text-gray-200 text-dark-920 font-semibold  ">
                                     دارک مود خودکار
                                 </span>
-                            </div>
-                        </div>
-
-                        <div wire:id="unBlVtYG0nZjdj66reeU">
-                            <div x-data="{ cartDropDown : false }" class="relative lg:inline-block hidden ml-4" :class="cartDropDown ? 'z-50' : ''">
-                                <div @click="cartDropDown = true  , $dispatch('overlay-show')" class="group w-12 h-12 flex items-center dark:hover:bg-biscay-300 dark:bg-dark-920 justify-center rounded-full bg-gray-210 hover:bg-biscay-700 transition relative cursor-pointer">
-                                    <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path class="fill-current text-biscay-700 dark:text-gray-900 dark:group-hover:text-dark-920 group-hover:text-biscay-300" fill-rule="evenodd" clip-rule="evenodd" d="M19.1705 14.9551L18.4657 9.27669C18.0363 7.25046 16.8211 6.41663 15.6626 6.41663H6.35407C5.17937 6.41663 3.92365 7.1921 3.55909 9.27669L2.84616 14.9551C2.26286 19.1243 4.40973 20.1666 7.21282 20.1666H14.8119C17.6069 20.1666 19.689 18.6574 19.1705 14.9551ZM8.33901 11.1362C7.89158 11.1362 7.52887 10.7629 7.52887 10.3024C7.52887 9.84187 7.89158 9.46855 8.33901 9.46855C8.78644 9.46855 9.14915 9.84187 9.14915 10.3024C9.14915 10.7629 8.78644 11.1362 8.33901 11.1362ZM12.8353 10.3024C12.8353 10.7629 13.198 11.1362 13.6454 11.1362C14.0928 11.1362 14.4555 10.7629 14.4555 10.3024C14.4555 9.84187 14.0928 9.46855 13.6454 9.46855C13.198 9.46855 12.8353 9.84187 12.8353 10.3024Z"></path>
-                                        <path class="fill-current text-biscay-700 dark:text-gray-900 dark:group-hover:text-dark-920 group-hover:text-biscay-300" opacity="0.4" d="M15.5594 6.20972C15.5623 6.28082 15.5486 6.35162 15.5195 6.41658H14.2021C14.1766 6.35053 14.1631 6.28049 14.1622 6.20972C14.1622 4.45201 12.7324 3.0271 10.9686 3.0271C9.20486 3.0271 7.77504 4.45201 7.77504 6.20972C7.78713 6.27815 7.78713 6.34815 7.77504 6.41658H6.42575C6.41367 6.34815 6.41367 6.27815 6.42575 6.20972C6.52827 3.76367 8.54793 1.83325 11.0046 1.83325C13.4612 1.83325 15.4808 3.76367 15.5834 6.20972H15.5594Z"></path>
-                                    </svg>
-                                    <span class="absolute text-white bg-red-450 rounded-full w-6 h-6 flex items-center justify-center text-xs -top-2 -right-2 <?= $data['getCartInfo']['count']['num']>0 ? "":"hidden"; ?> showNumInCart"><?= $data['getCartInfo']['count']['num'] ?></span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div wire:id="HheUsLXCGEQUIdXOSlHk" class=" flex">
-                            <div class="group flex items-center ">
-                                <a href="user/notifications" class="group lg:w-12 lg:h-12  w-10 h-10 flex items-center relative dark:hover:bg-biscay-300 dark:bg-dark-920 justify-center rounded-full bg-gray-210 hover:bg-biscay-700 transition cursor-pointer">
-                                    <svg width="14" height="17" viewBox="0 0 14 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path class="fill-current text-biscay-700 dark:group-hover:text-dark-920 dark:text-gray-900 group-hover:text-biscay-300" d="M13.3014 8.50275C12.709 7.81089 12.4397 7.21133 12.4397 6.19274V5.8464C12.4397 4.51905 12.1342 3.66382 11.47 2.8086C10.4463 1.48043 8.72294 0.679932 7.03584 0.679932H6.9641C5.31247 0.679932 3.64311 1.44367 2.60167 2.71793C1.90119 3.59031 1.56023 4.48229 1.56023 5.8464V6.19274C1.56023 7.21133 1.30873 7.81089 0.698539 8.50275C0.249559 9.01245 0.106079 9.66755 0.106079 10.3766C0.106079 11.0864 0.339033 11.7586 0.806552 12.3051C1.41675 12.9602 2.27843 13.3784 3.15866 13.4511C4.43305 13.5965 5.70744 13.6512 7.00038 13.6512C8.2925 13.6512 9.5669 13.5598 10.8421 13.4511C11.7215 13.3784 12.5832 12.9602 13.1934 12.3051C13.6601 11.7586 13.8939 11.0864 13.8939 10.3766C13.8939 9.66755 13.7504 9.01245 13.3014 8.50275"></path>
-                                        <path class="fill-current text-biscay-700 dark:group-hover:text-dark-920 dark:text-gray-900 group-hover:text-biscay-300" opacity="0.4" d="M8.62912 14.653C8.22367 14.5664 5.75307 14.5664 5.34762 14.653C5.00101 14.733 4.62619 14.9192 4.62619 15.3277C4.64634 15.7173 4.87446 16.0612 5.19044 16.2793L5.18963 16.2801C5.59831 16.5986 6.07792 16.8012 6.5801 16.8739C6.84771 16.9107 7.12016 16.909 7.39745 16.8739C7.89883 16.8012 8.37844 16.5986 8.78711 16.2801L8.78631 16.2793C9.10229 16.0612 9.3304 15.7173 9.35055 15.3277C9.35055 14.9192 8.97573 14.733 8.62912 14.653"></path>
-                                    </svg>
-                                    <span class="absolute text-white bg-red-450 rounded-full w-6 h-6 flex items-center justify-center text-xs -top-2 -right-2 <?= $data['getNotifications']['count']['num']>0 ? "":"hidden"; ?>">
-                                        <?= $data['getNotifications']['count']['num'] ?>
-                                    </span>
-                                </a>
-                                <a class="lg:hidden dark:text-white text-biscay-700 mr-2" href="user/notifications">
-                                    اعلانات
-                                </a>
                             </div>
                         </div>
                     </div>

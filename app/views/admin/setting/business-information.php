@@ -179,19 +179,6 @@
                                                         </div>
                                                     </div>
 
-                                                    <div data-intro="می توانید در این بخش مشخص نمایید که آیا برای افزودن دوره های آموزشی به سبد خرید نیاز به ورود کاربر می باشد یا خیر" class='col-md-6'>
-                                                        <div class="form-group" style="text-align:right">
-                                                            <label align="right" for="need_to_login_for_add_to_cart">:نیاز به ورود برای افزودن به سبد خرید</label>
-                                                            <div class="input-group">
-                                                                <select id="need_to_login_for_add_to_cart" name="need_to_login_for_add_to_cart" class="form-control" style="border-radius: 3px;width: 100%;direction: rtl" required>
-                                                                    <option <?= $data['getPublicInfo']['need_to_login_for_add_to_cart']=="1" ? "selected":""; ?> value="1">فعال</option>
-                                                                    <option <?= $data['getPublicInfo']['need_to_login_for_add_to_cart']=="0" ? "selected":""; ?> value="0">غیرفعال</option>
-                                                                </select>
-                                                                <span style="border-radius: 3px 0 0 3px" class="input-group-addon"><i class="fa fa-toggle-<?= $data['getPublicInfo']['need_to_login_for_add_to_cart'] == "1" ? "on" : "off" ?>"></i></span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
                                                     <div class='col-md-6'>
                                                         <div class="form-group" style="text-align:right">
                                                             <label align="right" for="blog_item_per_page">:تعداد مطالب وبلاگ در هر صفحه</label>
@@ -2102,7 +2089,6 @@
             formData.append("active_user_experience", document.getElementById("active_user_experience").value);
             formData.append("active_wallet", document.getElementById("active_wallet").value);
             formData.append("active_vip_account", document.getElementById("active_vip_account").value);
-            formData.append("need_to_login_for_add_to_cart", document.getElementById("need_to_login_for_add_to_cart").value);
             formData.append("customJS_position", document.getElementById("customJS_position").value);
             formData.append("blog_item_per_page", document.getElementById("blog_item_per_page").value);
             formData.append("service_item_per_page", document.getElementById("service_item_per_page").value);

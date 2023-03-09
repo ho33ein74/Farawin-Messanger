@@ -68,7 +68,6 @@
                                                         style="border-radius: 3px;width: 100%;direction: rtl" required>
                                                     <option disabled="" selected="" hidden=""></option>
                                                     <option value="1">خدمات</option>
-                                                    <option value="2">دوره های آموزشی</option>
                                                     <option value="3">سایر</option>
                                                 </select>
                                             </div>

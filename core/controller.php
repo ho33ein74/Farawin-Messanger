@@ -16,7 +16,6 @@
             if($this->model->getPublicInfo("admin_ip_lock") == "1" or $checkView[0] != "admin"){
                 $userId = Model::Decrypt(Model::cookieGet('userId'), KEY);
                 if($userId != False) {
-                    $data['getCartInfo'] = $this->model->getCartInfo($userId);
                     $data['profileNotification'] = $this->model->getProfileNotification($userId);
                     $data['infoUser'] = $this->model->getinfoUser($userId);
                     $data['userId'] = $userId;

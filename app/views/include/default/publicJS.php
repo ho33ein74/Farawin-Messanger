@@ -155,42 +155,6 @@
 </script>
 
 <script>
-    function deleteItemCart(id, from) {
-        var formData = new FormData();
-        formData.append("id", id);
-        formData.append("from", from);
-        $.ajax({
-            url: "cart/cartDelete",
-            data: formData,
-            type: "POST",
-            processData: false,
-            contentType: false,
-            success: function (data) {
-                data = JSON.parse(data);
-
-                if (data.status == "success") {
-                    successtoast.fire({title: data.msg});
-                    if ($(".addToCart").size() > 0) {
-                        $(".addToCart").removeClass("hidden");
-                    }
-                    if ($(".goToCart").size() > 0) {
-                        $(".goToCart").addClass("hidden");
-                    }
-                    $("#cartDropDown").html("").html(data.data.html);
-                    if (data.data.cart > 0) {
-                        $(".showNumInCart").removeClass("hidden").html(data.data.cart);
-                    } else {
-                        $(".showNumInCart").addClass("hidden");
-                    }
-                } else {
-                    errortoast.fire({title: data.msg});
-                }
-            },
-        });
-    }
-</script>
-
-<script>
     var timeout_iter = 0;
     $.ajaxSetup({
         headers: {

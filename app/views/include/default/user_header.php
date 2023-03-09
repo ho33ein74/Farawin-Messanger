@@ -39,20 +39,6 @@
                     </svg>
                 </button>
             </div>
-            <a href="cart" class="mb-2 ml-6 md:flex hidden">
-                <svg width="25" class=" text-biscay-700 dark:text-white  dark:hover:text-blue-450 transition duration-200" height="27" viewBox="0 0 25 27" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" clip-rule="evenodd" d="M17.6422 25.8754H7.20742C3.37447 25.8754 0.43397 24.4909 1.26921 18.9188L2.24175 11.3673C2.75662 8.58702 4.53008 7.52295 6.08614 7.52295H18.8093C20.3882 7.52295 22.0587 8.66711 22.6536 11.3673L23.6262 18.9188C24.3356 23.8616 21.4752 25.8754 17.6422 25.8754Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                    <path d="M17.8138 7.24816C17.8138 4.26557 15.3959 1.8477 12.4133 1.8477V1.8477C10.9771 1.84162 9.59757 2.40791 8.57983 3.42135C7.56209 4.43479 6.98998 5.8119 6.98999 7.24816H6.98999" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                    <path d="M16.1205 12.8773H16.0633" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                    <path d="M8.83213 12.8773H8.77492" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                </svg>
-            </a>
-            <a href="user/notifications" class="-mt-1.5 py-1 px-2 bg-white dark:bg-transparent rounded-lg relative">
-                <svg width="24" class="text-biscay-700 dark:text-white dark:hover:text-blue-450 dark:hover:text-blue-450 transition duration-200" height="28" viewBox="0 0 24 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" clip-rule="evenodd" d="M12 21.3096C19.049 21.3096 22.3101 20.4053 22.625 16.7756C22.625 13.1485 20.3514 13.3817 20.3514 8.93139C20.3514 5.45518 17.0565 1.5 12 1.5C6.94346 1.5 3.64856 5.45518 3.64856 8.93139C3.64856 13.3817 1.375 13.1485 1.375 16.7756C1.69119 20.419 4.95222 21.3096 12 21.3096Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                    <path d="M14.9861 25.0713C13.2809 26.9647 10.6209 26.9871 8.89941 25.0713" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                </svg>
-            </a>
         </div>
     </div>
 </header>

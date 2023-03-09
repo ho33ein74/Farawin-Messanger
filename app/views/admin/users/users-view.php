@@ -93,7 +93,7 @@
                 <div class="col-md-8">
                     <!-- Custom Tabs (Pulled to the right) -->
                     <div class="nav-tabs-custom">
-                        <ul data-step="4" data-intro="از این قسمت می توانید لیست نوبت های رزرو شده و دوره های خریداری شده کاربر را مشاهده نمایید."  class="nav nav-tabs pull-right">
+                        <ul data-step="4" data-intro="از این قسمت می توانید لیست نوبت های رزرو شده را مشاهده نمایید."  class="nav nav-tabs pull-right">
                             <li class="active"><a href="#tab_documents" data-toggle="tab" aria-expanded="true">اسناد و مدارک</a></li>
                             <li class=""><a href="#tab_services" data-toggle="tab" aria-expanded="false">نوبت های رزرو شده</a></li>
                         </ul>

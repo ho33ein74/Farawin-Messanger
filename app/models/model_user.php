@@ -350,7 +350,7 @@ class model_user extends Model
     function getComment($userId)
     {
         $sql = "SELECT cm_id,cm_answer_id,cm_reply_admin_id,cm_date,cm_time,cm_status,b.slug,b.title,b.cover,c.c_display_name,c.c_image,
-                cm_text,l.cl_id as liked, s.s_title,s.s_cover,s.s_slug,co.c_title,co.c_cover,co.c_slug,ce.ce_title,ce.ce_cover,ce.ce_slug,
+                cm_text,l.cl_id as liked, s.s_title,s.s_cover,s.s_slug,
 				(SELECT COUNT(cl_id) as count FROM tbl_comment_like WHERE comment_id=a.cm_id AND cl_type=?) as likeCount
                 FROM tbl_comments a
                 LEFT JOIN tbl_customer c ON a.cm_user_id=c.customer_vids_id

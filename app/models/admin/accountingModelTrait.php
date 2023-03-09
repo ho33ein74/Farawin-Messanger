@@ -71,8 +71,6 @@ trait accountingModelTrait
                 'formatter' => function ($d, $row) {
                     if($d == 1){
                         $res = "خدمات";
-                    } else if($d == 2){
-                        $res = "دوره های آموزشی";
                     } else {
                         $res = "سایر";
                     }
@@ -415,8 +413,6 @@ trait accountingModelTrait
                 'formatter' => function ($d, $row) {
                     if($d == 1){
                         $res = "خدمات";
-                    } else if($d == 2){
-                        $res = "دوره های آموزشی";
                     } else {
                         $res = "سایر";
                     }
@@ -564,8 +560,6 @@ trait accountingModelTrait
                 'formatter' => function ($d, $row) {
                     if($d == 1){
                         $res = "خدمات";
-                    } else if($d == 2){
-                        $res = "دوره های آموزشی";
                     } else {
                         $res = "سایر";
                     }
@@ -1097,8 +1091,6 @@ trait accountingModelTrait
 
             if ($post['partType'] == 1) {
                 $partType = "خدمات";
-            } else if ($post['partType'] == 2) {
-                $partType = "دوره های آموزشی";
             } else {
                 $partType = "سایر";
             }

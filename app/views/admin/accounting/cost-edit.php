@@ -59,7 +59,6 @@
                                                         style="border-radius: 3px;width: 100%;direction: rtl" required>
                                                     <option disabled="" selected="" hidden=""></option>
                                                     <option <?= $data['CostLog']['0']['part_type']==1 ? "selected='selected'":""; ?> value="1">خدمات</option>
-                                                    <option <?= $data['CostLog']['0']['part_type']==2 ? "selected='selected'":""; ?> value="2">دوره های آموزشی</option>
                                                     <option <?= $data['CostLog']['0']['part_type']==3 ? "selected='selected'":""; ?> value="3">سایر</option>
                                                 </select>
                                             </div>

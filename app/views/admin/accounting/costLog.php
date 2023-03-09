@@ -338,7 +338,7 @@
             }), initComplete: function () {
                 this.api().columns(1).every(function () {
                     var column = this;
-                    var select = $('<select><option value="0" disabled="" selected="" hidden="">انتخاب بخش مربوطه</option><option value="">همه موارد</option><option value="1">خدمات</option><option value="2">دوره های آموزشی</option><option value="3">سایر</option></select>')
+                    var select = $('<select><option value="0" disabled="" selected="" hidden="">انتخاب بخش مربوطه</option><option value="">همه موارد</option><option value="1">خدمات</option><option value="3">سایر</option></select>')
                         .appendTo($(column.footer()).empty())
                         .on('change', function () {
                             var val = $.fn.dataTable.util.escapeRegex(

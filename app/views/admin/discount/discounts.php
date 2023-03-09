@@ -112,7 +112,7 @@
                                         <div class="form-group" style="text-align:right">
                                             <div class="custom-checkbox">
                                                 <input type="checkbox" name="discounted_products" id="discounted_products">
-                                                <label class="mt-1 mr-3" for="discounted_products">قابل استفاده روی دوره/خدمت تخفیف خورده</label>
+                                                <label class="mt-1 mr-3" for="discounted_products">قابل استفاده روی خدمت تخفیف خورده</label>
                                             </div>
                                         </div>
                                     </div>
@@ -344,7 +344,7 @@
                             <div class="form-group" style="text-align:right">
                                 <div class="custom-checkbox">
                                     <input type="checkbox" name="discounted_productsEdit" id="discounted_productsEdit">
-                                    <label class="mt-1 mr-3" for="discounted_productsEdit">قابل استفاده روی دوره/خدمت تخفیف خورده</label>
+                                    <label class="mt-1 mr-3" for="discounted_productsEdit">قابل استفاده روی خدمت تخفیف خورده</label>
                                 </div>
                             </div>
                         </div>

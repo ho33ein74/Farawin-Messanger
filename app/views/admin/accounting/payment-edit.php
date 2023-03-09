@@ -58,7 +58,6 @@
                                                 <select id="partType" name="partType" class="form-control select2Class" style="border-radius: 3px;width: 100%;direction: rtl" required <?= (isset($_GET['p']) and htmlspecialchars($_GET['p']) !== null) ? "disabled='disabled'":""; ?>>
                                                     <option disabled="" selected="" hidden=""></option>
                                                     <option <?= $data['PaymentLog']['0']['part']==1 ? "selected='selected'":""; ?> value="1">خدمات</option>
-                                                    <option <?= $data['PaymentLog']['0']['part']==2 ? "selected='selected'":""; ?> value="2">دوره های آموزشی</option>
                                                     <option <?= $data['PaymentLog']['0']['part']==3 ? "selected='selected'":""; ?> value="3">سایر</option>
                                                 </select>
                                             </div>

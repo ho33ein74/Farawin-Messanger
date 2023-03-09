@@ -79,14 +79,14 @@
                     <span class="text-gray-800 text-3xl dark:text-white font-bold"><?= htmlspecialchars($_GET['s']) ?></span>
                 </div>
 
-                <div x-data="{state:'<?= htmlspecialchars($_GET['type']) == "blog" ? "مقالات":(htmlspecialchars($_GET['type']) == "service" ? "خدمات":"دوره های آموزشی") ?>'}" class="relative lg:hidden group mb-6 lg:w-1/3 sm:w-2/5">
+                <div x-data="{state:'<?= htmlspecialchars($_GET['type']) == "blog" ? "مقالات":(htmlspecialchars($_GET['type']) == "service" ? "خدمات":"") ?>'}" class="relative lg:hidden group mb-6 lg:w-1/3 sm:w-2/5">
                     <div class=" bg-white cursor-pointer  py-2 flex items-center justify-between px-3 h-12 rounded">
                     <span class="flex font-medium text-lg text-blue-700 items-center">
                         <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M0.75 11C0.75 13.2475 0.871405 15.0024 1.17704 16.3776C1.48077 17.7443 1.9564 18.6896 2.63339 19.3666C3.31039 20.0436 4.25571 20.5192 5.62241 20.823C6.99762 21.1286 8.75249 21.25 11 21.25C13.2475 21.25 15.0024 21.1286 16.3776 20.823C17.7443 20.5192 18.6896 20.0436 19.3666 19.3666C20.0436 18.6896 20.5192 17.7443 20.823 16.3776C21.1286 15.0024 21.25 13.2475 21.25 11C21.25 8.75249 21.1286 6.99762 20.823 5.62241C20.5192 4.25571 20.0436 3.31039 19.3666 2.63339C18.6896 1.9564 17.7443 1.48077 16.3776 1.17704C15.0024 0.871405 13.2475 0.75 11 0.75C8.75249 0.75 6.99762 0.871405 5.62241 1.17704C4.25571 1.48077 3.31039 1.9564 2.63339 2.63339C1.9564 3.31039 1.48077 4.25571 1.17704 5.62241C0.871405 6.99762 0.75 8.75249 0.75 11Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
                             <path opacity="0.4" d="M11.0001 6.41663V15.5833M15.5834 10.0833V15.5833M6.41675 11.9166V15.5833" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
                         </svg>
-                        <span x-text="state" class="mr-2"><?= htmlspecialchars($_GET['type']) == "blog" ? "مقالات":(htmlspecialchars($_GET['type']) == "service" ? "خدمات":"دوره های آموزشی") ?></span>
+                        <span x-text="state" class="mr-2"><?= htmlspecialchars($_GET['type']) == "blog" ? "مقالات":(htmlspecialchars($_GET['type']) == "service" ? "خدمات":"") ?></span>
                     </span>
                         <span class="border-r h-full flex items-center pr-3 border-blue-700 border-opacity-60 ">
                         <svg width="8" height="5" viewBox="0 0 8 5" fill="none" xmlns="http://www.w3.org/2000/svg">

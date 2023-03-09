@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <title>مدیریت وضعیت های <?= $data['attrId'] == 'service' ? 'خدمات':'دوره های آموزشی'; ?> | <?= $data['getPublicInfo']['site']; ?></title>
+    <title>مدیریت وضعیت های خدمات | <?= $data['getPublicInfo']['site']; ?></title>
     <!-- Favicon -->
     <?php require('app/views/include/favicon.php'); ?>
 
@@ -27,7 +27,7 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                <small>لیست وضعیت های <?= $data['attrId'] == 'service' ?  'خدمات':'دوره های آموزشی'; ?></small>
+                <small>لیست وضعیت های <?= $data['attrId'] == 'service' ?  'خدمات':''; ?></small>
             </h1>
             <ol class="breadcrumb">
                 <li><a href="<?= URL; ?><?= ADMIN_PATH; ?>/dashboard"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -132,7 +132,7 @@
                 <div class="col-md-8">
                     <div class="box">
                         <div class="box-header">
-                            <h3 class="box-title">مدیریت وضعیت های <?= $data['attrId'] == 'service' ?  'خدمات':'دوره های آموزشی'; ?></h3>
+                            <h3 class="box-title">مدیریت وضعیت های <?= $data['attrId'] == 'service' ?  'خدمات':''; ?></h3>
                         </div>
                         <!-- /.box-header -->
                         <div data-step="1" data-intro="در این بخش لیست وضعیت هایی که به سیستم اضافه کرده اید به شما نمایش داده می شود که به نکات زیر توجه نمایید:<br/><br/>1- برای گرفتن خروجی می توانید از دکمه های خروجی اکسل و یا خروجی csv بسته به نیاز استفاده نمایید.<br/><br/>2- برای پرینت اطلاعات می توانید از دکمه پرینت استفاده نمایید.<br/><br/>3- در صورتی که در هنگام گرفتن خروجی یا پرینت خواستید ستونی نمایش داده نشود می توانید از بخش فیلتر ستون ها، ستون مورد نظر خود را غیرفعال نمایید تا در خروجی مورد نظر نمایش داده نشود<br/><br/>4- به علت افزایش سرعت لود اطلاعات، اطلاعات به صورت محدود از دیتابیس خوانده می شود در صورتی که می خواهید لیست کامل اطلاعات را خروجی بگیرید کافیست از قسمت نمایش در پایین جدول گزینه همه را انتخاب و سپس اقدام به گرفتن خروجی نمایید.<br/><br/>5- برای جستجو و فیلتر کردن اطلاعات می توانید از فیلدهای موجود در زیر عنوان هر ستون استفاده نمایید و در صورت تمایل می توانید به صورت همزمان چند ستون را فیلتر نمایید تا اطلاعات مد نظر شما نمایش داده شود." class="box-body">
