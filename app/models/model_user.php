@@ -122,7 +122,7 @@ class model_user extends Model
     function changePass($post, $userId)
     {
         if ($post['new_password'] == $post['retry_new_password']) {
-            $pass = self::Check_Param(self::hash_value_sha1(self::hash_value_md5($post['new_password'])));
+            $pass = password_hash($post['new_password'], PASSWORD_DEFAULT);
             $sql = "UPDATE tbl_user SET password=? WHERE id=?";
             $params = [$pass, $userId];
             $this->doQuery($sql, $params);

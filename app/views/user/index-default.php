@@ -75,7 +75,7 @@ $activeMenu = 'dashboard';
                                 <a href="user/reservations" class="flex flex-col">
                                     <span class="text-gray-70 text-xs font-medium mb-2 "> نوبت های انجام شده </span>
                                     <span class="dark:text-white text-gray-800 sm:text-21 text-base font-bold">
-                                       <?= $data['publicData']['reservations'][0]['num'] ?> دوره
+                                       <?= $data['publicData']['reservations'][0]['num'] ?> نوبت
                                     </span>
                                 </a>
                             </div>

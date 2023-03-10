@@ -266,7 +266,7 @@ trait usersModelTrait
             } else {
                 $pga = new PHPGangsta_GoogleAuthenticator();
                 $secret = $pga->createSecret();
-                $password = $this->Check_Param($this->hash_value_sha1($this->hash_value_md5($post['pass'])));
+                $password = password_hash($post['pass'], PASSWORD_DEFAULT);
                 $url = "https://www.gravatar.com/avatar/" . md5(strtolower(trim($post['username']))) . "?d=identicon&s=50&r=x";
 
                 $sql2 = "INSERT INTO tbl_admin (a_name, a_username, a_password, admin_role_id, a_image, a_desc, google_secret_code, registery_date, a_status) VALUES (?,?,?,?,?,?,?,?,?)";

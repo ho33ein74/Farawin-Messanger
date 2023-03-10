@@ -339,8 +339,8 @@
                                                     </div>
                                                     <div class='col-md-4'>
                                                         <div class="form-group" style="text-align:right">
-                                                            <label align="right" for="managemen_name">نام و نام خانوادگی مدیریت مجموعه:</label>
-                                                            <input style="direction: rtl;border-radius: 0 3px 3px 0;text-align:right" type="text" value="<?= $data['getPublicInfo']['managemen_name']; ?>" class="form-control" id="managemen_name" name="managemen_name" required>
+                                                            <label align="right" for="management_name">نام و نام خانوادگی مدیریت مجموعه:</label>
+                                                            <input style="direction: rtl;border-radius: 0 3px 3px 0;text-align:right" type="text" value="<?= $data['getPublicInfo']['management_name']; ?>" class="form-control" id="management_name" name="management_name" required>
                                                         </div>
                                                     </div>
 
@@ -2087,7 +2087,7 @@
             formData.append("zarinpal_image", document.getElementById("zarinpal_image").value);
         } else if(part == "businessInfo"){
             formData.append("legal_name", document.getElementById("legal_name").value);
-            formData.append("managemen_name", document.getElementById("managemen_name").value);
+            formData.append("management_name", document.getElementById("management_name").value);
             formData.append("business_type", document.getElementById("business_type").value);
             formData.append("field_of_activity", document.getElementById("field_of_activity").value);
             formData.append("national_id", document.getElementById("national_id").value);

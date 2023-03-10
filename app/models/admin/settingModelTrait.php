@@ -216,7 +216,7 @@ trait settingModelTrait
                 $this->ActivityLog("ویرایش اطلاعات فوتر");
             } else if($post['part'] == "businessInfo"){
                 $this->doQuery($sql, [$post['legal_name'], "legal_name"]);
-                $this->doQuery($sql, [$post['managemen_name'], "managemen_name"]);
+                $this->doQuery($sql, [$post['management_name'], "management_name"]);
                 $this->doQuery($sql, [$post['business_type'], "business_type"]);
                 $this->doQuery($sql, [$post['field_of_activity'], "field_of_activity"]);
                 $this->doQuery($sql, [$post['national_id'], "national_id"]);
@@ -529,7 +529,7 @@ trait settingModelTrait
     function settingsEdit($post, $id)
     {
         if($post['passNew'] != "") {
-            $pass = $this->Check_Param($this->hash_value_sha1($this->hash_value_md5($post['passNew'])));
+            $pass = password_hash($post['passNew'], PASSWORD_DEFAULT);
             $this->doQuery("UPDATE tbl_admin SET a_password=? WHERE a_id=?", array($pass, $id));
 
             $this->ActivityLog("تغییر کلمه عبور");
