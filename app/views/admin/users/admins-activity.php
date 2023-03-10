@@ -56,6 +56,7 @@
                                         <th class="priority-1" style="text-align:center;">پلتفرم</th>
                                         <th class="priority-1" style="text-align:center;">مرورگر</th>
                                         <th class="priority-1" style="text-align:center;width: 12%">زمان ثبت</th>
+                                        <th class="priority-1" style="text-align:center;width: 12%">عملیات</th>
                                     </tr>
                                     </thead>
                                     <tfoot>
@@ -67,6 +68,7 @@
                                         <th class="priority-1" style="text-align:center;">پلتفرم</th>
                                         <th class="priority-1" style="text-align:center;">مرورگر</th>
                                         <th class="priority-1" style="text-align:center;width: 12%">زمان ثبت</th>
+                                        <th class="priority-1" style="text-align:center;width: 12%">عملیات</th>
                                     </tr>
                                     </tfoot>
                                 </table>
@@ -81,6 +83,34 @@
             <!-- /.row -->
         </section>
         <!-- /.content -->
+    </div>
+
+    <div dir="rtl" class="modal fade" id="view-Modal" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header" style="color: #fff;background: #2484c6;">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title">اصلاحات انجام شده</h4>
+                </div>
+                <div class="modal-body" style="padding: 0 15px;text-align: right;">
+                    <div id="form-regular-delete" class="login-fold row" style="display: inline;">
+                        <pre style="text-align: left;direction: ltr;">
+                            <code>
+                                <div id="view-val"></div>
+                            </code>
+                        </pre>
+                    </div>
+                </div>
+                <div class="modal-footer" style="margin-top: 10px !important;font-size: .8em;background: #f8f8f8;padding: 15px;text-align: right;border-bottom: 1px solid #e5e5e5;">
+                    <div class="row" style="margin-right: 0;margin-left: 15px;">
+                        <div class="sign-up-inside-login">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">بستن</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- /.content-wrapper -->
@@ -220,8 +250,8 @@
             "pageLength": 10,
             "autoWidth": true,
             "processing": true,
-            "fixedHeader": true,
             "serverSide": true,
+            "fixedHeader": true,
             "lengthMenu": [[10, 25, 50, 100, 99999999], [10, 25, 50, 100, "همه"]],
             "dom": '<"top"Bf>rt<"bottom"lip><"clear">',
             "buttons": [
@@ -270,17 +300,11 @@
                     // collectionLayout: 'two-column',
                     postfixButtons: [ 'colvisRestore' ],
                     text: '<span class="fa fa-filter"></span> فیلتر ستون ها'
-                },
-                {
-                    text: 'حذف موارد انتخابی',
-                    action: function ( e, dt, node, config ) {
-                        deleteSelected(e);
-                    }
                 }
             ],
             "columnDefs": [
-                {orderable: false, targets: []},
-                {className: "priority-1", "targets": [0, 1, 2, 3, 4, 5, 6]},
+                {orderable: false, targets: [7]},
+                {className: "priority-1", "targets": [0, 1, 2, 3, 4, 5, 6, 7]},
                 {className: "priority-2", "targets": []}
             ],
             "ajax": $.fn.dataTable.pipeline({
@@ -307,6 +331,13 @@
 
         $('#example1 tfoot tr').appendTo('#example1 thead');
 
+    });
+</script>
+
+<script>
+    $(document).on("click", "[id*=btn-view-]", function () {
+        let info = $(this).data('info');
+        $("#view-val").html(JSON.stringify(info, null, 4));
     });
 </script>
 

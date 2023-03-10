@@ -53,6 +53,18 @@ trait usersModelTrait
 
                         return $newData;
                     }
+                ),
+                array('db' => 'idusr_activity', 'dt' => 7,
+                    'formatter' => function ($d, $row) {
+                        if($row['data_changed'] != "") {
+                            $dataInfo = json_decode($row['data_changed'], true);
+
+                            $btn = '<button style="margin: 1px;" data-toggle="modal" title="مشاهده تغییرات اعمال شده" data-target="#view-Modal" id="btn-view-' . $d . '" data-info=\'' . json_encode($dataInfo, true) . '\' class="btn btn-success btn-xs"><i class="fa fa-eye"></i></button>';
+                            return $btn;
+                        } else {
+                            return "-";
+                        }
+                    }
                 )
             );
 
@@ -63,7 +75,7 @@ trait usersModelTrait
 
 
             $data = $this->sql_exec($bindings,
-                "SELECT `" . implode("`, `", $this->pluck($columns, 'db')) . "` FROM tbl_admin_activity a
+                "SELECT * FROM tbl_admin_activity a
                     LEFT JOIN tbl_admin u
                     ON a.admin_id=u.a_id $where $order $limit"
             );
@@ -90,26 +102,6 @@ trait usersModelTrait
             );
 
             echo json_encode($dataSelect);
-        } catch (Exception $e) {
-            $this->response_error($e->getMessage());
-        }
-    }
-
-    function ActivityLog($activity, $id='')
-    {
-        try {
-            $this->cookieInit();
-            if ($id != '') {
-                $adminId = $id;
-            } else {
-                $adminId = $this->Decrypt($this->cookieGet('adminId'), KEY);
-            }
-            $ip = $this->getClientIP();
-            $detect = $this->detectBrowser();
-
-            $sql2 = "INSERT INTO tbl_admin_activity (admin_id, ip, platform, browser, activity) VALUES (?,?,?,?,?)";
-            $params = array($adminId, $ip, $detect['platform'], $detect['name'], $activity);
-            $this->doQuery($sql2, $params);
         } catch (Exception $e) {
             $this->response_error($e->getMessage());
         }

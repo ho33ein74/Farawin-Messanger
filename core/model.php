@@ -1584,6 +1584,26 @@ class Model
 
         return $result;
     }
+
+    function ActivityLog($activity, $id='', $data=NULL)
+    {
+        try {
+            $this->cookieInit();
+            if ($id != '') {
+                $adminId = $id;
+            } else {
+                $adminId = $this->Decrypt($this->cookieGet('adminId'), KEY);
+            }
+            $ip = $this->getClientIP();
+            $detect = $this->detectBrowser();
+
+            $sql2 = "INSERT INTO tbl_admin_activity (admin_id, ip, platform, browser, activity, data_changed) VALUES (?,?,?,?,?,?)";
+            $params = array($adminId, $ip, $detect['platform'], $detect['name'], $activity, $data);
+            $this->doQuery($sql2, $params);
+        } catch (Exception $e) {
+            $this->response_error($e->getMessage());
+        }
+    }
 }
 
 ?>

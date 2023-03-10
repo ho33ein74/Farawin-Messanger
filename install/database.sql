@@ -40,17 +40,16 @@ INSERT INTO `tbl_admin` (`a_id`, `admin_role_id`, `a_name`, `a_username`, `a_ema
 
 -- Dumping structure for table reservation.tbl_admin_activity
 CREATE TABLE IF NOT EXISTS `tbl_admin_activity` (
-  `idusr_activity` int NOT NULL AUTO_INCREMENT,
-  `admin_id` int unsigned DEFAULT NULL,
-  `ip` varchar(30) NOT NULL,
-  `platform` varchar(100) DEFAULT NULL,
-  `browser` varchar(100) DEFAULT NULL,
-  `activity` varchar(1000) DEFAULT NULL,
-  `log_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`idusr_activity`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 ROW_FORMAT=COMPACT
-/*!50100 PARTITION BY HASH (`idusr_activity`)
-PARTITIONS 10 */;
+    `idusr_activity` int NOT NULL AUTO_INCREMENT,
+    `admin_id` int unsigned DEFAULT NULL,
+    `data_changed` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
+    `ip` varchar(30) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
+    `platform` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
+    `browser` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
+    `activity` varchar(1000) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
+    `log_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (`idusr_activity`) USING BTREE
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 ROW_FORMAT=COMPACT;
 
 -- Dumping data for table reservation.tbl_admin_activity: ~0 rows (approximately)
 DELETE FROM `tbl_admin_activity`;
