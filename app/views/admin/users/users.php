@@ -297,6 +297,8 @@
             contentType: false,
             success: function (data) {
                 $('#'+id).html('');
+                $('#'+id).val(null).trigger("change");
+
                 $.each(data, function (key, value) {
                     $.each(value, function (key, item) {
                         $('#'+id).append($('<option>', {

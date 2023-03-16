@@ -315,6 +315,8 @@
             contentType: false,
             success: function (json) {
                 $('#'+id).html('');
+                $('#'+id).val(null).trigger("change");
+
                 $.each(json, function (key, value) {
                     $.each(value, function (key, item) {
                         $('#'+id).append($('<option>', {
