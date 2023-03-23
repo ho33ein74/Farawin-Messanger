@@ -54,23 +54,55 @@
     </div>
     <div wire:id="52m91JKCESgkf3m5UsDO">
 
-        <?php foreach($data['widget'] as $key => $value){ ?>
-            <?php
-            try {
-                $file = array_keys($value)[0];
+            <?php if($data['widget']){ ?>
+            <?php foreach($data['widget'] as $key => $value){ ?>
+                <?php
+                try {
+                    $file = array_keys($value)[0];
 
-                $contents = $value[$file]['content'];
-                $name = $file;
-                if ($value[$file]['view_type'] == "slider" || $value[$file]['view_type'] == "slider2" || $value[$file]['view_type'] == "item" || $value[$file]['view_type'] == "item2") {
-                    $name = $file . "-" . $value[$file]['view_type'];
+                    $contents = $value[$file]['content'];
+                    $name = $file;
+                    if ($value[$file]['view_type'] == "slider" || $value[$file]['view_type'] == "slider2" || $value[$file]['view_type'] == "item" || $value[$file]['view_type'] == "item2") {
+                        $name = $file . "-" . $value[$file]['view_type'];
+                    }
+
+                    require('app/views/template/default/' . $name . '.php');
+                } catch (Exception $e) {
+                    echo 'خطا: ',  $e->getMessage();
                 }
+                ?>
+            <?php } ?>
+        <?php } else {?>
+                <section class="pt-15 pb-15">
+                    <div class="container">
+                        <a class="block w-full overflow-hidden rounded-lg bg-gradient-to-r from-pachim-600 to-pachim-500 hover:from-pachim-500 hover:to-pachim-600 relative ">
+                            <div class="text-white space-y-2 py-10 px-6 md:px-20">
+                                <div class="flex items-center">
+                                    <svg class="text-dark-550 lg:ml-4 lg:flex hidden mt-2" width="37" height="34" viewBox="0 0 37 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <circle cx="10" cy="24" r="10" fill="white"></circle>
+                                        <circle cx="30" cy="13" r="7" fill="white" fill-opacity="0.4"></circle>
+                                        <circle cx="15" cy="4" r="4" fill="white" fill-opacity="0.7"></circle>
+                                    </svg>
+                                    <h3 class="text-4xl font-bold">در حال حاضر ابزارکی انتخاب نشده است!</h3>
+                                </div>
+                                <p class="xl:max-w-2xl opacity-75 pt-10">
+                                    به راحتی از طریق پنل مدیریت می توانید ابزارک های صفحه اصلی را از بین ابزارک های مختلف از جمله اسلایدر، بنرهای تبلیغاتی،متن دلخواه، شبکه های اجتماعی، لیست خدمات و مطالب وبلاگ و ... به سلیقه خودتان انتخاب و صفحه اصلی را شخصی سازی کنید
+                                </p>
+                                <p class="xl:max-w-2xl opacity-75">
+                                    کافیست در پنل مدیریت به مسیر زیر بروید:
+                                </p>
+                                <p class="xl:max-w-2xl opacity-75">
+                                    نمایش ⬅️ برگه ⬅️ مدیریت برگه ها ⬅️ دکمه ویرایش صفحه اصلی ⬅️ دکمه ایجاد ابزارک
+                                </p>
+                            </div>
 
-                require('app/views/template/default/' . $name . '.php');
-            } catch (Exception $e) {
-                echo 'خطا: ',  $e->getMessage();
-            }
-            ?>
-        <?php } ?>
+                            <div class="absolute -top-12 left-12 hidden xl:block">
+                                <img class="w-467 h-426" src="public/images/no-content.png">
+                            </div>
+                        </a>
+                    </div>
+                </section>
+            <?php } ?>
 
     </div>
     <?php require('app/views/include/default/footer.php'); ?>

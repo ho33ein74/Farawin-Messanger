@@ -522,7 +522,7 @@ trait supportModelTrait
     function delContactSubject($post)
     {
         try {
-            $result = $this->doSelect("SELECT * FROM tbl_blog WHERE n_id=?", array($post['id']));
+            $result = $this->doSelect("SELECT * FROM tbl_contact_subject WHERE cs_id=?", array($post['id']));
             if (sizeof($result) > 0) {
                 $result = $this->doSelect("SELECT cs_title FROM tbl_contact_subject WHERE cs_id=?", array($post['id']));
                 $this->doQuery("DELETE FROM tbl_contact_subject WHERE cs_id=?", array($post['id']));

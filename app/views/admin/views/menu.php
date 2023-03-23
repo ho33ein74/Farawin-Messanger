@@ -89,7 +89,7 @@
                                                     <ul class="nav nav-tabs">
                                                         <li class="active"><a href="#tab_11-1" data-toggle="tab" aria-expanded="true">لیست همه</a></li>
 
-                                                        <li class=""><a href="#tab_12-2" data-toggle="tab" aria-expanded="false">جستجو</a></li>
+                                                        <li style="display: none"><a href="#tab_12-2" data-toggle="tab" aria-expanded="false">جستجو</a></li>
                                                     </ul>
                                                     <div class="tab-content">
                                                         <div class="tab-pane active" id="tab_11-1">
@@ -159,7 +159,7 @@
                                                     <ul class="nav nav-tabs">
                                                         <li class="active"><a href="#tab_21-1" data-toggle="tab" aria-expanded="true">لیست همه</a></li>
 
-                                                        <li class=""><a href="#tab_22-2" data-toggle="tab" aria-expanded="false">جستجو</a></li>
+                                                        <li style="display: none"><a href="#tab_22-2" data-toggle="tab" aria-expanded="false">جستجو</a></li>
                                                     </ul>
                                                     <div class="tab-content">
                                                         <div class="tab-pane active" id="tab_21-1">
@@ -265,7 +265,7 @@
                                                     <ul class="nav nav-tabs">
                                                         <li class="active"><a href="#tab_31-1" data-toggle="tab" aria-expanded="true">لیست همه</a></li>
 
-                                                        <li class=""><a href="#tab_32-2" data-toggle="tab" aria-expanded="false">جستجو</a></li>
+                                                        <li style="display: none"><a href="#tab_32-2" data-toggle="tab" aria-expanded="false">جستجو</a></li>
                                                     </ul>
                                                     <div class="tab-content">
                                                         <div class="tab-pane active" id="tab_31-1">
@@ -308,76 +308,6 @@
                                                                 <div class="box-footer">
                                                                     <input id="btnsubmit_search_category" class="btn btn-dropbox" value="ثبت" type="submit">
                                                                 </div>
-                                                            </div>
-                                                        </div>
-                                                        <!-- /.tab-pane -->
-                                                    </div>
-                                                    <!-- /.tab-content -->
-                                                </div>
-                                                <!-- nav-tabs-custom -->
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div <?= $data['attrId'] == "sidebar" ? "style='display: none'":"" ?> class="panel box">
-                                    <div class="box-header with-border">
-                                        <h4 class="box-title">
-                                            <a style="color: inherit;" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" class="collapsed" aria-expanded="false">
-                                                محصولات
-                                            </a>
-                                        </h4>
-                                    </div>
-                                    <div id="collapseFive" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
-                                        <div class="box-body">
-                                            <div class="col-md-12">
-                                                <!-- Custom Tabs (Pulled to the right) -->
-                                                <div class="nav-tabs-custom">
-                                                    <ul class="nav nav-tabs">
-                                                        <li class="active"><a href="#tab_41-1" data-toggle="tab" aria-expanded="true">لیست همه</a></li>
-
-                                                        <li class=""><a href="#tab_42-2" data-toggle="tab" aria-expanded="false">جستجو</a></li>
-                                                    </ul>
-                                                    <div class="tab-content">
-                                                        <div class="tab-pane active" id="tab_41-1">
-                                                            <div class="box-body">
-                                                                <div class='row'>
-                                                                    <div class='col-md-12' style="padding: 0">
-                                                                        <div style="max-height: 200px;overflow: scroll;">
-                                                                            <div class="form-group" style="margin-right: 10px;">
-                                                                                <?php foreach($data['product'] as $product){ ?>
-                                                                                    <div class="checkbox">
-                                                                                        <label>
-                                                                                            <input type="checkbox" name="product" data-link="shop/product/<?= $product['p_slug'] ?>" data-id="<?= $product['p_id'] ?>" value="<?= $product['p_id'] ?>">
-                                                                                            <?= $page['p_name'] ?>
-                                                                                        </label>
-                                                                                    </div>
-                                                                                <?php } ?>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="box-footer">
-                                                                <input id="btnsubmit_product" class="btn btn-dropbox" value="ثبت" type="submit">
-                                                            </div>
-                                                        </div>
-                                                        <!-- /.tab-pane -->
-                                                        <div class="tab-pane" id="tab_42-2">
-                                                            <div class="box-body">
-                                                                <div class='row'>
-                                                                    <div class='col-md-12' style="padding: 0">
-                                                                        <div class="form-group" style="text-align:right">
-                                                                            <label style="width: 100%" align="right" for="title_product">:عبارت مورد نظر </label>
-                                                                            <input style="border-radius: 3px;text-align:right" type="text"
-                                                                                   class="form-control" id="title_product" name="title_product" required>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div id="response_product"></div>
-                                                                </div>
-                                                            </div>
-                                                            <!-- /.box-body -->
-                                                            <div class="box-footer">
-                                                                <input id="btnsubmit_search_product" class="btn btn-dropbox" value="ثبت" type="submit">
                                                             </div>
                                                         </div>
                                                         <!-- /.tab-pane -->
