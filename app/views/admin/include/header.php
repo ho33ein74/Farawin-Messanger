@@ -25,30 +25,6 @@
                         <ul class="dropdown-menu">
                             <li>
                                 <ul class="menu">
-                                    <?php if ($data['publicData']['request']['branches'] AND (in_array("service_branch_add", $data['infoAdmin']['access'])) OR $data['infoAdmin'][0]['admin_role_id'] == 1) { ?>
-                                            <li><a href="<?= ADMIN_PATH; ?>/branches/add"><i class="fa fa-home text-red"></i>لیست شعبه ها را تکمیل کنید.</a></li>
-                                    <?php } ?>
-                                    <?php if ($data['publicData']['request']['staff'] AND (in_array("service_staff_add", $data['infoAdmin']['access']) OR $data['infoAdmin'][0]['admin_role_id'] == 1)) { ?>
-                                            <li><a href="<?= ADMIN_PATH; ?>/staffs/add"><i class="fa fa-users text-red"></i>لیست پرسنل سالن را تکمیل کنید.</a></li>
-                                    <?php } ?>
-                                    <?php if ($data['publicData']['request']['sale_status'] AND (in_array("service_status_add", $data['infoAdmin']['access']) OR $data['infoAdmin'][0]['admin_role_id'] == 1)) { ?>
-                                            <li><a href="<?= ADMIN_PATH; ?>/saleStatus"><i class="fa fa-wrench text-red"></i>وضعیت های رزرو نوبت خود را انتخاب کنید.</a></li>
-                                    <?php } ?>
-                                    <?php if ($data['publicData']['request']['banks'] AND (in_array("account_add", $data['infoAdmin']['access']) OR $data['infoAdmin'][0]['admin_role_id'] == 1)) { ?>
-                                        <li><a href="<?= ADMIN_PATH; ?>/accounts/add"><i class="fa fa-bank text-red"></i>لیست حساب های بانکی را تکمیل کنید.</a></li>
-                                    <?php } ?>
-                                    <?php if ($data['publicData']['request']['storeroom_list'] AND (in_array("service_storeroom_add", $data['infoAdmin']['access']) OR $data['infoAdmin'][0]['admin_role_id'] == 1)) { ?>
-                                        <li><a href="<?= ADMIN_PATH; ?>/storeroom/add"><i class="fa fa-home text-red"></i>لیست انبارها را تکمیل کنید.</a></li>
-                                    <?php } ?>
-                                    <?php if ($data['publicData']['request']['cash'] AND (in_array("cash_add", $data['infoAdmin']['access']) OR $data['infoAdmin'][0]['admin_role_id'] == 1)) { ?>
-                                        <li><a href="<?= ADMIN_PATH; ?>/cash/add"><i class="fa fa-money text-red"></i>لیست صندوق ها را تکمیل کنید.</a></li>
-                                    <?php } ?>
-                                    <?php if ($data['publicData']['request']['cost_type'] AND (in_array("cost_category_add", $data['infoAdmin']['access']) OR $data['infoAdmin'][0]['admin_role_id'] == 1)) { ?>
-                                        <li><a href="<?= ADMIN_PATH; ?>/costCategory/add"><i class="fa fa-tags text-red"></i>دسته بندی هزینه ها را تکمیل کنید.</a></li>
-                                    <?php } ?>
-                                    <?php if ($data['publicData']['request']['storeroom'] AND (in_array("service_product_add", $data['infoAdmin']['access']) OR $data['infoAdmin'][0]['admin_role_id'] == 1)) { ?>
-                                        <li><a href="<?= ADMIN_PATH; ?>/storeroom/add-new-product"><i class="fa fa-shopping-cart text-red"></i>لیست موجودی انبارها را تکمیل کنید.</a></li>
-                                    <?php } ?>
                                     <?php if (
                                             (
                                                     $data['getPublicInfo']['sms_api_key']=="" OR
@@ -63,16 +39,34 @@
                                                     $data['infoAdmin'][0]['admin_role_id'] == 1
                                             )
                                     ) { ?>
-                                        <li><a href="<?= ADMIN_PATH; ?>/businessInformation" title="اطلاعات پنل پیامکی را کامل نمایید."><i class="fa fa-shopping-cart text-red"></i>اطلاعات پنل پیامکی را کامل نمایید.</a></li>
+                                        <li><a href="<?= ADMIN_PATH; ?>/businessInformation" title="اطلاعات پنل پیامکی را کامل نمایید."><i class="fa fa-bullhorn text-red"></i>اطلاعات پنل پیامکی را کامل نمایید.</a></li>
                                     <?php } ?>
                                     <?php if ($data['publicData']['request']['status'] AND (in_array("service_status_list_view", $data['infoAdmin']['access']) OR $data['infoAdmin'][0]['admin_role_id'] == 1)) { ?>
-                                        <li><a href="<?= ADMIN_PATH; ?>/status/service" title="کد پیامک، وضعیت نوبت های رزرو شده را وارد نمایید."><i class="fa fa-shopping-cart text-red"></i>کد پیامک، وضعیت نوبت های رزرو شده را وارد نمایید.</a></li>
+                                        <li><a href="<?= ADMIN_PATH; ?>/status/service" title="کد پیامک، وضعیت نوبت های رزرو شده را وارد نمایید."><i class="fa fa-hourglass-2 text-red"></i>کد پیامک، وضعیت نوبت های رزرو شده را وارد نمایید.</a></li>
                                     <?php } ?>
                                     <?php if ($data['publicData']['request']['payment_methods'] AND (in_array("business_information_view_edit", $data['infoAdmin']['access']) OR $data['infoAdmin'][0]['admin_role_id'] == 1)) { ?>
-                                        <li><a href="<?= ADMIN_PATH; ?>/businessInformation" title="روش پرداخت مورد نظر خود را فعال نمایید."><i class="fa fa-shopping-cart text-red"></i>روش پرداخت مورد نظر خود را فعال نمایید.</a></li>
+                                        <li><a href="<?= ADMIN_PATH; ?>/businessInformation" title="روش پرداخت مورد نظر خود را فعال نمایید."><i class="fa fa-money text-red"></i>روش پرداخت مورد نظر خود را فعال نمایید.</a></li>
                                     <?php } ?>
                                     <?php if ($data['publicData']['request']['sources'] AND (in_array("blog_source_list_view", $data['infoAdmin']['access']) OR $data['infoAdmin'][0]['admin_role_id'] == 1)) { ?>
-                                        <li><a href="<?= ADMIN_PATH; ?>/sources" title="لیست منابع وبلاگ را تکمیل نمایید."><i class="fa fa-shopping-cart text-red"></i>لیست منابع وبلاگ را تکمیل نمایید.</a></li>
+                                        <li><a href="<?= ADMIN_PATH; ?>/sources" title="لیست منابع وبلاگ را تکمیل نمایید."><i class="fa fa-book text-red"></i>لیست منابع وبلاگ را تکمیل نمایید.</a></li>
+                                    <?php } ?>
+                                    <?php if ($data['publicData']['request']['banks'] AND (in_array("account_add", $data['infoAdmin']['access']) OR $data['infoAdmin'][0]['admin_role_id'] == 1)) { ?>
+                                        <li><a href="<?= ADMIN_PATH; ?>/accounts/add" title="لیست حساب های بانکی را تکمیل کنید."><i class="fa fa-bank text-red"></i>لیست حساب های بانکی را تکمیل کنید.</a></li>
+                                    <?php } ?>
+                                    <?php if ($data['publicData']['request']['cash'] AND (in_array("cash_add", $data['infoAdmin']['access']) OR $data['infoAdmin'][0]['admin_role_id'] == 1)) { ?>
+                                        <li><a href="<?= ADMIN_PATH; ?>/cash/add" title="لیست صندوق ها را تکمیل کنید."><i class="fa fa-money text-red"></i>لیست صندوق ها را تکمیل کنید.</a></li>
+                                    <?php } ?>
+                                    <?php if ($data['publicData']['request']['cost_type'] AND (in_array("cost_category_add", $data['infoAdmin']['access']) OR $data['infoAdmin'][0]['admin_role_id'] == 1)) { ?>
+                                        <li><a href="<?= ADMIN_PATH; ?>/costCategory" title="دسته بندی هزینه ها را تکمیل کنید."><i class="fa fa-tags text-red"></i>دسته بندی هزینه ها را تکمیل کنید.</a></li>
+                                    <?php } ?>
+                                    <?php if ($data['publicData']['request']['branches'] AND (in_array("service_branch_add", $data['infoAdmin']['access'])) OR $data['infoAdmin'][0]['admin_role_id'] == 1) { ?>
+                                        <li><a href="<?= ADMIN_PATH; ?>/branches" title="لیست شعبه ها را تکمیل کنید."><i class="fa fa-home text-red"></i>لیست شعبه ها را تکمیل کنید.</a></li>
+                                    <?php } ?>
+                                    <?php if ($data['publicData']['request']['storeroom_list'] AND (in_array("service_storeroom_add", $data['infoAdmin']['access']) OR $data['infoAdmin'][0]['admin_role_id'] == 1)) { ?>
+                                        <li><a href="<?= ADMIN_PATH; ?>/storeroom/list" title="لیست انبارها را تکمیل کنید."><i class="fa fa-home text-red"></i>لیست انبارها را تکمیل کنید.</a></li>
+                                    <?php } ?>
+                                    <?php if ($data['publicData']['request']['staff'] AND (in_array("service_staff_add", $data['infoAdmin']['access']) OR $data['infoAdmin'][0]['admin_role_id'] == 1)) { ?>
+                                        <li><a href="<?= ADMIN_PATH; ?>/staffs" title="لیست پرسنل سالن را تکمیل کنید."><i class="fa fa-users text-red"></i>لیست پرسنل سالن را تکمیل کنید.</a></li>
                                     <?php } ?>
                                 </ul>
                             </li>

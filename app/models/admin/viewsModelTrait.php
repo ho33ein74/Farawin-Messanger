@@ -48,9 +48,6 @@ trait viewsModelTrait
         $storeroom_list = $this->doSelect("SELECT count(*) AS num FROM tbl_storeroom WHERE s_status=1");
         $storeroom_list['0']['num'] == 0 ? $result['request']["storeroom_list"] = true : "";
 
-        $storeroom = $this->doSelect("SELECT count(*) AS num FROM tbl_storeroom_product WHERE sr_status=1");
-        $storeroom['0']['num'] == 0 ? $result['request']["storeroom"] = true : "";
-
         $branch = $this->doSelect("SELECT count(*) AS num FROM tbl_branches WHERE b_status=1");
         $branch['0']['num'] == 0 ? $result['request']["branches"] = true : "";
 
