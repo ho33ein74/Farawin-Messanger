@@ -13,7 +13,11 @@ trait statusesModelTrait
         $columns = array(
             array('db' => 'id', 'dt' => 0),
             array('db' => 'title', 'dt' => 1),
-            array('db' => 'code', 'dt' => 2),
+            array('db' => 'code', 'dt' => 2,
+                'formatter' => function ($d, $row) {
+                    return $d ?? "-";
+                }
+            ),
             array('db' => 'text', 'dt' => 3,
                 'formatter' => function ($d, $row) {
                     return nl2br($d);

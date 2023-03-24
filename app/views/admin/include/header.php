@@ -49,6 +49,31 @@
                                     <?php if ($data['publicData']['request']['storeroom'] AND (in_array("service_product_add", $data['infoAdmin']['access']) OR $data['infoAdmin'][0]['admin_role_id'] == 1)) { ?>
                                         <li><a href="<?= ADMIN_PATH; ?>/storeroom/add-new-product"><i class="fa fa-shopping-cart text-red"></i>لیست موجودی انبارها را تکمیل کنید.</a></li>
                                     <?php } ?>
+                                    <?php if (
+                                            (
+                                                    $data['getPublicInfo']['sms_api_key']=="" OR
+                                                    $data['getPublicInfo']['sms_secret_key']=="" OR
+                                                    $data['getPublicInfo']['sms_number']=="" OR
+                                                    $data['getPublicInfo']['sms_template_for_forget_password_admin']=="" OR
+                                                    $data['getPublicInfo']['sms_template_login']==""
+                                            )
+                                            AND
+                                            (
+                                                    in_array("business_information_view_edit", $data['infoAdmin']['access']) OR
+                                                    $data['infoAdmin'][0]['admin_role_id'] == 1
+                                            )
+                                    ) { ?>
+                                        <li><a href="<?= ADMIN_PATH; ?>/businessInformation" title="اطلاعات پنل پیامکی را کامل نمایید."><i class="fa fa-shopping-cart text-red"></i>اطلاعات پنل پیامکی را کامل نمایید.</a></li>
+                                    <?php } ?>
+                                    <?php if ($data['publicData']['request']['status'] AND (in_array("service_status_list_view", $data['infoAdmin']['access']) OR $data['infoAdmin'][0]['admin_role_id'] == 1)) { ?>
+                                        <li><a href="<?= ADMIN_PATH; ?>/status/service" title="کد پیامک، وضعیت نوبت های رزرو شده را وارد نمایید."><i class="fa fa-shopping-cart text-red"></i>کد پیامک، وضعیت نوبت های رزرو شده را وارد نمایید.</a></li>
+                                    <?php } ?>
+                                    <?php if ($data['publicData']['request']['payment_methods'] AND (in_array("business_information_view_edit", $data['infoAdmin']['access']) OR $data['infoAdmin'][0]['admin_role_id'] == 1)) { ?>
+                                        <li><a href="<?= ADMIN_PATH; ?>/businessInformation" title="روش پرداخت مورد نظر خود را فعال نمایید."><i class="fa fa-shopping-cart text-red"></i>روش پرداخت مورد نظر خود را فعال نمایید.</a></li>
+                                    <?php } ?>
+                                    <?php if ($data['publicData']['request']['sources'] AND (in_array("blog_source_list_view", $data['infoAdmin']['access']) OR $data['infoAdmin'][0]['admin_role_id'] == 1)) { ?>
+                                        <li><a href="<?= ADMIN_PATH; ?>/sources" title="لیست منابع وبلاگ را تکمیل نمایید."><i class="fa fa-shopping-cart text-red"></i>لیست منابع وبلاگ را تکمیل نمایید.</a></li>
+                                    <?php } ?>
                                 </ul>
                             </li>
                         </ul>

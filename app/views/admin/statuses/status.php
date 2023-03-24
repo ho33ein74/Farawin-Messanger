@@ -668,40 +668,46 @@
         var show_in_smsEdit = document.getElementById('show_in_smsEdit').value;
         var descriptionEdit = document.getElementById('descriptionEdit').value;
 
-        if (navigator.onLine) {
-            var formData = new FormData();
-            formData.append("id", id);
-            formData.append("titleEdit", titleEdit);
-            formData.append("codeEdit", codeEdit);
-            formData.append("show_in_statusEdit", show_in_statusEdit);
-            formData.append("show_in_smsEdit", show_in_smsEdit);
-            formData.append("descriptionEdit", descriptionEdit);
-            formData.append("typeEdit", "<?= $data['attrId']; ?>");
-            $.ajax({
-                url: "<?= ADMIN_PATH; ?>/editStatus",
-                data: formData,
-                type: "POST",
-                processData: false,
-                contentType: false,
-                success: function (data) {
-                    data = JSON.parse(data);
-                    $.wnoty({type: data.noty_type, message: data.msg});
-
-                    if (data.status == "ok") {
-                        $("#btn-edit-"+id).parent().prev().prev().prev().prev().html(titleEdit);
-                        $("#btn-edit-"+id).parent().prev().prev().prev().html(codeEdit);
-                        $("#btn-edit-"+id).parent().prev().prev().html(descriptionEdit);
-
-                        $("#btn-edit-"+id).data('name', titleEdit);
-                        $("#btn-edit-"+id).data('code', codeEdit);
-                        $("#btn-edit-"+id).data('show_in_status', show_in_statusEdit);
-                        $("#btn-edit-"+id).data('show_in_sms', show_in_smsEdit);
-                        $("#btn-edit-"+id).data('text', descriptionEdit);
-                    }
-                },
-            });
+        if (titleEdit == "") {
+            $.wnoty({type: 'warning', message: 'عنوان را وارد کنید.'});
+        } else if (codeEdit == "") {
+            $.wnoty({type: 'warning', message: 'کد پیامک را وارد کنید.'});
         } else {
-            $.wnoty({type: 'error', message: 'وضعیت شما آفلاین می باشد و امکان ویرایش وجود ندارد.'});
+            if (navigator.onLine) {
+                var formData = new FormData();
+                formData.append("id", id);
+                formData.append("titleEdit", titleEdit);
+                formData.append("codeEdit", codeEdit);
+                formData.append("show_in_statusEdit", show_in_statusEdit);
+                formData.append("show_in_smsEdit", show_in_smsEdit);
+                formData.append("descriptionEdit", descriptionEdit);
+                formData.append("typeEdit", "<?= $data['attrId']; ?>");
+                $.ajax({
+                    url: "<?= ADMIN_PATH; ?>/editStatus",
+                    data: formData,
+                    type: "POST",
+                    processData: false,
+                    contentType: false,
+                    success: function (data) {
+                        data = JSON.parse(data);
+                        $.wnoty({type: data.noty_type, message: data.msg});
+
+                        if (data.status == "ok") {
+                            $("#btn-edit-" + id).parent().prev().prev().prev().prev().html(titleEdit);
+                            $("#btn-edit-" + id).parent().prev().prev().prev().html(codeEdit);
+                            $("#btn-edit-" + id).parent().prev().prev().html(descriptionEdit);
+
+                            $("#btn-edit-" + id).data('name', titleEdit);
+                            $("#btn-edit-" + id).data('code', codeEdit);
+                            $("#btn-edit-" + id).data('show_in_status', show_in_statusEdit);
+                            $("#btn-edit-" + id).data('show_in_sms', show_in_smsEdit);
+                            $("#btn-edit-" + id).data('text', descriptionEdit);
+                        }
+                    },
+                });
+            } else {
+                $.wnoty({type: 'error', message: 'وضعیت شما آفلاین می باشد و امکان ویرایش وجود ندارد.'});
+            }
         }
     });
 </script>

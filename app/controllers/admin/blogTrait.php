@@ -11,7 +11,12 @@ trait  blogTrait
                 $category = $this->model->getCategory('blog');
                 $getRelatedBlog = $this->model->getRelatedBlog();
                 $sources = $this->model->getSources();
-                $data = array('sources' => $sources, 'category' => $category, 'tag' => $getTag, 'RelatedBlog' => $getRelatedBlog);
+                $data = array(
+                    'sources' => $sources,
+                    'category' => $category,
+                    'tag' => $getTag,
+                    'RelatedBlog' => $getRelatedBlog
+                );
                 $this->view('admin/blog/blog-add', $data);
             } else {
                 $this->noaccess();

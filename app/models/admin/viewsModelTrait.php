@@ -51,8 +51,17 @@ trait viewsModelTrait
         $storeroom = $this->doSelect("SELECT count(*) AS num FROM tbl_storeroom_product WHERE sr_status=1");
         $storeroom['0']['num'] == 0 ? $result['request']["storeroom"] = true : "";
 
-        $storeroom = $this->doSelect("SELECT count(*) AS num FROM tbl_branches WHERE b_status=1");
-        $storeroom['0']['num'] == 0 ? $result['request']["branches"] = true : "";
+        $branch = $this->doSelect("SELECT count(*) AS num FROM tbl_branches WHERE b_status=1");
+        $branch['0']['num'] == 0 ? $result['request']["branches"] = true : "";
+
+        $sources = $this->doSelect("SELECT count(*) AS num FROM tbl_sources WHERE status=1");
+        $sources['0']['num'] == 0 ? $result['request']["sources"] = true : "";
+
+        $payment_methods = $this->doSelect("SELECT count(*) AS num FROM tbl_payment_methods WHERE pay_status=1");
+        $payment_methods['0']['num'] == 0 ? $result['request']["payment_methods"] = true : "";
+
+        $status = $this->doSelect("SELECT count(*) AS num FROM tbl_status WHERE `code` IS NULL AND `type` = 'service'");
+        $status['0']['num'] > 0 ? $result['request']["status"] = true : "";
 
         return $result;
     }
