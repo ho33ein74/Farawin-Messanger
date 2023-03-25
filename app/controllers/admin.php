@@ -12,6 +12,7 @@ class admin extends Controller
     use discountTrait;
     use faqTrait;
     use loginTrait;
+    use rtlThemeTrait;
     use servicesTrait;
     use settingTrait;
     use statsTrait;

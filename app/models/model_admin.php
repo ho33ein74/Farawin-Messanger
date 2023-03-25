@@ -12,6 +12,7 @@ class model_admin extends Model
     use discountModelTrait;
     use faqModelTrait;
     use loginModelTrait;
+    use rtlThemeModelTrait;
     use servicesModelTrait;
     use settingModelTrait;
     use statsModelTrait;
