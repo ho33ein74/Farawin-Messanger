@@ -126,14 +126,14 @@ $content = unserialize($data['widgetInfo']['ip_content']);
                                 </form>
                             </div>
 
-                            <div class="tab-pane fade <?= $data['widgetInfo']['template_id']==3 ? "active in":"" ?>" role="tabpanel" id="<?= $data['templates']['2']['t_href'] ?>" aria-labelledby="<?= $data['templates']['2']['t_href'] ?>-tab">
-                                <form id="<?= $data['templates']['2']['t_href'] ?>Form" onsubmit="return false;">
+                            <div class="tab-pane fade <?= $data['widgetInfo']['template_id']==2 ? "active in":"" ?>" role="tabpanel" id="<?= $data['templates']['1']['t_href'] ?>" aria-labelledby="<?= $data['templates']['1']['t_href'] ?>-tab">
+                                <form id="<?= $data['templates']['1']['t_href'] ?>Form" onsubmit="return false;">
                                     <input type="hidden" name="id" value="<?= $data['attrId'] ?>">
                                     <input type="hidden" name="page_id" value="<?= $data['widgetInfo']['page_id'] ?>">
-                                    <input type="hidden" name="template_id" value="<?= $data['templates']['2']['t_id'] ?>">
+                                    <input type="hidden" name="template_id" value="<?= $data['templates']['1']['t_id'] ?>">
                                     <div class="box box-default">
                                         <div class="box-header with-border">
-                                            <h3 class="box-title"><?= $data['templates']['2']['t_title'] ?></h3>
+                                            <h3 class="box-title"><?= $data['templates']['1']['t_title'] ?></h3>
                                         </div>
                                         <!-- /.box-header -->
                                         <div class="box-body">
@@ -244,11 +244,11 @@ $content = unserialize($data['widgetInfo']['ip_content']);
                                                         </div>
                                                         <div class="col-md-4">
                                                             <p style="display: none">نمایش به صورت ساده:</p>
-                                                            <img id="widget-image" src="public/images/template/<?= $data['templates']['2']['t_theme'] ?>/blog-item.jpg" alt="widget" class="w-100" style="width:100%;display: none">
+                                                            <img id="widget-image" src="public/images/template/<?= $data['templates']['1']['t_theme'] ?>/blog-item.jpg" alt="widget" class="w-100" style="width:100%;display: none">
                                                             <p>نمایش به صورت ساده 2:</p>
-                                                            <img id="widget-image" src="public/images/template/<?= $data['templates']['2']['t_theme'] ?>/blog-item2.jpg" alt="widget" class="w-100" style="width:100%">
+                                                            <img id="widget-image" src="public/images/template/<?= $data['templates']['1']['t_theme'] ?>/blog-item2.jpg" alt="widget" class="w-100" style="width:100%">
                                                             <p class="mt-2">نمایش به صورت اسلایدر:</p>
-                                                            <img id="widget-image" src="public/images/template/<?= $data['templates']['2']['t_theme'] ?>/blog-slider.jpg" alt="widget" class="w-100" style="width:100%">
+                                                            <img id="widget-image" src="public/images/template/<?= $data['templates']['1']['t_theme'] ?>/blog-slider.jpg" alt="widget" class="w-100" style="width:100%">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -256,21 +256,21 @@ $content = unserialize($data['widgetInfo']['ip_content']);
                                         </div>
 
                                         <div data-step="2" data-intro="بعد از تکمیل فرم با استفاده از این دکمه می توانید اطلاعات را ویرایش نمایید.<br/>فقط توجه داشته باشید که برای ویرایش موفقیت آمیز اطلاعات حتما باید اینترنت شما وصل باشد." class="box-footer">
-                                            <input onclick="widgetFormSubmit('<?= $data['templates']['2']['t_href'] ?>');" class="btn btn-dropbox" value="ویرایش" type="submit">
+                                            <input onclick="widgetFormSubmit('<?= $data['templates']['1']['t_href'] ?>');" class="btn btn-dropbox" value="ویرایش" type="submit">
                                         </div>
                                         <!-- /.box-body -->
                                     </div>
                                 </form>
                             </div>
 
-                            <div class="tab-pane fade <?= $data['widgetInfo']['template_id']==4 ? "active in":"" ?>" role="tabpanel" id="<?= $data['templates']['3']['t_href'] ?>" aria-labelledby="<?= $data['templates']['3']['t_href'] ?>-tab">
-                                <form id="<?= $data['templates']['3']['t_href'] ?>Form" onsubmit="return false;">
+                            <div class="tab-pane fade <?= $data['widgetInfo']['template_id']==3 ? "active in":"" ?>" role="tabpanel" id="<?= $data['templates']['2']['t_href'] ?>" aria-labelledby="<?= $data['templates']['2']['t_href'] ?>-tab">
+                                <form id="<?= $data['templates']['2']['t_href'] ?>Form" onsubmit="return false;">
                                     <input type="hidden" name="id" value="<?= $data['attrId'] ?>">
                                     <input type="hidden" name="page_id" value="<?= $data['widgetInfo']['page_id'] ?>">
-                                    <input type="hidden" name="template_id" value="<?= $data['templates']['3']['t_id'] ?>">
+                                    <input type="hidden" name="template_id" value="<?= $data['templates']['2']['t_id'] ?>">
                                     <div class="box box-default">
                                         <div class="box-header with-border">
-                                            <h3 class="box-title"><?= $data['templates']['3']['t_title'] ?></h3>
+                                            <h3 class="box-title"><?= $data['templates']['2']['t_title'] ?></h3>
                                         </div>
                                         <!-- /.box-header -->
                                         <div class="box-body">
@@ -361,11 +361,11 @@ $content = unserialize($data['widgetInfo']['ip_content']);
                                                         </div>
                                                         <div class="col-md-4">
                                                             <p>نمایش به صورت ساده:</p>
-                                                            <img id="widget-image" src="public/images/template/<?= $data['templates']['3']['t_theme'] ?>/service-item.jpg" alt="widget" class="w-100" style="width:100%">
+                                                            <img id="widget-image" src="public/images/template/<?= $data['templates']['2']['t_theme'] ?>/service-item.jpg" alt="widget" class="w-100" style="width:100%">
                                                             <p>نمایش به صورت اسلایدر:</p>
-                                                            <img id="widget-image" src="public/images/template/<?= $data['templates']['3']['t_theme'] ?>/service-slider.jpg" alt="widget" class="w-100" style="width:100%">
+                                                            <img id="widget-image" src="public/images/template/<?= $data['templates']['2']['t_theme'] ?>/service-slider.jpg" alt="widget" class="w-100" style="width:100%">
                                                             <p class="mt-2">نمایش به صورت اسلایدر 2:</p>
-                                                            <img id="widget-image" src="public/images/template/<?= $data['templates']['3']['t_theme'] ?>/service-slider2.jpg" alt="widget" class="w-100" style="width:100%">
+                                                            <img id="widget-image" src="public/images/template/<?= $data['templates']['2']['t_theme'] ?>/service-slider2.jpg" alt="widget" class="w-100" style="width:100%">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -373,21 +373,21 @@ $content = unserialize($data['widgetInfo']['ip_content']);
                                         </div>
 
                                         <div data-step="2" data-intro="بعد از تکمیل فرم با استفاده از این دکمه می توانید اطلاعات را ویرایش نمایید.<br/>فقط توجه داشته باشید که برای ویرایش موفقیت آمیز اطلاعات حتما باید اینترنت شما وصل باشد." class="box-footer">
-                                            <input onclick="widgetFormSubmit('<?= $data['templates']['3']['t_href'] ?>');" class="btn btn-dropbox" value="ویرایش" type="submit">
+                                            <input onclick="widgetFormSubmit('<?= $data['templates']['2']['t_href'] ?>');" class="btn btn-dropbox" value="ویرایش" type="submit">
                                         </div>
                                         <!-- /.box-body -->
                                     </div>
                                 </form>
                             </div>
 
-                            <div class="tab-pane fade <?= $data['widgetInfo']['template_id']==5 ? "active in":"" ?>" role="tabpanel" id="<?= $data['templates']['4']['t_href'] ?>" aria-labelledby="<?= $data['templates']['4']['t_href'] ?>-tab">
-                                <form id="<?= $data['templates']['4']['t_href'] ?>Form" onsubmit="return false;">
+                            <div class="tab-pane fade <?= $data['widgetInfo']['template_id']==4 ? "active in":"" ?>" role="tabpanel" id="<?= $data['templates']['3']['t_href'] ?>" aria-labelledby="<?= $data['templates']['3']['t_href'] ?>-tab">
+                                <form id="<?= $data['templates']['3']['t_href'] ?>Form" onsubmit="return false;">
                                     <input type="hidden" name="id" value="<?= $data['attrId'] ?>">
                                     <input type="hidden" name="page_id" value="<?= $data['widgetInfo']['page_id'] ?>">
-                                    <input type="hidden" name="template_id" value="<?= $data['templates']['4']['t_id'] ?>">
+                                    <input type="hidden" name="template_id" value="<?= $data['templates']['3']['t_id'] ?>">
                                     <div class="box box-default">
                                         <div class="box-header with-border">
-                                            <h3 class="box-title"><?= $data['templates']['4']['t_title'] ?></h3>
+                                            <h3 class="box-title"><?= $data['templates']['3']['t_title'] ?></h3>
                                         </div>
                                         <!-- /.box-header -->
                                         <div class="box-body">
@@ -452,13 +452,13 @@ $content = unserialize($data['widgetInfo']['ip_content']);
                                                         </div>
                                                         <div class="col-md-4">
                                                             <p>نمایش بنر تک:</p>
-                                                            <img id="widget-image" src="public/images/template/<?= $data['templates']['4']['t_theme'] ?>/banner-1.jpg" alt="widget" class="w-100" style="width:100%">
+                                                            <img id="widget-image" src="public/images/template/<?= $data['templates']['3']['t_theme'] ?>/banner-1.jpg" alt="widget" class="w-100" style="width:100%">
                                                             <p>نمایش بنر 2 تایی:</p>
-                                                            <img id="widget-image" src="public/images/template/<?= $data['templates']['4']['t_theme'] ?>/banner-2.jpg" alt="widget" class="w-100" style="width:100%">
+                                                            <img id="widget-image" src="public/images/template/<?= $data['templates']['3']['t_theme'] ?>/banner-2.jpg" alt="widget" class="w-100" style="width:100%">
                                                             <p>نمایش بنر 3 تایی:</p>
-                                                            <img id="widget-image" src="public/images/template/<?= $data['templates']['4']['t_theme'] ?>/banner-3.jpg" alt="widget" class="w-100" style="width:100%">
+                                                            <img id="widget-image" src="public/images/template/<?= $data['templates']['3']['t_theme'] ?>/banner-3.jpg" alt="widget" class="w-100" style="width:100%">
                                                             <p>نمایش بنر 4 تایی:</p>
-                                                            <img id="widget-image" src="public/images/template/<?= $data['templates']['4']['t_theme'] ?>/banner-4.jpg" alt="widget" class="w-100" style="width:100%">
+                                                            <img id="widget-image" src="public/images/template/<?= $data['templates']['3']['t_theme'] ?>/banner-4.jpg" alt="widget" class="w-100" style="width:100%">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -466,21 +466,21 @@ $content = unserialize($data['widgetInfo']['ip_content']);
                                         </div>
 
                                         <div data-step="2" data-intro="بعد از تکمیل فرم با استفاده از این دکمه می توانید اطلاعات را ویرایش نمایید.<br/>فقط توجه داشته باشید که برای ویرایش موفقیت آمیز اطلاعات حتما باید اینترنت شما وصل باشد." class="box-footer">
-                                            <input onclick="widgetFormSubmit('<?= $data['templates']['4']['t_href'] ?>');" class="btn btn-dropbox" value="ویرایش" type="submit">
+                                            <input onclick="widgetFormSubmit('<?= $data['templates']['3']['t_href'] ?>');" class="btn btn-dropbox" value="ویرایش" type="submit">
                                         </div>
                                         <!-- /.box-body -->
                                     </div>
                                 </form>
                             </div>
 
-                            <div class="tab-pane fade <?= $data['widgetInfo']['template_id']==6 ? "active in":"" ?>" role="tabpanel" id="<?= $data['templates']['5']['t_href'] ?>" aria-labelledby="<?= $data['templates']['5']['t_href'] ?>-tab">
-                                <form id="<?= $data['templates']['5']['t_href'] ?>Form" onsubmit="return false;">
+                            <div class="tab-pane fade <?= $data['widgetInfo']['template_id']==5 ? "active in":"" ?>" role="tabpanel" id="<?= $data['templates']['4']['t_href'] ?>" aria-labelledby="<?= $data['templates']['4']['t_href'] ?>-tab">
+                                <form id="<?= $data['templates']['4']['t_href'] ?>Form" onsubmit="return false;">
                                     <input type="hidden" name="id" value="<?= $data['attrId'] ?>">
                                     <input type="hidden" name="page_id" value="<?= $data['widgetInfo']['page_id'] ?>">
-                                    <input type="hidden" name="template_id" value="<?= $data['templates']['5']['t_id'] ?>">
+                                    <input type="hidden" name="template_id" value="<?= $data['templates']['4']['t_id'] ?>">
                                     <div class="box box-default">
                                         <div class="box-header with-border">
-                                            <h3 class="box-title"><?= $data['templates']['5']['t_title'] ?></h3>
+                                            <h3 class="box-title"><?= $data['templates']['4']['t_title'] ?></h3>
                                         </div>
                                         <!-- /.box-header -->
                                         <div class="box-body">
@@ -544,7 +544,7 @@ $content = unserialize($data['widgetInfo']['ip_content']);
                                                             </div>
                                                         </div>
                                                         <div class="col-md-4">
-                                                            <img id="widget-image" src="public/images/template/<?= $data['templates']['5']['t_theme'] ?>/comment.jpg" alt="widget" class="w-100" style="width:100%">
+                                                            <img id="widget-image" src="public/images/template/<?= $data['templates']['4']['t_theme'] ?>/comment.jpg" alt="widget" class="w-100" style="width:100%">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -552,21 +552,21 @@ $content = unserialize($data['widgetInfo']['ip_content']);
                                         </div>
 
                                         <div data-step="2" data-intro="بعد از تکمیل فرم با استفاده از این دکمه می توانید اطلاعات را ویرایش نمایید.<br/>فقط توجه داشته باشید که برای ویرایش موفقیت آمیز اطلاعات حتما باید اینترنت شما وصل باشد." class="box-footer">
-                                            <input onclick="widgetFormSubmit('<?= $data['templates']['5']['t_href'] ?>');" class="btn btn-dropbox" value="ویرایش" type="submit">
+                                            <input onclick="widgetFormSubmit('<?= $data['templates']['4']['t_href'] ?>');" class="btn btn-dropbox" value="ویرایش" type="submit">
                                         </div>
                                         <!-- /.box-body -->
                                     </div>
                                 </form>
                             </div>
 
-                            <div class="tab-pane fade <?= $data['widgetInfo']['template_id']==7 ? "active in":"" ?>" role="tabpanel" id="<?= $data['templates']['6']['t_href'] ?>" aria-labelledby="<?= $data['templates']['6']['t_href'] ?>-tab">
-                                <form id="<?= $data['templates']['6']['t_href'] ?>Form" onsubmit="return false;">
+                            <div class="tab-pane fade <?= $data['widgetInfo']['template_id']==6 ? "active in":"" ?>" role="tabpanel" id="<?= $data['templates']['5']['t_href'] ?>" aria-labelledby="<?= $data['templates']['5']['t_href'] ?>-tab">
+                                <form id="<?= $data['templates']['5']['t_href'] ?>Form" onsubmit="return false;">
                                     <input type="hidden" name="id" value="<?= $data['attrId'] ?>">
                                     <input type="hidden" name="page_id" value="<?= $data['widgetInfo']['page_id'] ?>">
-                                    <input type="hidden" name="template_id" value="<?= $data['templates']['6']['t_id'] ?>">
+                                    <input type="hidden" name="template_id" value="<?= $data['templates']['5']['t_id'] ?>">
                                     <div class="box box-default">
                                         <div class="box-header with-border">
-                                            <h3 class="box-title"><?= $data['templates']['6']['t_title'] ?></h3>
+                                            <h3 class="box-title"><?= $data['templates']['5']['t_title'] ?></h3>
                                         </div>
                                         <!-- /.box-header -->
                                         <div class="box-body">
@@ -620,7 +620,7 @@ $content = unserialize($data['widgetInfo']['ip_content']);
                                                             </div>
                                                         </div>
                                                         <div class="col-md-4">
-                                                            <img id="widget-image" src="public/images/template/<?= $data['templates']['6']['t_theme'] ?>/socialmedia.jpg" alt="widget" class="w-100" style="width:100%">
+                                                            <img id="widget-image" src="public/images/template/<?= $data['templates']['5']['t_theme'] ?>/socialmedia.jpg" alt="widget" class="w-100" style="width:100%">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -628,21 +628,21 @@ $content = unserialize($data['widgetInfo']['ip_content']);
                                         </div>
 
                                         <div data-step="2" data-intro="بعد از تکمیل فرم با استفاده از این دکمه می توانید اطلاعات را ویرایش نمایید.<br/>فقط توجه داشته باشید که برای ویرایش موفقیت آمیز اطلاعات حتما باید اینترنت شما وصل باشد." class="box-footer">
-                                            <input onclick="widgetFormSubmit('<?= $data['templates']['6']['t_href'] ?>');" class="btn btn-dropbox" value="ویرایش" type="submit">
+                                            <input onclick="widgetFormSubmit('<?= $data['templates']['5']['t_href'] ?>');" class="btn btn-dropbox" value="ویرایش" type="submit">
                                         </div>
                                         <!-- /.box-body -->
                                     </div>
                                 </form>
                             </div>
 
-                            <div class="tab-pane fade <?= $data['widgetInfo']['template_id']==8 ? "active in":"" ?>" role="tabpanel" id="<?= $data['templates']['7']['t_href'] ?>" aria-labelledby="<?= $data['templates']['7']['t_href'] ?>-tab">
-                                <form id="<?= $data['templates']['7']['t_href'] ?>Form" onsubmit="return false;">
+                            <div class="tab-pane fade <?= $data['widgetInfo']['template_id']==7 ? "active in":"" ?>" role="tabpanel" id="<?= $data['templates']['6']['t_href'] ?>" aria-labelledby="<?= $data['templates']['6']['t_href'] ?>-tab">
+                                <form id="<?= $data['templates']['6']['t_href'] ?>Form" onsubmit="return false;">
                                     <input type="hidden" name="id" value="<?= $data['attrId'] ?>">
                                     <input type="hidden" name="page_id" value="<?= $data['widgetInfo']['page_id'] ?>">
-                                    <input type="hidden" name="template_id" value="<?= $data['templates']['7']['t_id'] ?>">
+                                    <input type="hidden" name="template_id" value="<?= $data['templates']['6']['t_id'] ?>">
                                     <div class="box box-default">
                                         <div class="box-header with-border">
-                                            <h3 class="box-title"><?= $data['templates']['7']['t_title'] ?></h3>
+                                            <h3 class="box-title"><?= $data['templates']['6']['t_title'] ?></h3>
                                         </div>
                                         <!-- /.box-header -->
                                         <div class="box-body">
@@ -655,7 +655,7 @@ $content = unserialize($data['widgetInfo']['ip_content']);
                                                                     <div class="col-md-8">
                                                                         <div class="form-group">
                                                                             <label>عنوان ابزارک</label>
-                                                                            <input type="text" class="form-control" name="title" value="<?= $data['templates']['7']['t_title'] ?>" required="">
+                                                                            <input type="text" class="form-control" name="title" value="<?= $data['templates']['6']['t_title'] ?>" required="">
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-4">
@@ -698,7 +698,7 @@ $content = unserialize($data['widgetInfo']['ip_content']);
                                                             </div>
                                                         </div>
                                                         <div class="col-md-4">
-                                                            <img id="widget-image" src="public/images/template/<?= $data['templates']['7']['t_theme'] ?>/textarea-1.jpg" alt="widget" class="w-100" style="width:100%">
+                                                            <img id="widget-image" src="public/images/template/<?= $data['templates']['6']['t_theme'] ?>/textarea-1.jpg" alt="widget" class="w-100" style="width:100%">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -706,7 +706,7 @@ $content = unserialize($data['widgetInfo']['ip_content']);
                                         </div>
 
                                         <div data-step="2" data-intro="بعد از تکمیل فرم با استفاده از این دکمه می توانید اطلاعات را ویرایش نمایید.<br/>فقط توجه داشته باشید که برای ویرایش موفقیت آمیز اطلاعات حتما باید اینترنت شما وصل باشد." class="box-footer">
-                                            <input onclick="widgetFormSubmit('<?= $data['templates']['7']['t_href'] ?>');" class="btn btn-dropbox" value="ویرایش" type="submit">
+                                            <input onclick="widgetFormSubmit('<?= $data['templates']['6']['t_href'] ?>');" class="btn btn-dropbox" value="ویرایش" type="submit">
                                         </div>
                                         <!-- /.box-body -->
                                     </div>
