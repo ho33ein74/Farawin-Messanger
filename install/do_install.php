@@ -41,7 +41,6 @@ if (isset($_POST)) {
         exit();
     }
 
-
     //all input seems to be ok. check required fiels
     if (!is_file('database.sql')) {
         echo json_encode(array("success" => false, "message" => "The database.sql file could not found in install folder!"));
@@ -66,8 +65,6 @@ if (isset($_POST)) {
     $sql = file_get_contents("database.sql");
 
     //set admin information to database
-    $now = date("Y-m-d H:i:s");
-
     $sql = str_replace('admin_name', $admin_name, $sql);
     $sql = str_replace('admin_username', $admin_username, $sql);
     $sql = str_replace('admin_email', $email, $sql);
@@ -98,27 +95,22 @@ if (isset($_POST)) {
     $db_file = str_replace('enter_db_username', $dbuser, $db_file);
     $db_file = str_replace('enter_db_password', $dbpassword, $db_file);
     $db_file = str_replace('enter_database_name', $dbname, $db_file);
-
     file_put_contents($db_file_path, $db_file);
-
 
     // set random enter_encryption_key
     $config_file_path = "../core/config.php";
     $encryption_key = substr(md5(rand()), 0, 50);
     $config_file = file_get_contents($config_file_path);
     $config_file = str_replace('enter_encryption_key', $encryption_key, $config_file);
-
     file_put_contents($config_file_path, $config_file);
 
     // set the app state = installed
     $index_file_path = "../index.php";
-
     $index_file = file_get_contents($index_file_path);
     $index_file = preg_replace('/pre_installation/', 'installed', $index_file, 1); //replace the first occurence of 'pre_installation'
-
     file_put_contents($index_file_path, $index_file);
 
-    echo json_encode(array("success" => true, "message" => "Installation successfull."));
+    echo json_encode(array("success" => true, "message" => "نصب اسکریپت با موفقیت انجام شد."));
     exit();
 }
 

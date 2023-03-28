@@ -7,7 +7,7 @@
         <meta name="description" content="">
         <meta name="author" content="Unix Team">
         <link rel="icon" href="../public/images/favicon/favicon.ico" />
-        <title>نصب سیستم مدیریت رزرواسیون</title>
+        <title>نصب سیستم مدیریت رزرواسیون ونسا</title>
         <link rel='stylesheet' type='text/css' href='../../public/library/bootstrap/css/bootstrap.min.css' />
 
         <link rel='stylesheet' type='text/css' href='install.css' />
@@ -23,7 +23,7 @@
 
             <div class="card card-install">
                 <div class="card-header text-center">                    
-                    <h2>نصب سیستم مدیریت رزرواسیون</h2>
+                    <h2>نصب سیستم مدیریت رزرواسیون ونسا</h2>
                 </div>
                 <div class="card-body no-padding">
                     <div class="tab-container clearfix">
@@ -408,21 +408,6 @@
                                     </div>
                                 </div>
 
-                                <div class="section clearfix">
-                                    <p>3. کد خرید محصول خود را وارد کنید.</p>
-                                    <hr />
-                                    <div>
-                                        <div class="form-group clearfix">
-                                            <div class="row">
-                                                <label for="purchase_code" class=" col-md-3">کد خرید محصول</label>
-                                                <div class="col-md-9">
-                                                    <input type="text" value=""  id="purchase_code"  name="purchase_code" class="form-control"  pplaceholder="خالی بگذارید" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
                                 <div class="card-footer">
                                     <button type="submit" class="btn btn-info form-next">
                                         <span class="loader text-white hide"><span> لطفا منتظر بمانید...</span></span>
@@ -436,12 +421,13 @@
                         <div role="tabpanel" class="tab-pane" id="finished-tab">
                             <div class="section">
                                 <div class="clearfix">
-                                    <i data-feather="check-circle" height="2.5rem" width="2.5rem" stroke-width="3" class='status mr10'></i><span class="pull-left"  style="line-height: 50px;">تبریک می گوییم! شما با موفقیت سیستم مدیریت رزرواسیون را نصب کردید</span>
+                                    <i data-feather="check-circle" height="2.5rem" width="2.5rem" stroke-width="3" class='status mr10'></i><span class="pull-left"  style="line-height: 50px;">تبریک می گوییم! شما با موفقیت سیستم مدیریت رزرواسیون ونسا را نصب کردید</span>
                                 </div>
 
                                 <div style="margin: 15px 0 15px 55px; color: #d73b3b;">
-                                   فراموش نکنید که پوشه <b>install</b> را حذف کنید!
+                                   فراموش نکنید که پوشه <b>install</b> را حتما حذف کنید!
                                 </div>
+
                                 <a class="go-to-login-page" href="<?= $dashboard_url; ?>">
                                     <div class="text-center">
                                         <div style="font-size: 100px;"><i data-feather="monitor" height="7rem" width="7rem" class="mb-2"></i></div>

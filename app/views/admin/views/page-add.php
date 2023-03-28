@@ -39,7 +39,7 @@
             </h1>
             <ol class="breadcrumb">
                 <li><a href="<?= URL; ?><?= ADMIN_PATH; ?>/dashboard"><i class="fa fa-dashboard"></i> Home</a></li>
-                <li><a href="<?= URL; ?><?= ADMIN_PATH; ?>/page"><i class="fa fa-clone"></i> Page</a></li>
+                <li><a href="<?= URL; ?><?= ADMIN_PATH; ?>/pages"><i class="fa fa-clone"></i> Page</a></li>
                 <li class="active">New Page</li>
             </ol>
         </section>
