@@ -33,23 +33,23 @@ CREATE TABLE IF NOT EXISTS `tbl_admin` (
   PRIMARY KEY (`a_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
 
--- Dumping data for table reservation.tbl_admin: ~4 rows (approximately)
+-- Dumping data for table reservation.tbl_admin: ~1 rows (approximately)
 DELETE FROM `tbl_admin`;
 INSERT INTO `tbl_admin` (`a_id`, `admin_role_id`, `a_name`, `a_username`, `a_email`, `a_password`, `a_selected_dashboard_id`, `telegram_id`, `a_image`, `a_desc`, `google_secret_code`, `google_auth_status`, `registery_date`, `a_status`) VALUES
 	(1, 1, 'admin_name', 'admin_username', 'admin_email', 'admin_password', 'dashboard-main', NULL, NULL, NULL, 'google_secret_code_gen', 0, 'admin_created_at', 1);
 
 -- Dumping structure for table reservation.tbl_admin_activity
 CREATE TABLE IF NOT EXISTS `tbl_admin_activity` (
-    `idusr_activity` int NOT NULL AUTO_INCREMENT,
-    `admin_id` int unsigned DEFAULT NULL,
-    `data_changed` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
-    `ip` varchar(30) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
-    `platform` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
-    `browser` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
-    `activity` varchar(1000) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
-    `log_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-    PRIMARY KEY (`idusr_activity`) USING BTREE
-    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 ROW_FORMAT=COMPACT;
+  `idusr_activity` int NOT NULL AUTO_INCREMENT,
+  `admin_id` int unsigned DEFAULT NULL,
+  `data_changed` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
+  `ip` varchar(30) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
+  `platform` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
+  `browser` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
+  `activity` varchar(1000) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
+  `log_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`idusr_activity`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb3 ROW_FORMAT=COMPACT;
 
 -- Dumping data for table reservation.tbl_admin_activity: ~0 rows (approximately)
 DELETE FROM `tbl_admin_activity`;
@@ -62,13 +62,13 @@ CREATE TABLE IF NOT EXISTS `tbl_admin_role` (
   `ar_create_date` varchar(50) DEFAULT NULL,
   `ar_status` tinyint NOT NULL DEFAULT '1',
   PRIMARY KEY (`ar_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf32;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf32;
 
 -- Dumping data for table reservation.tbl_admin_role: 1 rows
 DELETE FROM `tbl_admin_role`;
 /*!40000 ALTER TABLE `tbl_admin_role` DISABLE KEYS */;
 INSERT INTO `tbl_admin_role` (`ar_id`, `ar_title`, `ar_removable`, `ar_create_date`, `ar_status`) VALUES
-	(1, 'مدیر اصلی', 0, '1401/01/01', 1);
+	(1, 'مدیر سیستم', 0, '1401/01/01', 1);
 /*!40000 ALTER TABLE `tbl_admin_role` ENABLE KEYS */;
 
 -- Dumping structure for table reservation.tbl_admin_role_access
@@ -80,7 +80,7 @@ CREATE TABLE IF NOT EXISTS `tbl_admin_role_access` (
   UNIQUE KEY `aa_id` (`aa_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
 
--- Dumping data for table reservation.tbl_admin_role_access: 7 rows
+-- Dumping data for table reservation.tbl_admin_role_access: 0 rows
 DELETE FROM `tbl_admin_role_access`;
 /*!40000 ALTER TABLE `tbl_admin_role_access` DISABLE KEYS */;
 /*!40000 ALTER TABLE `tbl_admin_role_access` ENABLE KEYS */;
@@ -93,7 +93,7 @@ CREATE TABLE IF NOT EXISTS `tbl_api_keys` (
   `log_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
--- Dumping data for table reservation.tbl_api_keys: ~8 rows (approximately)
+-- Dumping data for table reservation.tbl_api_keys: ~2 rows (approximately)
 DELETE FROM `tbl_api_keys`;
 INSERT INTO `tbl_api_keys` (`idapi_keys`, `name`, `key`, `log_time`) VALUES
 	(1, 'app', 'KRxn7ThW8XsBTMa3CZ0dPFUU6NFpmuC4dvb54gEFk2kNnZ5ftxNRlA4b9EFFDf9a4kT6Jv46z586vMU2gZGSaEYjRdHDRW6GuMGh', '2019-01-27 01:19:02'),
@@ -138,11 +138,12 @@ CREATE TABLE IF NOT EXISTS `tbl_banks` (
   PRIMARY KEY (`b_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf32;
 
--- Dumping data for table reservation.tbl_banks: 2 rows
+-- Dumping data for table reservation.tbl_banks: 1 rows
 DELETE FROM `tbl_banks`;
 /*!40000 ALTER TABLE `tbl_banks` DISABLE KEYS */;
 INSERT INTO `tbl_banks` (`b_id`, `bank_vids_id`, `b_name`, `b_logo`, `b_branch`, `b_current_balance`, `b_account_opening_date`, `b_account_type`, `b_account_number`, `b_sheba_number`, `b_cart_number`, `b_currency`, `b_default`, `b_description`, `b_date`, `b_removable`, `b_status`) VALUES
 	(1, '1000', 'پیش فرض', 'bank', 'پیش فرض', '0', '1401/01/01', 'سایر', '-', '', '', 1, 1, '', '1401/01/1', '0', 1);
+/*!40000 ALTER TABLE `tbl_banks` ENABLE KEYS */;
 
 -- Dumping structure for table reservation.tbl_banner
 CREATE TABLE IF NOT EXISTS `tbl_banner` (
@@ -154,7 +155,7 @@ CREATE TABLE IF NOT EXISTS `tbl_banner` (
   PRIMARY KEY (`b_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf32;
 
--- Dumping data for table reservation.tbl_banner: 2 rows
+-- Dumping data for table reservation.tbl_banner: 0 rows
 DELETE FROM `tbl_banner`;
 /*!40000 ALTER TABLE `tbl_banner` DISABLE KEYS */;
 /*!40000 ALTER TABLE `tbl_banner` ENABLE KEYS */;
@@ -170,7 +171,7 @@ CREATE TABLE IF NOT EXISTS `tbl_banner_image` (
   PRIMARY KEY (`bi_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf32;
 
--- Dumping data for table reservation.tbl_banner_image: 4 rows
+-- Dumping data for table reservation.tbl_banner_image: 0 rows
 DELETE FROM `tbl_banner_image`;
 /*!40000 ALTER TABLE `tbl_banner_image` DISABLE KEYS */;
 /*!40000 ALTER TABLE `tbl_banner_image` ENABLE KEYS */;
@@ -198,7 +199,7 @@ CREATE TABLE IF NOT EXISTS `tbl_blog` (
   PRIMARY KEY (`n_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
--- Dumping data for table reservation.tbl_blog: ~4 rows (approximately)
+-- Dumping data for table reservation.tbl_blog: ~0 rows (approximately)
 DELETE FROM `tbl_blog`;
 
 -- Dumping structure for table reservation.tbl_blog_related
@@ -209,7 +210,7 @@ CREATE TABLE IF NOT EXISTS `tbl_blog_related` (
   PRIMARY KEY (`br_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf32;
 
--- Dumping data for table reservation.tbl_blog_related: 4 rows
+-- Dumping data for table reservation.tbl_blog_related: 0 rows
 DELETE FROM `tbl_blog_related`;
 /*!40000 ALTER TABLE `tbl_blog_related` DISABLE KEYS */;
 /*!40000 ALTER TABLE `tbl_blog_related` ENABLE KEYS */;
@@ -222,7 +223,7 @@ CREATE TABLE IF NOT EXISTS `tbl_blog_tag` (
   PRIMARY KEY (`pt_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf32;
 
--- Dumping data for table reservation.tbl_blog_tag: 2 rows
+-- Dumping data for table reservation.tbl_blog_tag: 0 rows
 DELETE FROM `tbl_blog_tag`;
 /*!40000 ALTER TABLE `tbl_blog_tag` DISABLE KEYS */;
 /*!40000 ALTER TABLE `tbl_blog_tag` ENABLE KEYS */;
@@ -236,7 +237,7 @@ CREATE TABLE IF NOT EXISTS `tbl_bookmarks` (
   PRIMARY KEY (`b_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf32;
 
--- Dumping data for table reservation.tbl_bookmarks: 9 rows
+-- Dumping data for table reservation.tbl_bookmarks: 0 rows
 DELETE FROM `tbl_bookmarks`;
 /*!40000 ALTER TABLE `tbl_bookmarks` DISABLE KEYS */;
 /*!40000 ALTER TABLE `tbl_bookmarks` ENABLE KEYS */;
@@ -260,7 +261,7 @@ CREATE TABLE IF NOT EXISTS `tbl_branches` (
 DELETE FROM `tbl_branches`;
 /*!40000 ALTER TABLE `tbl_branches` DISABLE KEYS */;
 INSERT INTO `tbl_branches` (`b_id`, `branch_vids_id`, `b_name`, `b_manager`, `b_phone`, `b_address`, `province_id`, `city_id`, `b_date`, `b_status`) VALUES
-	(1000, '1000', 'شعبه اصلی', 'مدیر اصلی', '09012345678', '', 11, 153, '1401/01/01', 1);
+	(1000, '1000', 'شعبه اصلی', 'مدیر اصلی', '', '', 11, 153, '1401/01/01', 1);
 /*!40000 ALTER TABLE `tbl_branches` ENABLE KEYS */;
 
 -- Dumping structure for table reservation.tbl_cash
@@ -276,11 +277,12 @@ CREATE TABLE IF NOT EXISTS `tbl_cash` (
   PRIMARY KEY (`c_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf32;
 
--- Dumping data for table reservation.tbl_cash: 2 rows
+-- Dumping data for table reservation.tbl_cash: 1 rows
 DELETE FROM `tbl_cash`;
 /*!40000 ALTER TABLE `tbl_cash` DISABLE KEYS */;
 INSERT INTO `tbl_cash` (`c_id`, `cash_vids_id`, `c_name`, `c_currency`, `c_current_balance`, `c_desc`, `c_date`, `c_status`) VALUES
 	(1, '1000', 'پیش فرض', 1, '0', '', '1401/01/01', 1);
+/*!40000 ALTER TABLE `tbl_cash` ENABLE KEYS */;
 
 -- Dumping structure for table reservation.tbl_category
 CREATE TABLE IF NOT EXISTS `tbl_category` (
@@ -300,7 +302,7 @@ CREATE TABLE IF NOT EXISTS `tbl_category` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
 
--- Dumping data for table reservation.tbl_category: ~4 rows (approximately)
+-- Dumping data for table reservation.tbl_category: ~0 rows (approximately)
 DELETE FROM `tbl_category`;
 INSERT INTO `tbl_category` (`id`, `c_removable`, `c_type`, `name`, `parent_id`, `description`, `menu_type`, `icon`, `banner_vertical`, `banner_horizontal`, `link`, `count`, `status`) VALUES
 	(1, 0, 'blog', 'بدون دسته', 0, NULL, NULL, '', NULL, NULL, 'no-category', 0, 1);
@@ -766,7 +768,7 @@ CREATE TABLE IF NOT EXISTS `tbl_color` (
   `color_code` varchar(50) NOT NULL,
   `color_status` tinyint NOT NULL DEFAULT '1',
   PRIMARY KEY (`color_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=147 DEFAULT CHARSET=utf32;
+) ENGINE=MyISAM AUTO_INCREMENT=141 DEFAULT CHARSET=utf32;
 
 -- Dumping data for table reservation.tbl_color: 140 rows
 DELETE FROM `tbl_color`;
@@ -935,7 +937,7 @@ CREATE TABLE IF NOT EXISTS `tbl_comments` (
   PRIMARY KEY (`cm_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 ROW_FORMAT=COMPACT;
 
--- Dumping data for table reservation.tbl_comments: ~15 rows (approximately)
+-- Dumping data for table reservation.tbl_comments: ~0 rows (approximately)
 DELETE FROM `tbl_comments`;
 
 -- Dumping structure for table reservation.tbl_comment_like
@@ -965,7 +967,7 @@ CREATE TABLE IF NOT EXISTS `tbl_contact` (
   PRIMARY KEY (`co_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
--- Dumping data for table reservation.tbl_contact: ~4 rows (approximately)
+-- Dumping data for table reservation.tbl_contact: ~0 rows (approximately)
 DELETE FROM `tbl_contact`;
 
 -- Dumping structure for table reservation.tbl_contact_subject
@@ -976,16 +978,15 @@ CREATE TABLE IF NOT EXISTS `tbl_contact_subject` (
   `cs_create_date` varchar(50) NOT NULL,
   `cs_status` tinyint NOT NULL DEFAULT '1',
   PRIMARY KEY (`cs_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf32;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf32;
 
--- Dumping data for table reservation.tbl_contact_subject: 4 rows
+-- Dumping data for table reservation.tbl_contact_subject: 3 rows
 DELETE FROM `tbl_contact_subject`;
 /*!40000 ALTER TABLE `tbl_contact_subject` DISABLE KEYS */;
 INSERT INTO `tbl_contact_subject` (`cs_id`, `cs_title`, `cs_removable`, `cs_create_date`, `cs_status`) VALUES
 	(1, 'پیشنهادات', 0, '1400/10/16', 1),
 	(2, 'باگ', 0, '1400/10/16', 1),
-	(3, 'انتقادات', 0, '1400/10/16', 1),
-	(4, 'سوال پیش از خرید', 1, '1400/10/16', 1);
+	(3, 'انتقادات', 0, '1400/10/16', 1);
 /*!40000 ALTER TABLE `tbl_contact_subject` ENABLE KEYS */;
 
 -- Dumping structure for table reservation.tbl_cost
@@ -1005,8 +1006,10 @@ CREATE TABLE IF NOT EXISTS `tbl_cost` (
   PRIMARY KEY (`c_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf32;
 
--- Dumping data for table reservation.tbl_cost: 8 rows
+-- Dumping data for table reservation.tbl_cost: 0 rows
 DELETE FROM `tbl_cost`;
+/*!40000 ALTER TABLE `tbl_cost` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_cost` ENABLE KEYS */;
 
 -- Dumping structure for table reservation.tbl_cost_type
 CREATE TABLE IF NOT EXISTS `tbl_cost_type` (
@@ -1016,7 +1019,7 @@ CREATE TABLE IF NOT EXISTS `tbl_cost_type` (
   PRIMARY KEY (`ct_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
 
--- Dumping data for table reservation.tbl_cost_type: 4 rows
+-- Dumping data for table reservation.tbl_cost_type: 1 rows
 DELETE FROM `tbl_cost_type`;
 /*!40000 ALTER TABLE `tbl_cost_type` DISABLE KEYS */;
 INSERT INTO `tbl_cost_type` (`ct_id`, `cost_category_vids_id`, `title`) VALUES
@@ -1068,7 +1071,7 @@ CREATE TABLE IF NOT EXISTS `tbl_customer` (
   PRIMARY KEY (`c_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_persian_ci;
 
--- Dumping data for table reservation.tbl_customer: ~6 rows (approximately)
+-- Dumping data for table reservation.tbl_customer: ~0 rows (approximately)
 DELETE FROM `tbl_customer`;
 
 -- Dumping structure for table reservation.tbl_customer_bot
@@ -1109,7 +1112,7 @@ CREATE TABLE IF NOT EXISTS `tbl_customer_document` (
   PRIMARY KEY (`cd_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf32;
 
--- Dumping data for table reservation.tbl_customer_document: 5 rows
+-- Dumping data for table reservation.tbl_customer_document: 0 rows
 DELETE FROM `tbl_customer_document`;
 /*!40000 ALTER TABLE `tbl_customer_document` DISABLE KEYS */;
 /*!40000 ALTER TABLE `tbl_customer_document` ENABLE KEYS */;
@@ -1171,7 +1174,7 @@ CREATE TABLE IF NOT EXISTS `tbl_discounts` (
   PRIMARY KEY (`dc_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf32;
 
--- Dumping data for table reservation.tbl_discounts: 1 rows
+-- Dumping data for table reservation.tbl_discounts: 0 rows
 DELETE FROM `tbl_discounts`;
 /*!40000 ALTER TABLE `tbl_discounts` DISABLE KEYS */;
 /*!40000 ALTER TABLE `tbl_discounts` ENABLE KEYS */;
@@ -1185,7 +1188,7 @@ CREATE TABLE IF NOT EXISTS `tbl_discounts_service` (
   PRIMARY KEY (`dcc_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf32;
 
--- Dumping data for table reservation.tbl_discounts_service: 2 rows
+-- Dumping data for table reservation.tbl_discounts_service: 0 rows
 DELETE FROM `tbl_discounts_service`;
 /*!40000 ALTER TABLE `tbl_discounts_service` DISABLE KEYS */;
 /*!40000 ALTER TABLE `tbl_discounts_service` ENABLE KEYS */;
@@ -1215,7 +1218,7 @@ CREATE TABLE IF NOT EXISTS `tbl_discounts_user_used` (
   PRIMARY KEY (`du_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf32;
 
--- Dumping data for table reservation.tbl_discounts_user_used: 2 rows
+-- Dumping data for table reservation.tbl_discounts_user_used: 0 rows
 DELETE FROM `tbl_discounts_user_used`;
 /*!40000 ALTER TABLE `tbl_discounts_user_used` DISABLE KEYS */;
 /*!40000 ALTER TABLE `tbl_discounts_user_used` ENABLE KEYS */;
@@ -1283,7 +1286,7 @@ CREATE TABLE IF NOT EXISTS `tbl_faq` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
--- Dumping data for table reservation.tbl_faq: ~10 rows (approximately)
+-- Dumping data for table reservation.tbl_faq: ~0 rows (approximately)
 DELETE FROM `tbl_faq`;
 
 -- Dumping structure for table reservation.tbl_faq_related
@@ -1296,7 +1299,7 @@ CREATE TABLE IF NOT EXISTS `tbl_faq_related` (
   PRIMARY KEY (`fr_id`) USING BTREE
 ) ENGINE=MyISAM DEFAULT CHARSET=utf32 ROW_FORMAT=FIXED;
 
--- Dumping data for table reservation.tbl_faq_related: 8 rows
+-- Dumping data for table reservation.tbl_faq_related: 0 rows
 DELETE FROM `tbl_faq_related`;
 /*!40000 ALTER TABLE `tbl_faq_related` DISABLE KEYS */;
 /*!40000 ALTER TABLE `tbl_faq_related` ENABLE KEYS */;
@@ -1315,7 +1318,7 @@ CREATE TABLE IF NOT EXISTS `tbl_giftcart` (
   PRIMARY KEY (`g_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf32;
 
--- Dumping data for table reservation.tbl_giftcart: 3 rows
+-- Dumping data for table reservation.tbl_giftcart: 0 rows
 DELETE FROM `tbl_giftcart`;
 /*!40000 ALTER TABLE `tbl_giftcart` DISABLE KEYS */;
 /*!40000 ALTER TABLE `tbl_giftcart` ENABLE KEYS */;
@@ -1358,10 +1361,10 @@ CREATE TABLE IF NOT EXISTS `tbl_icons` (
 DELETE FROM `tbl_icons`;
 /*!40000 ALTER TABLE `tbl_icons` DISABLE KEYS */;
 INSERT INTO `tbl_icons` (`i_id`, `i_title`, `i_description`, `i_icon`, `i_status`) VALUES
-	(1, 'بسته بندی زیبا', '', '1654112791_gift-1-1.webp', 1),
-	(2, 'ارسال به تمام نقاط', '', '1654112731_1645137844_map-1.webp', 1),
-	(3, 'ضمانت بازگشت', '', '1654112704_1645138007_secure.webp', 1),
-	(4, 'پرداخت در محل', '', '1654112777_wallet.webp', 1);
+	(1, 'زیبایی مورد نظرت رو تصور کن', 'تجربه یک حس متفاوت', '1679576380_answer-1.png', 1),
+	(2, 'آرایشگر مورد نظرت رو انتخاب کن', 'حس آرامش در کنار بهترین ها', '1679576388_eyeshadow-1-1.png', 1),
+	(3, 'وقت رزرو کن', 'روز مورد نظرتو انتخاب کن', '1679576396_customer-service-1.png', 1),
+	(4, 'در نهایت زیبایی رو به دست بیار', 'به همین راحتی!', '1679576404_bride-1.png', 1);
 /*!40000 ALTER TABLE `tbl_icons` ENABLE KEYS */;
 
 -- Dumping structure for table reservation.tbl_images
@@ -1376,7 +1379,7 @@ CREATE TABLE IF NOT EXISTS `tbl_images` (
   PRIMARY KEY (`i_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
--- Dumping data for table reservation.tbl_images: ~14 rows (approximately)
+-- Dumping data for table reservation.tbl_images: ~0 rows (approximately)
 DELETE FROM `tbl_images`;
 
 -- Dumping structure for table reservation.tbl_like
@@ -1406,7 +1409,7 @@ CREATE TABLE IF NOT EXISTS `tbl_link` (
   PRIMARY KEY (`l_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf32;
 
--- Dumping data for table reservation.tbl_link: 15 rows
+-- Dumping data for table reservation.tbl_link: 11 rows
 DELETE FROM `tbl_link`;
 /*!40000 ALTER TABLE `tbl_link` DISABLE KEYS */;
 INSERT INTO `tbl_link` (`l_id`, `l_name`, `l_link`, `l_type`, `l_parent_id`, `l_menu_type`, `l_order`, `l_status`) VALUES
@@ -1460,10 +1463,10 @@ CREATE TABLE IF NOT EXISTS `tbl_methods_contacting` (
 -- Dumping data for table reservation.tbl_methods_contacting: ~18 rows (approximately)
 DELETE FROM `tbl_methods_contacting`;
 INSERT INTO `tbl_methods_contacting` (`mc_id`, `mc_key`, `mc_title`, `mc_link`, `mc_description`, `mc_class`, `mc_color`, `mc_icon`, `mc_priority`, `mc_show_in_float_button`, `mc_show_in_float_button_slider`, `mc_show_in_footer`, `mc_show_in_login_page`, `mc_show_in_mobile`, `mc_show_in_desktop`, `mc_on_click`, `mc_status`) VALUES
-	(1, 'phone', 'شماره تماس', '', '', 'msg-item-phone', '#4EB625', '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M493.4 24.6l-104-24c-11.3-2.6-22.9 3.3-27.5 13.9l-48 112c-4.2 9.8-1.4 21.3 6.9 28l60.6 49.6c-36 76.7-98.9 140.5-177.2 177.2l-49.6-60.6c-6.8-8.3-18.2-11.1-28-6.9l-112 48C3.9 366.5-2 378.1.6 389.4l24 104C27.1 504.2 36.7 512 48 512c256.1 0 464-207.5 464-464 0-11.2-7.7-20.9-18.6-23.4z"></path></svg>', 3, 1, 1, 1, 1, 1, 1, NULL, 1),
+	(1, 'phone', 'شماره تماس', '', '', 'msg-item-phone', '#4EB625', '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M493.4 24.6l-104-24c-11.3-2.6-22.9 3.3-27.5 13.9l-48 112c-4.2 9.8-1.4 21.3 6.9 28l60.6 49.6c-36 76.7-98.9 140.5-177.2 177.2l-49.6-60.6c-6.8-8.3-18.2-11.1-28-6.9l-112 48C3.9 366.5-2 378.1.6 389.4l24 104C27.1 504.2 36.7 512 48 512c256.1 0 464-207.5 464-464 0-11.2-7.7-20.9-18.6-23.4z"></path></svg>', 3, 1, 1, 1, 1, 1, 1, NULL, 0),
 	(2, 'fax', 'فکس', '', '', 'msg-item-fax', '#19cac2', '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M493.4 24.6l-104-24c-11.3-2.6-22.9 3.3-27.5 13.9l-48 112c-4.2 9.8-1.4 21.3 6.9 28l60.6 49.6c-36 76.7-98.9 140.5-177.2 177.2l-49.6-60.6c-6.8-8.3-18.2-11.1-28-6.9l-112 48C3.9 366.5-2 378.1.6 389.4l24 104C27.1 504.2 36.7 512 48 512c256.1 0 464-207.5 464-464 0-11.2-7.7-20.9-18.6-23.4z"></path></svg>', 8, 1, 1, 0, 0, 0, 0, NULL, 0),
-	(3, 'telegram', 'تلگرام', '', '', 'msg-item-telegram-plane', '#20AFDE', '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M446.7 98.6l-67.6 318.8c-5.1 22.5-18.4 28.1-37.3 17.5l-103-75.9-49.7 47.8c-5.5 5.5-10.1 10.1-20.7 10.1l7.4-104.9 190.9-172.5c8.3-7.4-1.8-11.5-12.9-4.1L117.8 284 16.2 252.2c-22.1-6.9-22.5-22.1 4.6-32.7L418.2 66.4c18.4-6.9 34.5 4.1 28.5 32.2z"></path></svg>', 2, 1, 1, 1, 1, 1, 1, NULL, 1),
-	(4, 'instagram', 'اینستاگرام', '', '', 'msg-item-Instagram', '#B83A92', '<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"     width="512" height="512"     viewBox="0 0 26 26"    ><g id="surface1"><path fill="currentColor" style=" " d="M 7.546875 0 C 3.390625 0 0 3.390625 0 7.546875 L 0 18.453125 C 0 22.609375 3.390625 26 7.546875 26 L 18.453125 26 C 22.609375 26 26 22.609375 26 18.453125 L 26 7.546875 C 26 3.390625 22.609375 0 18.453125 0 Z M 7.546875 2 L 18.453125 2 C 21.527344 2 24 4.46875 24 7.546875 L 24 18.453125 C 24 21.527344 21.53125 24 18.453125 24 L 7.546875 24 C 4.472656 24 2 21.53125 2 18.453125 L 2 7.546875 C 2 4.472656 4.46875 2 7.546875 2 Z M 20.5 4 C 19.671875 4 19 4.671875 19 5.5 C 19 6.328125 19.671875 7 20.5 7 C 21.328125 7 22 6.328125 22 5.5 C 22 4.671875 21.328125 4 20.5 4 Z M 13 6 C 9.144531 6 6 9.144531 6 13 C 6 16.855469 9.144531 20 13 20 C 16.855469 20 20 16.855469 20 13 C 20 9.144531 16.855469 6 13 6 Z M 13 8 C 15.773438 8 18 10.226563 18 13 C 18 15.773438 15.773438 18 13 18 C 10.226563 18 8 15.773438 8 13 C 8 10.226563 10.226563 8 13 8 Z "></path></g></svg>', 1, 1, 1, 1, 1, 1, 1, NULL, 1),
+	(3, 'telegram', 'تلگرام', '', '', 'msg-item-telegram-plane', '#20AFDE', '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M446.7 98.6l-67.6 318.8c-5.1 22.5-18.4 28.1-37.3 17.5l-103-75.9-49.7 47.8c-5.5 5.5-10.1 10.1-20.7 10.1l7.4-104.9 190.9-172.5c8.3-7.4-1.8-11.5-12.9-4.1L117.8 284 16.2 252.2c-22.1-6.9-22.5-22.1 4.6-32.7L418.2 66.4c18.4-6.9 34.5 4.1 28.5 32.2z"></path></svg>', 2, 1, 1, 1, 1, 1, 1, NULL, 0),
+	(4, 'instagram', 'اینستاگرام', '', '', 'msg-item-Instagram', '#B83A92', '<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"     width="512" height="512"     viewBox="0 0 26 26"    ><g id="surface1"><path fill="currentColor" style=" " d="M 7.546875 0 C 3.390625 0 0 3.390625 0 7.546875 L 0 18.453125 C 0 22.609375 3.390625 26 7.546875 26 L 18.453125 26 C 22.609375 26 26 22.609375 26 18.453125 L 26 7.546875 C 26 3.390625 22.609375 0 18.453125 0 Z M 7.546875 2 L 18.453125 2 C 21.527344 2 24 4.46875 24 7.546875 L 24 18.453125 C 24 21.527344 21.53125 24 18.453125 24 L 7.546875 24 C 4.472656 24 2 21.53125 2 18.453125 L 2 7.546875 C 2 4.472656 4.46875 2 7.546875 2 Z M 20.5 4 C 19.671875 4 19 4.671875 19 5.5 C 19 6.328125 19.671875 7 20.5 7 C 21.328125 7 22 6.328125 22 5.5 C 22 4.671875 21.328125 4 20.5 4 Z M 13 6 C 9.144531 6 6 9.144531 6 13 C 6 16.855469 9.144531 20 13 20 C 16.855469 20 20 16.855469 20 13 C 20 9.144531 16.855469 6 13 6 Z M 13 8 C 15.773438 8 18 10.226563 18 13 C 18 15.773438 15.773438 18 13 18 C 10.226563 18 8 15.773438 8 13 C 8 10.226563 10.226563 8 13 8 Z "></path></g></svg>', 1, 1, 1, 1, 1, 1, 1, NULL, 0),
 	(5, 'aparat', 'آپارات', '', '', 'msg-item-Aparat', '#ED145B', '<svg version="1.0" xmlns="http://www.w3.org/2000/svg"  width="512.000000pt" height="512.000000pt" viewBox="0 0 512.000000 512.000000"  preserveAspectRatio="xMidYMid meet"> <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)" fill="currentColor" stroke="none"> <path d="M1410 4961 c-232 -62 -429 -236 -514 -452 -14 -35 -50 -157 -80 -271 -31 -113 -59 -214 -63 -223 -12 -32 12 -11 95 82 324 363 808 629 1305 718 53 10 97 20 97 24 0 4 -21 12 -47 17 -27 6 -146 36 -266 67 -209 55 -223 57 -340 56 -83 0 -143 -6 -187 -18z"/> <path d="M2418 4659 c-432 -35 -834 -193 -1168 -459 -97 -77 -283 -266 -351 -355 -289 -379 -439 -816 -439 -1280 0 -464 150 -901 439 -1280 68 -89 254 -278 351 -355 763 -607 1841 -621 2620 -32 102 77 299 270 375 367 301 385 455 825 455 1300 0 464 -148 897 -438 1280 -107 141 -336 354 -497 462 -387 260 -887 390 -1347 352z m-299 -584 c207 -49 383 -222 436 -430 19 -76 19 -214 0 -290 -40 -151 -160 -304 -292 -373 -179 -94 -399 -93 -576 0 -86 46 -194 155 -240 244 -88 170 -90 368 -4 543 66 135 233 269 383 305 78 19 214 19 293 1z m1520 -290 c245 -58 432 -281 448 -536 30 -458 -452 -770 -867 -562 -288 144 -407 503 -261 791 79 157 234 274 416 315 47 11 205 6 264 -8z m-953 -1003 c156 -79 191 -283 70 -410 -53 -57 -101 -77 -186 -77 -64 0 -82 4 -128 29 -88 49 -132 124 -132 225 0 120 60 203 179 248 49 18 146 11 197 -15z m-872 -292 c370 -94 557 -501 387 -838 -66 -130 -194 -243 -332 -292 -88 -30 -248 -38 -343 -16 -364 86 -559 492 -397 831 80 170 237 285 446 329 54 11 168 4 239 -14z m1520 -290 c109 -28 190 -74 272 -155 183 -182 226 -448 111 -684 -44 -90 -158 -204 -253 -254 -342 -177 -765 9 -859 378 -19 76 -19 214 0 290 40 151 160 304 292 373 134 70 293 89 437 52z"/> <path d="M3970 4383 c1 -4 27 -28 60 -52 83 -62 276 -258 364 -371 231 -297 396 -674 449 -1032 18 -117 16 -120 103 202 62 225 67 255 72 369 5 142 -6 213 -49 318 -75 179 -232 337 -407 408 -34 14 -173 54 -309 90 -137 36 -256 68 -265 71 -10 3 -18 2 -18 -3z"/> <path d="M265 2188 c-2 -7 -30 -107 -61 -223 -51 -189 -57 -223 -61 -334 -6 -142 5 -213 48 -318 75 -179 232 -337 407 -408 35 -14 163 -52 285 -84 122 -33 230 -62 240 -66 34 -14 16 11 -35 50 -86 65 -277 262 -363 375 -138 181 -251 384 -330 595 -41 110 -105 350 -105 396 0 29 -17 40 -25 17z"/> <path d="M4403 1179 c-338 -416 -725 -677 -1208 -813 -113 -32 -227 -56 -266 -56 -52 0 -27 -21 46 -40 39 -10 159 -41 268 -69 183 -47 206 -51 315 -51 132 0 210 15 306 59 175 79 320 225 394 394 12 27 51 160 87 295 36 136 70 258 76 271 13 32 4 38 -18 10z"/> </g> </svg>', 10, 1, 1, 0, 0, 0, 0, NULL, 0),
 	(6, 'youtube', 'یوتیوب', '', '', 'msg-item-youtube', '#ffffff', '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="800px" width="800px" version="1.1" id="Layer_1" viewBox="0 0 461.001 461.001" xml:space="preserve"><g><path style="fill:#F61C0D;" d="M365.257,67.393H95.744C42.866,67.393,0,110.259,0,163.137v134.728   c0,52.878,42.866,95.744,95.744,95.744h269.513c52.878,0,95.744-42.866,95.744-95.744V163.137   C461.001,110.259,418.135,67.393,365.257,67.393z M300.506,237.056l-126.06,60.123c-3.359,1.602-7.239-0.847-7.239-4.568V168.607   c0-3.774,3.982-6.22,7.348-4.514l126.06,63.881C304.363,229.873,304.298,235.248,300.506,237.056z"/></g></svg>', 7, 1, 1, 0, 0, 0, 0, NULL, 0),
 	(7, 'twitter', 'توئیتر', '', '', 'msg-item-twitter', '#1da1f2', '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"></path></svg>', 11, 1, 1, 0, 0, 0, 0, NULL, 0),
@@ -1498,21 +1501,21 @@ CREATE TABLE IF NOT EXISTS `tbl_page` (
   `time` varchar(20) DEFAULT NULL,
   `p_status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '1=default;2=cant_change_status;3=dashboard_page	',
   PRIMARY KEY (`p_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb3;
 
--- Dumping data for table reservation.tbl_page: ~13 rows (approximately)
+-- Dumping data for table reservation.tbl_page: ~11 rows (approximately)
 DELETE FROM `tbl_page`;
 INSERT INTO `tbl_page` (`p_id`, `type`, `link`, `readonly_link`, `removable`, `writer`, `title`, `main_tag`, `metaDescription`, `cover`, `data_item`, `description`, `view`, `date_created`, `time`, `p_status`) VALUES
 	(1, 'dashboard', 'dashboard-main', 1, 0, 1, 'داشبورد پیش فرض', NULL, NULL, NULL, '[{"ratio": "3-3-3-3", "columns": [[{"title": "تعداد نوبت‌های ماه", "widget": "count_reservation_this_month"}], [{"title": "تعداد کابران ماه", "widget": "count_users_this_month"}], [{"title": "اعتبار پنل پیامک", "widget": "credit_sms_panel"}]]}, {"ratio": "9-3", "columns": [[{"title": "نمودار نوبت‌های رزرو شده در ماه", "widget": "chart_reservation_this_month"}], [{"title": "ساعت آنالوگ", "widget": "clock"}]]}, {"ratio": "6-6", "columns": [[{"title": "آخرین فعالیت های شما", "widget": "last_activity"}], [{"title": "آخرین مشتریان ثبت شده", "widget": "last_users_register"}]]}, {"ratio": "12", "columns": [[{"title": "آخرین مطالب وبلاگ", "widget": "last_blog_article"}]]}]', NULL, 0, '1400/07/07', '22:26', 3),
 	(2, 'main_page', NULL, 1, 0, 1, 'صفحه اصلی', NULL, NULL, NULL, NULL, NULL, 0, '1400/07/07', '22:26', 2),
 	(3, 'sub_page', 'services', 1, 0, 1, 'خدمات', 'خدمات', 'لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.', '', NULL, '&lt;p&gt;لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.&lt;/p&gt;\r\n\r\n&lt;p&gt;لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.&lt;/p&gt;\r\n', 0, '1400/07/07', '23:27', 2),
 	(4, 'sub_page', 'blog', 1, 0, 1, 'وبلاگ', 'وبلاگ', 'لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.', '', NULL, '&lt;p&gt;لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.&lt;/p&gt;\r\n\r\n&lt;p&gt;لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.&lt;/p&gt;\r\n', 0, '1400/07/07', '23:27', 2),
-	(6, 'sub_page', 'contact', 1, 0, 1, 'تماس با ما', 'ارتباط با ما', 'لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.', '1632945408_5f61a0a0f05ef.png', NULL, '&lt;p&gt;لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.&lt;/p&gt;\n', 0, '1400/07/07', '23:26', 1),
-	(7, 'sub_page', 'faq', 1, 0, 1, 'سوالات متداول', 'سوالات متداول', 'لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.', '1654079802_How-To-Prepare-The-Text-FAQ-Page-Simple-Way.نکات مهم در خصوص متن صفحه FAQ_1623481514.png', NULL, '&lt;p&gt;لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.&lt;/p&gt;\r\n', 0, '1400/07/07', '23:27', 1),
-	(8, 'sub_page', 'help', 1, 0, 1, 'راهنما', 'راهنمای استفاده از سایت', 'لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.', NULL, NULL, '&lt;p&gt;لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.&lt;/p&gt;\n', 0, '1400/07/07', '23:23', 1),
-	(9, 'sub_page', 'terms', 1, 0, 1, 'قوانین و مقررات', 'قوانین و مقررات سایت', 'لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.', NULL, NULL, '&lt;p&gt;لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.&lt;/p&gt;\n\n&lt;p&gt;لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.&lt;/p&gt;\n', 0, '1400/07/07', '23:24', 1),
-	(10, 'sub_page', 'about', 1, 0, 1, 'درباره ما', 'درباره ما', 'لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.', NULL, NULL, '&lt;p&gt;لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.&lt;/p&gt;\r\n', 0, '1400/07/07', '22:26', 1),
-	(11, 'sub_page', 'search', 1, 0, 1, 'جستجو', 'جستجو', 'لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.', NULL, NULL, '&lt;p&gt;لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.&lt;/p&gt;\r\n', 0, '1400/07/07', '22:26', 1);
+	(5, 'sub_page', 'search', 1, 0, 1, 'جستجو', 'جستجو', 'لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.', NULL, NULL, '&lt;p&gt;لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.&lt;/p&gt;\r\n', 1, '1400/07/07', '22:26', 1),
+	(6, 'sub_page', 'contact', 1, 0, 1, 'تماس با ما', 'ارتباط با ما', 'لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.', '1632945408_5f61a0a0f05ef.png', NULL, '&lt;p&gt;لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.&lt;/p&gt;\n', 2, '1400/07/07', '23:26', 1),
+	(7, 'sub_page', 'faq', 1, 0, 1, 'سوالات متداول', 'سوالات متداول', 'لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.', '1654079802_How-To-Prepare-The-Text-FAQ-Page-Simple-Way.نکات مهم در خصوص متن صفحه FAQ_1623481514.png', NULL, '&lt;p&gt;لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.&lt;/p&gt;\r\n', 2, '1400/07/07', '23:27', 1),
+	(8, 'sub_page', 'help', 1, 0, 1, 'راهنما', 'راهنمای استفاده از سایت', 'لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.', NULL, NULL, '&lt;p&gt;لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.&lt;/p&gt;\n', 1, '1400/07/07', '23:23', 1),
+	(9, 'sub_page', 'terms', 1, 0, 1, 'قوانین و مقررات', 'قوانین و مقررات سایت', 'لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.', NULL, NULL, '&lt;p&gt;لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.&lt;/p&gt;\n\n&lt;p&gt;لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.&lt;/p&gt;\n', 1, '1400/07/07', '23:24', 1),
+	(10, 'sub_page', 'about', 1, 0, 1, 'درباره ما', 'درباره ما', 'لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.', NULL, NULL, '&lt;p&gt;لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.&lt;/p&gt;\r\n', 3, '1400/07/07', '22:26', 1);
 
 -- Dumping structure for table reservation.tbl_page_widget
 CREATE TABLE IF NOT EXISTS `tbl_page_widget` (
@@ -1524,21 +1527,11 @@ CREATE TABLE IF NOT EXISTS `tbl_page_widget` (
   `ip_content` text NOT NULL,
   `ip_status` int NOT NULL,
   PRIMARY KEY (`ip_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf32;
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf32;
 
--- Dumping data for table reservation.tbl_page_widget: 9 rows
+-- Dumping data for table reservation.tbl_page_widget: 0 rows
 DELETE FROM `tbl_page_widget`;
 /*!40000 ALTER TABLE `tbl_page_widget` DISABLE KEYS */;
-INSERT INTO `tbl_page_widget` (`ip_id`, `page_id`, `template_id`, `ip_title`, `ip_order`, `ip_content`, `ip_status`) VALUES
-	(1, 2, 1, 'اسلایدر', 1, 'a:2:{s:6:"number";s:1:"1";s:8:"ordering";s:3:"asc";}', 1),
-	(3, 2, 4, 'خدمات', 2, 'a:7:{s:5:"title";s:23:"خدمات مجموعه";s:9:"sort_type";s:6:"latest";s:9:"view_type";s:6:"slider";s:4:"link";s:8:"services";s:10:"link_title";s:30:"مشاهده همه خدمات";s:6:"number";s:2:"10";s:11:"description";s:237:"در این بخش خدمات مجموعه آکادمی آرایش دائم فرگل یزدی را مشاهده میکنید که برای رزرو نوبت می توانید خدمت مورد نظر خود را انتخاب نمایید";}', 1),
-	(4, 2, 6, 'نظرات مشتریان', 9, 'a:4:{s:6:"number";s:2:"10";s:8:"ordering";s:3:"asc";s:5:"title";s:53:"در مورد فرگل یزدی چه میشنویم؟";s:11:"description";s:175:"این‌ها، بخش خیلی کوچکی از نظراتی هستند که افراد مختلف در مورد آکادمی آرایش دائم فرگل یزدی دارند.";}', 1),
-	(5, 2, 3, 'مطالب وبلاگ', 8, 'a:8:{s:5:"title";s:40:"جدیدترین مطالب آموزشی";s:9:"sort_type";s:6:"latest";s:9:"view_type";s:6:"slider";s:4:"link";s:4:"blog";s:10:"link_title";s:30:"مشاهده همه مطالب";s:6:"number";s:2:"10";s:11:"description";s:0:"";s:12:"sub_category";s:1:"1";}', 1),
-	(6, 2, 7, 'شبکه های اجتماعی', 6, 'a:3:{s:4:"link";s:31:"";s:10:"link_title";s:47:"مشاهده پست های اینستاگرام";s:11:"description";s:116:"ما هر روز کلی مطالب آموزشی جالب در اینستاگراممون منتشر می‌کنیم!";}', 1),
-	(7, 2, 4, 'پربازدیدترین خدمات', 7, 'a:7:{s:5:"title";s:35:"پربازدیدترین خدمات";s:9:"sort_type";s:4:"view";s:9:"view_type";s:7:"slider2";s:4:"link";s:8:"services";s:10:"link_title";s:30:"مشاهده همه خدمات";s:6:"number";s:2:"10";s:11:"description";s:0:"";}', 1),
-	(8, 2, 5, 'بنر تبلیغاتی', 3, 'a:2:{s:6:"number";s:1:"1";s:8:"ordering";s:3:"asc";}', 1),
-	(9, 2, 5, 'بنر تبلیغاتی1', 10, 'a:2:{s:6:"number";s:1:"4";s:8:"ordering";s:3:"asc";}', 1),
-	(10, 2, 8, 'متن', 5, 'a:3:{s:5:"title";s:21:"لورم ایپسوم";s:9:"view_type";s:5:"item2";s:11:"description";s:4964:"لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.\r\n\r\nلورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.\r\n\r\n\r\n\r\nلورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nلورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.";}', 1);
 /*!40000 ALTER TABLE `tbl_page_widget` ENABLE KEYS */;
 
 -- Dumping structure for table reservation.tbl_payment_log
@@ -1561,7 +1554,7 @@ CREATE TABLE IF NOT EXISTS `tbl_payment_log` (
   PRIMARY KEY (`p_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
--- Dumping data for table reservation.tbl_payment_log: ~7 rows (approximately)
+-- Dumping data for table reservation.tbl_payment_log: ~0 rows (approximately)
 DELETE FROM `tbl_payment_log`;
 
 -- Dumping structure for table reservation.tbl_payment_methods
@@ -1586,9 +1579,9 @@ CREATE TABLE IF NOT EXISTS `tbl_payment_methods` (
 DELETE FROM `tbl_payment_methods`;
 /*!40000 ALTER TABLE `tbl_payment_methods` DISABLE KEYS */;
 INSERT INTO `tbl_payment_methods` (`pay_id`, `pay_default`, `pay_type`, `pay_to`, `user_type`, `pay_title`, `pay_desc`, `pay_icon`, `pay_merchant`, `pay_username`, `pay_password`, `test_status`, `pay_status`) VALUES
-	(1, 0, 'cash', 1000, 0, 'کارت به کارت', 'شما می توانید مبلغ سفارش را به شماره کارت 1234567891011213 به نام تست هستیم واریز و رسید آن را برای پشتیبانی ارسال نمایید', NULL, '', NULL, NULL, 0, 1),
-	(2, 1, 'bank', 1000, 0, 'درگاه زرین پال', '', 'bank-logo/zarinpal.png', NULL, NULL, NULL, 1, 1),
-	(3, 0, 'cash', 1000, 0, 'پرداخت حضوری', '', NULL, '', NULL, NULL, 0, 1);
+	(1, 0, 'cash', 1000, 0, 'کارت به کارت', 'شما می توانید مبلغ سفارش را به شماره کارت 1234567891011213 به نام تست هستیم واریز و رسید آن را برای پشتیبانی ارسال نمایید', NULL, '', NULL, NULL, 0, 0),
+	(2, 1, 'bank', 1000, 0, 'درگاه زرین پال', '', 'bank-logo/zarinpal.png', NULL, NULL, NULL, 0, 0),
+	(3, 0, 'cash', 1000, 0, 'پرداخت حضوری', '', NULL, '', NULL, NULL, 0, 0);
 /*!40000 ALTER TABLE `tbl_payment_methods` ENABLE KEYS */;
 
 -- Dumping structure for table reservation.tbl_pettycash
@@ -1603,7 +1596,7 @@ CREATE TABLE IF NOT EXISTS `tbl_pettycash` (
   PRIMARY KEY (`p_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=1001 DEFAULT CHARSET=utf32;
 
--- Dumping data for table reservation.tbl_pettycash: 2 rows
+-- Dumping data for table reservation.tbl_pettycash: 1 rows
 DELETE FROM `tbl_pettycash`;
 /*!40000 ALTER TABLE `tbl_pettycash` DISABLE KEYS */;
 INSERT INTO `tbl_pettycash` (`p_id`, `pettyCash_vids_id`, `p_name`, `p_currency`, `p_desc`, `p_date`, `p_status`) VALUES
@@ -1663,7 +1656,7 @@ CREATE TABLE IF NOT EXISTS `tbl_rating` (
   PRIMARY KEY (`r_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf32;
 
--- Dumping data for table reservation.tbl_rating: 9 rows
+-- Dumping data for table reservation.tbl_rating: 0 rows
 DELETE FROM `tbl_rating`;
 /*!40000 ALTER TABLE `tbl_rating` DISABLE KEYS */;
 /*!40000 ALTER TABLE `tbl_rating` ENABLE KEYS */;
@@ -1678,7 +1671,7 @@ CREATE TABLE IF NOT EXISTS `tbl_ratings` (
   PRIMARY KEY (`r_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf32;
 
--- Dumping data for table reservation.tbl_ratings: 2 rows
+-- Dumping data for table reservation.tbl_ratings: 0 rows
 DELETE FROM `tbl_ratings`;
 /*!40000 ALTER TABLE `tbl_ratings` DISABLE KEYS */;
 /*!40000 ALTER TABLE `tbl_ratings` ENABLE KEYS */;
@@ -1694,7 +1687,7 @@ CREATE TABLE IF NOT EXISTS `tbl_redirect` (
   PRIMARY KEY (`r_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table reservation.tbl_redirect: 1 rows
+-- Dumping data for table reservation.tbl_redirect: 0 rows
 DELETE FROM `tbl_redirect`;
 /*!40000 ALTER TABLE `tbl_redirect` DISABLE KEYS */;
 /*!40000 ALTER TABLE `tbl_redirect` ENABLE KEYS */;
@@ -1721,9 +1714,9 @@ CREATE TABLE IF NOT EXISTS `tbl_searches` (
   `s_management_selection` tinyint NOT NULL DEFAULT '0',
   `s_date` varchar(50) NOT NULL,
   PRIMARY KEY (`s_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf32;
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf32;
 
--- Dumping data for table reservation.tbl_searches: 7 rows
+-- Dumping data for table reservation.tbl_searches: 0 rows
 DELETE FROM `tbl_searches`;
 /*!40000 ALTER TABLE `tbl_searches` DISABLE KEYS */;
 /*!40000 ALTER TABLE `tbl_searches` ENABLE KEYS */;
@@ -1750,7 +1743,7 @@ CREATE TABLE IF NOT EXISTS `tbl_services` (
   PRIMARY KEY (`s_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf32;
 
--- Dumping data for table reservation.tbl_services: 5 rows
+-- Dumping data for table reservation.tbl_services: 0 rows
 DELETE FROM `tbl_services`;
 /*!40000 ALTER TABLE `tbl_services` DISABLE KEYS */;
 /*!40000 ALTER TABLE `tbl_services` ENABLE KEYS */;
@@ -1764,7 +1757,7 @@ CREATE TABLE IF NOT EXISTS `tbl_services_related_blog` (
   PRIMARY KEY (`srb_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf32;
 
--- Dumping data for table reservation.tbl_services_related_blog: 4 rows
+-- Dumping data for table reservation.tbl_services_related_blog: 0 rows
 DELETE FROM `tbl_services_related_blog`;
 /*!40000 ALTER TABLE `tbl_services_related_blog` DISABLE KEYS */;
 /*!40000 ALTER TABLE `tbl_services_related_blog` ENABLE KEYS */;
@@ -1803,7 +1796,7 @@ CREATE TABLE IF NOT EXISTS `tbl_services_reservation` (
   PRIMARY KEY (`sre_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf32;
 
--- Dumping data for table reservation.tbl_services_reservation: 13 rows
+-- Dumping data for table reservation.tbl_services_reservation: 0 rows
 DELETE FROM `tbl_services_reservation`;
 /*!40000 ALTER TABLE `tbl_services_reservation` DISABLE KEYS */;
 /*!40000 ALTER TABLE `tbl_services_reservation` ENABLE KEYS */;
@@ -1821,7 +1814,7 @@ CREATE TABLE IF NOT EXISTS `tbl_services_reservation_log` (
 /*!50100 PARTITION BY HASH (`idusr_activity`)
 PARTITIONS 10 */;
 
--- Dumping data for table reservation.tbl_services_reservation_log: ~16 rows (approximately)
+-- Dumping data for table reservation.tbl_services_reservation_log: ~0 rows (approximately)
 DELETE FROM `tbl_services_reservation_log`;
 
 -- Dumping structure for table reservation.tbl_services_reservation_product
@@ -1838,7 +1831,7 @@ CREATE TABLE IF NOT EXISTS `tbl_services_reservation_product` (
   PRIMARY KEY (`srp_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
 
--- Dumping data for table reservation.tbl_services_reservation_product: 2 rows
+-- Dumping data for table reservation.tbl_services_reservation_product: 0 rows
 DELETE FROM `tbl_services_reservation_product`;
 /*!40000 ALTER TABLE `tbl_services_reservation_product` DISABLE KEYS */;
 /*!40000 ALTER TABLE `tbl_services_reservation_product` ENABLE KEYS */;
@@ -1856,7 +1849,7 @@ CREATE TABLE IF NOT EXISTS `tbl_services_reservation_staff` (
   PRIMARY KEY (`os_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
 
--- Dumping data for table reservation.tbl_services_reservation_staff: 1 rows
+-- Dumping data for table reservation.tbl_services_reservation_staff: 0 rows
 DELETE FROM `tbl_services_reservation_staff`;
 /*!40000 ALTER TABLE `tbl_services_reservation_staff` DISABLE KEYS */;
 /*!40000 ALTER TABLE `tbl_services_reservation_staff` ENABLE KEYS */;
@@ -1876,7 +1869,7 @@ CREATE TABLE IF NOT EXISTS `tbl_services_staff` (
   PRIMARY KEY (`r_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
 
--- Dumping data for table reservation.tbl_services_staff: 3 rows
+-- Dumping data for table reservation.tbl_services_staff: 0 rows
 DELETE FROM `tbl_services_staff`;
 /*!40000 ALTER TABLE `tbl_services_staff` DISABLE KEYS */;
 /*!40000 ALTER TABLE `tbl_services_staff` ENABLE KEYS */;
@@ -1889,7 +1882,7 @@ CREATE TABLE IF NOT EXISTS `tbl_services_tag` (
   PRIMARY KEY (`pt_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf32;
 
--- Dumping data for table reservation.tbl_services_tag: 8 rows
+-- Dumping data for table reservation.tbl_services_tag: 0 rows
 DELETE FROM `tbl_services_tag`;
 /*!40000 ALTER TABLE `tbl_services_tag` DISABLE KEYS */;
 /*!40000 ALTER TABLE `tbl_services_tag` ENABLE KEYS */;
@@ -1907,7 +1900,7 @@ CREATE TABLE IF NOT EXISTS `tbl_services_tariff` (
   PRIMARY KEY (`st_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf32;
 
--- Dumping data for table reservation.tbl_services_tariff: 7 rows
+-- Dumping data for table reservation.tbl_services_tariff: 0 rows
 DELETE FROM `tbl_services_tariff`;
 /*!40000 ALTER TABLE `tbl_services_tariff` DISABLE KEYS */;
 /*!40000 ALTER TABLE `tbl_services_tariff` ENABLE KEYS */;
@@ -1934,7 +1927,7 @@ CREATE TABLE IF NOT EXISTS `tbl_services_timing` (
   PRIMARY KEY (`st_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf32;
 
--- Dumping data for table reservation.tbl_services_timing: 5 rows
+-- Dumping data for table reservation.tbl_services_timing: 0 rows
 DELETE FROM `tbl_services_timing`;
 /*!40000 ALTER TABLE `tbl_services_timing` DISABLE KEYS */;
 /*!40000 ALTER TABLE `tbl_services_timing` ENABLE KEYS */;
@@ -1953,7 +1946,7 @@ CREATE TABLE IF NOT EXISTS `tbl_services_timing_manage_day` (
   PRIMARY KEY (`sm_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf32;
 
--- Dumping data for table reservation.tbl_services_timing_manage_day: 56 rows
+-- Dumping data for table reservation.tbl_services_timing_manage_day: 0 rows
 DELETE FROM `tbl_services_timing_manage_day`;
 /*!40000 ALTER TABLE `tbl_services_timing_manage_day` DISABLE KEYS */;
 /*!40000 ALTER TABLE `tbl_services_timing_manage_day` ENABLE KEYS */;
@@ -1964,9 +1957,9 @@ CREATE TABLE IF NOT EXISTS `tbl_settings` (
   `key` text,
   `value` text,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=104 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=105 DEFAULT CHARSET=utf8mb3;
 
--- Dumping data for table reservation.tbl_settings: ~108 rows (approximately)
+-- Dumping data for table reservation.tbl_settings: ~104 rows (approximately)
 DELETE FROM `tbl_settings`;
 INSERT INTO `tbl_settings` (`id`, `key`, `value`) VALUES
 	(1, 'root', 'root_path'),
@@ -1979,8 +1972,8 @@ INSERT INTO `tbl_settings` (`id`, `key`, `value`) VALUES
 	(8, 'channel_payment', ''),
 	(9, 'channel_blog', ''),
 	(10, 'bot_token', ''),
-	(11, 'logo', '1654354062_2013_1650325426_8610_1.svg'),
-	(12, 'logo_square', '1654354260_6594_1650325435_9207_2.svg'),
+	(11, 'logo', '1679993228_2454_logo.svg'),
+	(12, 'logo_square', '1679993414_7401_logo-min.svg'),
 	(13, 'location', ''),
 	(14, 'address', ''),
 	(15, 'site_short_name', 'web_title'),
@@ -1990,7 +1983,7 @@ INSERT INTO `tbl_settings` (`id`, `key`, `value`) VALUES
 	(19, 'legal_name', 'web_title'),
 	(20, 'footer_about', 'متن پیش فرض درباره ما که می توانید از بخش پیکربندی در قسمت تنظیمات آن را تغییر دهید'),
 	(21, 'customJS', ''),
-	(22, 'sms_status', '1'),
+	(22, 'sms_status', '0'),
 	(23, 'sms_api_key', ''),
 	(24, 'sms_secret_key', ''),
 	(25, 'sms_site', 'sms_ir'),
@@ -2002,7 +1995,7 @@ INSERT INTO `tbl_settings` (`id`, `key`, `value`) VALUES
 	(31, 'registration_number', ''),
 	(32, 'economic_code', ''),
 	(33, 'postal_code', ''),
-	(34, 'favicon', '1654411137_326_3.png'),
+	(34, 'favicon', '1679993744_337_fav.png'),
 	(35, 'field_of_activity', 'سالن زیبایی'),
 	(36, 'business_type', '1'),
 	(37, 'province', ''),
@@ -2023,8 +2016,8 @@ INSERT INTO `tbl_settings` (`id`, `key`, `value`) VALUES
 	(52, 'enamad_image', ''),
 	(53, 'zarinpal_link', ''),
 	(54, 'zarinpal_image', ''),
-	(55, 'logo_dark', '1654354276_6289_1654067820_4696_1650325426_8610_1.svg'),
-	(56, 'logo_square_dark', '1656193079_2493_1654067825_9588_1650325435_9207_2.svg'),
+	(55, 'logo_dark', '1679993220_3112_logo dark.svg'),
+	(56, 'logo_square_dark', '1679993439_9243_logo-min-dark.svg'),
 	(57, 'google_captcha_status', '0'),
 	(58, 'copyright', 'کلیه حقوق مادی و معنوی برای این سایت محفوظ می باشد.'),
 	(59, 'notification', '0'),
@@ -2042,10 +2035,10 @@ INSERT INTO `tbl_settings` (`id`, `key`, `value`) VALUES
 	(71, 'management_name', ''),
 	(72, 'comment_item_per_page', '15'),
 	(73, 'comment_limit_for_user', '2'),
-	(74, 'comment_confirm_method', 'auto'),
+	(74, 'comment_confirm_method', 'admin'),
 	(75, 'comment_reply_button', '1'),
 	(76, 'comment_show_for_login_user', '0'),
-	(77, 'comment_word_check', '1'),
+	(77, 'comment_word_check', '0'),
 	(78, 'comment_word_forbidden', ''),
 	(79, 'dashboard_default', '[{"ratio": "3-3-3-3", "columns": [[{"title": "تعداد نوبت‌های ماه", "widget": "count_reservation_this_month"}], [{"title": "تعداد کابران ماه", "widget": "count_users_this_month"}], [{"title": "اعتبار پنل پیامک", "widget": "credit_sms_panel"}]]}, {"ratio": "9-3", "columns": [[{"title": "نمودار نوبت‌های رزرو شده در ماه", "widget": "chart_reservation_this_month"}], [{"title": "ساعت آنالوگ", "widget": "clock"}]]}, {"ratio": "6-6", "columns": [[{"title": "آخرین فعالیت های شما", "widget": "last_activity"}], [{"title": "آخرین مشتریان ثبت شده", "widget": "last_users_register"}]]}, {"ratio": "12", "columns": [[{"title": "آخرین مطالب وبلاگ", "widget": "last_blog_article"}]]}]'),
 	(80, 'csrf_token_name', 'unix_csrf_token'),
@@ -2071,7 +2064,8 @@ INSERT INTO `tbl_settings` (`id`, `key`, `value`) VALUES
 	(100, 'float_contact_sidebar_animation', 'elastic'),
 	(101, 'float_contact_menu_items_animation', 'fromaside'),
 	(102, 'float_contact_mode_select_options', 'regular'),
-	(103, 'float_contact_menu_click_away', '1');
+	(103, 'float_contact_menu_click_away', '1'),
+	(104, 'bot_status', '0');
 
 -- Dumping structure for table reservation.tbl_sidebar
 CREATE TABLE IF NOT EXISTS `tbl_sidebar` (
@@ -2086,9 +2080,9 @@ CREATE TABLE IF NOT EXISTS `tbl_sidebar` (
   `s_removable` tinyint NOT NULL DEFAULT '1',
   `s_status` tinyint NOT NULL DEFAULT '1',
   PRIMARY KEY (`s_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=99 DEFAULT CHARSET=utf32;
+) ENGINE=MyISAM AUTO_INCREMENT=100 DEFAULT CHARSET=utf32;
 
--- Dumping data for table reservation.tbl_sidebar: 71 rows
+-- Dumping data for table reservation.tbl_sidebar: 72 rows
 DELETE FROM `tbl_sidebar`;
 /*!40000 ALTER TABLE `tbl_sidebar` DISABLE KEYS */;
 INSERT INTO `tbl_sidebar` (`s_id`, `s_parent_id`, `s_name`, `s_link`, `s_counter_num`, `s_counter_num_type`, `s_icon`, `s_order`, `s_removable`, `s_status`) VALUES
@@ -2162,7 +2156,8 @@ INSERT INTO `tbl_sidebar` (`s_id`, `s_parent_id`, `s_name`, `s_link`, `s_counter
 	(94, 10, 'منوها', '-', 1, NULL, 'fa-bars', 18, 0, 1),
 	(96, 4, 'ریدایرکت صفحات', 'redirect', 0, NULL, 'fa-exchange', 16, 0, 1),
 	(97, 0, 'تقویم کاری', 'calendar', 0, '', 'fa-calendar', 3, 0, 1),
-	(98, 13, 'راه های ارتباطی', 'methodsContacting', 0, NULL, 'fa-circle', 18, 0, 1);
+	(98, 13, 'راه های ارتباطی', 'methodsContacting', 0, NULL, 'fa-circle', 18, 0, 1),
+	(99, 13, 'مدیریت لایسنس برنامه', 'license', 0, NULL, 'fa-circle', 18, 0, 1);
 /*!40000 ALTER TABLE `tbl_sidebar` ENABLE KEYS */;
 
 -- Dumping structure for table reservation.tbl_sidebar_access_list
@@ -2175,9 +2170,9 @@ CREATE TABLE IF NOT EXISTS `tbl_sidebar_access_list` (
   `sal_permisson` varchar(100) CHARACTER SET utf32 COLLATE utf32_general_ci NOT NULL,
   `sal_status` tinyint DEFAULT '1',
   PRIMARY KEY (`sal_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=224 DEFAULT CHARSET=utf32;
+) ENGINE=InnoDB AUTO_INCREMENT=225 DEFAULT CHARSET=utf32;
 
--- Dumping data for table reservation.tbl_sidebar_access_list: ~199 rows (approximately)
+-- Dumping data for table reservation.tbl_sidebar_access_list: ~187 rows (approximately)
 DELETE FROM `tbl_sidebar_access_list`;
 INSERT INTO `tbl_sidebar_access_list` (`sal_id`, `sidebar_id_main_part`, `sidebar_menu_id`, `sidebar_id_part`, `sal_title`, `sal_permisson`, `sal_status`) VALUES
 	(1, 2, 14, 15, 'ثبت نوبت جدید', 'service_reservation_add', 1),
@@ -2366,7 +2361,8 @@ INSERT INTO `tbl_sidebar_access_list` (`sal_id`, `sidebar_id_main_part`, `sideba
 	(219, 19, 19, 19, 'حذف کاربران استفاده کننده کدها', 'discount_users_use_delete', 1),
 	(221, 79, 79, 79, 'حذف عبارت', 'search_delete', 1),
 	(222, 1, 1, 1, 'مشاهده آمار پنل پیامک', 'dashboard_sms_info_view', 1),
-	(223, 13, 70, 70, 'مشاهده و ویرایش شبکه های اجتماعی', 'methods_contacting_view_edit', 1);
+	(223, 13, 70, 70, 'مشاهده و ویرایش شبکه های اجتماعی', 'methods_contacting_view_edit', 1),
+	(224, 13, 99, 99, 'فعالسازی لایسنس', 'license_view', 1);
 
 -- Dumping structure for table reservation.tbl_slider
 CREATE TABLE IF NOT EXISTS `tbl_slider` (
@@ -2378,7 +2374,7 @@ CREATE TABLE IF NOT EXISTS `tbl_slider` (
   PRIMARY KEY (`s_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf32;
 
--- Dumping data for table reservation.tbl_slider: 1 rows
+-- Dumping data for table reservation.tbl_slider: 0 rows
 DELETE FROM `tbl_slider`;
 /*!40000 ALTER TABLE `tbl_slider` DISABLE KEYS */;
 /*!40000 ALTER TABLE `tbl_slider` ENABLE KEYS */;
@@ -2394,7 +2390,7 @@ CREATE TABLE IF NOT EXISTS `tbl_slider_image` (
   PRIMARY KEY (`si_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_persian_ci;
 
--- Dumping data for table reservation.tbl_slider_image: ~2 rows (approximately)
+-- Dumping data for table reservation.tbl_slider_image: ~0 rows (approximately)
 DELETE FROM `tbl_slider_image`;
 
 -- Dumping structure for table reservation.tbl_sources
@@ -2412,7 +2408,7 @@ CREATE TABLE IF NOT EXISTS `tbl_sources` (
   PRIMARY KEY (`so_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
--- Dumping data for table reservation.tbl_sources: ~2 rows (approximately)
+-- Dumping data for table reservation.tbl_sources: ~0 rows (approximately)
 DELETE FROM `tbl_sources`;
 
 -- Dumping structure for table reservation.tbl_status
@@ -2429,20 +2425,19 @@ CREATE TABLE IF NOT EXISTS `tbl_status` (
   `removable` tinyint NOT NULL DEFAULT '1',
   `status` tinyint NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_persian_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_persian_ci;
 
--- Dumping data for table reservation.tbl_status: ~9 rows (approximately)
+-- Dumping data for table reservation.tbl_status: ~8 rows (approximately)
 DELETE FROM `tbl_status`;
 INSERT INTO `tbl_status` (`id`, `type`, `title`, `text`, `code`, `show_in_status`, `show_in_sms`, `percent`, `background_color`, `removable`, `status`) VALUES
-	(1, 'service', 'در انتظار تایید', 'خدمت [SERVICE] برای روز [DATE] برای شما رزرو و در انتظار تایید ادمین می باشد.\r\nمبلغ پرداختی: [PRICE] تومان\r\nشماره پیگیری: [RCODE]\r\n\r\n[BNAME]', 606725, 1, 1, 10, 'blue', 0, 1),
-	(2, 'service', 'تایید شده', 'سفارش شما با کد پیگیری [RCODE] تایید شد.\r\nباتشکر\r\n[BNAME]', 886055, 1, 1, 30, 'green', 0, 1),
-	(3, 'service', 'در انتظار پرداخت', 'سفارش شما با کد [RCODE] در انتظار پرداخت می باشد.\r\nلطفا در صورت تمایل به تکمیل رزرو پرداخت را انجام دهید.\r\nباتشکر\r\n[BNAME]', 751221, 1, 1, 40, 'blue', 0, 1),
-	(4, 'service', 'پرداخت شده', 'هزینه سفارش شما با کد پیگیری [RCODE] باموفقیت پرداخت شد!\r\nباتشکر\r\n[BNAME]', 818644, 1, 1, 50, 'yellow', 0, 1),
-	(5, 'service', 'انجام شده', 'سفارش شما با کد پیگیری [RCODE] باموفقیت انجام داده شد!\r\nباتشکر\r\n[BNAME]', 434604, 1, 1, 100, 'green', 0, 1),
-	(6, 'service', 'لغو شده', 'سفارش شما با کد پیگیری [RCODE] به علت عدم پاسخگویی لغو گردید.\r\n[BNAME]', 797573, 1, 1, 100, 'red', 0, 1),
-	(7, 'service', 'آدرس مشهد', 'https://goo.gl/maps/s1eV1SwysKwxMtvGA \r\n[NAME]', 459667, 0, 1, 0, NULL, 1, 1),
-	(8, 'service', 'یادآوری زمان رزرو شده', '[DATE] جهت انجام خدمت [SERVICE] در سالن منتظر شما دوست عزیز هستیم.\r\n[NAME]', 1, 0, 1, 0, NULL, 1, 1),
-	(9, 'service', 'کد پیگیری درخواست', 'کد پیگیری درخواست رزرو شما [RCODE] می‌باشد.\r\nباتشکر\r\n[BNAME]', 2, 0, 1, 0, NULL, 1, 1);
+	(1, 'service', 'در انتظار تایید', 'خدمت [SERVICE] برای روز [DATE] برای شما رزرو و در انتظار تایید ادمین می باشد.\r\nمبلغ پرداختی: [PRICE] تومان\r\nشماره پیگیری: [RCODE]\r\n\r\n[BNAME]', NULL, 1, 1, 10, 'blue', 0, 1),
+	(2, 'service', 'تایید شده', 'سفارش شما با کد پیگیری [RCODE] تایید شد.\r\nباتشکر\r\n[BNAME]', NULL, 1, 1, 30, 'green', 0, 1),
+	(3, 'service', 'در انتظار پرداخت', 'سفارش شما با کد [RCODE] در انتظار پرداخت می باشد.\r\nلطفا در صورت تمایل به تکمیل رزرو پرداخت را انجام دهید.\r\nباتشکر\r\n[BNAME]', NULL, 1, 1, 40, 'blue', 0, 1),
+	(4, 'service', 'پرداخت شده', 'هزینه سفارش شما با کد پیگیری [RCODE] باموفقیت پرداخت شد!\r\nباتشکر\r\n[BNAME]', NULL, 1, 1, 50, 'yellow', 0, 1),
+	(5, 'service', 'انجام شده', 'سفارش شما با کد پیگیری [RCODE] باموفقیت انجام داده شد!\r\nباتشکر\r\n[BNAME]', NULL, 1, 1, 100, 'green', 0, 1),
+	(6, 'service', 'لغو شده', 'سفارش شما با کد پیگیری [RCODE] به علت عدم پاسخگویی لغو گردید.\r\n[BNAME]', NULL, 1, 1, 100, 'red', 0, 1),
+	(7, 'service', 'یادآوری زمان رزرو شده', '[DATE] جهت انجام خدمت [SERVICE] در سالن منتظر شما دوست عزیز هستیم.\r\n[NAME]', NULL, 0, 1, 0, NULL, 0, 1),
+	(8, 'service', 'کد پیگیری درخواست', 'کد پیگیری درخواست رزرو شما [RCODE] می‌باشد.\r\nباتشکر\r\n[BNAME]', NULL, 0, 1, 0, NULL, 0, 1);
 
 -- Dumping structure for table reservation.tbl_storeroom
 CREATE TABLE IF NOT EXISTS `tbl_storeroom` (
@@ -2454,11 +2449,13 @@ CREATE TABLE IF NOT EXISTS `tbl_storeroom` (
   `s_date` varchar(50) DEFAULT NULL,
   `s_status` tinyint NOT NULL DEFAULT '1',
   PRIMARY KEY (`s_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf32;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf32;
 
 -- Dumping data for table reservation.tbl_storeroom: 1 rows
 DELETE FROM `tbl_storeroom`;
 /*!40000 ALTER TABLE `tbl_storeroom` DISABLE KEYS */;
+INSERT INTO `tbl_storeroom` (`s_id`, `storeroom_vids_id`, `branch_id`, `s_name`, `s_storekeeper`, `s_date`, `s_status`) VALUES
+	(1, '1000', 1000, 'انبار مرکزی', 'مدیر اصلی', '1401/12/19', 1);
 /*!40000 ALTER TABLE `tbl_storeroom` ENABLE KEYS */;
 
 -- Dumping structure for table reservation.tbl_storeroom_product
@@ -2472,7 +2469,7 @@ CREATE TABLE IF NOT EXISTS `tbl_storeroom_product` (
   PRIMARY KEY (`sr_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dumping data for table reservation.tbl_storeroom_product: 4 rows
+-- Dumping data for table reservation.tbl_storeroom_product: 0 rows
 DELETE FROM `tbl_storeroom_product`;
 /*!40000 ALTER TABLE `tbl_storeroom_product` DISABLE KEYS */;
 /*!40000 ALTER TABLE `tbl_storeroom_product` ENABLE KEYS */;
@@ -2491,7 +2488,7 @@ CREATE TABLE IF NOT EXISTS `tbl_storeroom_product_inventory` (
   PRIMARY KEY (`spi_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf32;
 
--- Dumping data for table reservation.tbl_storeroom_product_inventory: 5 rows
+-- Dumping data for table reservation.tbl_storeroom_product_inventory: 0 rows
 DELETE FROM `tbl_storeroom_product_inventory`;
 /*!40000 ALTER TABLE `tbl_storeroom_product_inventory` DISABLE KEYS */;
 /*!40000 ALTER TABLE `tbl_storeroom_product_inventory` ENABLE KEYS */;
@@ -2510,7 +2507,7 @@ CREATE TABLE IF NOT EXISTS `tbl_tags` (
   PRIMARY KEY (`t_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
--- Dumping data for table reservation.tbl_tags: ~8 rows (approximately)
+-- Dumping data for table reservation.tbl_tags: ~0 rows (approximately)
 DELETE FROM `tbl_tags`;
 
 -- Dumping structure for table reservation.tbl_template
@@ -2573,13 +2570,13 @@ CREATE TABLE IF NOT EXISTS `tbl_vids` (
   `product_id` varchar(100) NOT NULL DEFAULT '1000',
   `admin_id` varchar(100) NOT NULL DEFAULT '1000',
   PRIMARY KEY (`vids_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf32;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf32;
 
 -- Dumping data for table reservation.tbl_vids: 1 rows
 DELETE FROM `tbl_vids`;
 /*!40000 ALTER TABLE `tbl_vids` DISABLE KEYS */;
 INSERT INTO `tbl_vids` (`vids_id`, `panel_id`, `order_service_id`, `staff_id`, `branch_id`, `customer_id`, `payment_id`, `cost_id`, `cost_category_id`, `bank_id`, `cash_id`, `pettyCash_id`, `storeroom_id`, `product_id`, `admin_id`) VALUES
-	(1, 1000, '10000', '1000', '1001', '1000', '1000', '1000', '1001', '1000', '1001', '1001', '1000', '10000', '1001');
+	(1, 1000, '10000', '1000', '1001', '1000', '1000', '1000', '1001', '1000', '1001', '1001', '1001', '10000', '1001');
 /*!40000 ALTER TABLE `tbl_vids` ENABLE KEYS */;
 
 -- Dumping structure for table reservation.tbl_view
@@ -2592,7 +2589,7 @@ CREATE TABLE IF NOT EXISTS `tbl_view` (
   PRIMARY KEY (`v_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
 
--- Dumping data for table reservation.tbl_view: 10 rows
+-- Dumping data for table reservation.tbl_view: 0 rows
 DELETE FROM `tbl_view`;
 /*!40000 ALTER TABLE `tbl_view` DISABLE KEYS */;
 /*!40000 ALTER TABLE `tbl_view` ENABLE KEYS */;
