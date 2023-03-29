@@ -16,7 +16,7 @@ trait rtlThemeModelTrait
     function rtl_theme_send_request($post)
     {
         try {
-            $sand_box = False;
+            $sand_box = True;
             if($sand_box){
                 $api = 'SandBox-API';
                 $username = 'SandBox-User';
