@@ -212,7 +212,7 @@
                         <?php if($data['getPublicInfo']['enamad_link']){ ?>
                             <div class="cursor-pointer">
                                 <img data-toggle="tooltip" data-placement="top" title="" class="toggle-me footer-icon-style"
-                                     data-original-title="نماد اعتماد الكترونیكی" alt="لوگو نماد اعتماد الكترونیكیه"
+                                     data-original-title="نماد اعتماد الكترونیكی" alt="لوگو نماد اعتماد الكترونیكی"
                                      src="<?= $data['getPublicInfo']['enamad_image']; ?>" style="cursor:pointer" id="bKTcIIKvn3PcwGAR"
                                      onclick='window.open("<?= $data['getPublicInfo']['enamad_link']; ?>", "Popup","toolbar=no, location=no, statusbar=no, menubar=no, scrollbars=1, resizable=0, width=580, height=600, top=30")'>
                             </div>
