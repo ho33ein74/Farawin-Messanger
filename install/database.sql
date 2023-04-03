@@ -2361,7 +2361,7 @@ INSERT INTO `tbl_sidebar_access_list` (`sal_id`, `sidebar_id_main_part`, `sideba
 	(219, 19, 19, 19, 'حذف کاربران استفاده کننده کدها', 'discount_users_use_delete', 1),
 	(221, 79, 79, 79, 'حذف عبارت', 'search_delete', 1),
 	(222, 1, 1, 1, 'مشاهده آمار پنل پیامک', 'dashboard_sms_info_view', 1),
-	(223, 13, 70, 70, 'مشاهده و ویرایش شبکه های اجتماعی', 'methods_contacting_view_edit', 1),
+	(223, 13, 98, 98, 'مشاهده و ویرایش شبکه های اجتماعی', 'methods_contacting_view_edit', 1),
 	(224, 13, 99, 99, 'فعالسازی لایسنس', 'license_view', 1);
 
 -- Dumping structure for table reservation.tbl_slider
