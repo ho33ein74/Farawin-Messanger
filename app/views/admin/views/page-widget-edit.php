@@ -805,10 +805,8 @@ $content = unserialize($data['widgetInfo']['ip_content']);
     ?>
 
     <?php if($data['widgetInfo']['template_id']==2){ ?>
-            $("#product-categories").val(<?= $categoriesId ?>).change();
-    <?php } else if($data['widgetInfo']['template_id']==3){ ?>
             $("#blog-categories").val(<?= $categoriesId ?>).change();
-    <?php } else if($data['widgetInfo']['template_id']==5){ ?>
+    <?php } else if($data['widgetInfo']['template_id']==3){ ?>
             $("#categories-list").val(<?= $categoriesId ?>).change();
     <?php } ?>
 </script>
