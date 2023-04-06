@@ -13640,9 +13640,7 @@
             Object.assign(e, {
                 el: t,
                 expression: n
-            }), console.warn(`Alpine Expression Error: ${e.message}\n\n${n ? 'Expression: "' + n + '"\n\n' : ""}`, t), setTimeout((() => {
-                throw e
-            }), 0)
+            })
         }
 
         function X(e, t, n = {}) {
