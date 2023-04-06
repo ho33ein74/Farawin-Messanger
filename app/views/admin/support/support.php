@@ -436,7 +436,7 @@
 
 <script>
     $(document).on("click", "[id*=btn-cm-delete-]", function () {
-        document.getElementById("status-val").value = $(this).data('id');
+        document.getElementById("del-val").value = $(this).data('id');
     });
 
     $(document).on("click", "#delete-submit", function () {
