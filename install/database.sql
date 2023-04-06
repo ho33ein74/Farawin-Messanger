@@ -2042,7 +2042,7 @@ INSERT INTO `tbl_settings` (`id`, `key`, `value`) VALUES
 	(78, 'comment_word_forbidden', ''),
 	(79, 'dashboard_default', '[{"ratio": "3-3-3-3", "columns": [[{"title": "تعداد نوبت‌های ماه", "widget": "count_reservation_this_month"}], [{"title": "تعداد کابران ماه", "widget": "count_users_this_month"}], [{"title": "اعتبار پنل پیامک", "widget": "credit_sms_panel"}]]}, {"ratio": "9-3", "columns": [[{"title": "نمودار نوبت‌های رزرو شده در ماه", "widget": "chart_reservation_this_month"}], [{"title": "ساعت آنالوگ", "widget": "clock"}]]}, {"ratio": "6-6", "columns": [[{"title": "آخرین فعالیت های شما", "widget": "last_activity"}], [{"title": "آخرین مشتریان ثبت شده", "widget": "last_users_register"}]]}, {"ratio": "12", "columns": [[{"title": "آخرین مطالب وبلاگ", "widget": "last_blog_article"}]]}]'),
 	(80, 'csrf_token_name', 'unix_csrf_token'),
-	(81, 'float_contact', '1'),
+	(81, 'float_contact', '0'),
 	(82, 'float_contact_color', '#ff5c62'),
 	(83, 'float_contact_position', 'right'),
 	(84, 'float_contact_size', 'large'),
