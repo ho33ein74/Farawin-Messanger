@@ -802,7 +802,7 @@ trait viewsModelTrait
                 $this->ActivityLog("حذف " . $result['0']['title'] . " از بخش برگه ها");
                 $this->response_success("برگه " . $result['0']['title'] . " باموفقیت حذف شد");
             } else {
-                $this->response_error("مطلب مورد نظر یافت نشد");
+                $this->response_error("برگه مورد نظر یافت نشد");
             }
         } catch (Exception $e) {
             $this->response_error($e->getMessage());
@@ -1211,7 +1211,7 @@ trait viewsModelTrait
                 $this->ActivityLog("حذف نماد " . $result['0']['i_title']);
                 $this->response_success("نماد " . $result['0']['i_title'] . " باموفقیت حذف شد");
             } else {
-                $this->response_error("مطلب مورد نظر یافت نشد");
+                $this->response_error("نماد مورد نظر یافت نشد");
             }
         } catch (Exception $e) {
             $this->response_error($e->getMessage());
@@ -1960,7 +1960,7 @@ trait viewsModelTrait
                 $this->ActivityLog("حذف کلمه " . $result['0']['s_phrase'] . " از لیست کلمات جستجو پرتکرار");
                 $this->response_success("کلمه " . $result['0']['s_phrase'] . " باموفقیت حذف شد");
             } else {
-                $this->response_error("مطلب مورد نظر یافت نشد");
+                $this->response_error("کلمه مورد نظر یافت نشد");
             }
         } catch (Exception $e) {
             $this->response_error($e->getMessage());

@@ -281,7 +281,7 @@ trait supportModelTrait
                 $this->ActivityLog("حذف نظر " . $result['0']['c_display_name'] . " در " . $type . " " . $title . " از بخش " . $location);
                 $this->response_success( "نظر " . $result['0']['c_display_name'] . " در " . $type . " " . $title." باموفقیت حذف شد");
             } else {
-                $this->response_error("مطلب مورد نظر یافت نشد");
+                $this->response_error("نظر مورد نظر یافت نشد");
             }
         } catch (Exception $e) {
             $this->response_error($e->getMessage());
@@ -391,14 +391,13 @@ trait supportModelTrait
             $result = $this->doSelect($sql, array($post['id']));
 
             if (sizeof($result) > 0) {
-
                 $sql3 = "DELETE FROM tbl_contact WHERE co_id=?";
                 $this->doQuery($sql3, array($post['id']));
 
                 $this->ActivityLog("پیام " . $result['0']['co_user_name'] . " را در بخش پشتیبانی حذف کرد.");
                 $this->response_success("پیام ".$result['0']['co_user_name']." باموفقیت حذف شد");
             } else {
-                $this->response_error("مطلب مورد نظر یافت نشد");
+                $this->response_error("پیام مورد نظر یافت نشد");
             }
         } catch (Exception $e) {
             $this->response_error($e->getMessage());

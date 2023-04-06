@@ -161,7 +161,7 @@ trait statusesModelTrait
                 $this->ActivityLog("حذف وضعیت " . $result['0']['title'] . " از لیست وضعیت های " . $type);
                 $this->response_success("وضعیت ".$result['0']['title']." باموفقیت حذف شد");
             } else {
-                $this->response_error("مطلب مورد نظر یافت نشد");
+                $this->response_error("وضعیت مورد نظر یافت نشد");
             }
         } catch (Exception $e) {
             $this->response_error($e->getMessage());

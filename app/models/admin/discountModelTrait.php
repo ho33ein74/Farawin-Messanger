@@ -113,7 +113,7 @@ trait discountModelTrait
         try {
             $result = $this->doSelect("SELECT * FROM tbl_giftCart WHERE g_id=?", array($post['id']));
             if (sizeof($result) <= 0) {
-                $this->response_error("مطلب مورد نظر یافت نشد");
+                $this->response_error("کارت هدیه مورد نظر یافت نشد");
             } else {
                 $sql = "UPDATE tbl_giftCart SET g_title=?, g_code=?, g_expire_date=?, g_amount=?, g_status=? WHERE g_id=?";
                 $params = array($post['titleEdit'], $post['codeEdit'], $post['expireDateEdit'], $post['amountEdit'], $post['statusEdit'], $post['id']);
@@ -137,7 +137,7 @@ trait discountModelTrait
                 $this->ActivityLog("حذف کارت هدیه " . $result['0']['g_title']);
                 $this->response_success("کارت هدیه ".$result['0']['g_title']." باموفقیت حذف شد");
             } else {
-                $this->response_error("مطلب مورد نظر یافت نشد");
+                $this->response_error("کارت هدیه مورد نظر یافت نشد");
             }
         } catch (Exception $e) {
             $this->response_error($e->getMessage());
@@ -461,7 +461,7 @@ trait discountModelTrait
                 $this->ActivityLog("حذف کاربر " . $result['0']['c_name'] . " از لیست کاربران کد تخفیف" . $result['0']['dc_title']);
                 $this->response_success("کاربر ".$result['0']['c_name']." باموفقیت از لیست کاربران کد تخفیف ".$result['0']['dc_title']." حذف شد");
             } else {
-                $this->response_error("مطلب مورد نظر یافت نشد");
+                $this->response_error("کاربر مورد نظر یافت نشد");
             }
         } catch (Exception $e) {
             $this->response_error($e->getMessage());

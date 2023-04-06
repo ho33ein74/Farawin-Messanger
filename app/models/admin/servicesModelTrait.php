@@ -1189,7 +1189,7 @@ trait servicesModelTrait
                 $this->ActivityLog("حذف " . $result['0']['s_title'] . " از بخش خدمات");
                 $this->response_success("خدمت ".$result['0']['s_title']." باموفقیت حذف شد");
             } else {
-                $this->response_error("مطلب مورد نظر یافت نشد");
+                $this->response_error("خدمت مورد نظر یافت نشد");
             }
         } catch (Exception $e) {
             $this->response_error($e->getMessage());

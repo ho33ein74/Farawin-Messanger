@@ -641,7 +641,7 @@ trait usersModelTrait
                 $this->ActivityLog("حذف " . $result['0']['c_name'] . " از لیست مشتریان");
                 $this->response_success("اطلاعات شخص ".$result['0']['c_name']." باموفقیت حذف شد");
             } else {
-                $this->response_error("مطلب مورد نظر یافت نشد");
+                $this->response_error("مشتری مورد نظر یافت نشد");
             }
         } catch (Exception $e) {
             $this->response_error($e->getMessage());
@@ -704,7 +704,7 @@ trait usersModelTrait
                 $this->ActivityLog("حذف مدرک " . $result['0']['cd_title'] . " از لیست مدارک " . ($result['0']['c_name'] != "" ? $result['0']['c_name'] . " " . $result['0']['c_family'] : $result['0']['c_display_name']));
                 $this->response_success("مدرک ".$result['0']['cd_title']." باموفقیت حذف شد");
             } else {
-                $this->response_error("مطلب مورد نظر یافت نشد");
+                $this->response_error("مدرک مورد نظر یافت نشد");
             }
         } catch (Exception $e) {
             $this->response_error($e->getMessage());

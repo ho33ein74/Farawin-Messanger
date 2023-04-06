@@ -140,7 +140,7 @@ trait tagsModelTrait
                 $this->ActivityLog("حذف عبارت " . $result['0']['tag'] . " از بخش کلمات کلیدی");
                 $this->response_success("عبارت ".$result['0']['tag']." باموفقیت حذف شد");
             } else {
-                $this->response_error("مطلب مورد نظر یافت نشد");
+                $this->response_error("کلمه کلیدی مورد نظر یافت نشد");
             }
         } catch (Exception $e) {
             $this->response_error($e->getMessage());

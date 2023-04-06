@@ -230,7 +230,7 @@ trait storeroomModelTrait
                 $this->ActivityLog("حذف " . $result['0']['s_name'] . " از لیست انبارها");
                 $this->response_success("انبار ".$result['0']['s_name']." باموفقیت حذف شد");
             } else {
-                $this->response_error("مطلب مورد نظر یافت نشد");
+                $this->response_error("انبار مورد نظر یافت نشد");
             }
         } catch (Exception $e) {
             $this->response_error($e->getMessage());
