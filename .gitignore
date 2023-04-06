@@ -3,13 +3,5 @@
 
 # ignore ALL files in ANY directory
 /core/config.php
-/public/video/
-/public/images/user/
 txt.json
 query.json
-/public/images/teachers/
-/public/images/staffs/
-/public/images/documents/
-/public/images/services
-public/test.sql
-targetFilePath
