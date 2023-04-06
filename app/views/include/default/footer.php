@@ -201,7 +201,7 @@
 
                     <div class="flex items-center justify-between mt-9">
                         <?php if($data['getPublicInfo']['samandehi_link']){ ?>
-                            <div class="cursor-pointer">
+                            <div class="cursor-pointer logo w-fit-content sm:px-0 px-5 sm:mb-0 mb-6 flex items-center rounded justify-center bg-blue-50 group hover:bg-blue-700 transition duration-300 ease-linear">
                                 <img data-toggle="tooltip" data-placement="top" title="" class="toggle-me footer-icon-style"
                                      data-original-title="ساماندهی" id='jxlznbqeoeukrgvjapfujxlz' style='cursor:pointer'
                                      onclick='window.open("<?= $data['getPublicInfo']['samandehi_link']; ?>", "Popup","toolbar=no, scrollbars=no, location=no, statusbar=no, menubar=no, resizable=0, width=450, height=630, top=30")'
@@ -210,7 +210,7 @@
                         <?php } ?>
 
                         <?php if($data['getPublicInfo']['enamad_link']){ ?>
-                            <div class="cursor-pointer">
+                            <div class="cursor-pointer logo w-fit-content sm:px-0 px-5 sm:mb-0 mb-6 flex items-center rounded justify-center bg-blue-50 group hover:bg-blue-700 transition duration-300 ease-linear">
                                 <img data-toggle="tooltip" data-placement="top" title="" class="toggle-me footer-icon-style"
                                      data-original-title="نماد اعتماد الكترونیكی" alt="لوگو نماد اعتماد الكترونیكی"
                                      src="<?= $data['getPublicInfo']['enamad_image']; ?>" style="cursor:pointer" id="bKTcIIKvn3PcwGAR"
@@ -219,7 +219,7 @@
                         <?php } ?>
 
                         <?php if($data['getPublicInfo']['zarinpal_link']){ ?>
-                            <div class="cursor-pointer">
+                            <div class="cursor-pointer logo w-fit-content sm:px-0 px-5 sm:mb-0 mb-6 flex items-center rounded justify-center bg-blue-50 group hover:bg-blue-700 transition duration-300 ease-linear">
                                 <img data-toggle="tooltip" data-placement="top" title="" class="toggle-me hidden-sm hidden-xs footer-icon-style"
                                      data-original-title="زرین پال" style='cursor:pointer'
                                      onclick='window.open("<?= $data['getPublicInfo']['zarinpal_link']; ?>", "Popup","toolbar=no, scrollbars=no, location=no, statusbar=no, menubar=no, resizable=0, width=450, height=630, top=30")'
