@@ -21,14 +21,14 @@ class model_index extends Model
             $content = unserialize($item['ip_content']);
             if($item['template_id']==1){
                 $data[$i]['slider']['content'] = $this->getSliders($content['ordering'], $content['number']);
-            } else if($item['template_id']==3){
+            } else if($item['template_id']==2){
                 $data[$i]['blog']['title'] = $content['title'];
                 $data[$i]['blog']['link'] = $content['link'];
                 $data[$i]['blog']['link_title'] = $content['link_title'];
                 $data[$i]['blog']['type'] = $content['sort_type'];
                 $data[$i]['blog']['view_type'] = $content['view_type'];
                 $data[$i]['blog']['content'] = $this->getBlog($userId, $content['categories'], $content['sort_type'], $content['number'], $content['sub_category']);
-            } else if($item['template_id']==4){
+            } else if($item['template_id']==3){
                 $data[$i]['service']['title'] = $content['title'];
                 $data[$i]['service']['description'] = $content['description'];
                 $data[$i]['service']['link'] = $content['link'];
@@ -36,17 +36,17 @@ class model_index extends Model
                 $data[$i]['service']['view_type'] = $content['view_type'];
                 $data[$i]['service']['type'] = $content['sort_type'];
                 $data[$i]['service']['content'] = $this->getService($content['sort_type'], $content['number']);
-            } else if($item['template_id']==5){
+            } else if($item['template_id']==4){
                 $data[$i]['banner']['content'] = $this->getBanners($content['ordering'], $content['number']);
-            } else if($item['template_id']==6){
+            } else if($item['template_id']==5){
                 $data[$i]['comment']['title'] = $content['title'];
                 $data[$i]['comment']['description'] = $content['description'];
                 $data[$i]['comment']['content'] = $this->getComment($content['ordering'], $content['number']);
-            } else if($item['template_id']==7){
+            } else if($item['template_id']==6){
                 $data[$i]['socialmedia']['link'] = $content['link'];
                 $data[$i]['socialmedia']['link_title'] = $content['link_title'];
                 $data[$i]['socialmedia']['description'] = $content['description'];
-            } else if($item['template_id']==8){
+            } else if($item['template_id']==7){
                 $data[$i]['textarea']['title'] = $content['title'];
                 $data[$i]['textarea']['view_type'] = $content['view_type'];
                 $data[$i]['textarea']['description'] = $content['description'];
