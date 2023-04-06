@@ -228,12 +228,15 @@ $activeMenu = 'profile';
     function getCity(th, id) {
         var timeout_iter = 0;
 
-        jQuery.ajax({
+        var formData = new FormData();
+        formData.append("states", $(th).find(':selected').attr('data-id'));
+        $.ajax({
             url: "user/getCityByProvince",
-            data: {
-                states: $(th).find(':selected').attr('data-id')
-            },
-            type: 'POST',
+            data: formData,
+            type: "POST",
+            dataType: "json",
+            processData: false,
+            contentType: false,
             success: function (json) {
                 $('#'+id).html('');
                 $('#'+id).val(null).trigger("change");
@@ -245,6 +248,10 @@ $activeMenu = 'profile';
                             text: item.name,
                             "data-name": item.name
                         }));
+                        $("#"+id).select2({
+                            placeholder: "انتخاب نمایید...",
+                            allowClear: true
+                        });
                     });
                 });
             },
