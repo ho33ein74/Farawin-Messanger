@@ -28,8 +28,6 @@
                                     <?php if (
                                             (
                                                     $data['getPublicInfo']['sms_api_key']=="" OR
-                                                    $data['getPublicInfo']['sms_secret_key']=="" OR
-                                                    $data['getPublicInfo']['sms_number']=="" OR
                                                     $data['getPublicInfo']['sms_template_for_forget_password_admin']=="" OR
                                                     $data['getPublicInfo']['sms_template_login']==""
                                             )
@@ -59,7 +57,7 @@
                                     <?php if ($data['publicData']['request']['cost_type'] AND (in_array("cost_category_add", $data['infoAdmin']['access']) OR $data['infoAdmin'][0]['admin_role_id'] == 1)) { ?>
                                         <li><a href="<?= ADMIN_PATH; ?>/costCategory" title="دسته بندی هزینه ها را تکمیل کنید."><i class="fa fa-tags text-red"></i>دسته بندی هزینه ها را تکمیل کنید.</a></li>
                                     <?php } ?>
-                                    <?php if ($data['publicData']['request']['branches'] AND (in_array("service_branch_add", $data['infoAdmin']['access'])) OR $data['infoAdmin'][0]['admin_role_id'] == 1) { ?>
+                                    <?php if ($data['publicData']['request']['branches'] AND (in_array("service_branch_add", $data['infoAdmin']['access']) OR $data['infoAdmin'][0]['admin_role_id'] == 1)) { ?>
                                         <li><a href="<?= ADMIN_PATH; ?>/branches" title="لیست شعبه ها را تکمیل کنید."><i class="fa fa-home text-red"></i>لیست شعبه ها را تکمیل کنید.</a></li>
                                     <?php } ?>
                                     <?php if ($data['publicData']['request']['storeroom_list'] AND (in_array("service_storeroom_add", $data['infoAdmin']['access']) OR $data['infoAdmin'][0]['admin_role_id'] == 1)) { ?>
