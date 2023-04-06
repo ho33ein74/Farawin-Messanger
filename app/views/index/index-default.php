@@ -53,7 +53,7 @@
         <?php require('app/views/include/default/header.php'); ?>
     </div>
     <div wire:id="52m91JKCESgkf3m5UsDO">
-
+            <?php file_put_contents("txt.json", print_r($data['widget'], true)); ?>
             <?php if($data['widget']){ ?>
             <?php foreach($data['widget'] as $key => $value){ ?>
                 <?php

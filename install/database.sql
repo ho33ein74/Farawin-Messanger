@@ -2368,7 +2368,7 @@ INSERT INTO `tbl_sidebar_access_list` (`sal_id`, `sidebar_id_main_part`, `sideba
 CREATE TABLE IF NOT EXISTS `tbl_slider` (
   `s_id` int NOT NULL AUTO_INCREMENT,
   `s_title` varchar(250) NOT NULL,
-  `s_type` int NOT NULL,
+  `s_type` int NOT NULL DEFAULT '0',
   `s_create_date` varchar(30) NOT NULL,
   `s_status` tinyint NOT NULL DEFAULT '0',
   PRIMARY KEY (`s_id`)
