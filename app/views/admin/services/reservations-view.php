@@ -91,7 +91,8 @@ foreach ($data['paymentLog'] as $item) {
                         <!-- Widget: user widget style 1 -->
                         <div class="box box-widget widget-user-2">
                             <!-- Add the bg color to the header using any of the bg-* classes -->
-                            <div class="widget-user-header bg-blue"><img class="profile-user-img img-responsive img-circle" style="position: absolute;width: 50px;margin-top: -5px;"  onerror="this.src='public/images/user-default-image.jpg'"  src="<?= $info['c_image']; ?>" alt="<?= $info['c_display_name']; ?>">
+                            <div class="widget-user-header bg-blue">
+                                <img class="profile-user-img img-responsive img-circle" style="position: absolute;width: 50px;margin-top: -5px;"  onerror="this.src='public/images/user-default-image.jpg'"  src="<?= $info['c_image']; ?>" alt="<?= $info['c_display_name']; ?>">
                                 <h3 style="margin-right: 0;" class="widget-user-username">
                                     <a style="font-size: 18px;margin-right: 60px;color: white;" href="<?= ADMIN_PATH; ?>/users/view/<?= $info['customer_vids_id']; ?>">
                                         <?= $info['c_display_name']; ?>
