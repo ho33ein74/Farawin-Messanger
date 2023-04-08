@@ -254,10 +254,17 @@ trait servicesTrait
                     $getProducts = $this->model->getProducts();
                     $getProductsList = $this->model->getProductsList($attrId);
 
-                    $data = array('reservationInfo' => $reservationInfo, 'attrId' => $attrId, 'id' => $this->checkLoginAdmin,
-                        'paymentLog' => $getPaymentLog, 'bookingLatestActivity' => $getBookingLatestActivity, 'status' => $getStatus,
+                    $data = array(
+                        'reservationInfo' => $reservationInfo,
+                        'attrId' => $attrId,
+                        'id' => $this->checkLoginAdmin,
+                        'paymentLog' => $getPaymentLog,
+                        'bookingLatestActivity' => $getBookingLatestActivity,
+                        'status' => $getStatus,
                         'Staffs' => $getStaffs, 'StaffsList' => $getStaffsList,
-                        'products' => $getProducts, 'productsList' => $getProductsList);
+                        'products' => $getProducts,
+                        'productsList' => $getProductsList
+                    );
                     $this->view('admin/services/reservations-view', $data);
                 } else {
                     $this->index();

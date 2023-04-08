@@ -1687,7 +1687,7 @@ trait servicesModelTrait
             $this->doQuery($sql3, $params);
 
             $this->ActivityLog("ویرایش اطلاعات نوبت " . $post['id'] . " در بخش نوبت های رزرو شده");
-            $this->response_success("اطلاعات نوبت م".$post['id']." باموفقیت ویرایش شد");
+            $this->response_success("اطلاعات نوبت ".$post['id']." باموفقیت ویرایش شد");
         } catch (Exception $e) {
             $this->response_error($e->getMessage());
         }
