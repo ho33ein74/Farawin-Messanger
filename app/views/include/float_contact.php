@@ -3,9 +3,7 @@
 <script type='text/javascript' id='contactus-js-extra'>
     /* <![CDATA[ */
     var arCUVars = {
-        "url": "https:\/\/wpshare.ir\/zhaket\/contact-us\/wp-admin\/admin-ajax.php",
-        "version": "2.2.7",
-        "_wpnonce": "<input type=\"hidden\" id=\"_wpnonce\" name=\"_wpnonce\" value=\"f41f90aa16\" \/><input type=\"hidden\" name=\"_wp_http_referer\" value=\"\/zhaket\/contact-us\/\" \/>"
+        "_wpnonce": "<input type=\"hidden\" id=\"_wpnonce\" name=\"_wpnonce\" value=\"f41f90aa16\" \/><input type=\"hidden\" name=\"_wp_http_referer\" value=\"\/contact-us\/\" \/>"
     };
     /* ]]> */
 </script>

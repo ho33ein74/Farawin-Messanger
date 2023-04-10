@@ -131,6 +131,7 @@
         keyboard: true,
     });
 </script>
+<script src="public/js/default/courses.js"></script>
 
 <script>
     window.Alpine.start();
