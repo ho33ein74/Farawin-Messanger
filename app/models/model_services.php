@@ -72,7 +72,7 @@ class model_services extends Model
         $url_check = explode("/", htmlspecialchars($get['url']));
         $pageNo = $url_check[2];
 
-        return $this->getAllPageLinks(sizeof($result), $pageNo, $url, $this->getPublicInfo('service_item_per_page'), $get);
+        return $this->get_all_page_links(sizeof($result), $pageNo, $url, $this->getPublicInfo('service_item_per_page'), $get);
     }
 
     function getServicesRandom($id, $count=3)

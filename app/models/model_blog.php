@@ -65,7 +65,7 @@ class model_blog extends Model
         $_join = "";
         $result = $this->getBlogData(False, $userId, $_where, $_order, $_limit, $_input, $_join, False);
 
-        return $this->getAllPageLinks(sizeof($result), $pageNo, $url, $this->getPublicInfo('blog_item_per_page'), $get);
+        return $this->get_all_page_links(sizeof($result), $pageNo, $url, $this->getPublicInfo('blog_item_per_page'), $get);
     }
 
     function getNews($userId, $get, $id='')
