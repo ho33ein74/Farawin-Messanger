@@ -17,6 +17,10 @@ trait rtlThemeModelTrait
     {
         try {
             $sand_box = TRUE;
+            $productId = "new Product"; // شناسه محصول
+            $domain = $_SERVER['SERVER_NAME']; //دامنه
+            $url = 'https://www.rtl-theme.com/oauth/';
+
             if($sand_box){
                 $api = 'SandBox-API';
                 $username = 'SandBox-User';
@@ -28,9 +32,6 @@ trait rtlThemeModelTrait
                 $order_id = $post['order_code']; // شماره سفارش
                 $return_value = "";
             }
-            $productId = "new Product"; // شناسه محصول
-            $domain = $_SERVER['SERVER_NAME']; //دامنه
-            $url = 'https://www.rtl-theme.com/oauth/';
 
             $ch = curl_init();
             curl_setopt($ch,CURLOPT_URL,$url);
@@ -41,9 +42,10 @@ trait rtlThemeModelTrait
             curl_close($ch);
 
             if($res == "1"){
-                $_SESSION['license_username']=$username;
-                $_SESSION['license_order_id']=$order_id;
-                $_SESSION['site_domain']=$domain;
+                $this->sessionSet("license_username", $username);
+                $this->sessionSet("license_order_id", $order_id);
+                $this->sessionSet("site_domain", $domain);
+
                 $this->ActivityLog("فعالسازی لایسنس اسکریپت");
                 $this->response_success("لایسنس شما با موفقیت فعال شد");
             } else {
