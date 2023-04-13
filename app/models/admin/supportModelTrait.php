@@ -194,7 +194,7 @@ trait supportModelTrait
                 $this->response_warning("قبلا به این نظر پاسخ داده شده است", "exist");
             } else {
                 $sql = "INSERT INTO tbl_comments (p_id,cm_reply_admin_id,cm_answer_id,cm_text,cm_date,cm_time,cm_type,reply,cm_status) VALUES (?,?,?,?,?,?,?,?,?)";
-                $value = array($result['0']['p_id'], $admin, $post['id'], $post['msgReply'], $this->jaliliDate(), $this->jaliliDate("H:i"), $result['0']['cm_type'], 1, 1);
+                $value = array($result['0']['p_id'], $admin, $post['id'], $post['msgReply'], $this->jalali_date(), $this->jalali_date("H:i"), $result['0']['cm_type'], 1, 1);
                 $this->doQuery($sql, $value);
 
                 if ($result['0']['cm_type'] == "blog") {
@@ -312,7 +312,7 @@ trait supportModelTrait
             array(
                 'db' => 'co_date', 'dt' => 6,
                 'formatter' => function ($d, $row) {
-                    return $this->MiladiTojalili(date("Y/m/d", $d));
+                    return $this->miladi_to_jalali(date("Y/m/d", $d));
                 }
             ),
             array(
@@ -488,7 +488,7 @@ trait supportModelTrait
                 $this->response_warning("موضوع دیگری با این مشخصات قبلا ثبت شده است", "exist");
             } else {
                 $sql = "INSERT INTO tbl_contact_subject (cs_title,cs_create_date,cs_removable) VALUES (?,?,?)";
-                $params = [$post['title'], $this->jaliliDate(), 1];
+                $params = [$post['title'], $this->jalali_date(), 1];
                 $this->doQuery($sql, $params);
 
                 $this->ActivityLog("افزودن " . $post['title'] . " در موضوعات پیام های پشتیبانی");

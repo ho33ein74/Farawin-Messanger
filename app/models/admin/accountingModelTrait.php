@@ -767,7 +767,7 @@ trait accountingModelTrait
                 $vids = $this->getLastId("bank");
 
                 $sql3 = "INSERT INTO tbl_banks (bank_vids_id, b_name, b_logo, b_current_balance, b_account_opening_date, b_account_type, b_branch, b_account_number, b_sheba_number, b_cart_number, b_currency, b_default, b_description, b_date, b_status) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-                $params1 = [$vids, $post['name'], $post['logo_name'], $post['current_balance'], $post['account_opening_date'], $post['account_type'], $post['branch'], $post['account_number'], $post['no_sheba'], $post['no_card'], $post['curreny'], $post['default_bank'], $post['desc'], $this->jaliliDate("Y/m/d"), 1];
+                $params1 = [$vids, $post['name'], $post['logo_name'], $post['current_balance'], $post['account_opening_date'], $post['account_type'], $post['branch'], $post['account_number'], $post['no_sheba'], $post['no_card'], $post['curreny'], $post['default_bank'], $post['desc'], $this->jalali_date("Y/m/d"), 1];
                 $this->doQuery($sql3, $params1);
 
                 $this->ActivityLog("افزودن " . $post['name'] . " در بخش بانک");
@@ -898,10 +898,10 @@ trait accountingModelTrait
     function getOrderPayment($from=NULL, $to=NULL)
     {
         if($from!=NULL AND $to!=NULL) {
-            $sql = "SELECT date_payment FROM tbl_payment_log WHERE date_payment >= '".str_replace("-","/",$this->Check_Param($from))."' AND date_payment <= '".str_replace("-","/",$this->Check_Param($to))."' ORDER BY date_payment ASC";
+            $sql = "SELECT date_payment FROM tbl_payment_log WHERE date_payment >= '".str_replace("-","/",$this->check_param($from))."' AND date_payment <= '".str_replace("-","/",$this->check_param($to))."' ORDER BY date_payment ASC";
             $result = $this->doSelect($sql);
         } else {
-            $sql = "SELECT date_payment FROM tbl_payment_log WHERE date_payment LIKE '%" . $this->jaliliDate("Y/m") . "/%' ORDER BY date_payment ASC";
+            $sql = "SELECT date_payment FROM tbl_payment_log WHERE date_payment LIKE '%" . $this->jalali_date("Y/m") . "/%' ORDER BY date_payment ASC";
             $result = $this->doSelect($sql);
         }
 
@@ -1017,17 +1017,17 @@ trait accountingModelTrait
                 $vids = $this->getLastId("payment");
 
                 $sql = "INSERT INTO tbl_payment_log (payment_vids_id,order_vids_id,part,price,afterpay,pay_to,time_payment,date_payment,date_created,`type`,image,status) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
-                $params = [$vids, $post['order_number'], $post['partType'], $post['order_price'], $post['order_afterpay'], $post['order_typePay'], time(), $post['order_date'], $this->jaliliDate(), $post['order_type'], $coverImg, 1];
+                $params = [$vids, $post['order_number'], $post['partType'], $post['order_price'], $post['order_afterpay'], $post['order_typePay'], time(), $post['order_date'], $this->jalali_date(), $post['order_type'], $coverImg, 1];
                 $this->doQuery($sql, $params);
                 $this->updateLastId("payment");
 
                 $caption = "🔹 شماره سفارش: " . $post['order_number'] . "\n\n" .
                     "🔹 مبلغ " . $post['order_price'] . " تومان \n\n" .
-                    "🔹 تاریخ: " . $this->jaliliDate();
+                    "🔹 تاریخ: " . $this->jalali_date();
 
                 $res = $this->getPublicInfo('channel_payment');
                 if ($res != "") {
-                    $this->sendMessage($caption, $res);
+                    $this->telegram_send_message($caption, $res);
                 }
 
                 $this->ActivityLog("افزودن تراکنش جدید برای درخواست " . $post['order_number']);
@@ -1057,7 +1057,7 @@ trait accountingModelTrait
             $vids = $this->getLastId("cost");
 
             $sql2 = "INSERT INTO tbl_cost (cost_vids_id,part_type,cost_type,type,pay_to,price,date,date_created,image,description,status) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
-            $params = [$vids, $post['partType'], $post['costType'], $post['order_type'], $post['order_typePay'], $post['order_price'], $post['order_date'], $this->jaliliDate(), $coverImg, $post['desc'], 1];
+            $params = [$vids, $post['partType'], $post['costType'], $post['order_type'], $post['order_typePay'], $post['order_price'], $post['order_date'], $this->jalali_date(), $coverImg, $post['desc'], 1];
             $this->doQuery($sql2, $params);
 
             $this->ActivityLog("افزودن هزینه ".$post['desc']." در بخش مالی ");
@@ -1179,7 +1179,7 @@ trait accountingModelTrait
                 $vids = $this->getLastId("cash");
 
                 $sql = "INSERT INTO tbl_cash (cash_vids_id, c_name, c_currency, c_current_balance, c_desc, c_date, c_status) VALUES (?,?,?,?,?,?,?)";
-                $params = [$vids, $post['name'], $post['curreny'], $post['current_balance'], $post['desc'], $this->jaliliDate("Y/m/d"), 1];
+                $params = [$vids, $post['name'], $post['curreny'], $post['current_balance'], $post['desc'], $this->jalali_date("Y/m/d"), 1];
                 $this->doQuery($sql, $params);
 
                 $this->ActivityLog("افزودن " . $post['name'] . " در بخش صندوق");
@@ -1338,7 +1338,7 @@ trait accountingModelTrait
                 $vids = $this->getLastId("pettyCash");
 
                 $sql = "INSERT INTO tbl_pettyCash (pettyCash_vids_id, p_name, p_currency, p_desc, p_date, p_status) VALUES (?,?,?,?,?,?)";
-                $params = array($vids, $post['name'], $post['curreny'], $post['desc'], $this->jaliliDate("Y/m/d"), 1);
+                $params = array($vids, $post['name'], $post['curreny'], $post['desc'], $this->jalali_date("Y/m/d"), 1);
                 $this->doQuery($sql, $params);
 
                 $this->ActivityLog("افزودن " . $post['name'] . " در بخش تنخواه گردان");

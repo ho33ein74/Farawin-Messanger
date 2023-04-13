@@ -10,10 +10,10 @@ class model_login extends Model
     function mobileLogin($form)
     {
         try {
-            $mobile = self::Check_Param($form['phone']);
+            $mobile = self::check_param($form['phone']);
 
             if(
-                (self::Validate_mobile($mobile) and preg_match("/^09[0-9]{9}$/", $mobile)) or
+                (self::validate_mobile($mobile) and preg_match("/^09[0-9]{9}$/", $mobile)) or
                 (ENAMAD_USER_ACTIVE == 1 and $mobile == ENAMAD_USERNAME)
             ){
                 if($mobile != ENAMAD_USERNAME) {
@@ -33,7 +33,7 @@ class model_login extends Model
                         $vids = $this->getLastId("customer");
 
                         $sql = "INSERT INTO tbl_customer (customer_vids_id,c_display_name,c_mobile_num,c_image,c_registery_date,c_verification_code,c_status) VALUES (?,?,?,?,?,?,?)";
-                        $params = array($vids, "کاربر " . rand(100, 999) . time() . $vids . rand(10, 99), $mobile, $url, self::jaliliDate(), $active_code, 0);
+                        $params = array($vids, "کاربر " . rand(100, 999) . time() . $vids . rand(10, 99), $mobile, $url, self::jalali_date(), $active_code, 0);
                         $res = $this->doQuery($sql, $params);
                         $id = Model::$conn->lastInsertId();
 
@@ -69,7 +69,7 @@ class model_login extends Model
                     $status = "old";
                 }
 
-                Model::sessionSet('mobile_for_verify', $mobile);
+                Model::session_set('mobile_for_verify', $mobile);
                 $data = array(
                     "type" => $status
                 );
@@ -84,11 +84,11 @@ class model_login extends Model
 
     function verifyMobileLogin($form)
     {
-        $mobile = Model::sessionGet('mobile_for_verify');
-        $code = self::Check_Param($form['code']);
+        $mobile = Model::session_get('mobile_for_verify');
+        $code = self::check_param($form['code']);
         if(ENAMAD_USER_ACTIVE == 1 and $mobile == ENAMAD_USERNAME) {
             if ($code == ENAMAD_PASSWORD) {
-                Model::cookieSet('userId', Model::Encrypt(1000, KEY), 1);
+                Model::cookie_set('userId', Model::encrypt(1000, KEY), 1);
                 unset($_SESSION['mobile_for_verify']);
 
                 $this->response_success("باموفقیت وارد سایت شدید.");
@@ -100,7 +100,7 @@ class model_login extends Model
             $result = $this->doSelect("SELECT * FROM tbl_customer WHERE `c_verification_code`=? AND `c_mobile_num`=?", $params);
 
             if (sizeof($result) > 0 and !empty($code)) {
-                Model::cookieSet('userId', Model::Encrypt($result[0]['customer_vids_id'], KEY), $this->getPublicInfo('cookie_duration'));
+                Model::cookie_set('userId', Model::encrypt($result[0]['customer_vids_id'], KEY), $this->getPublicInfo('cookie_duration'));
 
                 $sql = "UPDATE tbl_customer SET c_verification_code=? WHERE customer_vids_id=?";
                 $this->doQuery($sql, array(NULL, $result[0]['customer_vids_id']));
@@ -115,7 +115,7 @@ class model_login extends Model
 
     function resendCode()
     {
-        $mobile = Model::sessionGet('mobile_for_verify');
+        $mobile = Model::session_get('mobile_for_verify');
         $result = $this->doSelect("SELECT * FROM tbl_customer WHERE `c_mobile_num`=?", array($mobile), 1);
 
         if (sizeof($result) > 0 and !empty($mobile)) {

@@ -30,7 +30,7 @@
                     $i=1;
                     foreach ($latestActivity as $activity_data) {
                         $date = explode(" ", $activity_data['log_time']);
-                        $newDate = $date['1'] . " - " . Model::MiladiTojalili_2no($date['0'], "-");
+                        $newDate = $date['1'] . " - " . Model::miladi_to_jalali_2no($date['0'], "-");
                         ?>
                         <tr>
                             <td>

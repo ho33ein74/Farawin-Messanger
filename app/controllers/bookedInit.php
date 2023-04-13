@@ -14,7 +14,7 @@ class bookedInit extends Controller
 
     function index()
     {
-        if($this->model->Check_Param($_GET['date'])!='' AND $this->model->Check_Param($_GET['time'])!='' AND $this->model->Check_Param($_GET['ugid'])!='') {
+        if($this->model->check_param($_GET['date'])!='' AND $this->model->check_param($_GET['time'])!='' AND $this->model->check_param($_GET['ugid'])!='') {
             $service_isset = $this->model->getIssetService($_GET['ugid']);
             if(sizeof($service_isset)>0) {
                 $check_time = str_replace("_","",$_GET['date']).str_replace("_","",$_GET['time']);
@@ -37,9 +37,9 @@ class bookedInit extends Controller
                         $getOffCodeUsed = $this->model->getOffCodeUsed($this->checkLogin);
 
                         $bookedInfo = array(
-                            'serviceId' =>  Model::Encrypt($_GET['ugid'], KEY),
-                            'date' =>  Model::Encrypt($_GET['date'], KEY),
-                            'time' =>  Model::Encrypt($_GET['time'], KEY),
+                            'serviceId' =>  Model::encrypt($_GET['ugid'], KEY),
+                            'date' =>  Model::encrypt($_GET['date'], KEY),
+                            'time' =>  Model::encrypt($_GET['time'], KEY),
                             'description' =>  $checkServiceTiming['description']
                         );
 

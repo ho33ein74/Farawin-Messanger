@@ -71,7 +71,7 @@ class model_bookedInit extends Model
                 $servicesTimingInfo = $this->doSelect("SELECT * FROM tbl_services_timing WHERE service_id=?", array($serviceId), 1);
 
                 $sql = "INSERT INTO tbl_services_reservation (user_id,service_id,sre_date,sre_time,sre_day,sre_vip,sre_is_need_to_prepayment,sre_price_prepayment,sre_price_payment,sre_price_total,sre_timestamp_expire,sre_date_create,sre_time_create) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
-                $value = array($userId, $serviceId, $date, $time, $day, $vip, 0, 0, 0, 0, $timestamp + ($servicesTimingInfo['st_complete_time_reservation'] * 60), self::jaliliDate(), jdate("H:i:s"));
+                $value = array($userId, $serviceId, $date, $time, $day, $vip, 0, 0, 0, 0, $timestamp + ($servicesTimingInfo['st_complete_time_reservation'] * 60), self::jalali_date(), jdate("H:i:s"));
                 $this->doQuery($sql, $value);
                 return Model::$conn->lastInsertId();
             } else {
@@ -92,11 +92,11 @@ class model_bookedInit extends Model
     function saveOrder($userId, $data)
     {
         try {
-            $serviceId = Model::Decrypt($data['serviceId'], KEY);
-            $date = str_replace("_", "/", Model::Decrypt($data['date'], KEY));
-            $time = str_replace("_", ":", Model::Decrypt($data['time'], KEY));
-            $tariff = Model::Decrypt($data['tariff'], KEY);
-            $gateway = Model::Decrypt($data['gateway'], KEY);
+            $serviceId = Model::decrypt($data['serviceId'], KEY);
+            $date = str_replace("_", "/", Model::decrypt($data['date'], KEY));
+            $time = str_replace("_", ":", Model::decrypt($data['time'], KEY));
+            $tariff = Model::decrypt($data['tariff'], KEY);
+            $gateway = Model::decrypt($data['gateway'], KEY);
 
             $callbackURL = $this->getPublicInfo('root').'checkout';
             $checkPayType = $this->getPayType($gateway, 0);
@@ -193,9 +193,9 @@ class model_bookedInit extends Model
     function calculatePayment($userId, $post)
     {
         try {
-            $operator_id = Model::Decrypt($post['operator_id'], KEY);
-            $service_id = Model::Decrypt($post['service_id'], KEY);
-            $is_vip = Model::Decrypt($post['is_vip'], KEY);
+            $operator_id = Model::decrypt($post['operator_id'], KEY);
+            $service_id = Model::decrypt($post['service_id'], KEY);
+            $is_vip = Model::decrypt($post['is_vip'], KEY);
 
             $checkServices = $this->getIssetService($service_id);
             if(sizeof($checkServices)>0) {
@@ -245,8 +245,8 @@ class model_bookedInit extends Model
     function checkCode($userId, $serviceId, $tariff, $status, $code, $print=0)
     {
         try {
-            $serviceId = Model::Decrypt($serviceId, KEY);
-            $tariff = Model::Decrypt($tariff, KEY);
+            $serviceId = Model::decrypt($serviceId, KEY);
+            $tariff = Model::decrypt($tariff, KEY);
             $this->doQuery("DELETE FROM tbl_discounts_user_used WHERE user_id=? and du_status=0", array($userId));
             $checkServicesTariff = $this->getIssetServicesTariff($tariff);
 
@@ -282,9 +282,9 @@ class model_bookedInit extends Model
                                             $checkUserUseOffer = $this->doSelect("SELECT COUNT(*) as count FROM tbl_discounts_user_used WHERE dc_id=? AND user_id =? AND du_status =1", array($codeInfo[0]['dc_id'], $userId), 1);
                                             if (($checkUserUseOffer['count'] + 1) <= $codeInfo[0]['dc_allowed_for_each_user']) {
                                                 // بررسی تاریخ انقضا کد
-                                                if (self::jaliliDate('Ymd') <= str_replace("/", "", $codeInfo[0]['dc_expire_date'])) {
+                                                if (self::jalali_date('Ymd') <= str_replace("/", "", $codeInfo[0]['dc_expire_date'])) {
                                                     $sql = "INSERT INTO tbl_discounts_user_used (user_id,dc_id,order_id,du_used_date,du_status) VALUES (?,?,?,?,?)";
-                                                    $value = array($userId, $codeInfo[0]['dc_id'], null, self::jaliliDate(), 0);
+                                                    $value = array($userId, $codeInfo[0]['dc_id'], null, self::jalali_date(), 0);
                                                     $this->doQuery($sql, $value);
 
                                                     $calculateOffer = ($checkServicesTariff[0]['st_price'] * $codeInfo[0]['dc_percent']) / 100;

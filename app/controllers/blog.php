@@ -21,7 +21,7 @@ class Blog extends Controller
 
     function article()
     {
-        $slug = str_replace(["blog", "/", "article"], ["", "", ""], $this->model->Check_Param($_GET['url']));
+        $slug = str_replace(["blog", "/", "article"], ["", "", ""], $this->model->check_param($_GET['url']));
 
         if ($slug != '') {
             $id_isset = $this->model->getIssetNews($slug);

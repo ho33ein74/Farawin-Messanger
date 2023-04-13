@@ -19,7 +19,7 @@ class model_services extends Model
 
     function getServices($userId, $get)
     {
-        $sort_type = $this->Check_Param($get['orderby']);
+        $sort_type = $this->check_param($get['orderby']);
         if($sort_type=='oldest') { // قدیمی ترین
             $order = "s.s_id ASC";
         } else if($sort_type=='view') { // پربازدیدترین
@@ -49,7 +49,7 @@ class model_services extends Model
 
     function getItemsPagination($get)
     {
-        $sort_type = $this->Check_Param($get['orderby']);
+        $sort_type = $this->check_param($get['orderby']);
         if($sort_type=='oldest') { // قدیمی ترین
             $order = "s.s_id ASC";
         } else if($sort_type=='view') { // پربازدیدترین
@@ -98,8 +98,8 @@ class model_services extends Model
                 $event = array(
                     'location' => $this->getPublicInfo('province').", ".$this->getPublicInfo('city').", ".$this->getPublicInfo('address'),
                     'description' => "رزرو خدمت " . $orderInfo['s_title'] . " برای روز " . $orderInfo['sre_day'] ." ".$orderInfo['sre_date'] . " ساعت " . $orderInfo['sre_time']."\n"."  شماره پیگیری: ".$id,
-                    'dtstart' => self::jaliliToMiladi($orderInfo['sre_date'], "/", "-") . " " . $orderInfo['sre_time'],
-                    'dtend' => self::jaliliToMiladi($orderInfo['sre_date'], "/", "-") . " " . $orderInfo['sre_time'],
+                    'dtstart' => self::jalali_to_miladi($orderInfo['sre_date'], "/", "-") . " " . $orderInfo['sre_time'],
+                    'dtend' => self::jalali_to_miladi($orderInfo['sre_date'], "/", "-") . " " . $orderInfo['sre_time'],
                     'summary' => "رزرو خدمت " . $orderInfo['s_title'],
                     'url' => URL
                 );
@@ -179,11 +179,11 @@ class model_services extends Model
         $sql = "SELECT * FROM tbl_services_timing WHERE service_id=?";
         $turn_status = $this->doSelect($sql, array($data['guid']), 1);
 
-        $today = self::jaliliDate();
-        $max_reservation_date = self::JalaliAfter($today, $turn_status['st_date_reservation']);
-        $periods = $this->createDateRangeArray(
-            Model::jaliliToMiladi($today, "/", "_"),
-            Model::jaliliToMiladi($max_reservation_date, "/", "_")
+        $today = self::jalali_date();
+        $max_reservation_date = self::jalali_after($today, $turn_status['st_date_reservation']);
+        $periods = $this->create_date_range_array(
+            Model::jalali_to_miladi($today, "/", "_"),
+            Model::jalali_to_miladi($max_reservation_date, "/", "_")
         );
 
         $first_date = "";
@@ -213,7 +213,7 @@ class model_services extends Model
                         }
                         $check_time = str_replace("/", "", $check_date_for_timing) . str_replace(":", "", $turn['sm_time_start']);
 
-                        if ($check_time >= self::jaliliDate("YmdHi")) {
+                        if ($check_time >= self::jalali_date("YmdHi")) {
                             if (str_replace("/", "", $max_reservation_date) > str_replace("/", "", $check_date_for_timing)) {
                                 //در حالت تاریخ دلخواه چک می شود که تاریخ انتخابی با تاریخ روز یکی باشد
                                 if ($turn_status[$rows_select] == "custom_date" and $check_date_for_timing != $period['fa']) {
@@ -268,18 +268,18 @@ class model_services extends Model
         $counter = 1;
 
         for($i=1;$i<=$day_count;$i++) {
-            $today = self::jaliliDate();
-            $max_reservation_date = self::JalaliAfter($today, $turn_status['st_date_reservation']);
+            $today = self::jalali_date();
+            $max_reservation_date = self::jalali_after($today, $turn_status['st_date_reservation']);
             $date = $data['y'] . "/" . str_pad($data['m'], 2, '0', STR_PAD_LEFT) . "/" . str_pad($i, 2, '0', STR_PAD_LEFT);
 
             $time = jmktime(0, 0, 0, $data['m'], $i, $data['y']);
             $dateInfo = jgetdate($time, "", '', 'en');
 
             $dayInfo['dayCaption'] = str_pad($data['m'], 2, '0', STR_PAD_LEFT) . "/" . str_pad($i, 2, '0', STR_PAD_LEFT) . " " . $dateInfo['weekday'];
-            $dayInfo['shortDate'] = Model::jaliliToMiladi($date, "/", "_");
+            $dayInfo['shortDate'] = Model::jalali_to_miladi($date, "/", "_");
             $dayInfo['today'] = $date == $today;
             $dayInfo['date'] = $date;
-            $dayInfo['isNotInMonth'] = $data['m'] == self::jaliliDate("m");
+            $dayInfo['isNotInMonth'] = $data['m'] == self::jalali_date("m");
 
             $sql = "SELECT * FROM tbl_holidays WHERE h_date=? AND h_status=1";
             $res = $this->doSelect($sql, array(str_pad($data['m'], 2, '0', STR_PAD_LEFT) . "/" . str_pad($i, 2, '0', STR_PAD_LEFT)));
@@ -294,7 +294,7 @@ class model_services extends Model
             $hasSetTimes = false;
             if ($turn_status[$rows_select] == "not_turn" || ($turn_status[$rows_select] == "holiday" && $turn_status['st_turn_holiday'] == "not_turn")) {
                 $hasSetTimes = false;
-            } else if (str_replace("/", "", $date) >= self::jaliliDate("Ymd")) {
+            } else if (str_replace("/", "", $date) >= self::jalali_date("Ymd")) {
                 if($turn_status[$rows_select]=="custom"){
                     $title_day = $days[$dateInfo['wday']];
                 } else  {
@@ -317,7 +317,7 @@ class model_services extends Model
                         }
                         $check_time = str_replace("/", "", $check_date_for_timing) . str_replace(":", "", $turn['sm_time_start']);
 
-                        if ($check_time >= self::jaliliDate("YmdHi")) {
+                        if ($check_time >= self::jalali_date("YmdHi")) {
                             if (str_replace("/", "", $max_reservation_date) > str_replace("/", "", $check_date_for_timing)) {
                                 //در حالت تاریخ دلخواه چک می شود که تاریخ انتخابی با تاریخ روز یکی باشد
                                 if($turn_status[$rows_select] == "custom_date" and $check_date_for_timing != $date) {

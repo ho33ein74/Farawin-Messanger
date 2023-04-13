@@ -19,7 +19,7 @@ trait servicesModelTrait
                 $vids = $this->getLastId("branch");
 
                 $sql3 = "INSERT INTO tbl_branches (branch_vids_id,b_name,b_manager,b_phone,province_id,city_id,b_address,b_date,b_status) VALUES (?,?,?,?,?,?,?,?,?)";
-                $params1 = [$vids, $post['name'], $post['manager'], $post['phone'], $post['provinceId'], $post['cityId'], $post['address'], $this->jaliliDate("Y/m/d"), 1];
+                $params1 = [$vids, $post['name'], $post['manager'], $post['phone'], $post['provinceId'], $post['cityId'], $post['address'], $this->jalali_date("Y/m/d"), 1];
                 $this->doQuery($sql3, $params1);
 
                 $this->updateLastId("branch");
@@ -256,7 +256,7 @@ trait servicesModelTrait
                 $this->response_warning("آیتم دیگری با این مشخصات قبلا ثبت شده است", "exist");
             } else {
                 $sql2 = "INSERT INTO tbl_ratings (r_name,service_id,create_date) VALUES (?,?,?)";
-                $params = [$post['title'], $post['serviceId'], $this->jaliliDate()];
+                $params = [$post['title'], $post['serviceId'], $this->jalali_date()];
                 $this->doQuery($sql2, $params);
 
                 $this->ActivityLog("افزودن " . $post['title'] . " در آیتم های امتیازبندی");
@@ -603,7 +603,7 @@ trait servicesModelTrait
 
                     $checkInventory = $this->doSelect("SELECT * FROM tbl_storeroom_product_inventory WHERE product_id=? ORDER BY spi_id DESC LIMIT 1", array($item['productId']), 1);
                     if ($checkInventory['spi_count'] <= 0) {
-                        $this->doQuery("UPDATE tbl_storeroom_product_inventory SET spi_count=0,spi_status=0,spi_existing_completion_date=? WHERE spi_id=?", array(self::jaliliDate(), $checkInventory['spi_id']));
+                        $this->doQuery("UPDATE tbl_storeroom_product_inventory SET spi_count=0,spi_status=0,spi_existing_completion_date=? WHERE spi_id=?", array(self::jalali_date(), $checkInventory['spi_id']));
                     }
                 }
             }
@@ -974,7 +974,7 @@ trait servicesModelTrait
                 }
 
                 $sql = "INSERT INTO tbl_services (s_title,s_title_en,s_calendar_background_color,seo_title,seo_desc,s_slug,s_description,s_recovery_times,s_recovery_times_desc,s_avg_time_to_do,s_durability,s_cover,s_mainKeyword,s_date_created,s_status) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-                $params = array($post['fa_title'], $post['en_title'], $post['calendar_background_color'], $post['seo_title'], $post['seo_desc'], str_replace(" ", "-", $post['url']), htmlspecialchars($post['description']), $post['recovery_times'], $post['recovery_times_desc'], $post['avg_time_to_do'], $post['durability'], $coverImg, $post['mainKeyword'], $this->jaliliDate(), $post['status']);
+                $params = array($post['fa_title'], $post['en_title'], $post['calendar_background_color'], $post['seo_title'], $post['seo_desc'], str_replace(" ", "-", $post['url']), htmlspecialchars($post['description']), $post['recovery_times'], $post['recovery_times_desc'], $post['avg_time_to_do'], $post['durability'], $coverImg, $post['mainKeyword'], $this->jalali_date(), $post['status']);
                 $this->doQuery($sql, $params);
                 $serviceId = Model::$conn->lastInsertId();
 
@@ -1001,7 +1001,7 @@ trait servicesModelTrait
                             $result = $this->doSelect("SELECT * FROM tbl_tags WHERE tag=?", array($tag));
                             if (sizeof($result) == 0) {
                                 $sqlTags = "INSERT INTO tbl_tags (tag,user_id,date,count) VALUES (?,?,?,?)";
-                                $this->doQuery($sqlTags, array($tag, $admin, $this->jaliliDate(), 1));
+                                $this->doQuery($sqlTags, array($tag, $admin, $this->jalali_date(), 1));
                                 $tagID .= Model::$conn->lastInsertId() . ",";
                             } else {
                                 $this->doQuery("UPDATE tbl_tags SET count=count+1 WHERE t_id=?", array($result[0]['t_id']));
@@ -1091,7 +1091,7 @@ trait servicesModelTrait
                             $result = $this->doSelect("SELECT * FROM tbl_tags WHERE tag=?", array($tag));
                             if (sizeof($result) == 0) {
                                 $sqlTags = "INSERT INTO tbl_tags (tag,user_id,date,count) VALUES (?,?,?,?)";
-                                $this->doQuery($sqlTags, array($tag, $admin, $this->jaliliDate(), 1));
+                                $this->doQuery($sqlTags, array($tag, $admin, $this->jalali_date(), 1));
                                 $tagID .= Model::$conn->lastInsertId() . ",";
                             } else {
                                 $this->doQuery("UPDATE tbl_tags SET count=count+1 WHERE t_id=?", array($result[0]['t_id']));
@@ -1210,7 +1210,7 @@ trait servicesModelTrait
                 $link = URL . 'services/' . $result[0]['s_slug'];
                 $caption = "🔹 " . $result[0]['s_title'] . "\n\n" . "🔸 " . htmlspecialchars($result[0]['seo_desc']) . "\n\n" . "👇👇" . "\n" . "🌐 " . $link;
 
-                $json = $this->sendPhoto(URL . "public/images/services/" . $result[0]['s_cover'], $caption, $this->getPublicInfo('channel_blog'));
+                $json = $this->telegram_send_photo(URL . "public/images/services/" . $result[0]['s_cover'], $caption, $this->getPublicInfo('channel_blog'));
                 $json = json_decode($json, TRUE);
 
                 if($json['ok']){
@@ -1789,7 +1789,7 @@ trait servicesModelTrait
                     }
                 }
 
-                $SendMessage = $this->sendSMS($this->convertNumbers($result['code']), $resultMobile['c_mobile_num'], $input_data);
+                $SendMessage = $this->sendSMS($this->convert_numbers($result['code']), $resultMobile['c_mobile_num'], $input_data);
 
                 $sql2 = "INSERT INTO tbl_services_reservation_log (admin_id,reservation_id,activity_type,activity) VALUES (?,?,?,?)";
                 $params = array($admin, $post['id'], "send_sms_reservation", $text_sms);
@@ -1832,11 +1832,11 @@ trait servicesModelTrait
         $sql = "SELECT * FROM tbl_services_timing WHERE service_id=?";
         $turn_status = $this->doSelect($sql, array($data['guid']), 1);
 
-        $today = self::jaliliDate();
-        $max_reservation_date = self::JalaliAfter($today, $turn_status['st_date_reservation_for_admin']);
-        $periods = $this->createDateRangeArray(
-            Model::jaliliToMiladi($today, "/", "_"),
-            Model::jaliliToMiladi($max_reservation_date, "/", "_")
+        $today = self::jalali_date();
+        $max_reservation_date = self::jalali_after($today, $turn_status['st_date_reservation_for_admin']);
+        $periods = $this->create_date_range_array(
+            Model::jalali_to_miladi($today, "/", "_"),
+            Model::jalali_to_miladi($max_reservation_date, "/", "_")
         );
 
         $first_date = "";
@@ -1866,7 +1866,7 @@ trait servicesModelTrait
                         }
                         $check_time = str_replace("/", "", $check_date_for_timing) . str_replace(":", "", $turn['sm_time_start']);
 
-                        if ($check_time >= self::jaliliDate("YmdHi")) {
+                        if ($check_time >= self::jalali_date("YmdHi")) {
                             if (str_replace("/", "", $max_reservation_date) > str_replace("/", "", $check_date_for_timing)) {
                                 //در حالت تاریخ دلخواه چک می شود که تاریخ انتخابی با تاریخ روز یکی باشد
                                 if ($turn_status[$rows_select] == "custom_date" and $check_date_for_timing != $period['fa']) {
@@ -1921,18 +1921,18 @@ trait servicesModelTrait
         $counter = 1;
 
         for($i=1;$i<=$day_count;$i++) {
-            $today = self::jaliliDate();
-            $max_reservation_date = self::JalaliAfter($today, $turn_status['st_date_reservation_for_admin']);
+            $today = self::jalali_date();
+            $max_reservation_date = self::jalali_after($today, $turn_status['st_date_reservation_for_admin']);
             $date = $data['y'] . "/" . str_pad($data['m'], 2, '0', STR_PAD_LEFT) . "/" . str_pad($i, 2, '0', STR_PAD_LEFT);
 
             $time = jmktime(0, 0, 0, $data['m'], $i, $data['y']);
             $dateInfo = jgetdate($time, "", '', 'en');
 
             $dayInfo['dayCaption'] = str_pad($data['m'], 2, '0', STR_PAD_LEFT) . "/" . str_pad($i, 2, '0', STR_PAD_LEFT) . " " . $dateInfo['weekday'];
-            $dayInfo['shortDate'] = Model::jaliliToMiladi($date, "/", "_");
+            $dayInfo['shortDate'] = Model::jalali_to_miladi($date, "/", "_");
             $dayInfo['today'] = $date == $today;
             $dayInfo['date'] = $date;
-            $dayInfo['isNotInMonth'] = $data['m'] == self::jaliliDate("m");
+            $dayInfo['isNotInMonth'] = $data['m'] == self::jalali_date("m");
 
             $sql = "SELECT * FROM tbl_holidays WHERE h_date=? AND h_status=1";
             $res = $this->doSelect($sql, array(str_pad($data['m'], 2, '0', STR_PAD_LEFT) . "/" . str_pad($i, 2, '0', STR_PAD_LEFT)));
@@ -1947,7 +1947,7 @@ trait servicesModelTrait
             $hasSetTimes = false;
             if ($turn_status[$rows_select] == "not_turn" || ($turn_status[$rows_select] == "holiday" && $turn_status['st_turn_holiday'] == "not_turn")) {
                 $hasSetTimes = false;
-            } else if (str_replace("/", "", $date) >= self::jaliliDate("Ymd")) {
+            } else if (str_replace("/", "", $date) >= self::jalali_date("Ymd")) {
                 if($turn_status[$rows_select]=="custom"){
                     $title_day = $days[$dateInfo['wday']];
                 } else  {
@@ -1969,7 +1969,7 @@ trait servicesModelTrait
                         }
                         $check_time = str_replace("/", "", $check_date_for_timing) . str_replace(":", "", $turn['sm_time_start']);
 
-                        if ($check_time >= self::jaliliDate("YmdHi")) {
+                        if ($check_time >= self::jalali_date("YmdHi")) {
                             if (str_replace("/","",$max_reservation_date) > str_replace("/","",$check_date_for_timing)) {
                                 //در حالت تاریخ دلخواه چک می شود که تاریخ انتخابی با تاریخ روز یکی باشد
                                 if($turn_status[$rows_select] == "custom_date" and $check_date_for_timing != $date) {
@@ -2039,7 +2039,7 @@ trait servicesModelTrait
                         $order_tracking = $userInfo['customer_vids_id'] . $order_service_vids;
 
                         $sql = "INSERT INTO tbl_services_reservation (order_service_vids_id,user_id,branch_id,staff_id,service_id,sre_price_prepayment,sre_price_total,beforepay,sre_date,sre_time,sre_day,sre_vip,sre_is_need_to_prepayment,sre_timestamp_expire,sre_date_create,sre_time_create, reason_create, sre_status) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-                        $value = array($order_tracking, $userId, $post['branch'], $post['staff'], $post['service'], $tariffInfo['st_deposit'], $tariffInfo['st_price'], $beforepay, $post['dateSelected'], $post['timeSelected'], $checkServiceTiming['day'], $checkServiceTiming['is_vip'], $is_need_to_prepayment, time(), self::jaliliDate(), self::jaliliDate("H:i:s"), $adminId, $post['status']);
+                        $value = array($order_tracking, $userId, $post['branch'], $post['staff'], $post['service'], $tariffInfo['st_deposit'], $tariffInfo['st_price'], $beforepay, $post['dateSelected'], $post['timeSelected'], $checkServiceTiming['day'], $checkServiceTiming['is_vip'], $is_need_to_prepayment, time(), self::jalali_date(), self::jalali_date("H:i:s"), $adminId, $post['status']);
                         $this->doQuery($sql, $value);
 
                         $this->updateLastId("order_service");
@@ -2053,7 +2053,7 @@ trait servicesModelTrait
                         if ($deposit!="" AND  $post['afterpay']!="") {
                             $vids_pay = $this->getLastId("payment");
                             $sql2 = "INSERT INTO tbl_payment_log (payment_vids_id,order_vids_id,price,afterpay,time_payment,date_payment,date_created,`type`,pay_to,status,part) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
-                            $params = [$vids_pay, $order_tracking, $deposit, $post['afterpay'], time(), $this->jaliliDate("Y/m/d"), $this->jaliliDate("Y/m/d"), $post['order_type'], $post['order_typePay'], 1, 1];
+                            $params = [$vids_pay, $order_tracking, $deposit, $post['afterpay'], time(), $this->jalali_date("Y/m/d"), $this->jalali_date("Y/m/d"), $post['order_type'], $post['order_typePay'], 1, 1];
                             $this->doQuery($sql2, $params);
                             $this->updateLastId("payment");
                         }
@@ -2158,10 +2158,10 @@ trait servicesModelTrait
     function getReservations($from=NULL, $to=NULL)
     {
         if($from!=NULL AND $to!=NULL) {
-            $sql = "SELECT sre_date_create FROM tbl_services_reservation WHERE sre_status not in (0,6) AND sre_date_create >= '".str_replace("-","/",$this->Check_Param($from))."' AND sre_date_create <= '".str_replace("-","/",$this->Check_Param($to))."' ORDER BY sre_date_create ASC";
+            $sql = "SELECT sre_date_create FROM tbl_services_reservation WHERE sre_status not in (0,6) AND sre_date_create >= '".str_replace("-","/",$this->check_param($from))."' AND sre_date_create <= '".str_replace("-","/",$this->check_param($to))."' ORDER BY sre_date_create ASC";
             $result = $this->doSelect($sql);
         } else {
-            $sql = "SELECT sre_date_create FROM tbl_services_reservation WHERE sre_status not in (0,6) AND sre_date_create LIKE '%" . $this->jaliliDate("Y/m") . "/%' ORDER BY sre_date_create ASC";
+            $sql = "SELECT sre_date_create FROM tbl_services_reservation WHERE sre_status not in (0,6) AND sre_date_create LIKE '%" . $this->jalali_date("Y/m") . "/%' ORDER BY sre_date_create ASC";
             $result = $this->doSelect($sql);
         }
 

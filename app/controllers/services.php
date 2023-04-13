@@ -11,7 +11,7 @@ class Services extends Controller
 
     function index()
     {
-        $url = $this->model->Check_Param($_GET['url']);
+        $url = $this->model->check_param($_GET['url']);
         $url_check = explode("/", $url);
         $slug = str_replace(["services", "/"], ["", ""], $url);
         if ($slug != '' and $url_check[1] != "page") {

@@ -95,7 +95,7 @@ class model_user extends Model
         $sql = "UPDATE tbl_user SET image=? WHERE id=?";
         $params = [0, $userId];
         $this->doQuery($sql, $params);
-        Model::cookieSet('imageUserProfile', FALSE, 30);
+        Model::cookie_set('imageUserProfile', FALSE, 30);
 
         echo "delete";
     }
@@ -149,7 +149,7 @@ class model_user extends Model
                         pr_date_created, pr_status)
                         VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
             $value = array($post['q1'], $post['q2'], $post['q3'], $post['q4'], $post['q5'], $post['q6'],
-                $post['q7'], $post['q8'], $note, $userId, $post['id'], self::jaliliDate(), 1);
+                $post['q7'], $post['q8'], $note, $userId, $post['id'], self::jalali_date(), 1);
             $this->doQuery($sql, $value);
             echo "ok";
         } else {
@@ -454,7 +454,7 @@ class model_user extends Model
                         $parentId = $data['serverMemo']['data']['parentId'];
                     }
                     $sql = "INSERT INTO tbl_comments (p_id,cm_user_id,cm_answer_id,cm_text,cm_date,cm_time,cm_type,reply) VALUES (?,?,?,?,?,?,?,?)";
-                    $value = array($data['fingerprint']['itemID'], $userId, $parentId, $data['updates'][0]['payload']['value'], self::jaliliDate(), self::jaliliDate("H:i"), $data['fingerprint']['type'], $reply);
+                    $value = array($data['fingerprint']['itemID'], $userId, $parentId, $data['updates'][0]['payload']['value'], self::jalali_date(), self::jalali_date("H:i"), $data['fingerprint']['type'], $reply);
                     $this->doQuery($sql, $value);
 
                     $jayParsedAry = [
@@ -581,7 +581,7 @@ class model_user extends Model
             echo "isset";
         } else {
             $sql = "INSERT INTO tbl_comments (p_id,cm_user_id,cm_answer_id,cm_text,cm_date,cm_time,cm_type) VALUES (?,?,?,?,?,?,?)";
-            $value = array($post['ProductID'], $userId, $post['CommentIdReply'], $post['adminreply'], self::jaliliDate(), self::jaliliDate("H:i"), "blog");
+            $value = array($post['ProductID'], $userId, $post['CommentIdReply'], $post['adminreply'], self::jalali_date(), self::jalali_date("H:i"), "blog");
             $this->doQuery($sql, $value);
             echo "ok";
         }

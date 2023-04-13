@@ -31,7 +31,7 @@
                         </a>
                         <span class="users-list-date" title="<?= $check_admin_permission ? $user_data['c_registery_date']:"---"; ?>">
                             <?php
-                                $date = Model::jaliliToMiladi($user_data['c_registery_date']);
+                                $date = Model::jalali_to_miladi($user_data['c_registery_date']);
                                 $resDate = Model::days_away_to($date);
                                 if ($resDate == 0) {
                                     echo $check_admin_permission ? "امروز":"---";

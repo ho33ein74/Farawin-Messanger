@@ -9,7 +9,7 @@ class Tags extends Controller
 
     function index()
     {
-        $slug = explode("/", $this->model->Check_Param($_GET['url']));
+        $slug = explode("/", $this->model->check_param($_GET['url']));
         $slug_tag = str_replace("-", " ", $slug[2]);
         $tag_types = array("blog", "service");
 

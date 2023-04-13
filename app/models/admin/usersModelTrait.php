@@ -49,7 +49,7 @@ trait usersModelTrait
                     'db' => 'log_time', 'dt' => 6,
                     'formatter' => function ($d, $row) {
                         $date = explode(" ", $d);
-                        $newData = $date['1'] . " - " . $this->MiladiTojalili($date['0'], "-");
+                        $newData = $date['1'] . " - " . $this->miladi_to_jalali($date['0'], "-");
 
                         return $newData;
                     }
@@ -262,7 +262,7 @@ trait usersModelTrait
                 $url = "https://www.gravatar.com/avatar/" . md5(strtolower(trim($post['username']))) . "?d=identicon&s=50&r=x";
 
                 $sql2 = "INSERT INTO tbl_admin (a_name, a_username, a_password, admin_role_id, a_image, a_desc, google_secret_code, registery_date, a_status) VALUES (?,?,?,?,?,?,?,?,?)";
-                $params = [$post['name'], $post['username'], $password, $post['role'], $url, $post['description'], $secret, $this->jaliliDate(), 1];
+                $params = [$post['name'], $post['username'], $password, $post['role'], $url, $post['description'], $secret, $this->jalali_date(), 1];
                 $this->doQuery($sql2, $params);
 
                 $this->ActivityLog("افزودن " . $post['name'] . " در بخش کارکنان");
@@ -434,7 +434,7 @@ trait usersModelTrait
                 $this->response_warning("این نقش قبلا ثبت شده است", "exist");
             } else {
                 $sql2 = "INSERT INTO tbl_admin_role(ar_title, ar_removable, ar_create_date, ar_status) VALUES (?,?,?,?)";
-                $params = array($post['title'], 1, $this->jaliliDate(), 1);
+                $params = array($post['title'], 1, $this->jalali_date(), 1);
                 $this->doQuery($sql2, $params);
 
                 $role = Model::$conn->lastInsertId();
@@ -577,7 +577,7 @@ trait usersModelTrait
                 );
 
                 $sql = "INSERT INTO tbl_customer (customer_vids_id,c_cart_no,c_birthday,c_email,c_mobile_num,c_phone_num,c_name,c_family,c_display_name,c_registery_date,province_id,city_id) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
-                $value = array($vids, ($post['no_card'] ?? "-"), json_encode($birthday), $post['email'], $post['mobile'], $post['phone'], $post['name'], $post['family'], $post['name'] . " " . $post['family'], $this->jaliliDate(), $post['provinceId'], $post['cityId']);
+                $value = array($vids, ($post['no_card'] ?? "-"), json_encode($birthday), $post['email'], $post['mobile'], $post['phone'], $post['name'], $post['family'], $post['name'] . " " . $post['family'], $this->jalali_date(), $post['provinceId'], $post['cityId']);
                 $this->doQuery($sql, $value);
 
                 $coverImg = "https://www.gravatar.com/avatar/" . md5(strtolower(trim($post['mobile']))) . "?d=identicon&s=50&r=x";
@@ -672,7 +672,7 @@ trait usersModelTrait
                 }
 
                 $sql2 = "INSERT INTO tbl_customer_document (admin_id,user_id,cd_title,cd_document,cd_create_date,cd_status) VALUES (?,?,?,?,?,?)";
-                $params = array($admin, $post['id'], $post['title'], $coverImg, $this->jaliliDate(), 1);
+                $params = array($admin, $post['id'], $post['title'], $coverImg, $this->jalali_date(), 1);
                 $this->doQuery($sql2, $params);
 
                 $this->ActivityLog("افزودن " . $post['title'] . " در لیست مدارک ".($result[0]['c_name']!="" ? $result[0]['c_name']." ".$result[0]['c_family']:$result[0]['c_display_name']));
@@ -736,7 +736,7 @@ trait usersModelTrait
                           province_id,
                           city_id
                           ) VALUES (?,?,?,?,?,?,?,?,?,?)";
-            $value = array($vids, $mobile, $phone, $name . " " . $family, $name, $family, $url, $this->jaliliDate(), 0, 0);
+            $value = array($vids, $mobile, $phone, $name . " " . $family, $name, $family, $url, $this->jalali_date(), 0, 0);
             $this->doQuery($sql, $value);
 
             $this->updateLastId("customer");

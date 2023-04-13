@@ -311,7 +311,7 @@ foreach ($data['bookingPaymentUser'] as $item) {
                             <?php foreach ($data['bookingLatestActivity'] as $item) { ?>
                                 <?php
                                     $date = explode(" ", $item['log_time']);
-                                    $newData = $date['1'] . " - " . Model::MiladiTojalili($date['0'], "-");
+                                    $newData = $date['1'] . " - " . Model::miladi_to_jalali($date['0'], "-");
                                 ?>
                                 <li class="flex items-center dark:bg-dark-900 dark:border-transparent justify-between lg:flex-row flex-col border border-gray-220 rounded-lg py-3 lg:px-5 px-3 mb-3">
                                     <div class="flex items-center self-start">

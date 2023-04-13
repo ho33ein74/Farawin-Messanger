@@ -97,7 +97,7 @@ trait discountModelTrait
                 $this->response_warning("کارت هدیه دیگری با این مشخصات قبلا ثبت شده است", "exist");
             } else {
                 $sql2 = "INSERT INTO tbl_giftCart (g_title,g_code,g_create_date,g_expire_date,g_amount) VALUES (?,?,?,?,?)";
-                $params = [$post['title'], $post['code'], $this->jaliliDate(), $post['dateExpire'], $post['amount']];
+                $params = [$post['title'], $post['code'], $this->jalali_date(), $post['dateExpire'], $post['amount']];
                 $this->doQuery($sql2, $params);
 
                 $this->ActivityLog("افزودن " . $post['title'] . " در لیست کارت های هدیه");
@@ -266,7 +266,7 @@ trait discountModelTrait
                     $discounted_products = 1;
                 }
                 $sql2 = "INSERT INTO tbl_discounts (dc_title, dc_type,dc_code, dc_number_of_use, dc_create_date, dc_expire_date, dc_percent, dc_min_price_apply, dc_price, dc_first_order, dc_discounted_products, dc_allowed_for_each_user, dc_description, dc_status) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-                $params = array($post['title'], $post['type_code'], $post['code'], $post['number_of_use'], $this->jaliliDate(), $post['dateExpire'], $post['percent'], $post['min_price_apply'], $post['price'], $first_order, $discounted_products, $post['allowed_for_each_user'], $post['description'],  1);
+                $params = array($post['title'], $post['type_code'], $post['code'], $post['number_of_use'], $this->jalali_date(), $post['dateExpire'], $post['percent'], $post['min_price_apply'], $post['price'], $first_order, $discounted_products, $post['allowed_for_each_user'], $post['description'],  1);
                 $this->doQuery($sql2, $params);
 
                 $discountId = Model::$conn->lastInsertId();

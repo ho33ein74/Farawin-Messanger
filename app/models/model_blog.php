@@ -31,7 +31,7 @@ class model_blog extends Model
 
     function getItemsPagination($userId, $get, $url, $id='')
     {
-        $sort_type = $this->Check_Param($get['orderby']);
+        $sort_type = $this->check_param($get['orderby']);
         if($sort_type=='oldest') { // قدیمی ترین
             $order = "a.n_id ASC";
         } else if($sort_type=='view') { // پربازدیدترین
@@ -43,7 +43,7 @@ class model_blog extends Model
         }
 
         $where='';
-        $author = $this->Check_Param($get['author']);
+        $author = $this->check_param($get['author']);
         if($author!="" and is_numeric($author)) {
             $where = " AND a.writer=".$author;
         }
@@ -70,7 +70,7 @@ class model_blog extends Model
 
     function getNews($userId, $get, $id='')
     {
-        $sort_type = $this->Check_Param($get['orderby']);
+        $sort_type = $this->check_param($get['orderby']);
         if($sort_type=='oldest') { // قدیمی ترین
             $order = "a.n_id ASC";
         } else if($sort_type=='view') { // پربازدیدترین
@@ -82,7 +82,7 @@ class model_blog extends Model
         }
 
         $where='';
-        $author = $this->Check_Param($get['author']);
+        $author = $this->check_param($get['author']);
         if($author!="" and is_numeric($author)) {
             $where = " AND a.writer=".$author;
         }

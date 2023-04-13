@@ -14,7 +14,7 @@
 
             if(sizeof($result)==0){
                 $sql = "INSERT INTO tbl_searches (s_phrase,s_count_result,s_count_search,s_suggest_search,s_management_selection,s_date) VALUES (?,?,?,?,?,?)";
-                $value = array($get, $count, 1, 0, 0, self::jaliliDate());
+                $value = array($get, $count, 1, 0, 0, self::jalali_date());
                 $this->doQuery($sql, $value);
             } else {
                 $sql = "UPDATE tbl_searches SET s_count_result=?, s_count_search=s_count_search+1 WHERE s_phrase=?";

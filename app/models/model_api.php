@@ -14,7 +14,7 @@ class model_api extends Model
         parent::__construct();
 
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $checkToken = self::Validate_token($_REQUEST['api_key']);
+            $checkToken = self::validate_token($_REQUEST['api_key']);
             if (!$checkToken) {
                 $data = ["description" => "Unauthorized: Api key is invalid"];
                 self::generate_jsonp(FALSE, "result", $data);
@@ -295,7 +295,7 @@ where idcml_episodes = ?";
     function register($getData)
     {
         if (isset($getData['mobile'])) {
-            $mobileCeheck = self::Validate_mobile($getData['mobile']);
+            $mobileCeheck = self::validate_mobile($getData['mobile']);
 
             if ($mobileCeheck) {
                 $mobile = self::Format_mobile_number($getData['mobile']);
@@ -345,13 +345,13 @@ where idcml_episodes = ?";
         $this->doQuery($sql2, $params);
         $userId = self::$conn->lastInsertId();
         //create user token
-        $userToken = self::generateRandomString(50);
+        $userToken = self::generate_random_string(50);
 
         $sqlSelToken = "SELECT COUNT(*) FROM usr_login WHERE token = ?";
         $paramSelToken = array($userToken);
         $token = $this->doSelect($sqlSelToken, $paramSelToken);
         if (sizeof($token) > 0) { //check if token code is duplicate
-            $userToken = self::generateRandomString(50);
+            $userToken = self::generate_random_string(50);
         }
 
         $sqlLogin = "INSERT INTO usr_login (user_id, token) VALUES (?,?)";
@@ -364,12 +364,12 @@ where idcml_episodes = ?";
         $this->doQuery($sqlMobile, $paramsMobile);
 
         //generate activation code
-        $active_code = self::generateActivationCode(5);
+        $active_code = self::generate_activation_code(5);
         $sqlSelCode = "SELECT COUNT(*) FROM usr_mobile WHERE active_code = ?";
         $paramSelCode = array($active_code);
         $code = $this->doSelect($sqlSelCode, $paramSelCode);
         if (sizeof($code) > 0) { //check if token code is duplicate
-            $active_code = self::generateActivationCode(5);
+            $active_code = self::generate_activation_code(5);
         }
 
         $sqlUpdateMobile = "UPDATE usr_mobile SET active_code=? WHERE user_id=?";
@@ -412,7 +412,7 @@ where idcml_episodes = ?";
         $userId = $this->doSelect($sqlSelID, $paramSelID, 1);
 
         //generate activation code
-        $active_code = self::generateActivationCode(5);
+        $active_code = self::generate_activation_code(5);
 
         $sqlUpdateMobile = "UPDATE usr_mobile SET active_code=? WHERE user_id=?";
         $paramsUpdateMobile = [$active_code, $userId['user_id']];

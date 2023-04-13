@@ -384,7 +384,7 @@ $categoryParsedAry = array(
                                                 <path d="M15.391 14.0178L12 11.9948V7.63379" stroke="#98A3B8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
                                             </svg>
                                             زمان تقریبی
-                                            مطالعه: <?= Model::getReadTime(htmlspecialchars_decode($data['getBlog'][0]['description'])) ?>
+                                            مطالعه: <?= Model::get_read_time(htmlspecialchars_decode($data['getBlog'][0]['description'])) ?>
                                             دقیقه
                                         </div>
                                     </div>
@@ -1643,7 +1643,7 @@ $categoryParsedAry = array(
                                                               stroke-linecap="round" stroke-linejoin="round"/>
                                                     </svg>
                                                     <span class="text-gray-300 text-10 font-medium">
-                                                        زمان تقریبی مطالعه:<?= Model::getReadTime(htmlspecialchars_decode($item['description'])) ?> دقیقه
+                                                        زمان تقریبی مطالعه:<?= Model::get_read_time(htmlspecialchars_decode($item['description'])) ?> دقیقه
                                                     </span>
                                                 </div>
                                             </div>
@@ -1736,7 +1736,7 @@ $categoryParsedAry = array(
                                                               stroke-linecap="round" stroke-linejoin="round"/>
                                                     </svg>
                                                     <span class="text-gray-300 text-10 font-medium">
-                                                        زمان تقریبی مطالعه:<?= Model::getReadTime(htmlspecialchars_decode($item['description'])) ?> دقیقه
+                                                        زمان تقریبی مطالعه:<?= Model::get_read_time(htmlspecialchars_decode($item['description'])) ?> دقیقه
                                                     </span>
                                                 </div>
                                             </div>

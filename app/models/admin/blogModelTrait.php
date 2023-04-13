@@ -143,7 +143,7 @@ trait  blogModelTrait
                 $linkSource = $post['linkSource'] != NULL ? $post['linkSource'] : NULL;
 
                 $sql = "INSERT INTO tbl_blog (suggestion,cat_id,writer,title,slug,link,subtitle,cover,main_tag,description,source,seo_title,seo_desc,date_created,time,b_status) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-                $params = [$post['suggestion'], $post['category'], $admin, $post['title'], $post['url'], $linkSource, htmlspecialchars($post['subtitle']), $coverImg, $post['mainKeyword'], htmlspecialchars($post['desc']), $post['source'], $post['seo_title'], $post['seo_desc'], $this->jaliliDate(), $this->jaliliDate("H:i"), $post['status']];
+                $params = [$post['suggestion'], $post['category'], $admin, $post['title'], $post['url'], $linkSource, htmlspecialchars($post['subtitle']), $coverImg, $post['mainKeyword'], htmlspecialchars($post['desc']), $post['source'], $post['seo_title'], $post['seo_desc'], $this->jalali_date(), $this->jalali_date("H:i"), $post['status']];
                 $this->doQuery($sql, $params);
                 $postId = Model::$conn->lastInsertId();
 
@@ -168,7 +168,7 @@ trait  blogModelTrait
                             $result = $this->doSelect("SELECT * FROM tbl_tags WHERE tag=?", array($tag));
                             if (sizeof($result) == 0) {
                                 $sqlTags = "INSERT INTO tbl_tags (tag,user_id,date,count) VALUES (?,?,?,?)";
-                                $this->doQuery($sqlTags, array($tag, $admin, $this->jaliliDate(), 1));
+                                $this->doQuery($sqlTags, array($tag, $admin, $this->jalali_date(), 1));
                                 $tagID .= Model::$conn->lastInsertId() . ",";
                             } else {
                                 $this->doQuery("UPDATE tbl_tags SET count=count+1 WHERE t_id=?", array($result[0]['t_id']));
@@ -256,7 +256,7 @@ trait  blogModelTrait
                             $result = $this->doSelect("SELECT * FROM tbl_tags WHERE tag=?", array($tag));
                             if (sizeof($result) == 0) {
                                 $sqlTags = "INSERT INTO tbl_tags (tag,user_id,date,count) VALUES (?,?,?,?)";
-                                $this->doQuery($sqlTags, array($tag, $admin, $this->jaliliDate(), 1));
+                                $this->doQuery($sqlTags, array($tag, $admin, $this->jalali_date(), 1));
                                 $tagID .= Model::$conn->lastInsertId() . ",";
                             } else {
                                 $this->doQuery("UPDATE tbl_tags SET count=count+1 WHERE t_id=?", array($result[0]['t_id']));
@@ -351,7 +351,7 @@ trait  blogModelTrait
                 $blogLink = URL . 'blog/article/' . $result[0]['slug'];
                 $caption = "🔹 " . $result[0]['title'] . "\n\n" . "🔸 " . htmlspecialchars($result[0]['subtitle']) . "\n\n" . "👇👇" . "\n" . "🌐 " . $blogLink;
 
-                $json = $this->sendPhoto(URL . "public/images/blog/" . $result[0]['cover'], $caption, $this->getPublicInfo('channel_blog'));
+                $json = $this->telegram_send_photo(URL . "public/images/blog/" . $result[0]['cover'], $caption, $this->getPublicInfo('channel_blog'));
                 $json = json_decode($json, TRUE);
 
                 if($json['ok']){
@@ -439,7 +439,7 @@ trait  blogModelTrait
                 $this->response_warning("منبع دیگری با این مشخصات قبلا ثبت شده است", "exist");
             } else {
                 $sql2 = "INSERT INTO tbl_sources (title,link,user_id,date) VALUES (?,?,?,?)";
-                $params = [$post['title'], $post['slug'], $id, $this->jaliliDate()];
+                $params = [$post['title'], $post['slug'], $id, $this->jalali_date()];
                 $this->doQuery($sql2, $params);
 
                 $this->ActivityLog("افزودن " . $post['title'] . " در منابع");
@@ -454,7 +454,7 @@ trait  blogModelTrait
     {
         try {
             $sql3 = "UPDATE tbl_sources SET title=?, link=?, date_edit=? , user_id_edit=? WHERE so_id=?";
-            $params = [$post['titleEdit'], $post['slugEdit'], $this->jaliliDate(), $admin, $post['id']];
+            $params = [$post['titleEdit'], $post['slugEdit'], $this->jalali_date(), $admin, $post['id']];
             $this->doQuery($sql3, $params);
 
             $this->ActivityLog("ویرایش اطلاعات  " . $post['titleEdit'] . " در منابع");

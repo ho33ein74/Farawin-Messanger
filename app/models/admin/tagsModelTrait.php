@@ -81,7 +81,7 @@ trait tagsModelTrait
                 $this->response_warning("کلمه کلیدی دیگری با این مشخصات قبلا ثبت شده است", "exist");
             } else {
                 $sql2 = "INSERT INTO tbl_tags (tag,user_id,date) VALUES (?,?,?)";
-                $params = [$post['title'], $id, $this->jaliliDate()];
+                $params = [$post['title'], $id, $this->jalali_date()];
                 $this->doQuery($sql2, $params);
 
                 $this->ActivityLog("افزودن عبارت " . $post['title'] . " در بخش کلمات کلیدی");
@@ -100,7 +100,7 @@ trait tagsModelTrait
                 $this->response_error("کلمه کلیدی مورد نظر یافت نشد");
             } else {
                 $sql = "UPDATE tbl_tags SET tag=?, date_edit=? , user_id_edit=? WHERE t_id=?";
-                $params = [$post['titleEdit'], $this->jaliliDate(), $admin, $post['id']];
+                $params = [$post['titleEdit'], $this->jalali_date(), $admin, $post['id']];
                 $this->doQuery($sql, $params);
 
                 $this->ActivityLog("ویرایش عبارت " . $post['titleEdit'] . " در بخش کلمات کلیدی");

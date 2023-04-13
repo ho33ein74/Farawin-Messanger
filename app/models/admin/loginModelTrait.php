@@ -4,19 +4,19 @@ trait loginModelTrait
     function Login($form)
     {
         try {
-            $username = $this->Check_Param($form['username']);
+            $username = $this->check_param($form['username']);
             if(!function_exists('password_verify')) {
                 $this->response_error("password_hash not supported, Upgrade PHP version");
             } else {
-                $password = $this->Check_Param($form['password']);
+                $password = $this->check_param($form['password']);
                 if (!empty($username) and !empty($password)) {
                     $result = $this->doSelect("SELECT * FROM tbl_admin WHERE a_username=?  AND a_status=1", array($username));
 
                     if (sizeof($result) > 0) {
                         if (password_verify($password, $result[0]['a_password'])) {
                             if ($result[0]['google_auth_status'] == 0) {
-                                $this->cookieInit();
-                                $this->cookieSet('adminId', $this->Encrypt($result[0]['a_id'], KEY), $this->getPublicInfo('cookie_duration'));
+                                $this->cookie_init();
+                                $this->cookie_set('adminId', $this->encrypt($result[0]['a_id'], KEY), $this->getPublicInfo('cookie_duration'));
                                 $this->ActivityLog("ورود به پنل مدیریت", $result[0]['a_id']);
                                 $this->response_success(".باموفقیت وارد شدید :)");
                             } else {
@@ -46,14 +46,14 @@ trait loginModelTrait
     function authCheck($form)
     {
         try {
-            $username = $this->Check_Param($form['username']);
+            $username = $this->check_param($form['username']);
             $result = $this->doSelect("SELECT * FROM tbl_admin WHERE a_username=? AND a_status=1", array($username));
 
             if (sizeof($result) > 0 and !empty($username)) {
                 $pga = new PHPGangsta_GoogleAuthenticator();
                 if ($pga->verifyCode($result[0]['google_secret_code'], $form['code'], 2)) {
-                    $this->cookieInit();
-                    $this->cookieSet('adminId', $this->Encrypt($result[0]['a_id'], KEY), $this->getPublicInfo('cookie_duration'));
+                    $this->cookie_init();
+                    $this->cookie_set('adminId', $this->encrypt($result[0]['a_id'], KEY), $this->getPublicInfo('cookie_duration'));
                     $this->ActivityLog("ورود به پنل مدیریت", $result[0]['a_id']);
 
                     $this->response_success(".باموفقیت وارد شدید :)");
@@ -71,7 +71,7 @@ trait loginModelTrait
     function forgetPasswordSendSMS($form)
     {
         try {
-            $username = $this->Check_Param($form['username']);
+            $username = $this->check_param($form['username']);
 
             $result = $this->doSelect("SELECT * FROM tbl_admin WHERE a_username=? AND a_status=1", array($username), 1);
 

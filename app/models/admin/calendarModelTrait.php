@@ -5,9 +5,9 @@ trait calendarModel
     function getAllEventsAjax($post)
     {
         try {
-            $periods = $this->createDateRangeArray(
-                $this->convertNumbers($post['start']),
-                $this->convertNumbers($post['end']),
+            $periods = $this->create_date_range_array(
+                $this->convert_numbers($post['start']),
+                $this->convert_numbers($post['end']),
             );
 
             $jayParsedAry = array();
@@ -44,9 +44,9 @@ trait calendarModel
     function getDateTimingAndEventsAjax($post)
     {
         try {
-            $periods = $this->createDateRangeArray(
-                $this->convertNumbers($post['start']),
-                $this->convertNumbers($post['end']),
+            $periods = $this->create_date_range_array(
+                $this->convert_numbers($post['start']),
+                $this->convert_numbers($post['end']),
             );
 
             $jayParsedAry = array();
@@ -92,7 +92,7 @@ trait calendarModel
     {
         try {
             $jayParsedAry = array();
-            $date = $this->MiladiTojalili_2no($post['date'], "-");
+            $date = $this->miladi_to_jalali_2no($post['date'], "-");
 
             $jayParsedAry["date_fa"] = $date;
             $jayParsedAry["date_en"] = $post['date'];

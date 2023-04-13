@@ -91,7 +91,7 @@ trait storeroomModelTrait
             $vids = $this->getLastId("storeroom");
 
             $sql2 = "INSERT INTO tbl_storeroom (storeroom_vids_id,s_name,s_storekeeper,branch_id,s_date,s_status) VALUES (?,?,?,?,?,?)";
-            $params = [$vids, $post['name'], $post['storekeeper'], $post['branch'], $this->jaliliDate("Y/m/d"), 1];
+            $params = [$vids, $post['name'], $post['storekeeper'], $post['branch'], $this->jalali_date("Y/m/d"), 1];
             $this->doQuery($sql2, $params);
 
             $this->ActivityLog("افزودن " . $post['name']." در لیست انبارها");
@@ -124,7 +124,7 @@ trait storeroomModelTrait
 
             if($count>0) {
                 $sql = "INSERT INTO tbl_storeroom_product_inventory (storeroom_id,product_id,spi_total_inventory,spi_count,spi_create_date,spi_purchase_date,spi_existing_completion_date,spi_status) VALUES (?,?,?,?,?,?,?,?)";
-                $params = array($post['storeroom'], $vids, $count, $count, self::jaliliDate(), $post['purchase_date'], NULL, 1);
+                $params = array($post['storeroom'], $vids, $count, $count, self::jalali_date(), $post['purchase_date'], NULL, 1);
                 $this->doQuery($sql, $params);
             }
 
@@ -281,7 +281,7 @@ trait storeroomModelTrait
                 $sql = "SELECT * FROM tbl_storeroom_product_inventory WHERE product_id=? AND spi_purchase_date=?";
                 $result = $this->doSelect($sql, array($post['id'], $post['purchase_dateEdit']));
 
-                $existing_completion_date = self::jaliliDate();
+                $existing_completion_date = self::jalali_date();
                 $status = 0;
                 if ($post['countPieceEdit'] > 0) {
                     $status = 1;
@@ -293,7 +293,7 @@ trait storeroomModelTrait
                     $this->doQuery($sql, array($post['countPieceEdit'], $post['countPieceEdit'], $existing_completion_date, $status, $post['id'], $post['purchase_dateEdit']));
                 } else {
                     $sql = "INSERT INTO tbl_storeroom_product_inventory (storeroom_id,product_id,spi_total_inventory,spi_count,spi_create_date,spi_purchase_date,spi_existing_completion_date,spi_status) VALUES (?,?,?,?,?,?,?,?)";
-                    $params = array($post['storeroom'], $post['id'], $post['countPieceEdit'], $post['countPieceEdit'], self::jaliliDate(), $post['purchase_dateEdit'], $existing_completion_date, $status);
+                    $params = array($post['storeroom'], $post['id'], $post['countPieceEdit'], $post['countPieceEdit'], self::jalali_date(), $post['purchase_dateEdit'], $existing_completion_date, $status);
                     $this->doQuery($sql, $params);
                 }
 

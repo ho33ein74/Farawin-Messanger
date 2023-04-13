@@ -27,7 +27,7 @@
     <meta property="og:title" content="خدمات <?= $data['getPublicInfo']['site']; ?>">
     <meta name="description" content="<?= $data['page']['metaDescription']; ?>">
     <meta name="article:publisher" content="<?= $data['page']['a_name']; ?>"/>
-    <link rel="canonical" href="<?= Model::str_lreplace("//", "/", URL. $_SERVER['REQUEST_URI']) ?>"/>
+    <link rel="canonical" href="<?= Model::str_left_replace("//", "/", URL. $_SERVER['REQUEST_URI']) ?>"/>
     <!-- Fav Icons -->
     <?php require('app/views/include/favicon.php'); ?>
 
@@ -171,19 +171,19 @@
                         </div>
                         <ul x-transition="" x-show="show" class="pt-5 border-t border-gray-80 dark:border-white dark:border-opacity-10 border-opacity-60 mt-5 ">
                             <li class="flex items-center mb-4 last:mb-0">
-                                <input class="dark:bg-gray-400 text-gray-800 w-6 h-6 ml-3 bg-gray-100 border-0 border-transparent cursor-pointer ring-0" id="order-latest" type="radio" <?= (htmlspecialchars($_GET['orderby'])=="" or htmlspecialchars($_GET['orderby'])=="latest") ? "checked":"" ?> name="order" value="<?= Model::addParametersToUrl($_SERVER['REQUEST_URI'], array('orderby' => 'latest'), "add") ?>">
+                                <input class="dark:bg-gray-400 text-gray-800 w-6 h-6 ml-3 bg-gray-100 border-0 border-transparent cursor-pointer ring-0" id="order-latest" type="radio" <?= (htmlspecialchars($_GET['orderby'])=="" or htmlspecialchars($_GET['orderby'])=="latest") ? "checked":"" ?> name="order" value="<?= Model::add_parameters_to_url($_SERVER['REQUEST_URI'], array('orderby' => 'latest'), "add") ?>">
                                 <label class="dark:text-gray-920 text-gray-800 text-base font-medium cursor-pointer" for="order-latest">جدید&zwnj;ترین</label>
                             </li>
                             <li class="flex items-center mb-4 last:mb-0">
-                                <input class="dark:bg-gray-400 text-gray-800 w-6 h-6 ml-3 bg-gray-100 border-0 border-transparent cursor-pointer ring-0" id="order-view" type="radio" <?= htmlspecialchars($_GET['orderby'])=="view" ? "checked":"" ?> name="order" value="<?= Model::addParametersToUrl($_SERVER['REQUEST_URI'], array('orderby' => 'view'), "add") ?>">
+                                <input class="dark:bg-gray-400 text-gray-800 w-6 h-6 ml-3 bg-gray-100 border-0 border-transparent cursor-pointer ring-0" id="order-view" type="radio" <?= htmlspecialchars($_GET['orderby'])=="view" ? "checked":"" ?> name="order" value="<?= Model::add_parameters_to_url($_SERVER['REQUEST_URI'], array('orderby' => 'view'), "add") ?>">
                                 <label class="dark:text-gray-920 text-gray-800 text-base font-medium cursor-pointer" for="order-view">پربازدیدترین</label>
                             </li>
                             <li class="flex items-center mb-4 last:mb-0">
-                                <input class="dark:bg-gray-400 text-gray-800 w-6 h-6 ml-3 bg-gray-100 border-0 border-transparent cursor-pointer ring-0" id="order-rating" type="radio" <?= htmlspecialchars($_GET['orderby'])=="rating" ? "checked":"" ?> name="order" value="<?= Model::addParametersToUrl($_SERVER['REQUEST_URI'], array('orderby' => 'rating'), "add") ?>">
+                                <input class="dark:bg-gray-400 text-gray-800 w-6 h-6 ml-3 bg-gray-100 border-0 border-transparent cursor-pointer ring-0" id="order-rating" type="radio" <?= htmlspecialchars($_GET['orderby'])=="rating" ? "checked":"" ?> name="order" value="<?= Model::add_parameters_to_url($_SERVER['REQUEST_URI'], array('orderby' => 'rating'), "add") ?>">
                                 <label class="dark:text-gray-920 text-gray-800 text-base font-medium cursor-pointer" for="order-rating">میانگین رتبه</label>
                             </li>
                             <li class="flex items-center mb-4 last:mb-0">
-                                <input class="dark:bg-gray-400 text-gray-800 w-6 h-6 ml-3 bg-gray-100 border-0 border-transparent cursor-pointer ring-0" id="order-oldest" type="radio" <?= htmlspecialchars($_GET['orderby'])=="oldest" ? "checked":"" ?> name="order" value="<?= Model::addParametersToUrl($_SERVER['REQUEST_URI'], array('orderby' => 'oldest'), "add") ?>">
+                                <input class="dark:bg-gray-400 text-gray-800 w-6 h-6 ml-3 bg-gray-100 border-0 border-transparent cursor-pointer ring-0" id="order-oldest" type="radio" <?= htmlspecialchars($_GET['orderby'])=="oldest" ? "checked":"" ?> name="order" value="<?= Model::add_parameters_to_url($_SERVER['REQUEST_URI'], array('orderby' => 'oldest'), "add") ?>">
                                 <label class="dark:text-gray-920 text-gray-800 text-base font-medium cursor-pointer" for="order-oldest">قدیمی&zwnj;ترین</label>
                             </li>
                         </ul>

@@ -30,7 +30,7 @@ class model_checkout extends Model
 
                 if (isset($pay_result["Status"]) && $pay_result["Status"] == 100) {
                     $sql = "update tbl_services_reservation set sre_pay=1, sre_date_payment=?, sre_time_payment=?, sre_status=1,afterpay=?,sre_price_payment=? where beforepay=?";
-                    $this->doQuery($sql, array(self::jaliliDate(), self::jaliliDate("H:i:s"), $pay_result["RefID"], $orderInfo[0]['sre_price_prepayment'], $pay_result["Authority"]));
+                    $this->doQuery($sql, array(self::jalali_date(), self::jalali_date("H:i:s"), $pay_result["RefID"], $orderInfo[0]['sre_price_prepayment'], $pay_result["Authority"]));
 
                     $sql = "SELECT sre.*,pm.pay_title,s.s_title,b.b_name,u.c_display_name,u.c_mobile_num,ss.name,r.title
                                 FROM tbl_services_reservation sre 
@@ -57,7 +57,7 @@ class model_checkout extends Model
                             "🔹 بیعانه : " . number_format($reservation['sre_price_prepayment']) . " تومان\n\n" .
                             "🔹 مبلغ پرداختی: " . number_format($reservation['sre_price_payment']) . " تومان\n\n" .
                             "🔹 نحوه پرداخت : " . $reservation['pay_title'];
-                        Model::sendMessage($caption, $channel);
+                        Model::telegram_send_message($caption, $channel);
                     }
 
                     $sql = "SELECT * FROM tbl_payment_log WHERE order_vids_id=? AND beforepay=? AND afterpay=?";
@@ -70,18 +70,18 @@ class model_checkout extends Model
                         $payInfo = $this->doSelect("SELECT * FROM tbl_payment_methods WHERE pay_id=?", array($reservation['payment_method_id']), 1);
 
                         $sql = "INSERT INTO tbl_payment_log (payment_vids_id,order_vids_id,user_ip,part,price,beforepay,afterpay,time_payment,date_payment,`type`,pay_to,status,date_created) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
-                        $params = array($vids_pay, $reservation['order_service_vids_id'], $data['user_ip'], 1, $reservation['sre_price_prepayment'], $pay_result["Authority"], $pay_result["RefID"], time(), self::jaliliDate("Y/m/d"), $payInfo['pay_type'], $payInfo['pay_to'], 1, self::jaliliDate("Y/m/d"));
+                        $params = array($vids_pay, $reservation['order_service_vids_id'], $data['user_ip'], 1, $reservation['sre_price_prepayment'], $pay_result["Authority"], $pay_result["RefID"], time(), self::jalali_date("Y/m/d"), $payInfo['pay_type'], $payInfo['pay_to'], 1, self::jalali_date("Y/m/d"));
                         $this->doQuery($sql, $params);
                         $this->updateLastId("payment");;
 
                         $caption = "🔹 شماره پیگیری: " . $reservation['order_service_vids_id'] . "\n\n" .
                             "🔹 مبلغ پرداختی " . number_format($reservation['sre_price_prepayment']) . " تومان\n\n" .
-                            "🔹 تاریخ: " . $this->jaliliDate();
-                        "🔹 ساعت: " . $this->jaliliDate("H:i:s");
+                            "🔹 تاریخ: " . $this->jalali_date();
+                        "🔹 ساعت: " . $this->jalali_date("H:i:s");
 
                         $channel = $this->getPublicInfo('channel_payment');
                         if ($channel != "") {
-                            Model::sendMessage($caption, $channel);
+                            Model::telegram_send_message($caption, $channel);
                         }
                     }
 
@@ -127,7 +127,7 @@ class model_checkout extends Model
                             "🔹 بیعانه : " . number_format($reservation['sre_price_prepayment']) . " تومان\n\n" .
                             "🔹 مبلغ پرداختی: " . number_format($reservation['sre_price_payment']) . " تومان\n\n" .
                             "🔹 نحوه پرداخت : " . $reservation['pay_title'];
-                        Model::sendMessage($caption, $channel);
+                        Model::telegram_send_message($caption, $channel);
                     }
 
                     return $reservation;
@@ -236,7 +236,7 @@ class model_checkout extends Model
                     $input_data[$i][$value_name] = $resultMobile['c_family'];
                 }
             }
-            $this->sendSMS($this->convertNumbers($result['code']), $resultMobile['c_mobile_num'], $input_data);
+            $this->sendSMS($this->convert_numbers($result['code']), $resultMobile['c_mobile_num'], $input_data);
 
             $sql2 = "INSERT INTO tbl_services_reservation_log (admin_id,reservation_id,activity_type,activity) VALUES (?,?,?,?)";
             $params = array(0, $id, "send_sms_reservation", $text_sms);

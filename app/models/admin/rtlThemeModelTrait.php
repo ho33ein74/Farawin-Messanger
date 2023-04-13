@@ -44,9 +44,9 @@ trait rtlThemeModelTrait
             curl_close($ch);
 
             if ($res == "1") {
-                $this->sessionSet("license_username", $username);
-                $this->sessionSet("license_order_id", $order_id);
-                $this->sessionSet("site_domain", $domain);
+                $this->session_set("license_username", $username);
+                $this->session_set("license_order_id", $order_id);
+                $this->session_set("site_domain", $domain);
 
                 $this->ActivityLog("فعالسازی لایسنس اسکریپت");
                 $this->response_success("لایسنس شما با موفقیت فعال شد");

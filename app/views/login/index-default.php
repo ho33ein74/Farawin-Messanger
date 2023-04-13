@@ -26,7 +26,7 @@
     <meta property="og:title" content="<?= $data['getPublicInfo']['site']; ?>">
     <meta name="description" content="<?= $data['getPublicInfo']['meta_description']; ?>">
     <meta name="article:publisher" content="<?= $data['getPublicInfo']['site']; ?>"/>
-    <link rel="canonical" href="<?= Model::str_lreplace("//", "/", URL. $_SERVER['REQUEST_URI']) ?>"/>
+    <link rel="canonical" href="<?= Model::str_left_replace("//", "/", URL. $_SERVER['REQUEST_URI']) ?>"/>
 
     <link rel="stylesheet" href="public/css/app.css">
     <link rel="stylesheet" href="public/css/login.auth.css">

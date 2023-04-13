@@ -11,7 +11,7 @@ class Faq extends Controller
     {
         $page = $this->model->getPage("faq");
 
-        $attrId = str_replace(["faq", "/", "details"], ["", "", ""], $this->model->Check_Param($_GET['url']));
+        $attrId = str_replace(["faq", "/", "details"], ["", "", ""], $this->model->check_param($_GET['url']));
         if($attrId!='' && is_numeric($attrId)) {
             $id_isset = $this->model->getIssetFaq($attrId);
             if (sizeof($id_isset) > 0) {

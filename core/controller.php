@@ -4,9 +4,9 @@
     {
         function __construct()
         {
-            Model::sessionInit();
-            Model::cookieInit();
-            $this->checkLogin = Model::Decrypt(Model::cookieGet('userId'), KEY);
+            Model::session_init();
+            Model::cookie_init();
+            $this->checkLogin = Model::decrypt(Model::cookie_get('userId'), KEY);
             date_default_timezone_set("Asia/Tehran");
         }
         
@@ -14,7 +14,7 @@
         {
             $checkView = explode("/",$viewUrl);
             if($this->model->getPublicInfo("admin_ip_lock") == "1" or $checkView[0] != "admin"){
-                $userId = Model::Decrypt(Model::cookieGet('userId'), KEY);
+                $userId = Model::decrypt(Model::cookie_get('userId'), KEY);
                 if($userId != False) {
                     $data['profileNotification'] = $this->model->getProfileNotification($userId);
                     $data['infoUser'] = $this->model->getinfoUser($userId);
@@ -28,7 +28,7 @@
                 $deviceType = ($detect->isMobile() ? ($detect->isTablet() ? 'tablet' : 'phone') : 'computer');
                 $data['device'] = $deviceType;
             } else {
-                $admin = Model::Decrypt(Model::cookieGet('adminId'), KEY);
+                $admin = Model::decrypt(Model::cookie_get('adminId'), KEY);
                 if($admin != False) {
                     $data['infoAdmin'] = $this->model->getInfoAdmin($admin);
                     $data['sidebarMenu'] = $this->model->getMenuSidebar($admin);
@@ -37,7 +37,7 @@
                 $data['getMethodsContacting'] = $this->model->getMethodsContacting("", false);
             }
 
-            $data['user_ip'] = $this->model->getClientIP();
+            $data['user_ip'] = $this->model->get_client_ip();
             $data['getPublicInfo'] = $this->model->getPublicInfo();
             $data['getDomainsInfo'] = $this->model->getDomainsInfo();
 
@@ -80,7 +80,7 @@
                     require_once 'app/views/notfound/error-' . $data['getPublicInfo']['theme'] . '.php';
                 }
             } else {
-                $this->model->RedirectLink($checkRedirectLink[0]['new_url'], $checkRedirectLink[0]['type']);
+                $this->model->redirect_link($checkRedirectLink[0]['new_url'], $checkRedirectLink[0]['type']);
             }
         }
         

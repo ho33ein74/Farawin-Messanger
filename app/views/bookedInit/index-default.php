@@ -143,7 +143,7 @@
                                                     $classSelect="img-grayscale-100 text-gray-450";
                                                 }
                                                 ?>
-                                                <div onclick="calculatePayment(this)" data-operator="<?= Model::Encrypt($tariff['operator_id'], KEY) ?>" data-tariff="<?= Model::Encrypt($tariff['st_id'], KEY) ?>" class="itemTariff flex items-center justify-between border hover:opacity-75 border-gray-300 border-opacity-30 rounded-xl py-4 sm:pl-7 sm:pr-8 px-4 img-grayscale-100 text-gray-450 cursor-pointer">
+                                                <div onclick="calculatePayment(this)" data-operator="<?= Model::encrypt($tariff['operator_id'], KEY) ?>" data-tariff="<?= Model::encrypt($tariff['st_id'], KEY) ?>" class="itemTariff flex items-center justify-between border hover:opacity-75 border-gray-300 border-opacity-30 rounded-xl py-4 sm:pl-7 sm:pr-8 px-4 img-grayscale-100 text-gray-450 cursor-pointer">
                                                     <div class="sm:col-span-6 col-span-8 flex items-center justify-start">
                                                         <div class="h-full flex items-center">
                                                             <div class="relative">
@@ -228,7 +228,7 @@
                                                         $classSelect="img-grayscale-100 text-gray-450";
                                                     }
                                                     ?>
-                                                    <div onclick="selectPayType(<?= $payType['pay_id'] ?>)" id="payType_<?= $payType['pay_id'] ?>" data-descStatus="<?= ($payType['pay_desc']!=NULL or $payType['pay_desc']!="") ? 1:0; ?>" data-id="<?= Model::Encrypt($payType['pay_id'], KEY) ?>" data-desc="<?= $payType['pay_desc'] ?>" class="itemPayType flex hover:opacity-75 items-center justify-between border border-gray-300 border-opacity-30 rounded-xl py-4 sm:pl-7 sm:pr-8 px-4 <?= $classSelect ?> cursor-pointer">
+                                                    <div onclick="selectPayType(<?= $payType['pay_id'] ?>)" id="payType_<?= $payType['pay_id'] ?>" data-descStatus="<?= ($payType['pay_desc']!=NULL or $payType['pay_desc']!="") ? 1:0; ?>" data-id="<?= Model::encrypt($payType['pay_id'], KEY) ?>" data-desc="<?= $payType['pay_desc'] ?>" class="itemPayType flex hover:opacity-75 items-center justify-between border border-gray-300 border-opacity-30 rounded-xl py-4 sm:pl-7 sm:pr-8 px-4 <?= $classSelect ?> cursor-pointer">
                                                         <div class="sm:col-span-<?= ($payType['pay_icon']!=NULL or $payType['pay_icon']!="") ? 9:12 ?> col-span-<?= ($payType['pay_icon']!=NULL or $payType['pay_icon']!="") ? 9:12 ?> flex items-center justify-start">
                                                             <div class="h-full flex items-center">
                                                                 <div class="font-semibold sm:text-xl text-xl"><?= $payType['pay_title'] ?></div>
@@ -534,8 +534,8 @@
 
             var formData = new FormData();
             formData.append("operator_id", $(item).attr("data-operator"));
-            formData.append("service_id", "<?= Model::Encrypt($data['services']['s_id'], KEY) ?>");
-            formData.append("is_vip", "<?= Model::Encrypt($data['is_vip'], KEY) ?>");
+            formData.append("service_id", "<?= Model::encrypt($data['services']['s_id'], KEY) ?>");
+            formData.append("is_vip", "<?= Model::encrypt($data['is_vip'], KEY) ?>");
             $.ajax({
                 url: "bookedInit/calculatePayment",
                 data: formData,

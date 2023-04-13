@@ -28,7 +28,7 @@ class admin extends Controller
     function __construct()
     {
         parent::__construct();
-        $this->checkLoginAdmin = Model::Decrypt(Model::cookieGet('adminId'), KEY);
+        $this->checkLoginAdmin = Model::decrypt(Model::cookie_get('adminId'), KEY);
 
         if ($_GET['url'] != ADMIN_PATH . "/login") {
             if ($_GET['url'] != ADMIN_PATH . "/forgetPassword") {

@@ -17,11 +17,11 @@ trait viewsModelTrait
                     LEFT JOIN tbl_services s ON sre.service_id=s.s_id
                     LEFT JOIN tbl_customer c ON sre.user_id=c.customer_vids_id
                     WHERE sre.sre_status!=0 and sre.sre_date=? ORDER  BY sre.sre_time ASC";
-        $result['todayReserve'] = $this->doSelect($sql, array(self::jaliliDate()));
+        $result['todayReserve'] = $this->doSelect($sql, array(self::jalali_date()));
 
         $totalReserve = 0;
         for ($i = 1; $i <= 7; $i++) {
-            $new_date = self::JalaliAfter(self::jaliliDate(), $i);
+            $new_date = self::jalali_after(self::jalali_date(), $i);
             $date_split = explode("/", $new_date);
 
             $time = jmktime(0, 0, 0, $date_split['1'], $date_split['2'], $date_split['0']);
@@ -731,7 +731,7 @@ trait viewsModelTrait
                 }
 
                 $sql = "INSERT INTO tbl_page (writer,title,link,metaDescription,cover,main_tag,description,date_created,time,p_status) VALUES (?,?,?,?,?,?,?,?,?,?)";
-                $params = [$admin, $post['title'], $post['slug'], $post['metaDescription'], $coverImg, $post['mainKeyword'], htmlspecialchars($post['desc']), $this->jaliliDate(), $this->jaliliDate("H:i"), $post['status']];
+                $params = [$admin, $post['title'], $post['slug'], $post['metaDescription'], $coverImg, $post['mainKeyword'], htmlspecialchars($post['desc']), $this->jalali_date(), $this->jalali_date("H:i"), $post['status']];
                 $this->doQuery($sql, $params);
 
                 $this->ActivityLog("افزودن " . $post['title'] . " در بخش برگه ها");
@@ -903,7 +903,7 @@ trait viewsModelTrait
                 $this->response_warning("ویجت دیگری با این مشخصات قبلا ثبت شده است", "exist");
             } else {
                 $sql2 = "INSERT INTO tbl_template (t_part,t_href,t_title,t_description,t_is_custom,t_theme,t_show_title,t_is_default_widget,t_status) VALUES (?,?,?,?,?,?,?,?,?)";
-                $params = array("dashboard", "custom_" . $this->generateRandomString(10), $post['title'], $post['description'], 1, $this->getPublicInfo('theme'), $post['show_title'], 0, 1);
+                $params = array("dashboard", "custom_" . $this->generate_random_string(10), $post['title'], $post['description'], 1, $this->getPublicInfo('theme'), $post['show_title'], 0, 1);
                 $this->doQuery($sql2, $params);
 
                 $this->ActivityLog("افزودن " . $post['title'] . " در لیست ویجت ها");
@@ -1333,7 +1333,7 @@ trait viewsModelTrait
                 $this->response_warning("اسلایدر دیگری با این مشخصات قبلا ثبت شده است", "exist");
             } else {
                 $sql2 = "INSERT INTO tbl_slider (s_title,s_create_date) VALUES (?,?)";
-                $params = [$post['title'], $this->jaliliDate()];
+                $params = [$post['title'], $this->jalali_date()];
                 $this->doQuery($sql2, $params);
 
                 $this->ActivityLog("افزودن " . $post['title'] . " در اسلایدرها");
@@ -1657,7 +1657,7 @@ trait viewsModelTrait
                 $this->response_warning("بنر دیگری با این مشخصات قبلا ثبت شده است", "exist");
             } else {
                 $sql = "INSERT INTO tbl_banner (b_title,b_type,b_create_date) VALUES (?,?,?)";
-                $params = array($post['title'], $post['type'], $this->jaliliDate());
+                $params = array($post['title'], $post['type'], $this->jalali_date());
                 $this->doQuery($sql, $params);
 
                 $this->ActivityLog("افزودن " . $post['title'] . " در بنرهای تبلیغاتی");
@@ -1939,7 +1939,7 @@ trait viewsModelTrait
                 $this->response_warning("کلمه دیگری با این مشخصات قبلا ثبت شده است", "exist");
             } else {
                 $sql = "INSERT INTO tbl_searches (s_phrase,s_suggest_search,s_management_selection,s_date) VALUES (?,?,?,?)";
-                $params = [$post['title'], $post['suggestSearch'], $post['managementSelection'], $this->jaliliDate()];
+                $params = [$post['title'], $post['suggestSearch'], $post['managementSelection'], $this->jalali_date()];
                 $this->doQuery($sql, $params);
 
                 $this->ActivityLog("افزودن " . $post['title'] . " در لیست کلمه های جتجوی پرتکرار");

@@ -99,7 +99,7 @@
                                 <?php foreach ($data['publicData']['todayReserve'] as $todayReserve) { ?>
                                     <?php
                                     $bg = "";
-                                    if(Model::jaliliDate("H:i")>$todayReserve['sre_time']){
+                                    if(Model::jalali_date("H:i")>$todayReserve['sre_time']){
                                         $bg = "background: #ff000036;";
                                     }
                                     ?>

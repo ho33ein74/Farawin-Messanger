@@ -706,7 +706,7 @@ foreach ($data['paymentLog'] as $item) {
                                             $i = 1;
                                             foreach ($data['bookingLatestActivity'] as $activity_data) {
                                                 $date = explode(" ", $activity_data['log_time']);
-                                                $newData = $date['1'] . " - " . Model::MiladiTojalili($date['0'], "-");
+                                                $newData = $date['1'] . " - " . Model::miladi_to_jalali($date['0'], "-");
                                                 ?>
                                                 <tr>
                                                     <td style="vertical-align: middle;width: 5%">
