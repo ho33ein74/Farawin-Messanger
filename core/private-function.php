@@ -277,6 +277,24 @@ trait privateTrait
         }
     }
 
+    function getMenuDisplay($type, $parent_id = 0)
+    {
+        $sql = "SELECT l_id,l_name as title,l_link as link,l_parent_id, l_menu_type as menu_type FROM tbl_link WHERE l_parent_id=? AND l_type=? AND l_status=? ORDER BY l_order";
+        $params = array($parent_id, $type, 1);
+        $result = self::doSelect($sql, $params);
+
+        foreach ($result as &$value) {
+            $subresult = $this->getMenuDisplay($type, $value["l_id"]);
+
+            if (count($subresult) > 0) {
+                $value['children'] = $subresult;
+            }
+        }
+        unset($value);
+
+        return $result;
+    }
+
     function get_all_page_links($count, $page_Number, $href, $per_page, $get_params)
     {
         unset($get_params['url']); // delete url parameter;
