@@ -16,15 +16,17 @@ trait rtlThemeModelTrait
     function rtl_theme_send_request($post)
     {
         try {
-            $sand_box = False;
+            $sand_box = TRUE;
             if($sand_box){
                 $api = 'SandBox-API';
                 $username = 'SandBox-User';
                 $order_id = 'SandBox-Order';
+                $return_value = '&return=-5'; #1,-1,-2,-3,-4,-5,-6,-7
             } else {
                 $api = 'rtl60b70cef16ac6ce487c07ec827c34c'; // API اختصاصی فروشنده
                 $username = $post['username']; //نام کاربری خریدار
                 $order_id = $post['order_code']; // شماره سفارش
+                $return_value = "";
             }
             $productId = "new Product"; // شناسه محصول
             $domain = $_SERVER['SERVER_NAME']; //دامنه
@@ -32,7 +34,7 @@ trait rtlThemeModelTrait
 
             $ch = curl_init();
             curl_setopt($ch,CURLOPT_URL,$url);
-            curl_setopt($ch,CURLOPT_POSTFIELDS,"api=$api&username=$username&order_id=$order_id&domain=$domain&pid=$productId");
+            curl_setopt($ch,CURLOPT_POSTFIELDS,"api=$api&username=$username&order_id=$order_id&domain=$domain&pid=$productId$return_value");
             curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
             curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
             $res = curl_exec($ch);
