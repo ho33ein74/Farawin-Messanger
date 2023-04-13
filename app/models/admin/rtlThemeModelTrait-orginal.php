@@ -1,13 +1,15 @@
 <?php
+
 trait rtlThemeModelTrait_
 {
-    function send($api,$username,$order_id,$domain,$productId="new Product"){
+    function send($api, $username, $order_id, $domain, $product_id = "new Product")
+    {
         $url = 'https://www.rtl-theme.com/oauth/';
         $ch = curl_init();
-        curl_setopt($ch,CURLOPT_URL,$url);
-        curl_setopt($ch,CURLOPT_POSTFIELDS,"api=$api&username=$username&order_id=$order_id&domain=$domain&pid=$productId");
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, "api=$api&username=$username&order_id=$order_id&domain=$domain&pid=$product_id");
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
-        curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         $res = curl_exec($ch);
         curl_close($ch);
         return $res;
@@ -16,22 +18,36 @@ trait rtlThemeModelTrait_
     function rtl_theme_send_request($post)
     {
         try {
-            $api = 'rtl60b70cef16ac6ce487c07ec827c34c'; // API اختصاصی فروشنده
-            $username = $post['username']; //نام کاربری خریدار
-            $order_id = $post['order_code']; // شماره سفارش
-            $productId = "new Product"; // شناسه محصول
+            $sand_box = TRUE;
+            $product_id = "new Product"; // شناسه محصول
             $domain = $_SERVER['SERVER_NAME']; //دامنه
             $url = 'https://www.rtl-theme.com/oauth/';
 
+            if ($sand_box) {
+                $api = 'SandBox-API';
+                $username = 'SandBox-User';
+                $order_id = 'SandBox-Order';
+                $return_value = '&return=-5'; #1,-1,-2,-3,-4,-5,-6,-7
+            } else {
+                $api = 'rtl60b70cef16ac6ce487c07ec827c34c'; // API اختصاصی فروشنده
+                $username = $post['username']; //نام کاربری خریدار
+                $order_id = $post['order_code']; // شماره سفارش
+                $return_value = "";
+            }
+
             $ch = curl_init();
-            curl_setopt($ch,CURLOPT_URL,$url);
-            curl_setopt($ch,CURLOPT_POSTFIELDS,"api=$api&username=$username&order_id=$order_id&domain=$domain&pid=$productId");
+            curl_setopt($ch, CURLOPT_URL, $url);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, "api=$api&username=$username&order_id=$order_id&domain=$domain&pid=$product_id$return_value");
             curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
-            curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
             $res = curl_exec($ch);
             curl_close($ch);
 
-            if($res == "1"){
+            if ($res == "1") {
+                $this->sessionSet("license_username", $username);
+                $this->sessionSet("license_order_id", $order_id);
+                $this->sessionSet("site_domain", $domain);
+
                 $this->ActivityLog("فعالسازی لایسنس اسکریپت");
                 $this->response_success("لایسنس شما با موفقیت فعال شد");
             } else {
@@ -49,7 +65,6 @@ trait rtlThemeModelTrait_
                         $error = 'کد سفارش قبلاً ثبت شده است';
                         break;
                     case '-5':
-                    case '-8':
                         $error = 'کد سفارش مربوط به این نام کاربری نمیباشد.';
                         break;
                     case '-6':

@@ -1,4 +1,5 @@
 <?php
+
 trait rtlThemeTrait_
 {
     function license($func = '', $attrId = 0)
@@ -14,7 +15,7 @@ trait rtlThemeTrait_
     function checkLicense()
     {
         $csrf_token = $this->model->check_csrf_token();
-        if($csrf_token['status']) {
+        if ($csrf_token['status']) {
             $admin_permission = $this->model->admin_permission_check("license_view", $this->checkLoginAdmin);
             if ($admin_permission) {
                 $this->model->rtl_theme_send_request($_POST);

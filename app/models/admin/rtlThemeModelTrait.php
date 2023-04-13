@@ -1,13 +1,15 @@
 <?php
+
 trait rtlThemeModelTrait
 {
-    function send($api,$username,$order_id,$domain,$productId="new Product"){
+    function send($api, $username, $order_id, $domain, $product_id = "new Product")
+    {
         $url = 'https://www.rtl-theme.com/oauth/';
         $ch = curl_init();
-        curl_setopt($ch,CURLOPT_URL,$url);
-        curl_setopt($ch,CURLOPT_POSTFIELDS,"api=$api&username=$username&order_id=$order_id&domain=$domain&pid=$productId");
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, "api=$api&username=$username&order_id=$order_id&domain=$domain&pid=$product_id");
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
-        curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         $res = curl_exec($ch);
         curl_close($ch);
         return $res;
@@ -17,11 +19,11 @@ trait rtlThemeModelTrait
     {
         try {
             $sand_box = TRUE;
-            $productId = "new Product"; // شناسه محصول
+            $product_id = "new Product"; // شناسه محصول
             $domain = $_SERVER['SERVER_NAME']; //دامنه
             $url = 'https://www.rtl-theme.com/oauth/';
 
-            if($sand_box){
+            if ($sand_box) {
                 $api = 'SandBox-API';
                 $username = 'SandBox-User';
                 $order_id = 'SandBox-Order';
@@ -34,14 +36,14 @@ trait rtlThemeModelTrait
             }
 
             $ch = curl_init();
-            curl_setopt($ch,CURLOPT_URL,$url);
-            curl_setopt($ch,CURLOPT_POSTFIELDS,"api=$api&username=$username&order_id=$order_id&domain=$domain&pid=$productId$return_value");
+            curl_setopt($ch, CURLOPT_URL, $url);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, "api=$api&username=$username&order_id=$order_id&domain=$domain&pid=$product_id$return_value");
             curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
-            curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
             $res = curl_exec($ch);
             curl_close($ch);
 
-            if($res == "1"){
+            if ($res == "1") {
                 $this->sessionSet("license_username", $username);
                 $this->sessionSet("license_order_id", $order_id);
                 $this->sessionSet("site_domain", $domain);
