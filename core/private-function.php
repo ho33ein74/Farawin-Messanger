@@ -283,11 +283,11 @@ trait privateTrait
         $params = array($parent_id, $type, 1);
         $result = self::doSelect($sql, $params);
 
-        foreach ($result as &$value) {
-            $subresult = $this->getMenuDisplay($type, $value["l_id"]);
+        foreach ($result as $value) {
+            $sub_result = $this->getMenuDisplay($type, $value["l_id"]);
 
-            if (count($subresult) > 0) {
-                $value['children'] = $subresult;
+            if (count($sub_result) > 0) {
+                $value['children'] = $sub_result;
             }
         }
         unset($value);
