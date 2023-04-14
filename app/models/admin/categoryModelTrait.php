@@ -41,7 +41,7 @@ trait categoryModelTrait
                 $this->response_warning("دسته بندی دیگری با این مشخصات قبلا ثبت شده است", "exist");
             } else {
                 $sql2 = "INSERT INTO tbl_category (name, parent_id, link, c_type, description, status) VALUES (?,?,?,?,?,?)";
-                $params = array($post['title'], ($post['parent'] ?? 0), $post['slug'], $post['type'], $post['description'], 1);
+                $params = array($post['title'], ($post['parent']!="" ? $post['parent']:0), $post['slug'], $post['type'], $post['description'], 1);
                 $this->doQuery($sql2, $params);
 
                 $this->ActivityLog("افزودن " . $post['title'] . " در دسته بندی ها");
