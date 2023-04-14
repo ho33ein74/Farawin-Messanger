@@ -107,7 +107,6 @@ trait categoryModelTrait
             if (sizeof($result) > 0) {
                 $this->doQuery("DELETE FROM tbl_blog WHERE cat_id=?", array($post['id']));
                 $this->doQuery("DELETE FROM tbl_category WHERE id=?", array($post['id']));
-                $this->doQuery("DELETE FROM tbl_variants_category WHERE cat_id=?", array($post['id']));
 
                 $this->ActivityLog("حذف دسته بندی " . $result['0']['name']);
                 $this->response_success("دسته بندی ".$result['0']['name']." باموفقیت حذف شد");
