@@ -91,6 +91,8 @@
         url = location.protocol + "//" + location.host + "/" + url_check_for_edit_page[1] + "/" + url_check_for_edit_page[2] + "/" + "list";
     } else if (url_check_for_edit_page[3] && url_check_for_edit_page[3].includes("edit")) {
         url = location.protocol + "//" + location.host + "/" + url_check_for_edit_page[1] + "/" + url_check_for_edit_page[2];
+    } else if (url_check_for_edit_page[3] && url_check_for_edit_page[3].includes("view")) {
+        url = location.protocol + "//" + location.host + "/" + url_check_for_edit_page[1] + "/" + url_check_for_edit_page[2];
     } else if (url_check_for_edit_page[3] && url_check_for_edit_page[3].includes("tariff")) {
         url = location.protocol + "//" + location.host + "/" + url_check_for_edit_page[1] + "/" + url_check_for_edit_page[2];
     } else if (url_check_for_edit_page[3] && url_check_for_edit_page[3].includes("timing")) {
