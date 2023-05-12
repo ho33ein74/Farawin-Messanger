@@ -80,8 +80,31 @@
         });
     });
 
-    var url = location.protocol + "//" + location.host + window.location.pathname.split('/').slice(0, 10).join('/');
+    var url;
     // for sidebar menu entirely but not cover treeview
+    url_check_for_edit_page = window.location.pathname.split('/');
+    if (url_check_for_edit_page[3] && url_check_for_edit_page[3].includes("-details")) {
+        url = location.protocol + "//" + location.host + "/" + url_check_for_edit_page[1] + "/" + url_check_for_edit_page[2] + "/" + (url_check_for_edit_page[3]).replace("-details", "") + "/" + "list";
+    } else if (url_check_for_edit_page[3] && url_check_for_edit_page[3].includes("details")) {
+        url = location.protocol + "//" + location.host + "/" + url_check_for_edit_page[1] + "/" + url_check_for_edit_page[2] + "/" + "list";
+    } else if (url_check_for_edit_page[3] && url_check_for_edit_page[3].includes("products")) {
+        url = location.protocol + "//" + location.host + "/" + url_check_for_edit_page[1] + "/" + url_check_for_edit_page[2] + "/" + "list";
+    } else if (url_check_for_edit_page[3] && url_check_for_edit_page[3].includes("edit")) {
+        url = location.protocol + "//" + location.host + "/" + url_check_for_edit_page[1] + "/" + url_check_for_edit_page[2];
+    } else if (url_check_for_edit_page[3] && url_check_for_edit_page[3].includes("tariff")) {
+        url = location.protocol + "//" + location.host + "/" + url_check_for_edit_page[1] + "/" + url_check_for_edit_page[2];
+    } else if (url_check_for_edit_page[3] && url_check_for_edit_page[3].includes("timing")) {
+        url = location.protocol + "//" + location.host + "/" + url_check_for_edit_page[1] + "/" + url_check_for_edit_page[2];
+    } else if (url_check_for_edit_page[3] && url_check_for_edit_page[3].includes("widget-add")) {
+        url = location.protocol + "//" + location.host + "/" + url_check_for_edit_page[1] + "/" + url_check_for_edit_page[2];
+    } else if (url_check_for_edit_page[3] && url_check_for_edit_page[3].includes("users")) {
+        url = location.protocol + "//" + location.host + "/" + url_check_for_edit_page[1] + "/" + url_check_for_edit_page[2];
+    } else if (url_check_for_edit_page[3] && url_check_for_edit_page[3].includes("images")) {
+        url = location.protocol + "//" + location.host + "/" + url_check_for_edit_page[1] + "/" + url_check_for_edit_page[2];
+    } else {
+        url = location.protocol + "//" + location.host + window.location.pathname.split('/').slice(0, 10).join('/');
+    }
+
     $('ul.sidebar-menu a').filter(function () {
         return this.href == url;
     }).parent().addClass('active');

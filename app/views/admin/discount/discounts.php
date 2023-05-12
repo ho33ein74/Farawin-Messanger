@@ -439,7 +439,7 @@
 
     (function ($, undefined) {
         $(function () {
-            var $form = $("#priceID, #min_price_applyID, #priceEditID, #min_price_applyEditID");
+            var $form = $("#priceID, #priceEditID");
             var $input = $form.find("input");
             $input.on("keyup", function (event) {
                 var selection = window.getSelection().toString();
@@ -764,7 +764,6 @@
         var first_order = document.getElementById("first_order").checked;
         var discounted_products = document.getElementById("discounted_products").checked;
         var dateExpire = toEnglishNumber(document.getElementById("dateExpire").value);
-        var min_price_apply = toEnglishNumber(removeCommas(document.getElementById("min_price_apply").value));
         var price = toEnglishNumber(removeCommas(document.getElementById("price").value));
         var description = document.getElementById("description").value;
         var services =$("#services").val();
@@ -796,7 +795,6 @@
                 formData.append("number_of_use", number_of_use);
                 formData.append("percent", percent);
                 formData.append("dateExpire", dateExpire);
-                formData.append("min_price_apply", min_price_apply);
                 formData.append("price", price);
                 formData.append("first_order", first_order);
                 formData.append("discounted_products", discounted_products);
@@ -839,7 +837,6 @@
         $("#statusEdit").val($(this).data('status'));
         $("#type_codeEdit").val($(this).data('type')).change();
         $("#expireDateEdit").val($(this).data('expire_date'));
-        $("#min_price_applyEdit").val(numberWithCommas($(this).data('min_price_apply')));
         $("#priceEdit").val(numberWithCommas($(this).data('price')));
         $("#allowed_for_each_userEdit").val(numberWithCommas($(this).data('allowed_for_each_user')));
         document.getElementById("discounted_productsEdit").checked = $(this).data('discounted_products');
@@ -863,7 +860,6 @@
         var percentEdit = toEnglishNumber(document.getElementById("percentEdit").value);
         var statusEdit = toEnglishNumber(document.getElementById("statusEdit").value);
         var expireDateEdit = toEnglishNumber(document.getElementById("expireDateEdit").value);
-        var min_price_applyEdit = toEnglishNumber(removeCommas(document.getElementById("min_price_applyEdit").value));
         var priceEdit = toEnglishNumber(removeCommas(document.getElementById("priceEdit").value));
         var descriptionEdit = document.getElementById("descriptionEdit").value;
         var servicesEdit =$("#servicesEdit").val();
@@ -885,7 +881,6 @@
             formData.append("discounted_productsEdit", discounted_productsEdit);
             formData.append("first_orderEdit", first_orderEdit);
             formData.append("expireDateEdit", expireDateEdit);
-            formData.append("min_price_applyEdit", min_price_applyEdit);
             formData.append("priceEdit", priceEdit);
             formData.append("descriptionEdit", descriptionEdit);
             formData.append("servicesEdit", servicesEdit);
@@ -922,7 +917,6 @@
                         $("#btn-edit-"+id).data('percent', percentEdit);
                         $("#btn-edit-"+id).data('expire_date', expireDateEdit);
                         $("#btn-edit-"+id).data('status', statusEdit);
-                        $("#btn-edit-"+id).data('min_price_apply', min_price_applyEdit);
                         $("#btn-edit-"+id).data('price', priceEdit);
                         $("#btn-edit-"+id).data('description', descriptionEdit);
                         $("#btn-edit-"+id).data('services', servicesEdit);

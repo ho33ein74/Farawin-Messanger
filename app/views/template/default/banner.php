@@ -7,7 +7,11 @@
                             <div class="about_us_mey_team flex flex-col items-center rounded-xl pt-8 pb-9">
                                 <div wire:id="0j4cgteIpUUcup9UOyU1" class="relative " style="" x-data="{ hover : false}" @mouseenter="hover = true" @mouseleave="hover = false">
                                     <a href="<?= $item['bi_link'] ?>" target="_blank">
-                                        <img class="transition duration-200 transform group-hover:scale-110 w-full h-full" src="public/images/banner/<?= $item['bi_image'] ?>" alt="<?= $item['bi_description'] ?>" loading="lazy" srcset="public/images/banner/<?= $item['bi_image'] ?>">
+                                        <img class="transition duration-200 transform group-hover:scale-110 w-full h-full"
+                                             src="public/images/banner/<?= $item['bi_image'] ?>"
+                                             alt="<?= $item['bi_description'] ?>"
+                                             loading="lazy"
+                                             srcset="public/images/banner/<?= $item['bi_image'] ?>">
                                     </a>
                                 </div>
                             </div>

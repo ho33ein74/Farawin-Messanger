@@ -205,7 +205,7 @@ trait discountModelTrait
                     }
                     $btn='';
                     $btn .= '<a style="margin: 1px;" title="مشاهده لیست کاربران" class="btn btn-primary btn-xs" href="'.ADMIN_PATH.'/discounts/users/' . $row['dc_id'] . '"><i class="fa fa-user"></i></a>';
-                    $btn .= '<button style="margin: 1px;" data-toggle="modal" title="ویرایش کد تخفیف" data-target="#edit-Modal" id="btn-edit-' . $row['dc_id'] . '" data-id="' . $row['dc_id'] . '" data-type="' . $row['dc_type'] . '" data-tilte="' . $row['dc_title'] . '" data-status="' . $row['dc_status'] . '" data-code="' . $row['dc_code'] . '" data-first_order="' . $row['dc_first_order'] . '"  data-discounted_products="' . $row['dc_discounted_products'] . '"  data-allowed_for_each_user="' . $row['dc_allowed_for_each_user'] . '"  data-number_of_use="' . $row['dc_number_of_use'] . '" data-expire_date="' . $row['dc_expire_date'] . '" data-price="' . $row['dc_price'] . '" data-description="' . $row['dc_description'] . '" data-percent="' . $row['dc_percent'] . '" data-min_price_apply="' . $row['dc_min_price_apply'] . '" data-services="['.rtrim($servicesId, ",").']" data-courses="['.rtrim($coursesId, ",").']" data-staffs="['.rtrim($staffsId, ",").']" class="btn btn-warning btn-xs"><i class="fa fa-pencil-square-o"></i></button>';
+                    $btn .= '<button style="margin: 1px;" data-toggle="modal" title="ویرایش کد تخفیف" data-target="#edit-Modal" id="btn-edit-' . $row['dc_id'] . '" data-id="' . $row['dc_id'] . '" data-type="' . $row['dc_type'] . '" data-tilte="' . $row['dc_title'] . '" data-status="' . $row['dc_status'] . '" data-code="' . $row['dc_code'] . '" data-first_order="' . $row['dc_first_order'] . '"  data-discounted_products="' . $row['dc_discounted_products'] . '"  data-allowed_for_each_user="' . $row['dc_allowed_for_each_user'] . '"  data-number_of_use="' . $row['dc_number_of_use'] . '" data-expire_date="' . $row['dc_expire_date'] . '" data-price="' . $row['dc_price'] . '" data-description="' . $row['dc_description'] . '" data-percent="' . $row['dc_percent'] . '" data-services="['.rtrim($servicesId, ",").']" data-courses="['.rtrim($coursesId, ",").']" data-staffs="['.rtrim($staffsId, ",").']" class="btn btn-warning btn-xs"><i class="fa fa-pencil-square-o"></i></button>';
                     $btn .= '<button style="margin: 1px;" data-toggle="modal" title="حذف کد تخفیف" data-target="#del-Modal" id="btn-del-style-' . $row['dc_id'] . '" data-id="' . $row['dc_id'] . '" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button>';
                     return $btn;
                 }
@@ -266,7 +266,7 @@ trait discountModelTrait
                     $discounted_products = 1;
                 }
                 $sql2 = "INSERT INTO tbl_discounts (dc_title, dc_type,dc_code, dc_number_of_use, dc_create_date, dc_expire_date, dc_percent, dc_min_price_apply, dc_price, dc_first_order, dc_discounted_products, dc_allowed_for_each_user, dc_description, dc_status) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-                $params = array($post['title'], $post['type_code'], $post['code'], $post['number_of_use'], $this->jalali_date(), $post['dateExpire'], $post['percent'], $post['min_price_apply'], $post['price'], $first_order, $discounted_products, $post['allowed_for_each_user'], $post['description'],  1);
+                $params = array($post['title'], $post['type_code'], $post['code'], $post['number_of_use'], $this->jalali_date(), $post['dateExpire'], $post['percent'], 0, $post['price'], $first_order, $discounted_products, $post['allowed_for_each_user'], $post['description'],  1);
                 $this->doQuery($sql2, $params);
 
                 $discountId = Model::$conn->lastInsertId();
@@ -327,7 +327,7 @@ trait discountModelTrait
                 }
 
                 $sql = "UPDATE tbl_discounts SET dc_first_order=?, dc_discounted_products=?, dc_allowed_for_each_user=?, dc_title=?, dc_code=?, dc_number_of_use=?, dc_expire_date=?, dc_percent=?, dc_min_price_apply=?, dc_price=?, dc_description=?, dc_status=? WHERE dc_id=?";
-                $params = array($first_order, $discounted_products, $post['allowed_for_each_userEdit'], $post['titleEdit'], $post['codeEdit'], $post['number_of_useEdit'], $post['expireDateEdit'], $post['percentEdit'], $post['min_price_applyEdit'], $post['priceEdit'], $post['descriptionEdit'], $post['statusEdit'], $post['id']);
+                $params = array($first_order, $discounted_products, $post['allowed_for_each_userEdit'], $post['titleEdit'], $post['codeEdit'], $post['number_of_useEdit'], $post['expireDateEdit'], $post['percentEdit'], 0, $post['priceEdit'], $post['descriptionEdit'], $post['statusEdit'], $post['id']);
                 $this->doQuery($sql, $params);
 
                 if ($post['id'] != "" and $post['type_codeEdit'] == "service") {
