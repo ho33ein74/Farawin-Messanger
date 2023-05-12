@@ -80,29 +80,26 @@
         });
     });
 
-    var url;
     // for sidebar menu entirely but not cover treeview
     url_check_for_edit_page = window.location.pathname.split('/');
+    var url = location.protocol + "//" + location.host + "/" + url_check_for_edit_page[1] + "/" + url_check_for_edit_page[2];
     if (url_check_for_edit_page[3] && url_check_for_edit_page[3].includes("-details")) {
-        url = location.protocol + "//" + location.host + "/" + url_check_for_edit_page[1] + "/" + url_check_for_edit_page[2] + "/" + (url_check_for_edit_page[3]).replace("-details", "") + "/" + "list";
-    } else if (url_check_for_edit_page[3] && url_check_for_edit_page[3].includes("details")) {
-        url = location.protocol + "//" + location.host + "/" + url_check_for_edit_page[1] + "/" + url_check_for_edit_page[2] + "/" + "list";
-    } else if (url_check_for_edit_page[3] && url_check_for_edit_page[3].includes("products")) {
-        url = location.protocol + "//" + location.host + "/" + url_check_for_edit_page[1] + "/" + url_check_for_edit_page[2] + "/" + "list";
-    } else if (url_check_for_edit_page[3] && url_check_for_edit_page[3].includes("edit")) {
-        url = location.protocol + "//" + location.host + "/" + url_check_for_edit_page[1] + "/" + url_check_for_edit_page[2];
-    } else if (url_check_for_edit_page[3] && url_check_for_edit_page[3].includes("view")) {
-        url = location.protocol + "//" + location.host + "/" + url_check_for_edit_page[1] + "/" + url_check_for_edit_page[2];
-    } else if (url_check_for_edit_page[3] && url_check_for_edit_page[3].includes("tariff")) {
-        url = location.protocol + "//" + location.host + "/" + url_check_for_edit_page[1] + "/" + url_check_for_edit_page[2];
-    } else if (url_check_for_edit_page[3] && url_check_for_edit_page[3].includes("timing")) {
-        url = location.protocol + "//" + location.host + "/" + url_check_for_edit_page[1] + "/" + url_check_for_edit_page[2];
-    } else if (url_check_for_edit_page[3] && url_check_for_edit_page[3].includes("widget-add")) {
-        url = location.protocol + "//" + location.host + "/" + url_check_for_edit_page[1] + "/" + url_check_for_edit_page[2];
-    } else if (url_check_for_edit_page[3] && url_check_for_edit_page[3].includes("users")) {
-        url = location.protocol + "//" + location.host + "/" + url_check_for_edit_page[1] + "/" + url_check_for_edit_page[2];
-    } else if (url_check_for_edit_page[3] && url_check_for_edit_page[3].includes("images")) {
-        url = location.protocol + "//" + location.host + "/" + url_check_for_edit_page[1] + "/" + url_check_for_edit_page[2];
+        url = url + "/" + (url_check_for_edit_page[3]).replace("-details", "") + "/" + "list";
+    } else if (
+        url_check_for_edit_page[3] && url_check_for_edit_page[3].includes("details") ||
+        url_check_for_edit_page[3] && url_check_for_edit_page[3].includes("products")
+    ) {
+        url = url + "/" + "list";
+    } else if (
+        url_check_for_edit_page[3] && url_check_for_edit_page[3].includes("edit") ||
+        url_check_for_edit_page[3] && url_check_for_edit_page[3].includes("view") ||
+        url_check_for_edit_page[3] && url_check_for_edit_page[3].includes("tariff") ||
+        url_check_for_edit_page[3] && url_check_for_edit_page[3].includes("timing") ||
+        url_check_for_edit_page[3] && url_check_for_edit_page[3].includes("widget-add") ||
+        url_check_for_edit_page[3] && url_check_for_edit_page[3].includes("users") ||
+        url_check_for_edit_page[3] && url_check_for_edit_page[3].includes("images")
+    ) {
+        url = url;
     } else {
         url = location.protocol + "//" + location.host + window.location.pathname.split('/').slice(0, 10).join('/');
     }
