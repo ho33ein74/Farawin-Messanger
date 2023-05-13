@@ -9,7 +9,7 @@
             $this->checkLogin = Model::decrypt(Model::cookie_get('userId'), KEY);
             date_default_timezone_set("Asia/Tehran");
         }
-        
+
         function view($viewUrl, $data = array())
         {
             $checkView = explode("/",$viewUrl);
@@ -52,11 +52,9 @@
                 $url_access = array(
                     'localhost',
                     '127.0.0.1',
-                    'reservation.test',
-                    'reservation.unixscript.ir',
                 );
 
-                if (in_array($_SERVER['HTTP_HOST'], $url_access)) {
+                if (!in_array($_SERVER['HTTP_HOST'], $url_access)) {
                     if ($checkView[0] != "admin") { // صفحات سایت
                         if ($this->model->getPublicInfo("development_mode") == "1") {
                             require_once 'app/views/notfound/development-' . $data['getPublicInfo']['theme'] . '.php';
@@ -83,7 +81,7 @@
                 $this->model->redirect_link($checkRedirectLink[0]['new_url'], $checkRedirectLink[0]['type']);
             }
         }
-        
+
         function model($modelUrl)
         {
             require_once 'app/models/model_' . $modelUrl . '.php';
