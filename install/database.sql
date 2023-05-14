@@ -2065,7 +2065,9 @@ INSERT INTO `tbl_settings` (`id`, `key`, `value`) VALUES
 	(101, 'float_contact_menu_items_animation', 'fromaside'),
 	(102, 'float_contact_mode_select_options', 'regular'),
 	(103, 'float_contact_menu_click_away', '1'),
-	(104, 'bot_status', '0');
+	(104, 'bot_status', '0'),
+    (105, 'license_username', NULL),
+    (106, 'license_order_id', NULL);
 
 -- Dumping structure for table reservation.tbl_sidebar
 CREATE TABLE IF NOT EXISTS `tbl_sidebar` (

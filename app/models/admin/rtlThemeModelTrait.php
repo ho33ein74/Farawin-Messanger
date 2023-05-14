@@ -2,52 +2,23 @@
 
 trait rtlThemeModelTrait
 {
-    function send($api, $username, $order_id, $domain, $product_id = "new Product")
-    {
-        $url = 'https://www.rtl-theme.com/oauth/';
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, "api=$api&username=$username&order_id=$order_id&domain=$domain&pid=$product_id");
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-        $res = curl_exec($ch);
-        curl_close($ch);
-        return $res;
-    }
-
-    function rtl_theme_send_request($post)
+    function checkLicense($post)
     {
         try {
             $sand_box = TRUE;
-            $product_id = "new Product"; // شناسه محصول
-            $domain = $_SERVER['SERVER_NAME']; //دامنه
-            $url = 'https://www.rtl-theme.com/oauth/';
+            $username = $post['username']; //نام کاربری خریدار
+            $order_id = $post['order_code']; // شماره سفارش
 
-            if ($sand_box) {
-                $api = 'SandBox-API';
-                $username = 'SandBox-User';
-                $order_id = 'SandBox-Order';
-                $return_value = '&return=1'; #1,-1,-2,-3,-4,-5,-6,-7
-            } else {
-                $api = 'rtl60b70cef16ac6ce487c07ec827c34c'; // API اختصاصی فروشنده
-                $username = $post['username']; //نام کاربری خریدار
-                $order_id = $post['order_code']; // شماره سفارش
-                $return_value = "";
-            }
+            $result = $this->rtl_theme_send_request($sand_box, $username, $order_id);
 
-            $ch = curl_init();
-            curl_setopt($ch, CURLOPT_URL, $url);
-            curl_setopt($ch, CURLOPT_POSTFIELDS, "api=$api&username=$username&order_id=$order_id&domain=$domain&pid=$product_id$return_value");
-            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-            $res = curl_exec($ch);
-            curl_close($ch);
-
-            if ($res == "1") {
+            if ($result == "1") {
                 $this->session_set("license_check_expire", time() + (60 * 60 * 12 * 7));
                 $this->session_set("license_username", $username);
                 $this->session_set("license_order_id", $order_id);
-                $this->session_set("site_domain", $domain);
+
+                $sql = "UPDATE tbl_settings SET `value`=? WHERE `key`=?";
+                $this->doQuery($sql, [$this->encrypt($username, $_SERVER['SERVER_NAME']), "license_username"]);
+                $this->doQuery($sql, [$this->encrypt($order_id, $_SERVER['SERVER_NAME']), "license_order_id"]);
 
                 $this->ActivityLog("فعالسازی لایسنس اسکریپت");
                 $this->response_success("لایسنس شما با موفقیت فعال شد");
@@ -92,13 +63,42 @@ trait rtlThemeModelTrait
             unset($_SESSION['license_check_expire']);
             unset($_SESSION['license_username']);
             unset($_SESSION['license_order_id']);
-            unset($_SESSION['site_domain']);
+
+            $sql = "UPDATE tbl_settings SET `value`=? WHERE `key`=?";
+            $this->doQuery($sql, [NULL, "license_username"]);
+            $this->doQuery($sql, [NULL, "license_order_id"]);
 
             $this->ActivityLog("غیرفعالسازی لایسنس اسکریپت");
             $this->response_success("لایسنس شما با غیرموفقیت فعال شد");
         } catch (Exception $e) {
             $this->response_error($e->getMessage());
         }
+    }
+
+    public function rtl_theme_send_request($sand_box, $username, $order_id)
+    {
+        $url = 'https://www.rtl-theme.com/oauth/';
+        $product_id = "new Product"; // شناسه محصول
+        $domain = $_SERVER['SERVER_NAME']; //دامنه
+
+        if ($sand_box) {
+            $api = 'SandBox-API';
+            $username = 'SandBox-User';
+            $order_id = 'SandBox-Order';
+            $return_value = '&return=1'; #1,-1,-2,-3,-4,-5,-6,-7
+        } else {
+            $api = 'rtl60b70cef16ac6ce487c07ec827c34c'; // API اختصاصی فروشنده
+            $return_value = "";
+        }
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, "api=$api&username=$username&order_id=$order_id&domain=$domain&pid=$product_id$return_value");
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+        $res = curl_exec($ch);
+        curl_close($ch);
+        return $res;
     }
 
 }

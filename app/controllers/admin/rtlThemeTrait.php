@@ -18,7 +18,7 @@ trait rtlThemeTrait
         if ($csrf_token['status']) {
             $admin_permission = $this->model->admin_permission_check("license_view", $this->checkLoginAdmin);
             if ($admin_permission) {
-                $this->model->rtl_theme_send_request($_POST);
+                $this->model->checkLicense($_POST);
             } else {
                 $this->model->response_access_denied();
             }

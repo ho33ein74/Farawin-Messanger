@@ -151,9 +151,6 @@
 
 <script>
     $("#btnDeactive").on('click', function () {
-        var username = document.getElementById("username").value;
-        var order_code = toEnglishNumber(document.getElementById("order_code").value);
-
         $("#btnDeactive").attr("disabled", "disabled");
         document.getElementById("btnDeactive").value =("در حال بررسی...");
 
