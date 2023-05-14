@@ -27,7 +27,7 @@ trait rtlThemeModelTrait
                 $api = 'SandBox-API';
                 $username = 'SandBox-User';
                 $order_id = 'SandBox-Order';
-                $return_value = '&return=-5'; #1,-1,-2,-3,-4,-5,-6,-7
+                $return_value = '&return=1'; #1,-1,-2,-3,-4,-5,-6,-7
             } else {
                 $api = 'rtl60b70cef16ac6ce487c07ec827c34c'; // API اختصاصی فروشنده
                 $username = $post['username']; //نام کاربری خریدار
@@ -44,6 +44,7 @@ trait rtlThemeModelTrait
             curl_close($ch);
 
             if ($res == "1") {
+                $this->session_set("license_check_expire", time() + (60 * 60 * 12 * 7));
                 $this->session_set("license_username", $username);
                 $this->session_set("license_order_id", $order_id);
                 $this->session_set("site_domain", $domain);
@@ -80,6 +81,21 @@ trait rtlThemeModelTrait
                 $this->ActivityLog($error);
                 $this->response_error($error);
             }
+        } catch (Exception $e) {
+            $this->response_error($e->getMessage());
+        }
+    }
+
+    function deactiveLicense($post)
+    {
+        try {
+            unset($_SESSION['license_check_expire']);
+            unset($_SESSION['license_username']);
+            unset($_SESSION['license_order_id']);
+            unset($_SESSION['site_domain']);
+
+            $this->ActivityLog("غیرفعالسازی لایسنس اسکریپت");
+            $this->response_success("لایسنس شما با غیرموفقیت فعال شد");
         } catch (Exception $e) {
             $this->response_error($e->getMessage());
         }
