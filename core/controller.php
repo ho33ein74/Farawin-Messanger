@@ -12,6 +12,8 @@
 
         function view($viewUrl, $data = array())
         {
+            $license_info = $this->model->un_serialize_license_info();
+
             $checkView = explode("/",$viewUrl);
             if($this->model->getPublicInfo("admin_ip_lock") == "1" or $checkView[0] != "admin"){
                 $userId = Model::decrypt(Model::cookie_get('userId'), KEY);
@@ -62,19 +64,55 @@
                             require_once 'app/views/' . $viewUrl . '-' . $data['getPublicInfo']['theme'] . '.php';
                         }
                     } else { //صفحات پنل مدیریت
-                        if ($this->model->getPublicInfo("admin_ip_lock") == "1") {
-                            $ip_list = explode(",", $this->model->getPublicInfo("admin_ip"));
-                            if (in_array($data['user_ip'], $ip_list)) {
-                                require_once 'app/views/' . $viewUrl . '.php';
+                        //شروع بررسی لایسنس راست چین
+                        $access = True;
+                        if(!in_array($viewUrl, array("admin/login/login", "admin/index"))) {
+                            if ($this->model->getPublicInfo("license_info") != "") {
+                                if($license_info['license_domain'] == $_SERVER['SERVER_NAME']) {
+                                    if (time() >= $license_info['license_check_expire']) {
+                                        $result = $this->model->rtl_theme_send_request(
+                                            $license_info['license_username'],
+                                            $license_info['license_order_id']
+                                        );
+
+                                        if ($result == "OK") {
+                                            $this->model->rtl_theme_set_session_check_expire(
+                                                $license_info['license_username'],
+                                                $license_info['license_order_id']
+                                            );
+
+                                            $access = TRUE;
+                                        } else {
+                                            $access = False;
+                                        }
+                                    } else {
+                                        $access = TRUE;
+                                    }
+                                } else {
+                                    $access = False;
+                                }
                             } else {
-                                require_once 'app/views/notfound/error-ip-' . $data['getPublicInfo']['theme'] . '.php';
+                                $access = False;
+                            }
+                        }
+                        //پایان بررسی لایسنس راست چین
+
+                        if($access) {
+                            if ($this->model->getPublicInfo("admin_ip_lock") == "1") {
+                                $ip_list = explode(",", $this->model->getPublicInfo("admin_ip"));
+                                if (in_array($data['user_ip'], $ip_list)) {
+                                    require_once 'app/views/' . $viewUrl . '.php';
+                                } else {
+                                    require_once 'app/views/notfound/error-ip-' . $data['getPublicInfo']['theme'] . '.php';
+                                }
+                            } else {
+                                require_once 'app/views/' . $viewUrl . '.php';
                             }
                         } else {
-                            require_once 'app/views/' . $viewUrl . '.php';
+                            require_once 'app/views/admin/license/active.php';
                         }
                     }
                 } else {
-                    $data['url_access'] = $url_access;
                     require_once 'app/views/notfound/error-' . $data['getPublicInfo']['theme'] . '.php';
                 }
             } else {

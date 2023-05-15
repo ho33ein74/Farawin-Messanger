@@ -72,8 +72,12 @@ class admin extends Controller
         $admin_permission = $this->model->admin_permission_check("dashboard_view", $this->checkLoginAdmin);
         if ($admin_permission) {
             $getDashboardItems = $this->model->getDashboardItems($this->checkLoginAdmin);
+            $get_license_error_msg = $this->model->get_license_error_msg();
 
-            $data = array('dashboardItems' => $getDashboardItems);
+            $data = array(
+                'dashboardItems' => $getDashboardItems,
+                'license_error_msg' => $get_license_error_msg
+            );
             $this->view('admin/index', $data);
         } else {
             $this->noaccess();

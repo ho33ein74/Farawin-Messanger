@@ -41,10 +41,7 @@
                     <div class="text-center md:bottom-16 -bottom-28">
                         <div class="mb-5">
                             <h2 class="text-blue-700 text-shadow-blueShadow sm:text-100 text-33 font-medium sm:mb-3 mb-1 dark:text-blue-950">خطا در دسترسی</h2>
-                            <p class="sm:text-22 text-sm text-gray-880 font-medium dark:text-white mt-2 mb-4">این اسکریپت تنها روی دامنه (های) زیر قابل نصب است</p>
-                            <?php foreach ($data['url_access'] as $url){ ?>
-                                <p class="sm:text-22 text-sm text-gray-880 font-medium dark:text-white mt-2"><?= $url; ?></p>
-                            <?php } ?>
+                            <p class="sm:text-22 text-sm text-gray-880 font-medium dark:text-white mt-2 mb-4">متاسفانه این اسکریپت روی لوکال هاست قابل نصب نمی باشد</p>
                         </div>
                         <div class="mb-6">
                             <a class="text-blue-700 font-bold sm:text-lg dark:text-blue-950 text-xs" href="<?= SITE; ?>">ارتباط با تیم <?= DEVELOPER ?>

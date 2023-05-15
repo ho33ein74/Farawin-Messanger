@@ -95,7 +95,7 @@ class model_user extends Model
         $sql = "UPDATE tbl_user SET image=? WHERE id=?";
         $params = [0, $userId];
         $this->doQuery($sql, $params);
-        Model::cookie_set('imageUserProfile', FALSE, 30);
+        Model::cookie_set('imageUserProfile', FALSE, time() + (24 * 60 * 60 * 30));
 
         echo "delete";
     }

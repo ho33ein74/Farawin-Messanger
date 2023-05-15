@@ -88,7 +88,7 @@ class model_login extends Model
         $code = self::check_param($form['code']);
         if(ENAMAD_USER_ACTIVE == 1 and $mobile == ENAMAD_USERNAME) {
             if ($code == ENAMAD_PASSWORD) {
-                Model::cookie_set('userId', Model::encrypt(1000, KEY), 1);
+                Model::cookie_set('userId', Model::encrypt(1000, KEY), time() + (24 * 60 * 60 * 1));
                 unset($_SESSION['mobile_for_verify']);
 
                 $this->response_success("باموفقیت وارد سایت شدید.");
@@ -100,7 +100,7 @@ class model_login extends Model
             $result = $this->doSelect("SELECT * FROM tbl_customer WHERE `c_verification_code`=? AND `c_mobile_num`=?", $params);
 
             if (sizeof($result) > 0 and !empty($code)) {
-                Model::cookie_set('userId', Model::encrypt($result[0]['customer_vids_id'], KEY), $this->getPublicInfo('cookie_duration'));
+                Model::cookie_set('userId', Model::encrypt($result[0]['customer_vids_id'], KEY), time() + (24 * 60 * 60 * $this->getPublicInfo('cookie_duration')));
 
                 $sql = "UPDATE tbl_customer SET c_verification_code=? WHERE customer_vids_id=?";
                 $this->doQuery($sql, array(NULL, $result[0]['customer_vids_id']));

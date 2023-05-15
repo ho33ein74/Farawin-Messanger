@@ -1957,7 +1957,7 @@ CREATE TABLE IF NOT EXISTS `tbl_settings` (
   `key` text,
   `value` text,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=105 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=106 DEFAULT CHARSET=utf8mb3;
 
 -- Dumping data for table reservation.tbl_settings: ~104 rows (approximately)
 DELETE FROM `tbl_settings`;
@@ -2066,8 +2066,7 @@ INSERT INTO `tbl_settings` (`id`, `key`, `value`) VALUES
 	(102, 'float_contact_mode_select_options', 'regular'),
 	(103, 'float_contact_menu_click_away', '1'),
 	(104, 'bot_status', '0'),
-    (105, 'license_username', NULL),
-    (106, 'license_order_id', NULL);
+    (105, 'license_info', NULL);
 
 -- Dumping structure for table reservation.tbl_sidebar
 CREATE TABLE IF NOT EXISTS `tbl_sidebar` (

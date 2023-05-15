@@ -1,3 +1,6 @@
+<?php
+$license_info = Model::un_serialize_license_info();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -56,14 +59,14 @@
                                     <div class='col-md-4'>
                                         <div class="form-group" style="text-align:right">
                                             <label style="width: 100%" align="right" for="username">:نام کاربری راست چین</label>
-                                            <input style="border-radius: 3px;text-align:left" type="text" class="form-control" id="username" name="username" value="<?= Model::session_get("license_username") ?>">
+                                            <input style="border-radius: 3px;text-align:left" type="text" class="form-control" id="username" name="username" value="<?= $data['getPublicInfo']['license_info']!="" ? $license_info['license_username']:""; ?>">
                                         </div>
                                     </div>
 
                                     <div class='col-md-4'>
                                         <div class="form-group" style="text-align:right">
                                             <label style="width: 100%" align="right" for="order_code">:کد سفارش راست چین</label>
-                                            <input style="border-radius: 3px;text-align:left" type="text" class="form-control" id="order_code" name="order_code" value="<?= Model::session_get("license_order_id") ?>">
+                                            <input style="border-radius: 3px;text-align:left" type="text" class="form-control" id="order_code" name="order_code" value="<?= $data['getPublicInfo']['license_info']!="" ? $license_info['license_order_id']:""; ?>">
                                         </div>
                                     </div>
 
@@ -76,13 +79,13 @@
                                 </div>
                                 <!-- /.box-body -->
 
-                                <?php if(Model::session_get("license_order_id")==False AND Model::session_get("license_username")==False){ ?>
+                                <?php if((in_array($data['getPublicInfo']['license_info'], array(NULL, "")))){ ?>
                                     <div class="box-footer">
                                         <input id="btnActive" class="btn btn-dropbox" value="فعالسازی" type="submit">
                                     </div>
                                 <?php } else { ?>
                                     <div class="box-footer">
-                                        <input id="btnDeactive" class="btn btn-danger" value="غیرفعاسازی" type="submit">
+                                        <input id="btnDeactive" class="btn btn-danger" value="غیرفعالسازی" type="submit">
                                     </div>
                                 <?php } ?>
                             </div>

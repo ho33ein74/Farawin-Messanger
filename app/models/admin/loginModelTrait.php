@@ -16,7 +16,7 @@ trait loginModelTrait
                         if (password_verify($password, $result[0]['a_password'])) {
                             if ($result[0]['google_auth_status'] == 0) {
                                 $this->cookie_init();
-                                $this->cookie_set('adminId', $this->encrypt($result[0]['a_id'], KEY), $this->getPublicInfo('cookie_duration'));
+                                $this->cookie_set('adminId', $this->encrypt($result[0]['a_id'], KEY), time() + (24 * 60 * 60 * $this->getPublicInfo('cookie_duration')));
                                 $this->ActivityLog("ورود به پنل مدیریت", $result[0]['a_id']);
                                 $this->response_success(".باموفقیت وارد شدید :)");
                             } else {
@@ -53,7 +53,7 @@ trait loginModelTrait
                 $pga = new PHPGangsta_GoogleAuthenticator();
                 if ($pga->verifyCode($result[0]['google_secret_code'], $form['code'], 2)) {
                     $this->cookie_init();
-                    $this->cookie_set('adminId', $this->encrypt($result[0]['a_id'], KEY), $this->getPublicInfo('cookie_duration'));
+                    $this->cookie_set('adminId', $this->encrypt($result[0]['a_id'], KEY), time() + (24 * 60 * 60 * $this->getPublicInfo('cookie_duration')));
                     $this->ActivityLog("ورود به پنل مدیریت", $result[0]['a_id']);
 
                     $this->response_success(".باموفقیت وارد شدید :)");

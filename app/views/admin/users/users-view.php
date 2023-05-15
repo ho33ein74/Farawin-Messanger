@@ -48,7 +48,7 @@
                                 <img class="profile-user-img img-responsive img-circle"
                                      onerror="this.src='public/images/user-default-image.jpg'"
                                      src="<?= $data['getUserInfo']['c_image'] ?>" alt="<?= $data['getUserInfo']['c_name']; ?>">
-                                <h3 style="text-align: center;margin-left:0" class="widget-user-username">
+                                <h3 style="text-align: center;margin-left:0;margin-right: 0;" class="widget-user-username">
                                     <?= $data['getUserInfo']['c_name']!="" ? $data['getUserInfo']['c_name']." ".$data['getUserInfo']['c_family']:$data['getUserInfo']['c_display_name']; ?>
                                     <a data-step="2" data-intro="برای ویرایش اطلاعات مشتری می توانید از این دکمه استفاده نمایید."  href="<?= ADMIN_PATH; ?>/users/edit/<?= $data['getUserInfo']['customer_vids_id'] ?>"  class="btn btn-warning btn-xs">
                                         <i class="fa fa-pencil-square-o"></i>

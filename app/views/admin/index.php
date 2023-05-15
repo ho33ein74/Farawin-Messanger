@@ -1,3 +1,6 @@
+<?php
+$license_info = Model::un_serialize_license_info();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -37,6 +40,9 @@
 
         <!-- Main content -->
         <section class="content">
+
+            <?= $data['license_error_msg']; ?>
+
             <?php if($data['dashboardItems'] == ""){ ?>
                 <div class="row">
                     <div class="col-lg-12 col-xs-12 text-center">

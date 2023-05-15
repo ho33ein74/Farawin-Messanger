@@ -2,6 +2,115 @@
 
 trait publicTrait
 {
+    public function rtl_theme_send_request($username, $order_id)
+    {
+        $sand_box = 0;
+        $url = 'https://www.rtl-theme.com/oauth/';
+        $product_id = "new Product"; // شناسه محصول
+        $domain = $_SERVER['SERVER_NAME']; //دامنه
+
+        if ($sand_box) {
+            $api = 'SandBox-API';
+            $username = 'SandBox-User';
+            $order_id = 'SandBox-Order';
+            $return_value = '&return=1'; #1,-1,-2,-3,-4,-5,-6,-7
+        } else {
+            $api = 'rtl60b70cef16ac6ce487c07ec827c34c'; // API اختصاصی فروشنده
+            $return_value = "";
+        }
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, "api=$api&username=$username&order_id=$order_id&domain=$domain&pid=$product_id$return_value");
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+        $result = curl_exec($ch);
+        curl_close($ch);
+
+        switch ($result) {
+            case '1':
+                $message = 'OK';
+                break;
+            case '-1':
+                $message = 'کلید API اشتباه است';
+                break;
+            case '-2':
+                $message = 'نام کاربری اشتباه است';
+                break;
+            case '-3':
+                $message = 'کد سفارش اشتباه است';
+                break;
+            case '-4':
+                $message = 'کد سفارش قبلاً ثبت شده است';
+                break;
+            case '-5':
+                $message = 'کد سفارش مربوط به این نام کاربری نمیباشد.';
+                break;
+            case '-6':
+                $message = 'اطلاعات وارد شده در فرمت صحیح نمیباشند!';
+                break;
+            case '-7':
+                $message = 'کد سفارش مربوط به این محصول نیست';
+                break;
+            default:
+                $message = 'خطای غیرمنتظره رخ داده است';
+                break;
+        }
+
+        return $message;
+    }
+
+    public function rtl_theme_set_session_check_expire($username, $order_id, $type='product')
+    {
+//        $duration = time() + (24 * 60 * 60 * 7);
+        $duration = time() + 30;
+
+        $sql = "UPDATE tbl_settings SET `value`=? WHERE `key`=?";
+        $data = array(
+            "license_username" => $username,
+            "license_order_id" => $order_id,
+            "license_domain" => $_SERVER['SERVER_NAME'],
+            "license_check_expire" => $duration,
+            "license_type" => $type
+        );
+        $this->doQuery($sql, [$this->serialize_license_info($data), "license_info"]);
+    }
+
+    public static function un_serialize_license_info()
+    {
+        return unserialize(
+            self::decrypt(
+                self::getPublicInfo("license_info"),
+                KEY . "#Un!xTeam#" . $_SERVER['SERVER_NAME']
+            )
+        );
+    }
+
+    public static function get_license_error_msg()
+    {
+        $license_info = self::un_serialize_license_info();
+        $alert = "";
+        if(time() >= $license_info['license_check_expire'] AND $license_info['license_type'] == "demo"){
+            $alert .= '<div style="direction: rtl" class="alert alert-warning callout callout-warning alert-dismissible">';
+            $alert .= 'متاسفانه مدت زمان استفاده رایگان از اسکریپت ونسا به پایان رسیده است؛ برای فعالسازی دائمی و استفاده از اسکریپت لطفا از <a href="'.ADMIN_PATH.'/license">اینجا</a> آن را فعال نمایید.';
+            $alert .= '</div>';
+        } else if((time() >= $license_info['license_check_expire'] AND $license_info['license_type'] == "product") OR self::getPublicInfo("license_info")=="") {
+            $alert .=  '<div style="direction: rtl" class="alert alert-danger callout callout-danger alert-dismissible">';
+            $alert .= 'متاسفانه اسکریپت ونسا غیرفعال شده است برای فعالسازی مجدد اسکریپت و دسترسی به تمامی امکانات لطفا از <a href="'.ADMIN_PATH.'/license">اینجا</a> آن را فعال نمایید.';
+            $alert .= '</div>';
+        }
+
+        return $alert;
+    }
+
+    public static function serialize_license_info($data)
+    {
+        return self::encrypt(
+            serialize($data),
+            KEY . "#Un!xTeam#" . $_SERVER['SERVER_NAME']
+        );
+    }
+
     public static function minify_style_file($styles)
     {
         $styles = preg_replace('/\s+/is', ' ', $styles);
@@ -389,13 +498,15 @@ trait publicTrait
         @ob_start();
     }
 
-    public static function cookie_set($name, $value, $duratain = 30)
+    public static function cookie_set($name, $value, $duratain)
     {
-        setcookie($name, $value, time() + (24 * 60 * 60 * $duratain), '/', NULL, NULL, TRUE);
+        @self::cookie_init();
+        setcookie($name, $value, $duratain, '/', NULL, NULL, TRUE);
     }
 
     public static function cookie_get($name)
     {
+        @self::cookie_init();
         if (isset($_COOKIE[$name])) {
             return $_COOKIE[$name];
         } else {
