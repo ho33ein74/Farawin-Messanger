@@ -1,3 +1,6 @@
+<?php
+$license_info = Model::un_serialize_license_info();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -56,14 +59,14 @@
                                     <div class='col-md-4'>
                                         <div class="form-group" style="text-align:right">
                                             <label style="width: 100%" align="right" for="username">:نام کاربری راست چین</label>
-                                            <input style="border-radius: 3px;text-align:left" type="text" class="form-control" id="username" name="username" required>
+                                            <input style="border-radius: 3px;text-align:left" type="text" class="form-control" id="username" name="username" value="<?= $data['getPublicInfo']['license_info']!="" ? $license_info['license_username']:""; ?>">
                                         </div>
                                     </div>
 
                                     <div class='col-md-4'>
                                         <div class="form-group" style="text-align:right">
                                             <label style="width: 100%" align="right" for="order_code">:کد سفارش راست چین</label>
-                                            <input style="border-radius: 3px;text-align:left" type="text" class="form-control" id="order_code" name="order_code" required>
+                                            <input style="border-radius: 3px;text-align:left" type="text" class="form-control" id="order_code" name="order_code" value="<?= $data['getPublicInfo']['license_info']!="" ? $license_info['license_order_id']:""; ?>">
                                         </div>
                                     </div>
 
@@ -76,9 +79,15 @@
                                 </div>
                                 <!-- /.box-body -->
 
-                                <div class="box-footer">
-                                    <input id="btnsubmit" class="btn btn-dropbox" value="فعالسازی" type="submit">
-                                </div>
+                                <?php if((in_array($data['getPublicInfo']['license_info'], array(NULL, "")))){ ?>
+                                    <div class="box-footer">
+                                        <input id="btnActive" class="btn btn-dropbox" value="فعالسازی" type="submit">
+                                    </div>
+                                <?php } else { ?>
+                                    <div class="box-footer">
+                                        <input id="btnDeactive" class="btn btn-danger" value="غیرفعالسازی" type="submit">
+                                    </div>
+                                <?php } ?>
                             </div>
                             <!-- /.box-body -->
                         </div>
@@ -100,7 +109,7 @@
 <?php require('app/views/admin/include/publicJS.php'); ?>
 
 <script>
-    $("#btnsubmit").on('click', function () {
+    $("#btnActive").on('click', function () {
         var username = document.getElementById("username").value;
         var order_code = toEnglishNumber(document.getElementById("order_code").value);
 
@@ -109,8 +118,8 @@
         } else if (order_code == "") {
             $.wnoty({type: 'warning', message: 'کد سفارش را وارد کنید.'});
         } else {
-            $("#btnsubmit").attr("disabled", "disabled");
-            document.getElementById("btnsubmit").value =("در حال بررسی...");
+            $("#btnActive").attr("disabled", "disabled");
+            document.getElementById("btnActive").value =("در حال بررسی...");
 
             if (navigator.onLine) {
                 var formData = new FormData();
@@ -123,8 +132,8 @@
                     processData: false,
                     contentType: false,
                     success: function (data) {
-                        $("#btnsubmit").removeAttr("disabled");
-                        document.getElementById("btnsubmit").value =("فعالسازی");
+                        $("#btnActive").removeAttr("disabled");
+                        document.getElementById("btnActive").value =("فعالسازی");
 
                         data = JSON.parse(data);
                         $.wnoty({type: data.noty_type, message: data.msg});
@@ -135,10 +144,41 @@
                     }
                 });
             } else {
-                $("#btnsubmit").removeAttr("disabled");
-                document.getElementById("btnsubmit").value =("فعالسازی");
+                $("#btnActive").removeAttr("disabled");
+                document.getElementById("btnActive").value =("فعالسازی");
                 $.wnoty({type: 'error', message: 'وضعیت شما آفلاین می باشد و امکان افزودن وجود ندارد.'});
             }
+        }
+    });
+</script>
+
+<script>
+    $("#btnDeactive").on('click', function () {
+        $("#btnDeactive").attr("disabled", "disabled");
+        document.getElementById("btnDeactive").value =("در حال بررسی...");
+
+        if (navigator.onLine) {
+            $.ajax({
+                url: "<?= ADMIN_PATH; ?>/deactiveLicense",
+                type: "POST",
+                processData: false,
+                contentType: false,
+                success: function (data) {
+                    $("#btnDeactive").removeAttr("disabled");
+                    document.getElementById("btnDeactive").value =("غیرفعالسازی");
+
+                    data = JSON.parse(data);
+                    $.wnoty({type: data.noty_type, message: data.msg});
+
+                    if (data.status == "ok") {
+                        location.reload();
+                    }
+                }
+            });
+        } else {
+            $("#btnDeactive").removeAttr("disabled");
+            document.getElementById("btnDeactive").value =("غیرفعالسازی");
+            $.wnoty({type: 'error', message: 'وضعیت شما آفلاین می باشد و امکان افزودن وجود ندارد.'});
         }
     });
 </script>

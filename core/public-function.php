@@ -62,8 +62,7 @@ trait publicTrait
 
     public function rtl_theme_set_session_check_expire($username, $order_id, $type='product')
     {
-//        $duration = time() + (24 * 60 * 60 * 7);
-        $duration = time() + 30;
+        $duration = time() + (24 * 60 * 60 * 7);
 
         $sql = "UPDATE tbl_settings SET `value`=? WHERE `key`=?";
         $data = array(
