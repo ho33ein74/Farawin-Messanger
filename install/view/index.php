@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="">
         <meta name="author" content="Unix Team">
-        <link rel="icon" href="../public/images/favicon/favicon.ico" />
+        <link rel="icon" href="../../public/images/favicon/favicon.ico" />
         <title>نصب سیستم مدیریت رزرواسیون ونسا</title>
         <link rel='stylesheet' type='text/css' href='../../public/library/bootstrap/css/bootstrap.min.css' />
 

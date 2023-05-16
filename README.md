@@ -28,6 +28,7 @@
 - private-function.php
 
 **install:**
+- index.php
 - do_install.php
 
 
