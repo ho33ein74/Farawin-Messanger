@@ -145,5 +145,3 @@ if (isset($_POST)) {
     echo json_encode(array("success" => true, "message" => "نصب اسکریپت با موفقیت انجام شد."));
     exit();
 }
-
-
