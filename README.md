@@ -27,8 +27,6 @@
 **core:**
 - controller.php
 - model.php
-- public-function.php
-- private-function.php
 
 **install:**
 - index.php
