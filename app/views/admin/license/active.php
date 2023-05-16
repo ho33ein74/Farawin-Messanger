@@ -79,7 +79,7 @@ $license_info = Model::un_serialize_license_info();
                                 </div>
                                 <!-- /.box-body -->
 
-                                <?php if((in_array($data['getPublicInfo']['license_info'], array(NULL, "")))){ ?>
+                                <?php if(in_array($data['getPublicInfo']['license_info'], array(NULL, "")) OR (time() >= $license_info['license_check_expire'] AND $license_info['license_type'] == "demo")){ ?>
                                     <div class="box-footer">
                                         <input id="btnActive" class="btn btn-dropbox" value="فعالسازی" type="submit">
                                     </div>
