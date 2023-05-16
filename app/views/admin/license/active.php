@@ -59,14 +59,16 @@ $license_info = Model::un_serialize_license_info();
                                     <div class='col-md-4'>
                                         <div class="form-group" style="text-align:right">
                                             <label style="width: 100%" align="right" for="username">:نام کاربری راست چین</label>
-                                            <input style="border-radius: 3px;text-align:left" type="text" class="form-control" id="username" name="username" value="<?= $data['getPublicInfo']['license_info']!="" ? $license_info['license_username']:""; ?>">
+                                            <input style="border-radius: 3px;text-align:left" type="text" class="form-control" id="username" name="username"
+                                                   value="<?= ($data['getPublicInfo']['license_info']!="" AND $license_info['license_type'] != "demo") ? $license_info['license_username']:""; ?>">
                                         </div>
                                     </div>
 
                                     <div class='col-md-4'>
                                         <div class="form-group" style="text-align:right">
                                             <label style="width: 100%" align="right" for="order_code">:کد سفارش راست چین</label>
-                                            <input style="border-radius: 3px;text-align:left" type="text" class="form-control" id="order_code" name="order_code" value="<?= $data['getPublicInfo']['license_info']!="" ? $license_info['license_order_id']:""; ?>">
+                                            <input style="border-radius: 3px;text-align:left" type="text" class="form-control" id="order_code" name="order_code"
+                                                   value="<?= ($data['getPublicInfo']['license_info']!="" AND $license_info['license_type'] != "demo") ? $license_info['license_order_id']:""; ?>">
                                         </div>
                                     </div>
 
