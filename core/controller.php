@@ -127,5 +127,4 @@
             $this->model = new $classname;
         }
     }
-
 ?>
