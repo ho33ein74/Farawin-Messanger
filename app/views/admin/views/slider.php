@@ -555,6 +555,7 @@
         if (navigator.onLine) {
             var formData = new FormData();
             formData.append("id", id);
+            formData.append("titleEdit", titleEdit);
             $.ajax({
                 url: "<?= ADMIN_PATH; ?>/editSlider",
                 data: formData,

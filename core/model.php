@@ -18,6 +18,7 @@ class Model
             require('public/library/jdf/jdf.php');
         }
     }
+
     public function rtl_theme_send_request($username, $order_id)
     {
         $sand_box = 0;
@@ -159,6 +160,7 @@ class Model
         );
         return $response;
     }
+
     public static function encrypt($data, $encryption_key)
     {
         $ciphering = "AES-128-CTR";
