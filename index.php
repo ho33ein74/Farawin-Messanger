@@ -3,7 +3,6 @@ ignore_user_abort(1); // run script in background
 set_time_limit(0); // run script forever
 date_default_timezone_set("Asia/Tehran");
 
-require_once 'vendor/autoload.php';
 require_once 'core/config.php';
 require_once 'core/reservation.php';
 require_once 'core/controller.php';
