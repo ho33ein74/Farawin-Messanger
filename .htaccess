@@ -7,9 +7,6 @@ RewriteEngine On
 RewriteCond %{HTTPS} off
 RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-RewriteCond %{HTTP_HOST} ^www\.parsiscript\.ir
-RewriteRule ^/?$ "https\:\/\/parsiscript\.ir\/" [R=301,L]
-
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-l
