@@ -64,7 +64,7 @@ if ($timezone_settings) {
     $timezone_success = true;
 }
 
-if (!ini_get("zlib.output_compression")) {
+if (ini_get("zlib.output_compression")) {
     $zlib_success = true;
 }
 
