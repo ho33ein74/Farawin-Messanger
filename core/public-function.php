@@ -696,24 +696,48 @@ trait publicTrait
         return $jalali_date;
     }
 
-    public static function create_date_range_array($strDateFrom, $strDateTo)
+    public static function create_date_range_array($strDateFrom, $strDateTo, $type_of_date="en", $add_first_entry=TRUE, $divider="-")
     {
         $aryRange = [];
 
         $iDateFrom = mktime(1, 0, 0, substr($strDateFrom, 5, 2), substr($strDateFrom, 8, 2), substr($strDateFrom, 0, 4));
         $iDateTo = mktime(1, 0, 0, substr($strDateTo, 5, 2), substr($strDateTo, 8, 2), substr($strDateTo, 0, 4));
 
-        if ($iDateTo >= $iDateFrom) {
-            $aryRange[] = array(
-                "fa" => self::miladi_to_jalali_2no(date('Y-m-d', $iDateFrom), "-"),
-                "en" => date('Y-m-d', $iDateFrom)
-            ); // first entry
-            while ($iDateFrom < $iDateTo) {
-                $iDateFrom += 86400; // add 24 hours
-                $aryRange[] = array(
-                    "fa" => self::miladi_to_jalali_2no(date('Y-m-d', $iDateFrom), "-"),
-                    "en" => date('Y-m-d', $iDateFrom)
-                );
+        if($type_of_date == "fa") {
+            if ($iDateTo >= $iDateFrom) {
+                if($add_first_entry) {
+                    $aryRange[] = array(
+                        "fa" => date('Y/m/d', $iDateFrom),
+                        "Y" => date('Y', $iDateFrom),
+                        "m" => date('m', $iDateFrom),
+                        "d" => date('d', $iDateFrom),
+                    ); // first entry
+                }
+                while ($iDateFrom < $iDateTo) {
+                    $iDateFrom += 86400; // add 24 hours
+                    $aryRange[] = array(
+                        "fa" => date('Y'.$divider.'m'.$divider.'d', $iDateFrom),
+                        "Y" => date('Y', $iDateFrom),
+                        "m" => date('m', $iDateFrom),
+                        "d" => date('d', $iDateFrom),
+                    );
+                }
+            }
+        } else {
+            if ($iDateTo >= $iDateFrom) {
+                if($add_first_entry) {
+                    $aryRange[] = array(
+                        "fa" => self::MiladiTojalili_2no(date('Y'.$divider.'m'.$divider.'d', $iDateFrom), "-"),
+                        "en" => date('Y'.$divider.'m'.$divider.'d', $iDateFrom)
+                    ); // first entry
+                }
+                while ($iDateFrom < $iDateTo) {
+                    $iDateFrom += 86400; // add 24 hours
+                    $aryRange[] = array(
+                        "fa" => self::MiladiTojalili_2no(date('Y'.$divider.'m'.$divider.'d', $iDateFrom), "-"),
+                        "en" => date('Y'.$divider.'m'.$divider.'d', $iDateFrom)
+                    );
+                }
             }
         }
         return $aryRange;
