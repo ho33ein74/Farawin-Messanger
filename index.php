@@ -16,14 +16,14 @@ require_once 'public/library/GoogleAuthenticator/GoogleAuthenticator.php';
 require_once 'core/zarinPal.php';
 
 // Valid PHP Version?
-$minPHPVersion = '7.3';
+$minPHPVersion = '7.4';
 if (version_compare(PHP_VERSION, $minPHPVersion, '<')) {
-    die("Your PHP version must be {$minPHPVersion} or higher to run CodeIgniter. Current version: " . PHP_VERSION);
+    die("Your PHP version must be {$minPHPVersion} or higher to run script. Current version: " . PHP_VERSION);
 }
 unset($minPHPVersion);
 
 //set the variable to 'installed' after installation
-$app_state = "installed"; //pre_installation or installed
+$app_state = "installed"; //installed or installed
 
 // we don't want to access the main project before installation. redirect to installation page
 if ($app_state === 'pre_installation') {

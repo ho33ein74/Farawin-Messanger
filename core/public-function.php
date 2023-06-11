@@ -2,6 +2,23 @@
 
 trait publicTrait
 {
+    public function get_timezones_list()
+    {
+        return [
+            'EUROPE'     => DateTimeZone::listIdentifiers(DateTimeZone::EUROPE),
+            'AMERICA'    => DateTimeZone::listIdentifiers(DateTimeZone::AMERICA),
+            'INDIAN'     => DateTimeZone::listIdentifiers(DateTimeZone::INDIAN),
+            'AUSTRALIA'  => DateTimeZone::listIdentifiers(DateTimeZone::AUSTRALIA),
+            'ASIA'       => DateTimeZone::listIdentifiers(DateTimeZone::ASIA),
+            'AFRICA'     => DateTimeZone::listIdentifiers(DateTimeZone::AFRICA),
+            'ANTARCTICA' => DateTimeZone::listIdentifiers(DateTimeZone::ANTARCTICA),
+            'ARCTIC'     => DateTimeZone::listIdentifiers(DateTimeZone::ARCTIC),
+            'ATLANTIC'   => DateTimeZone::listIdentifiers(DateTimeZone::ATLANTIC),
+            'PACIFIC'    => DateTimeZone::listIdentifiers(DateTimeZone::PACIFIC),
+            'UTC'        => DateTimeZone::listIdentifiers(DateTimeZone::UTC),
+        ];
+    }
+
     public static function minify_style_file($styles)
     {
         $styles = preg_replace('/\s+/is', ' ', $styles);

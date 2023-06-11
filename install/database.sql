@@ -31,12 +31,7 @@ CREATE TABLE IF NOT EXISTS `tbl_admin` (
   `registery_date` varchar(50) NOT NULL,
   `a_status` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`a_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
-
--- Dumping data for table reservation.tbl_admin: ~1 rows (approximately)
-DELETE FROM `tbl_admin`;
-INSERT INTO `tbl_admin` (`a_id`, `admin_role_id`, `a_name`, `a_username`, `a_email`, `a_password`, `a_selected_dashboard_id`, `telegram_id`, `a_image`, `a_desc`, `google_secret_code`, `google_auth_status`, `registery_date`, `a_status`) VALUES
-	(1, 1, 'admin_name', 'admin_username', 'admin_email', 'admin_password', 'dashboard-main', NULL, NULL, NULL, 'google_secret_code_gen', 0, 'admin_created_at', 1);
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb3;
 
 -- Dumping structure for table reservation.tbl_admin_activity
 CREATE TABLE IF NOT EXISTS `tbl_admin_activity` (
@@ -1413,7 +1408,7 @@ CREATE TABLE IF NOT EXISTS `tbl_link` (
 DELETE FROM `tbl_link`;
 /*!40000 ALTER TABLE `tbl_link` DISABLE KEYS */;
 INSERT INTO `tbl_link` (`l_id`, `l_name`, `l_link`, `l_type`, `l_parent_id`, `l_menu_type`, `l_order`, `l_status`) VALUES
-    (1, 'صفحه اصلی', 'root_path', 'header', 0, NULL, 1, 1),
+    (1, 'صفحه اصلی', '', 'header', 0, NULL, 1, 1),
     (2, 'خدمات', 'services', 'header', 0, NULL, 2, 1),
     (3, 'وبلاگ', 'blog', 'header', 0, NULL, 3, 1),
     (4, 'سوالات متداول', 'faq', 'header', 0, NULL, 4, 1),
@@ -1962,10 +1957,10 @@ CREATE TABLE IF NOT EXISTS `tbl_settings` (
 -- Dumping data for table reservation.tbl_settings: ~104 rows (approximately)
 DELETE FROM `tbl_settings`;
 INSERT INTO `tbl_settings` (`id`, `key`, `value`) VALUES
-	(1, 'root', 'root_path'),
+	(1, 'root', ''),
 	(2, 'admin_path', 'manage'),
 	(3, 'show_error', '0'),
-	(4, 'site', 'web_title'),
+	(4, 'site', ''),
 	(5, 'meta_description', ''),
 	(6, 'meta_keyword', ''),
 	(7, 'channel_service_reservation', ''),
@@ -1976,11 +1971,11 @@ INSERT INTO `tbl_settings` (`id`, `key`, `value`) VALUES
 	(12, 'logo_square', '1679993414_7401_logo-min.svg'),
 	(13, 'location', ''),
 	(14, 'address', ''),
-	(15, 'site_short_name', 'web_title'),
+	(15, 'site_short_name', ''),
 	(16, 'factor_sales', ''),
 	(17, 'google', ''),
 	(18, 'theme_color', '#e81124'),
-	(19, 'legal_name', 'web_title'),
+	(19, 'legal_name', ''),
 	(20, 'footer_about', 'متن پیش فرض درباره ما که می توانید از بخش پیکربندی در قسمت تنظیمات آن را تغییر دهید'),
 	(21, 'customJS', ''),
 	(22, 'sms_status', '0'),
