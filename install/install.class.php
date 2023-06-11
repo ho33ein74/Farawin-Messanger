@@ -103,7 +103,13 @@ class Install
                     $config_copy_failed = true;
                 }
 
-                $this->write_app_config();
+//                $encryption_key = bin2hex($this->create_key(50));
+                $ciphering = "AES-128-CTR";
+                $iv_length = openssl_cipher_iv_length($ciphering);
+                $options = 0;
+                $encryption_iv = '1234567891011121';
+                $encryption_key = substr(md5(rand()), 0, 50);
+                $this->write_app_config($encryption_key);
 
                 // https://stackoverflow.com/questions/20867182/insert-query-executes-successfully-but-data-is-not-inserted-to-the-database
                 // There is a commit in the database.sql
@@ -171,11 +177,6 @@ class Install
                     "license_type" => "demo"
                 );
 
-                $ciphering = "AES-128-CTR";
-                $iv_length = openssl_cipher_iv_length($ciphering);
-                $options = 0;
-                $encryption_iv = '1234567891011121';
-                $encryption_key = substr(md5(rand()), 0, 50);
                 $encryption_key_for_license = $encryption_key . "#Un!xTeam#" . $_SERVER['SERVER_NAME'];
 
                 $data_for_license_test =  openssl_encrypt(
@@ -224,14 +225,13 @@ class Install
         return false;
     }
 
-    private function write_app_config()
+    private function write_app_config($encryption_key)
     {
         $hostname = trim($_POST['hostname']);
         $database = trim($_POST['database']);
         $username = trim($_POST['username']);
         $password = addslashes(trim($_POST['password']));
 
-        $encryption_key = bin2hex($this->create_key(50));
         $config_path    = $this->config_path;
 
         @chmod($config_path, FILE_WRITE_MODE);
