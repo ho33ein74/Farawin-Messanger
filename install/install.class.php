@@ -2,6 +2,9 @@
 
 error_reporting(E_ALL ^ E_NOTICE ^ E_DEPRECATED);
 
+@ob_start();
+@session_start();
+
 @ini_set('max_execution_time', 240);
 define('FOPEN_WRITE_CREATE_DESTRUCTIVE', 'wb');
 define('FILE_READ_MODE', 0644);
@@ -191,6 +194,9 @@ class Install
                 $index_file = file_get_contents($index_file_path);
                 $index_file = preg_replace('/pre_installation/', 'installed', $index_file, 1); //replace the first occurence of 'pre_installation'
                 file_put_contents($index_file_path, $index_file);
+
+                unset($_COOKIE['adminId']);
+                setcookie('adminId', null, -1, '/');
 
                 $this->current_step = 5;
             } else {
