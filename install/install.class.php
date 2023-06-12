@@ -167,28 +167,6 @@ class Install
                 $sql = "UPDATE tbl_settings SET `value`='$web_title' WHERE `key` in ('site', 'site_short_name', 'legal_name')";
                 $link->query($sql);
 
-                //set time for use test script foa all parts
-                $duration = time() + (24 * 60 * 60 * 3);
-                $data = array(
-                    "license_username" => "demo",
-                    "license_order_id" => "demo",
-                    "license_domain" => $_SERVER['SERVER_NAME'],
-                    "license_check_expire" => $duration,
-                    "license_type" => "demo"
-                );
-
-                $encryption_key_for_license = $encryption_key . "#Un!xTeam#" . $_SERVER['SERVER_NAME'];
-
-                $data_for_license_test =  openssl_encrypt(
-                    serialize($data),
-                    $ciphering,
-                    $encryption_key_for_license,
-                    $options,
-                    $encryption_iv
-                );
-                $sql = "UPDATE tbl_settings SET `value`='$data_for_license_test' WHERE `key`='license_info'";
-                $link->query($sql);
-
                 ///////////////////////////////////////////////
                 // set the app state = installed
                 $index_file_path = "../index.php";
