@@ -34,9 +34,9 @@
 - do_install.php
 
 
-برای قابل نصب بودن اسکریپت می بایست در فایل index.php در روت اصلی پروژه در خط 27 مقدار متغیر $app_state برابر با pre_installation قرار بگیرد.
+برای قابل نصب بودن اسکریپت می بایست در فایل index.php در روت اصلی پروژه در خط 10 مقدار متغیر $app_state برابر با pre_installation قرار بگیرد.
 
 `$app_state = "pre_installation";`
 
-همچنین دیتابیس خالی و فایل **config-example.php** جایگزین **config.php** شود.
+همچنین دیتابیس خالی و فایل **config.php** از داخل پوشه حذف شود.
 
