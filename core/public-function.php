@@ -744,14 +744,14 @@ trait publicTrait
             if ($iDateTo >= $iDateFrom) {
                 if($add_first_entry) {
                     $aryRange[] = array(
-                        "fa" => self::MiladiTojalili_2no(date('Y'.$divider.'m'.$divider.'d', $iDateFrom), "-"),
+                        "fa" => self::miladi_to_jalali_2no(date('Y'.$divider.'m'.$divider.'d', $iDateFrom), "-"),
                         "en" => date('Y'.$divider.'m'.$divider.'d', $iDateFrom)
                     ); // first entry
                 }
                 while ($iDateFrom < $iDateTo) {
                     $iDateFrom += 86400; // add 24 hours
                     $aryRange[] = array(
-                        "fa" => self::MiladiTojalili_2no(date('Y'.$divider.'m'.$divider.'d', $iDateFrom), "-"),
+                        "fa" => self::miladi_to_jalali_2no(date('Y'.$divider.'m'.$divider.'d', $iDateFrom), "-"),
                         "en" => date('Y'.$divider.'m'.$divider.'d', $iDateFrom)
                     );
                 }

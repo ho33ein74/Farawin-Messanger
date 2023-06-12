@@ -56,7 +56,12 @@ $license_info = Model::un_serialize_license_info();
                         <div class="box-body">
                             <div class="box-body">
                                 <div class='row'>
-                                    <div class='col-md-4'>
+                                    <div class='col-md-12' style="margin-bottom: 10px">
+                                        <p>
+                                            از اینکه اسکریپت نوبت دهی ونسا را برای شروع کسب و کار خود انتخاب کردید متشکریم. برای فعالسازی تمامی قسمت ها و بخش های سایت می بایست لایسنس اسکریپت را از سایت راست چین دریافت کرده و از این بخش فعال نمایید.
+                                        </p>
+                                    </div>
+                                    <div class='col-md-6'>
                                         <div class="form-group" style="text-align:right">
                                             <label style="width: 100%" align="right" for="username">:نام کاربری راست چین</label>
                                             <input style="border-radius: 3px;text-align:left" type="text" class="form-control" id="username" name="username"
@@ -64,18 +69,11 @@ $license_info = Model::un_serialize_license_info();
                                         </div>
                                     </div>
 
-                                    <div class='col-md-4'>
+                                    <div class='col-md-6'>
                                         <div class="form-group" style="text-align:right">
                                             <label style="width: 100%" align="right" for="order_code">:کد سفارش راست چین</label>
                                             <input style="border-radius: 3px;text-align:left" type="text" class="form-control" id="order_code" name="order_code"
                                                    value="<?= ($data['getPublicInfo']['license_info']!="" AND $license_info['license_type'] != "demo") ? $license_info['license_order_id']:""; ?>">
-                                        </div>
-                                    </div>
-
-                                    <div class='col-md-4'>
-                                        <div class="form-group" style="text-align:right">
-                                            <label style="width: 100%" align="right" for="order_code">:دامنه ثبت شده در راست چین</label>
-                                            <input style="border-radius: 3px;text-align:left" type="text" class="form-control" readonly value="<?= $_SERVER['SERVER_NAME'] ?>">
                                         </div>
                                     </div>
                                 </div>

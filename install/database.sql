@@ -62,7 +62,7 @@ CREATE TABLE IF NOT EXISTS `tbl_admin_role` (
 -- Dumping data for table reservation.tbl_admin_role: 1 rows
 DELETE FROM `tbl_admin_role`;
 /*!40000 ALTER TABLE `tbl_admin_role` DISABLE KEYS */;
-INSERT INTO `tbl_admin_role` (`ar_id`, `ar_title`, `ar_removable`, `ar_create_date`, `ar_status`) VALUES
+INSERT IGNORE INTO `tbl_admin_role` (`ar_id`, `ar_title`, `ar_removable`, `ar_create_date`, `ar_status`) VALUES
 	(1, 'مدیر سیستم', 0, '1401/01/01', 1);
 /*!40000 ALTER TABLE `tbl_admin_role` ENABLE KEYS */;
 
@@ -90,9 +90,9 @@ CREATE TABLE IF NOT EXISTS `tbl_api_keys` (
 
 -- Dumping data for table reservation.tbl_api_keys: ~2 rows (approximately)
 DELETE FROM `tbl_api_keys`;
-INSERT INTO `tbl_api_keys` (`idapi_keys`, `name`, `key`, `log_time`) VALUES
-	(1, 'app', 'KRxn7ThW8XsBTMa3CZ0dPFUU6NFpmuC4dvb54gEFk2kNnZ5ftxNRlA4b9EFFDf9a4kT6Jv46z586vMU2gZGSaEYjRdHDRW6GuMGh', '2019-01-27 01:19:02'),
-	(2, 'test', 'ghfghfbfgbfhgfhgfhgfh546gf46f5g4f45g6gf45gfghfghfbfgbfhgfhgfhgfh546gf46f5g4f45g6gf45gfghfghfbfgbfhgf', '2022-01-12 19:45:10');
+INSERT IGNORE INTO `tbl_api_keys` (`idapi_keys`, `name`, `key`, `log_time`) VALUES
+	(1, 'app', 'KRxn7ThW8XsBTMa3CZ0dPFUU6NFpmuC4dvb54gEFk2kNnZ5ftxNRlA4b9EFFDf9a4kT6Jv46z586vMU2gZGSaEYjRdHDRW6GuMGh', '2019-01-26 21:49:02'),
+	(2, 'test', 'ghfghfbfgbfhgfhgfhgfh546gf46f5g4f45g6gf45gfghfghfbfgbfhgfhgfhgfh546gf46f5g4f45g6gf45gfghfghfbfgbfhgf', '2022-01-12 16:15:10');
 
 -- Dumping structure for table reservation.tbl_app_versions
 CREATE TABLE IF NOT EXISTS `tbl_app_versions` (
@@ -136,7 +136,7 @@ CREATE TABLE IF NOT EXISTS `tbl_banks` (
 -- Dumping data for table reservation.tbl_banks: 1 rows
 DELETE FROM `tbl_banks`;
 /*!40000 ALTER TABLE `tbl_banks` DISABLE KEYS */;
-INSERT INTO `tbl_banks` (`b_id`, `bank_vids_id`, `b_name`, `b_logo`, `b_branch`, `b_current_balance`, `b_account_opening_date`, `b_account_type`, `b_account_number`, `b_sheba_number`, `b_cart_number`, `b_currency`, `b_default`, `b_description`, `b_date`, `b_removable`, `b_status`) VALUES
+INSERT IGNORE INTO `tbl_banks` (`b_id`, `bank_vids_id`, `b_name`, `b_logo`, `b_branch`, `b_current_balance`, `b_account_opening_date`, `b_account_type`, `b_account_number`, `b_sheba_number`, `b_cart_number`, `b_currency`, `b_default`, `b_description`, `b_date`, `b_removable`, `b_status`) VALUES
 	(1, '1000', 'پیش فرض', 'bank', 'پیش فرض', '0', '1401/01/01', 'سایر', '-', '', '', 1, 1, '', '1401/01/1', '0', 1);
 /*!40000 ALTER TABLE `tbl_banks` ENABLE KEYS */;
 
@@ -148,11 +148,13 @@ CREATE TABLE IF NOT EXISTS `tbl_banner` (
   `b_create_date` varchar(30) NOT NULL,
   `b_status` tinyint NOT NULL DEFAULT '0',
   PRIMARY KEY (`b_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf32;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf32;
 
--- Dumping data for table reservation.tbl_banner: 0 rows
-DELETE FROM `tbl_banner`;
+-- Dumping data for table reservation.tbl_banner: 2 rows
 /*!40000 ALTER TABLE `tbl_banner` DISABLE KEYS */;
+INSERT IGNORE INTO `tbl_banner` (`b_id`, `b_title`, `b_type`, `b_create_date`, `b_status`) VALUES
+	(1, 'بنر صفحه اصلی', 3, '1402/01/17', 1),
+	(2, 'بنر تکی', 1, '1402/01/17', 1);
 /*!40000 ALTER TABLE `tbl_banner` ENABLE KEYS */;
 
 -- Dumping structure for table reservation.tbl_banner_image
@@ -164,11 +166,14 @@ CREATE TABLE IF NOT EXISTS `tbl_banner_image` (
   `bi_link` varchar(250) DEFAULT NULL,
   `bi_status` int NOT NULL DEFAULT '1',
   PRIMARY KEY (`bi_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf32;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf32;
 
--- Dumping data for table reservation.tbl_banner_image: 0 rows
-DELETE FROM `tbl_banner_image`;
+-- Dumping data for table reservation.tbl_banner_image: 3 rows
 /*!40000 ALTER TABLE `tbl_banner_image` DISABLE KEYS */;
+INSERT IGNORE INTO `tbl_banner_image` (`bi_id`, `banner_id`, `bi_image`, `bi_description`, `bi_link`, `bi_status`) VALUES
+	(1, 1, '1680805256_1.jpg', '1', '', 1),
+	(2, 1, '1680805267_3.jpg', '2', '', 1),
+	(3, 1, '1680805275_2.jpg', '3', '', 1);
 /*!40000 ALTER TABLE `tbl_banner_image` ENABLE KEYS */;
 
 -- Dumping structure for table reservation.tbl_blog
@@ -192,10 +197,13 @@ CREATE TABLE IF NOT EXISTS `tbl_blog` (
   `time` varchar(20) DEFAULT NULL,
   `b_status` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`n_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3;
 
--- Dumping data for table reservation.tbl_blog: ~0 rows (approximately)
-DELETE FROM `tbl_blog`;
+-- Dumping data for table reservation.tbl_blog: ~2 rows (approximately)
+INSERT IGNORE INTO `tbl_blog` (`n_id`, `cat_id`, `slug`, `seo_title`, `seo_desc`, `writer`, `suggestion`, `title`, `main_tag`, `subtitle`, `cover`, `description`, `source`, `link`, `view`, `date_created`, `time`, `b_status`) VALUES
+	(1, 2, 'همه-چیز-در-مورد-رنگ-موی-فانتزی', 'همه چیز در مورد رنگ موی فانتزی', 'رنگ موی فانتزی رنگ خاصی است که طیف وسیعی از رنگ‌ها، مانند بنفش، آبی، سبز، قرمز، صورتی پاستیلی و غیره را شامل می‌شود.', 1, 1, 'همه چیز در مورد رنگ موی فانتزی', 'رنگ موی فانتزی', 'گرچه نمی‌توان در هر زمان و مکان از رنگ‌های فانتری، تند، جیغ و نامتعارف استفاده کرد، ولی این مساله نمی‌تواند مانع از آن شود که گه‌گاهی از آن‌ها استفاده نکرد. رنگ موی فانتزی رنگ خاصی است که طیف وسیعی از رنگ‌ها، مانند بنفش، آبی، سبز، قرمز، صورتی پاستیلی و غیره را شامل می‌شود.\r\n\r\nبه این نکته دقت کنید که درآوردن چنین رنگ‌هایی کار هرکسی نیست و به مهارت و تخصص نیاز دارد. به عبارتی دیگر، نمی‌توانید چنین رنگ‌هایی را در خانه و به تنهایی امتحان کنید. به همین دلیل، این مطلب از مجله ونسا را به این رنگ‌ها اختصاص داده‌ایم. ', '1680991096_area-tecnica.jpg', '&lt;p style=&quot;text-align: justify;&quot;&gt;گرچه نمی&amp;zwnj;توان در هر زمان و مکان از رنگ&amp;zwnj;های فانتری، تند، جیغ و نامتعارف استفاده کرد، ولی این مساله نمی&amp;zwnj;تواند مانع از آن شود که گه&amp;zwnj;گاهی از آن&amp;zwnj;ها استفاده نکرد.&amp;nbsp;رنگ موی فانتزی&amp;nbsp;رنگ خاصی است که طیف وسیعی از رنگ&amp;zwnj;ها، مانند بنفش، آبی، سبز، قرمز، صورتی پاستیلی و غیره را شامل می&amp;zwnj;شود.&lt;/p&gt;\r\n\r\n&lt;section id=&quot;newsbody&quot;&gt;\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;به این نکته دقت کنید که درآوردن چنین رنگ&amp;zwnj;هایی کار هرکسی نیست و به مهارت و تخصص نیاز دارد. به عبارتی دیگر، نمی&amp;zwnj;توانید چنین رنگ&amp;zwnj;هایی را در خانه و به تنهایی امتحان کنید. به همین دلیل، این مطلب از مجله ونسا را به این رنگ&amp;zwnj;ها اختصاص داده&amp;zwnj;ایم.&amp;nbsp;&lt;/p&gt;\r\n\r\n&lt;h2 style=&quot;text-align: justify;&quot;&gt;رنگ موی فانتزی چیست؟&lt;/h2&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;به طورکلی، رنگ&amp;zwnj;&amp;zwnj;های مو به دو دسته تقسیم می&amp;zwnj;شوند: رنگ&amp;zwnj;های شیمیایی و گیاهی و از نظر ماندگاری به سه دسته دائمی، نیمه دائمی و موقت طبقه&amp;zwnj;بندی می&amp;zwnj;شود.&amp;nbsp;رنگ موی فانتزی&amp;nbsp;جز دسته رنگ&amp;zwnj;های موقت باماندگاری کوتاه است. این رنگ&amp;zwnj;ها که حالت جیغ و اغراق&amp;zwnj;آمیزی دارند، بیشتر به صورت موردی استفاده می&amp;zwnj;شوند. معمولا نوجوانان به این دسته از رنگ موها علاقه بیشتری نشان می&amp;zwnj;دهند. در ادامه با این رنگ موها بیشتر آشنا خواهیم شد.&lt;/p&gt;\r\n\r\n&lt;h3 style=&quot;text-align: justify;&quot;&gt;رنگ موی فانتزی برای پوست سبزه&lt;/h3&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;بهترین رنگ&amp;zwnj;های فانتزی برای پوست&amp;zwnj;های تیره، رنگ&amp;zwnj;های شرابی، بنفش و قرمز است. زیرا همانند توناژ پوست&amp;zwnj;های گندمی، گرم است.&lt;/p&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;رنگ شرابی، ترکیبی از رنگ&amp;zwnj;های قرمز تیره، قهوه&amp;zwnj;ای تیره و بنفش است. در برخی از رنگ&amp;zwnj;های شرابی، طیف قرمز بیشتر به چشم می&amp;zwnj;آید و در برخی دیگر بنفش و سایه&amp;zwnj;های آبی بیشتر خودنمایی می&amp;zwnj;کند. همه این&amp;zwnj;ها به تناسب رنگ&amp;zwnj;های استفاده شده بستگی دارد. باید بدانید هر سه طیف رنگ شرابی یعنی تیره، روشن و متوسط به افراد با پوست&amp;zwnj;های سبزه و گندمی بسیار می&amp;lrm;آید.&lt;/p&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;نکته&amp;zwnj;ای مهم اینجاست که رنگ پایه مو روی نتیجه رنگ شرابی تاثیر زیادی دارد. مثلا اگر موهای تیره&amp;zwnj;ای دارید، رنگ شرابی روی موهایتان، تیره&amp;zwnj;تر خواهد بود و اگر موهای روشنی دارید، نتیجه کار، بالطبع روشن&amp;zwnj;تر خواهد شد.&lt;/p&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;یکی دیگر از&amp;nbsp;رنگ موی فانتزی&amp;nbsp;که شدیدا به پوست سبزه می&amp;zwnj;آید، بنفشی است که ترکیبی از سایه&amp;zwnj;های قرمز و آبی در خود دارد. این رنگ، روی پوست&amp;zwnj;های تیره، جلوه بی&amp;zwnj;نظیری می&amp;zwnj;آفریند.&lt;/p&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;رنگ قرمز نیز از دیگر رنگ&amp;zwnj;های فانتزی پرطرفدار است که در افراد با پوست سبزه، جلوه شکیلی خلق می&amp;zwnj;کند. پیشنهاد ما این است که برای زیبایی و جلوه بیشتر رنگ، مقدار کمی رنگ آبی را با آن ترکیب کنید. اگر جزء کسانی هستید که پوست روشنی دارید، رنگ قرمز را پیشنهاد نمی&amp;zwnj;کنیم، ولی می&amp;zwnj;توانید از آن به عنوان هایلایت یا لولایت استفاده کنید.&lt;/p&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;&amp;nbsp;&lt;/p&gt;\r\n\r\n&lt;p style=&quot;text-align:center&quot;&gt;&lt;img alt=&quot;رنگ مو فانتزی&quot; height=&quot;450&quot; src=&quot;/public/images/filemanager/265.jpg&quot; width=&quot;800&quot; /&gt;&lt;/p&gt;\r\n\r\n&lt;h3 style=&quot;text-align: justify;&quot;&gt;رنگ موی فانتزی بنفش&lt;/h3&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;یکی از انواع&amp;nbsp;رنگ موی فانتزی دخترانه&amp;nbsp;و بسیار پرطرفدار، رنگ بنفش است که علاوه&amp;zwnj;بر آنکه موهایتان را بسیار درخشان می&amp;zwnj;کند، در رفع زردی مو نیز بسیار موثر است.&lt;/p&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;این رنگ، ترکیبی از رنگ&amp;zwnj;های آبی و قرمز است که طیف&amp;zwnj;های متنوعی دارد، مانند: یاسی، ارغوانی، بنفش تیره، سرخابی و غیره. تمامی طیف رنگ&amp;zwnj;های خانواده بنفش سردند و از نظر روانشناسی، تداعی کننده مفهومی جادویی و خیال&amp;zwnj;انگیز است. این رنگ در عین آرامش&amp;zwnj;بخش بودن، محرک قوی است که باعث رشد خلاقیت در افراد می&amp;zwnj;شود.&lt;/p&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;دو نکته درمورد این رنگ مو وجود دارد:&lt;/p&gt;\r\n\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n	&lt;p style=&quot;text-align: justify;&quot;&gt;اگر می&amp;zwnj;خواهید رنگ بنفش زیبا و جذابی داشته باشید، حداقل باید موهایتان را تا پایه 5 دکلره کنید.&lt;/p&gt;\r\n	&lt;/li&gt;\r\n	&lt;li&gt;\r\n	&lt;p style=&quot;text-align: justify;&quot;&gt;این رنگ را با رنگ&amp;zwnj;های شرابی یا ماهاگونی (خانواده رنگ&amp;zwnj;های قرمز) اشتباه نگیرد.&lt;/p&gt;\r\n	&lt;/li&gt;\r\n&lt;/ul&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;&lt;strong&gt;نکته:&amp;nbsp;&lt;/strong&gt;اگر قصد دارید بدون استفاده از دکلره رنگ بنفش را امتحان کنید، در نهایت یک رنگ بادمجانی یا بنفش تیره خواهید داشت.&lt;/p&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;پس از دکلره کردن موهایتان، می&amp;zwnj;توانید از رنگ&amp;zwnj;های بنفش تیوپی فانتزی، شامپویی فانتزی یا ژله&amp;zwnj;ای فانتزی استفاده کنید. از نظر ماندگاری، رنگ&amp;zwnj;های تیوپی ماندگاری بالاتری دارند و ماندگاری رنگ&amp;zwnj;های ژله&amp;zwnj;ای بیشتر از رنگ&amp;zwnj;های شامپویی است.&lt;/p&gt;\r\n\r\n&lt;h3 style=&quot;text-align: justify;&quot;&gt;هایلایت بنفش&lt;/h3&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;یکی از بهترین روش استفاده از&amp;nbsp;رنگ موی فانتزی&amp;nbsp;بنفش، هایلایت کردن آن است که موهایتان را حداقل 8 تا 10 درجه روشن می&amp;zwnj;کند.&lt;/p&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;یکی دیگر از ترکیبات جذاب برای پایه&amp;zwnj; مو با تم رنگ سرد، ترکیب دو رنگ بنفش و دودی است.&lt;/p&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;برای بدست آوردن این رنگ، ترکیب زیر را دنبال کنید:&lt;/p&gt;\r\n\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n	&lt;p style=&quot;text-align: justify;&quot;&gt;رنگ بنفش (نصف تیوپ)+ رنگ دودی (نصف تیوپ)+ واریاسیون بنفش C10 (5 سانتی&amp;zwnj;متر)+ اکسیدان شماره 1&lt;/p&gt;\r\n	&lt;/li&gt;\r\n&lt;/ul&gt;\r\n\r\n&lt;h3 style=&quot;text-align: justify;&quot;&gt;رنگ موی فانتزی یاسی&lt;/h3&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;یکی از رنگ&amp;zwnj;های فانتزی از خانواده بنفش، رنگ یاسی است که در سال&amp;zwnj;های اخیر، محبوبیت قابل&amp;zwnj;توجهی پیدا کرده است. برای این رنگ، نیاز است تا موها، با دکلره تا پایه حداقل 9 روشن شوند.&lt;/p&gt;\r\n\r\n&lt;p style=&quot;text-align:center&quot;&gt;&lt;img alt=&quot;فانتزی یاسی&quot; height=&quot;450&quot; src=&quot;/public/images/filemanager/266.jpg&quot; width=&quot;800&quot; /&gt;&lt;/p&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;ترکیبات مورد نیاز برای بدست آوردن این رنگ:&lt;/p&gt;\r\n\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n	&lt;p style=&quot;text-align: justify;&quot;&gt;رنگ یاسی (سه چهارم تیوب)+ رنگ دودی (یک چهارم تیوب)+ واریاسیون بنفش C10 (دو سانتی&amp;zwnj;متر)+ اکسیدان شماره 1&lt;/p&gt;\r\n	&lt;/li&gt;\r\n&lt;/ul&gt;\r\n\r\n&lt;h3 style=&quot;text-align: justify;&quot;&gt;بنفش بادمجانی&lt;/h3&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;از جمله&amp;nbsp;رنگ موی فانتزی بدون دکلره، رنگ بنفش بادمجانی است که بسیاری به اشتباه تصور می&amp;zwnj;کنند که جزء رنگ&amp;zwnj;های شرابی است؛ ولی این رنگ از اعضای خانواده رنگ بنفش است که در کاتالوگ با شماره&amp;zwnj;های 6.9 یا 6.99 شناخته می&amp;zwnj;شود.&lt;/p&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;چه موهای تیره&amp;zwnj;ای داشته باشید، چه روشن، می&amp;zwnj;توانید تنها با رنگ بادمجانی 6.99، رنگ دلخواهتان را بدست آورید.&lt;/p&gt;\r\n\r\n&lt;h3 style=&quot;text-align: justify;&quot;&gt;رنگ موی فانتزی آبی&lt;/h3&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;نکته&amp;zwnj;ای که درباره این رنگ مو وجود دارد این است که بسیار سریع&amp;zwnj;تر از دیگر انواع رنگ&amp;zwnj;های فانتزی پاک می&amp;zwnj;شود. بنابراین، اگر می&amp;zwnj;خواهید به مدت بیشتری روی موهایتان باقی بماند، مجبورید هر 3 یا 4 هفته یک&amp;zwnj;بار موهایتان را رنگ&amp;zwnj;ساژ کنید.&lt;/p&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;برای بدست آوردن این رنگ نیاز است موهایتان را روشن کنید. برای این منظور می&amp;zwnj;توانید یا از شامپوهای روشن&amp;zwnj;کننده و یا دکلره استفاده کنید.&lt;/p&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;اما اگر موهایتان پایه 4 به بالا در توناژ قهوه&amp;zwnj;ای، زیتونی یا طلایی است (و البته قبلا رنگ نشده باشد)، می&amp;zwnj;توانید بدون دکلره کردن، تا 70% مشابه با رنگ آبی دلخواهتان بدست آورید.&lt;/p&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;&amp;nbsp;برای&amp;nbsp;رنگ موی فانتزی&amp;nbsp;آبی، فرمول زیر را دنبال کنید:&lt;/p&gt;\r\n\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n	&lt;p style=&quot;text-align: justify;&quot;&gt;رنگ دودی شماره 7 (نصف تیوب) + واریاسیون آبی (3 بند انگشت)+ واریاسیون نقره&amp;zwnj;ای (یک بند انگشت)+ پودر دکلره آبی (یک و نیم پیمانه)+ اکسیدان شماره 2 یا 9.&lt;/p&gt;\r\n	&lt;/li&gt;\r\n&lt;/ul&gt;\r\n\r\n&lt;h3 style=&quot;text-align: justify;&quot;&gt;رنگ آبی لاجوردی&lt;/h3&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;برای بدست آوردن چنین رنگی، ترکیب زیر نیاز است:&lt;/p&gt;\r\n\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n	&lt;p style=&quot;text-align: justify;&quot;&gt;رنگ دودی شماره 8 (نصف تیوب)+ رنگ زیتونی شماره 8 (یک تیوب)+ رنگ نقره&amp;zwnj;ای شماره 9 (یک تیوب)+ واریاسیون سبز و آبی (یک بند انگشت)+ پودر دکلره سبز (دو پیمانه)+ پودر دکلره آبی (یک پیمانه)+ اکسیدان شماره 2 یا 9.&lt;/p&gt;\r\n	&lt;/li&gt;\r\n&lt;/ul&gt;\r\n\r\n&lt;h3 style=&quot;text-align: justify;&quot;&gt;رنگ موی فانتزی صورتی&lt;/h3&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;این رنگ مو، برای روزهای بهاری، بهترین انتخاب ممکن است. برای این رنگ به شامپو تثبیت کننده، رنگ موی صورتی نیمه دائمی، پودر دکلره و اکسیدان 6 درصد نیاز دارید.&lt;/p&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;برای رنگ صورتی، نیاز است تا موها با کمک دکلره، تا پایه 7 روشن شوند.&lt;/p&gt;\r\n\r\n&lt;p style=&quot;text-align:center&quot;&gt;&lt;img alt=&quot;فانتزی صورتی&quot; height=&quot;450&quot; src=&quot;/public/images/filemanager/pink-haircolor-3.jpg&quot; width=&quot;675&quot; /&gt;&lt;/p&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;مراحل رنگ کردن:&lt;/p&gt;\r\n\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n	&lt;p style=&quot;text-align: justify;&quot;&gt;بعد از دکلره، موها باید با شامپوی ضد زردی شسته و سپس کاملا خشک شوند.&lt;/p&gt;\r\n	&lt;/li&gt;\r\n	&lt;li&gt;\r\n	&lt;p style=&quot;text-align: justify;&quot;&gt;حال رنگ صورتی را با مقداری اکسیدان رقیق کنید. میزان اکسیدان مورد نیاز، به بلندای مو بستگی دارد.&lt;/p&gt;\r\n	&lt;/li&gt;\r\n	&lt;li&gt;\r\n	&lt;p style=&quot;text-align: justify;&quot;&gt;اگر می&amp;zwnj;خواهید&amp;nbsp;رنگ موی فانتزی تکه&amp;zwnj;ای&amp;nbsp;صورتی داشته باشید، بهتر است کار را از پایین&amp;zwnj;ترین قسمت&amp;zwnj;های موی پشت گردن شروع کنید. اگر می&amp;zwnj;خواهید تمامی موهایتان را صورتی کنید، عمل رنگ کردن را مانند قبل از انتها آغاز کنید و تدریجا همه موها را با رنگ بپوشانید.&lt;/p&gt;\r\n	&lt;/li&gt;\r\n	&lt;li&gt;\r\n	&lt;p style=&quot;text-align: justify;&quot;&gt;برای زیباتر شدن، چند رشته نازک (که به پایه رسیده) جدا کنید و آن&amp;zwnj;ها را رنگ نکنید. اینکار هایلایت&amp;zwnj;های زیبایی روی رنگ صورتی ایجاد خواهد کرد.&lt;/p&gt;\r\n	&lt;/li&gt;\r\n	&lt;li&gt;\r\n	&lt;p style=&quot;text-align: justify;&quot;&gt;پس از 20 تا 30 دقیقه، موها را چک کنید و ببنید که آیا به رنگ دلخواه رسیده&amp;zwnj;اند یا خیر. در صورت رسیدن به رنگ مورد نظر، آن&amp;zwnj;ها را بشویید (بهتر است برای ماندگاری بیشتر رنگ، موهایتان را با شامپوی تثبیت&amp;zwnj;کننده بشویید).&lt;/p&gt;\r\n	&lt;/li&gt;\r\n&lt;/ul&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;یک توصیه مهم:&amp;nbsp;موهایتان را تا 3 روز پس از رنگ کردن نشویید. در طول این مدت تنها مجازید موهایتان را با یک نرم&amp;zwnj;کننده ملایم بشویید.&lt;/p&gt;\r\n\r\n&lt;h3 style=&quot;text-align: justify;&quot;&gt;رنگ موی فانتزی طوسی&lt;/h3&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;یکی دیگر از&amp;nbsp;رنگ&amp;zwnj; موی فانتزی دخترانه&amp;nbsp;پرطرفدار، رنگ طوسی است. این رنگ، به خانم&amp;zwnj;هایی می&amp;zwnj;آید که پوست روشنی دارند.&lt;/p&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;اگر پوستی سفید و موهای مشکی دارید، پیشنهاد می&amp;zwnj;کنیم هایلایت&amp;zwnj;های طوسی را لابه&amp;zwnj;لای موهای خود انتخاب کنید. این اطمینان را به شما می&amp;zwnj;دهیم که از انجامش هرگز پشیمان نخواهید شد.&lt;/p&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;برای بدست آوردن این رنگ، ترکیب زیر را دنبال کنید:&lt;/p&gt;\r\n\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n	&lt;p style=&quot;text-align: justify;&quot;&gt;رنگ مو سری طبیعی 10 (یک دوم تیوب)&lt;/p&gt;\r\n	&lt;/li&gt;\r\n	&lt;li&gt;\r\n	&lt;p style=&quot;text-align: justify;&quot;&gt;رنگ دودی سری 10.2 (سه چهارم تیوب)&lt;/p&gt;\r\n	&lt;/li&gt;\r\n	&lt;li&gt;\r\n	&lt;p style=&quot;text-align: justify;&quot;&gt;واریاسیون 001 (اندکی بیش از یک دهم تیوب)&lt;/p&gt;\r\n	&lt;/li&gt;\r\n&lt;/ul&gt;\r\n\r\n&lt;p style=&quot;text-align:center&quot;&gt;&lt;img alt=&quot;فانتزی طوسی&quot; height=&quot;450&quot; src=&quot;/public/images/filemanager/268.jpg&quot; width=&quot;800&quot; /&gt;&lt;/p&gt;\r\n\r\n&lt;h3 style=&quot;text-align: justify;&quot;&gt;رنگ موی فانتزی ثابت&lt;/h3&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;مشکل بزرگ همه رنگ&amp;zwnj;های فانتزی، دوام کوتاه مدتشان است. ولی راهکارهایی وجود دارند که می&amp;zwnj;توانند به شما در دوام بیشتر این رنگ&amp;zwnj;ها کمک کنند:&lt;/p&gt;\r\n\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n	&lt;p style=&quot;text-align: justify;&quot;&gt;تا 3 روز موهایتان را با شامپو نشویید.&lt;/p&gt;\r\n	&lt;/li&gt;\r\n	&lt;li&gt;\r\n	&lt;p style=&quot;text-align: justify;&quot;&gt;از شامپوهای مخصوص موهای رنگ شده استفاده کنید.&lt;/p&gt;\r\n	&lt;/li&gt;\r\n	&lt;li&gt;\r\n	&lt;p style=&quot;text-align: justify;&quot;&gt;حتما شامپو رنگ&amp;zwnj;ساژ در خانه داشته باشید. برای استفاده از این شامپوها، تنها کافی است تا دستورالعمل درج شده روی جعبه را دنبال کنید.&lt;/p&gt;\r\n	&lt;/li&gt;\r\n	&lt;li&gt;\r\n	&lt;p style=&quot;text-align: justify;&quot;&gt;استفاده از شامپوی خشک را در دستور کارتان قرار دهید. این شامپوها به آب نیازی ندارند و بسیاری از افراد که موهای چربی دارند، برای آنکه مجبور نشوند هر روز موهایشان را بشویند، از آن&amp;zwnj;ها استفاده می&amp;zwnj;کنند. البته استفاده از این شامپوها، کمک زیادی به افرادی می&amp;zwnj;کند که خواهان دوام بیشتر&amp;nbsp;رنگ موی فانتزی&amp;nbsp;هستند.&lt;/p&gt;\r\n	&lt;/li&gt;\r\n	&lt;li&gt;\r\n	&lt;p style=&quot;text-align: justify;&quot;&gt;عدم استفاده از سشوار و حرارت مستقیم روی موها. بهتر است برای محافظت از موهایتان، از آفتاب دوری کنید. اگر امکان دوری از این موارد را ندارید، حتما از اسپری&amp;zwnj;های محافظ مو در برابر حرارت استفاده کنید. زیرا این اسپری&amp;zwnj;ها، یک لایه محافظ به تارهای مو اضافه می&amp;zwnj;کند و اینگونه تاثیر حرارت روی موها را کم&amp;zwnj;تر می&amp;zwnj;کنند.&lt;/p&gt;\r\n	&lt;/li&gt;\r\n	&lt;li&gt;\r\n	&lt;p style=&quot;text-align: justify;&quot;&gt;نصب فیلتر تصفیه آب روی دوش حمام. زیرا آب شهری همانند آب استخرها کلر زیادی دارد که هم برای پوست و هم برای مو مضر است. بهتر است برای محافظت از پوست و موی خود، به فکر یک فیلتر تصفیه روی دوش حمام خود باشید.&lt;/p&gt;\r\n	&lt;/li&gt;\r\n&lt;/ul&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;در آخر&lt;/p&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;همیشه به یاد داشته باشید برای انتخاب&amp;nbsp;رنگ موی فانتزی&amp;nbsp;به رنگ چشم و توناژ پوستتان توجه کنید. برای مثال، رنگ&amp;zwnj;های فانتزی صورتی، هلویی و تمام ترکیبات خنک به افراد با پوست روشن، بسیار می&amp;zwnj;آید. اگر پوست سبزه&amp;zwnj;ای دارید، بهتر است رنگ&amp;zwnj;های گرم مانند بنفش یا قرمز را انتخاب کنید.&lt;/p&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;برای تنوع بیشتر می&amp;zwnj;توانید ترکیبی از رنگ&amp;zwnj;ها را روی موهایتان ایجاد کنید، مانند اینکه انتهای موهایتان را با یکی از انواع رنگ&amp;zwnj;های فانتزی بپوشانید درحالیکه باقی موها، همان رنگ پایه مو باقی مانده است.&lt;/p&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;بی&amp;zwnj;صبرانه، منتظر کامنت&amp;zwnj;ها و نظرات شما در این زمینه هستیم.&lt;/p&gt;\r\n&lt;/section&gt;\r\n', 1, NULL, 10, '1402/01/20', '01:21', 1),
+	(2, 3, 'آشنایی-با-لیفت-مژه', 'آشنایی با لیفت مژه', 'لیفت مژه یک روش کاملاً طبیعی و نیمه دائمی است که بدون استفاده از مواد شیمیایی مژه‌هایی پرپشت به شما می‌دهد.', 1, 1, 'آشنایی با لیفت مژه', 'لیفت مژه', 'لیفت مژه یک روش کاملاً طبیعی و نیمه دائمی است که بدون استفاده از مواد شیمیایی مژه‌هایی پرپشت به شما می‌دهد. لیفت مژه با مواد طبیعی باعث می‌شود که ریشه مژه‌ها تقویت‌شده و ظاهری بلند به آن‌ها می‌بخشد. با لیفت مژه، دیگر مجبور نیستید برای بلند و پر نشان دادن مژه‌های خود از ریمل استفاده کنید. ما اینجا هستیم که به شما اطلاعات مفیدی راجع مزایای لیفت مژه، عوارض لیفت مژه، لیفت مژه بهتره یا اکستنشن، نکات لیفت مژه و خیلی اطلاعت سودمند دیگر به شما بدهیم پس با ما همراه باشید.  ', '1681472966_shutterstock_1488953.jpg', '&lt;p style=&quot;text-align: justify;&quot;&gt;لیفت مژه یک روش کاملاً طبیعی و نیمه دائمی است که بدون استفاده از مواد شیمیایی مژه&amp;zwnj;هایی پرپشت به شما می&amp;zwnj;دهد. لیفت&amp;nbsp;&lt;strong&gt;مژه با مواد طبیعی&lt;/strong&gt;&amp;nbsp;باعث می&amp;zwnj;شود که ریشه مژه&amp;zwnj;ها تقویت&amp;zwnj;شده و ظاهری بلند به آن&amp;zwnj;ها می&amp;zwnj;بخشد. با لیفت مژه، دیگر مجبور نیستید برای بلند و پر نشان دادن مژه&amp;zwnj;های خود از ریمل استفاده کنید.&amp;nbsp;ما اینجا هستیم که به شما اطلاعات مفیدی راجع مزایای لیفت مژه، عوارض لیفت مژه،&amp;nbsp;&lt;strong&gt;لیفت مژه بهتره یا اکستنشن&lt;/strong&gt;، نکات لیفت مژه و خیلی اطلاعت سودمند دیگر به شما بدهیم پس با ما همراه باشید.&amp;nbsp;&amp;nbsp;&lt;/p&gt;\r\n\r\n&lt;h2 style=&quot;text-align: justify;&quot;&gt;مزایای لیفت مژه&lt;/h2&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;لیفت مژه یک روش درمانی نیمه دائمی است که در عرض چند دقیقه مژه&amp;zwnj;های طبیعی شما را فر می&amp;zwnj;کند. این روش یک جایگزین ایده&amp;zwnj;آل برای اکستنشن مژه است و نیاز به حداقل نگهداری دارد. بزرگ&amp;zwnj;ترین مزیت لیفت مژه در مقایسه با اکستنشن این است که کاملاً طبیعی به نظر می&amp;zwnj;رسد. برخی دیگر از مزایای لیفت مژه عبارت&amp;zwnj;اند از:&lt;/p&gt;\r\n\r\n&lt;h3 style=&quot;text-align: justify;&quot;&gt;مژه&amp;zwnj;های بلندتری را ایجاد می&amp;zwnj;کند&lt;/h3&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;برخی از خانم&amp;zwnj;ها به&amp;zwnj;طور طبیعی مژه&amp;zwnj;هایی رو به پایین دارند که باعث می&amp;zwnj;شود که کوتاه&amp;zwnj;تر به نظر برسند. لیفت مژه باعث ایجاد مژه&amp;zwnj;هایی بلندتر و پرتر می&amp;zwnj;شود. لیفت مژه را می&amp;zwnj;توان برای هر نوع مژه با طول و ضخامت مختلف انجام داد، بنابراین با مژه&amp;zwnj;های کوتاه همچنان نتایج زیبایی خواهید داشت.&lt;/p&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;&amp;nbsp;&lt;/p&gt;\r\n\r\n&lt;p style=&quot;text-align:center&quot;&gt;&lt;img alt=&quot;لیفت مژه&quot; height=&quot;632&quot; src=&quot;/public/images/filemanager/لیفت.jpg&quot; width=&quot;900&quot; /&gt;&lt;/p&gt;\r\n\r\n&lt;h3 style=&quot;text-align: justify;&quot;&gt;مژه&amp;zwnj;های طبیعی شما را زیبا می&amp;zwnj;کند&lt;/h3&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;با استفاده از میله&amp;zwnj;های سیلیکونی و محلول&amp;zwnj;های درجه بالا، تکنیک لیفت مژه بر روی مژه&amp;zwnj;های طبیعی شما انجام می&amp;zwnj;شود. طول مژه طبیعی را به سبک دلخواه و مورد انتظار شما افزایش می&amp;zwnj;دهد. در کل این فرایند، نیازی به هیچ عنصر اضافی برای مژه&amp;zwnj;های شما ندارد.&lt;/p&gt;\r\n\r\n&lt;h3 style=&quot;text-align: justify;&quot;&gt;حتی برای مژه&amp;zwnj;های کوتاه هم مناسب است&lt;/h3&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;این دروغ است که لیفت مژه فقط برای مشتریانی مناسب است که مژه&amp;zwnj;های بلند و پرپشتی دارند. لیفت مژه را می&amp;zwnj;توان حتی برای مژه&amp;zwnj;های کوتاه&amp;zwnj;تر با استفاده از یک دستگاه کوچک طراحی&amp;zwnj;شده برای مژه&amp;zwnj;های کوتاه انجام داد.&lt;/p&gt;\r\n\r\n&lt;h3 style=&quot;text-align: justify;&quot;&gt;فعال&amp;zwnj;سازی سریع&lt;/h3&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;انجام لیفت مژه بسیار آسان و سریع است. برای داشتن مژه&amp;zwnj;های فر و بلند به 20 دقیقه زمان نیاز است. نگهداری از آن&amp;zwnj;ها آسان است و لازم نیست یک روز کامل را برای این درمان صرف کنید. فقط کافی است شما در هرزمانی به هر کلینیک حرفه&amp;zwnj;ای مراجعه کنید و لیف مژه را انجام دهید. لیفت مژه را می&amp;zwnj;توان به&amp;zwnj;صورت&amp;nbsp;&lt;strong&gt;لیف مژه پرپشت&amp;nbsp;&lt;/strong&gt;برای کسانی که مژه&amp;zwnj;های پرپشت دارند وهم&lt;strong&gt;&amp;nbsp;لیفت مژه کم پشت&lt;/strong&gt;&amp;nbsp;برای کسانی که مژه&amp;zwnj;های خلوت&amp;zwnj;تری دارند انجام داد.&lt;/p&gt;\r\n\r\n&lt;h3 style=&quot;text-align: justify;&quot;&gt;بهبودی سریع&lt;/h3&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;بعد از 48 ساعت از عمل لیفت مژه می&amp;zwnj;توانید از آرایش چشم و ریمل استفاده کنید. این به شما کمک می&amp;zwnj;کند تا ظاهری زنده&amp;zwnj;تر و چشمگیرتر داشته باشید.&lt;/p&gt;\r\n\r\n&lt;h3 style=&quot;text-align: justify;&quot;&gt;جایگزین عالی برای اکستنشن مژه.&lt;/h3&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;اگر نسبت به اکستنشن مژه واکنش نشان داده&amp;zwnj;اید یا نتوانسته&amp;zwnj;اید از نگهداری مژه&amp;zwnj;ها پیروی کنید. لیفت مژه می&amp;zwnj;تواند برای شما مفید باشد. این درمان شگفت&amp;zwnj;انگیز با نگهداری کم جایگزین مناسبی است و درعین&amp;zwnj;حال آن حس طبیعی دلپذیر را به شما می&amp;zwnj;دهد.&lt;/p&gt;\r\n\r\n&lt;h3 style=&quot;text-align: justify;&quot;&gt;نتایج ماندگارتر&lt;/h3&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;لیفت مژه نتایج ماندگارتری نسبت به اکستنشن مژه ارائه می&amp;zwnj;دهد. لیفت مژه می&amp;zwnj;تواند حدود 8 تا 12 هفته دوام داشته باشد، درحالی&amp;zwnj;که کاشت مژه تنها 3 تا 4 هفته دوام می&amp;zwnj;آورد.&lt;/p&gt;\r\n\r\n&lt;h3 style=&quot;text-align: justify;&quot;&gt;مژه&amp;zwnj;های طبیعی شما را تقویت می&amp;zwnj;کند&lt;/h3&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;در لیفت مژه از هیچ&amp;zwnj;گونه مواد شیمیایی خشن و چسب استفاده نمی&amp;zwnj;شود.&amp;nbsp;&lt;strong&gt;لیفت مژه و ابرو&lt;/strong&gt;&amp;nbsp;درواقع دارای اثرات مغذی است که می&amp;zwnj;تواند به تقویت موهای مژه و ابرو شما کمک کند. درواقع بسیاری از خانم&amp;zwnj;ها می&amp;zwnj;گویند که مژه&amp;zwnj;های طبیعی آن&amp;zwnj;ها بعد از لیفت مژه بهتر رشد می&amp;zwnj;کنند. لیفت مژه بر روی مژه&amp;zwnj;های طبیعی شما کار می&amp;zwnj;کند، نیازی به افزودن چیزی به مژه&amp;zwnj;های شما نیست.&lt;/p&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;&amp;nbsp;&lt;/p&gt;\r\n\r\n&lt;p style=&quot;text-align:center&quot;&gt;&lt;img alt=&quot;لیفت مژه طبیعی&quot; height=&quot;331&quot; src=&quot;/public/images/filemanager/لیفت مژه چیست.jpg&quot; width=&quot;800&quot; /&gt;&lt;/p&gt;\r\n\r\n&lt;h3 style=&quot;text-align: justify;&quot;&gt;مقرون&amp;zwnj;به&amp;zwnj;صرفه&lt;/h3&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;برخلاف اکستنشن&amp;zwnj;های گران&amp;zwnj;قیمت، لیفت مژه قیمت پایین&amp;zwnj;تر و عمر طولانی&amp;zwnj;تری دارد، بنابراین به جلسات زیادی نیاز نخواهید داشت.&lt;/p&gt;\r\n\r\n&lt;h3 style=&quot;text-align: justify;&quot;&gt;نگهداری کم&lt;/h3&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;هیچ قانونی برای لیفت مژه اعمال نمی&amp;zwnj;شود، مگر اینکه در 24 ساعت اول از عرق، بخار، ریمل و محصولات مبتنی بر روغن جلوگیری کنید.&lt;/p&gt;\r\n\r\n&lt;h3 style=&quot;text-align: justify;&quot;&gt;آسیب کمتر&lt;/h3&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;لیفت مژه نه&amp;zwnj;تنها باعث شکستن و آسیب به مژه&amp;zwnj;ها نمی&amp;zwnj;شود بلکه باعث تقویت مژه&amp;zwnj;های شما هم می&amp;zwnj;شود.&lt;/p&gt;\r\n\r\n&lt;h2 style=&quot;text-align: justify;&quot;&gt;لیفت مژه در خانه&lt;/h2&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;برخی از شرکت&amp;zwnj;ها کیت&amp;zwnj;های لیفت مژه را در خانه می&amp;zwnj;فروشند، اما بیشتر متخصصان توصیه می&amp;zwnj;کنند برای این کار به سالن&amp;zwnj;های زیبایی مراجعه کنید. زیرا برای انجام صحیح لیفت مژه، چشمان شما باید در طول عمل بسته باشند، بنابراین انجام این درمان روی خودتان می&amp;zwnj;تواند بسیار مشکل باشد. به&amp;zwnj;علاوه، اگر درمان خود را برای مدت طولانی ادامه دهید، ممکن است خطر آسیب رساندن به مژه&amp;zwnj;های خود را داشته باشید.&lt;/p&gt;\r\n\r\n&lt;h2 style=&quot;text-align: justify;&quot;&gt;لیفت مژه بهتر است یا لمینت؟&lt;/h2&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;به&amp;zwnj;طور قاطع نمی&amp;zwnj;توان گفت کدام روش درمان مناسبت&amp;zwnj;تر و بهتر است. لیفت مژه با استفاده از مواد گیاهی مژه شخص را حالت دار و ضخیم می&amp;zwnj;کند و از هیچ موی مصنوعی استفاده نمی&amp;zwnj;شود. درنهایت این&amp;zwnj;یک سلیقه شخصی است و به انتخاب خود فرد بستگی دارد که کدام روش را انتخاب کند. تنها تفاوت لمینت و لیفت مژه در نوع مواد مصرفی آن&amp;zwnj;هاست. در روش لمینت مژه علاوه بر کراتین و ویتامین از رنگ هم استفاده می&amp;zwnj;شود و این خود یک ریمل دائمی محسوب می&amp;zwnj;شود. در روش لیفت مژه از رنگ استفاده نمی&amp;zwnj;شود فقط مژه&amp;zwnj;ها به&amp;zwnj;واسطه مواد کراتین تقویت می&amp;zwnj;شود.&lt;/p&gt;\r\n\r\n&lt;h2 style=&quot;text-align: justify;&quot;&gt;قیمت لیفت مژه&lt;/h2&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;قیمت لیفت مژه بستگی به این دارد که به کدام سالن مراجعه و از چه برندی استفاده کنید، اما درمان به&amp;zwnj;طورکلی مقرون&amp;zwnj;به&amp;zwnj;صرفه تر از اکستنشن مژه است. همیشه مطمئن شوید که آرتیست شما یک حرفه&amp;zwnj;ای دارای مجوز است.&lt;/p&gt;\r\n\r\n&lt;h2 style=&quot;text-align: justify;&quot;&gt;نکات لیفت مژه&lt;/h2&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;نکته مهم در مورد لیفت مژه این است که روش نگهداری راحت و آسانی دارد بااین&amp;zwnj;حال، در 24 تا 48 ساعت اول کمی مراقبت بیشتری لازم است. انجام این نکات را به شما توصیه می&amp;zwnj;کنیم:&lt;/p&gt;\r\n\r\n&lt;h3 style=&quot;text-align: justify;&quot;&gt;مژه&amp;zwnj;هایتان را خشک نگه&amp;zwnj;دارید&lt;/h3&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;ازآنجایی&amp;zwnj;که لیفت مژه شامل استفاده از محلول&amp;zwnj;های تخصصی در یک ناحیه ظریف است، باید مژه&amp;zwnj;های خود را حداقل 24 تا 48 ساعت پس از لیفت خشک نگه&amp;zwnj;دارید. اجتناب از رطوبت کمک می&amp;zwnj;کند تا اطمینان حاصل شود که فرها به&amp;zwnj;درستی در جای خود قرار می&amp;zwnj;گیرند. این به این معنی است که از خیس شدن مژه&amp;zwnj;های خود در حمام نیز خودداری کنید.&lt;/p&gt;\r\n\r\n&lt;h3 style=&quot;text-align: justify;&quot;&gt;مراقب مژه&amp;zwnj;هایتان باشید&lt;/h3&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;&amp;nbsp;حداقل تا 48 ساعت اجازه ندهید چیزی به مژه&amp;zwnj;های شما برسد. از هر چیزی که می&amp;zwnj;تواند به هر طریقی مژه&amp;zwnj;های شما را به خطر بیندازد، خودداری کنید. علاوه بر این، سعی کنید چند روز به پشت بخوابید تا مژه&amp;zwnj;هایتان خراشیده نشود.&lt;/p&gt;\r\n\r\n&lt;h3 style=&quot;text-align: justify;&quot;&gt;&amp;nbsp;استفاده از ریمل&lt;/h3&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;درحالی&amp;zwnj;که نیازی به استفاده از ریمل بعد از بلندکردن مژه برای ظاهری خیره&amp;zwnj;کننده نیست، ممکن است همچنان بخواهید از ریمل استفاده کنید تا جلوه بیشتری به چشم&amp;zwnj;های خود ببخشید. اگر قصد انجام این کار را دارید، فقط از ریمل بدون روغن استفاده کنید، آن&amp;zwnj;هم پس از 48 ساعت بعد از لیفت مژه.&lt;/p&gt;\r\n\r\n&lt;h3 style=&quot;text-align: justify;&quot;&gt;مراقب آلرژی&amp;zwnj;ها باشید&lt;/h3&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;&amp;nbsp;اگر بعد از لیفت مژه از آرایش چشم استفاده می&amp;zwnj;کنید، حتماً از پاک&amp;zwnj;کننده آرایش چشم بدون روغن نیز استفاده کنید. این کار اطمینان می&amp;zwnj;دهد که هیچ آلرژی ایجاد نمی&amp;zwnj;شود یا به پلک&amp;zwnj;های شما آسیب نمی&amp;zwnj;رساند. هنگام انتخاب پاک&amp;zwnj;کننده آرایش چشم، از محصولاتی که پارابن دارند دوری کنید.&lt;/p&gt;\r\n\r\n&lt;h3 style=&quot;text-align: justify;&quot;&gt;مژه&amp;zwnj;های خود را حالت&amp;zwnj;دهی کنید&lt;/h3&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;&amp;nbsp;هر مویی که درمان شده باید مرتباً اصلاح شود تا نتایج حفظ شود. بعد از عمل لیفت مژه می&amp;zwnj;توانید از یک اسانس مغذی ملایم برای محافظت و مرطوب کردن مژه&amp;zwnj;های خود استفاده کنید. بااین&amp;zwnj;حال، عاقلانه&amp;zwnj;تر خواهد بود که قبل از استفاده از هرگونه نرم&amp;zwnj;کننده روی مژه&amp;zwnj;های تازه فر شده خود، با تکنسین زیبایی مشورت کنید.&lt;/p&gt;\r\n\r\n&lt;h3 style=&quot;text-align: justify;&quot;&gt;از مواد شوینده استفاده نکنید&lt;/h3&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;تا 24 ساعت بعد از لیفت مژه، مژه&amp;zwnj;های خود را نشویید، زیرا شامپو یا نرم&amp;zwnj;کننده روی مژه&amp;zwnj;ها می&amp;zwnj;تواند باعث ضعیف شدن رنگ یا بلند شدن مژه&amp;zwnj;ها شود.&lt;/p&gt;\r\n\r\n&lt;h2 style=&quot;text-align: justify;&quot;&gt;لیفت مژه چقدر دوام دارد؟&lt;/h2&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;اگر فردی فوق&amp;zwnj;العاده فعال هستید، زیاد عرق می&amp;zwnj;کنید یا در هوای گرم زندگی می&amp;zwnj;کنید، ممکن است که لیفت مژه شما کمی سریع&amp;zwnj;تر محو شود. البته لیفت مژه دائمی نیست اثرات باگذشت زمان محو می&amp;zwnj;شوند و پس از چند هفته، ممکن است دوباره به ریمل زدن برسید؛ بنابراین مانند هر چیز دیگری، واقعاً بستگی به این دارد که چقدر از آن&amp;zwnj;ها مراقبت می&amp;zwnj;کنید. اگر دستورالعمل&amp;zwnj;های ارائه&amp;zwnj;شده توسط تکنسین خود را دنبال کنید، ممکن است 6 تا 8 هفته دوام داشته باشند. علاوه بر این لیفت مژه به&amp;zwnj;سرعت رشد مژه&amp;zwnj;های شما هم&amp;zwnj;بستگی دارد به&amp;zwnj;طورکلی. نتایج لیفت مژه حدود شش تا هشت هفته ماندگاری دارد. البته همه این&amp;zwnj;ها به نحوه مراقبت از مژه&amp;zwnj;هایتان بستگی دارد.&lt;/p&gt;\r\n\r\n&lt;h2 style=&quot;text-align: justify;&quot;&gt;لیفت مژه چه عوارضی دارد؟&lt;/h2&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;لیفت مژه عموماً برای اکثر افراد بی&amp;zwnj;خطر است.&amp;nbsp;وقتی این روش به&amp;zwnj;درستی انجام شود، نسبتاً ایمن است. اگر مواد شیمیایی چسبنده برای مدت طولانی روی مژه&amp;zwnj;ها باشد، می&amp;zwnj;تواند منجر به شکستگی یا آسیب به مژه&amp;zwnj;ها شود و گاهی اوقات، با رنگ کردن، رنگ مورداستفاده در صورت تماس با پوست می&amp;zwnj;تواند منجر به حساسیت یا تحریک مستقیم شود.&amp;nbsp;همچنین اگر درمان بیش&amp;zwnj;ازحد طولانی باقی بماند یا به&amp;zwnj;طور نادرست اعمال شود، ممکن است با مژه&amp;zwnj;های ناهموار و چروکیده مواجه شوید. بااینکه لیفت مژه معمولاً جز روش&amp;zwnj;های ایمن است، اما همیشه باید توسط یک متخصص انجام شود.&lt;/p&gt;\r\n', 1, NULL, 9, '1402/01/25', '15:19', 1),
+	(3, 4, 'تفاوت-میکاپ-و-گریم-چیست؟', 'تفاوت میکاپ و گریم چیست؟', 'اگر به آرایشگاه مراجعه کرده باشید، حتماً واژه‌هایی مثل گریم، میکاپ و آرایش را شنیده‌اید و به این فکر کرده‌اید که این سه چه تفاوت‌هایی با یکدیگر دارند.', 1, 1, 'تفاوت میکاپ و گریم چیست؟', 'میکاپ', 'اگر به آرایشگاه مراجعه کرده باشید، حتماً واژه‌هایی مثل گریم، میکاپ و آرایش را شنیده‌اید و به این فکر کرده‌اید که این سه چه تفاوت‌هایی با یکدیگر دارند. در این مقاله ما به بررسی فرق گریم با میکاپ پرداخته‌ایم. اگر دوست دارید با تفاوت‌های آن‌ها آشنا شوید و اصول اولیه گریم و میکاپ را یاد بگیرید، مطالعه این مقاله را به شما توصیه می‌کنیم پس با ما همراه باشید. ', '1681474273_53ed278d23186933bf70898b51965a45.jpeg', '&lt;p style=&quot;text-align: justify;&quot;&gt;اگر به آرایشگاه مراجعه کرده باشید، حتماً واژه&amp;zwnj;هایی مثل گریم، میکاپ و آرایش را شنیده&amp;zwnj;اید و به این فکر کرده&amp;zwnj;اید که این سه چه تفاوت&amp;zwnj;هایی با یکدیگر دارند. در این مقاله ما به بررسی فرق گریم با میکاپ پرداخته&amp;zwnj;ایم. اگر دوست دارید با تفاوت&amp;zwnj;های آن&amp;zwnj;ها آشنا شوید و اصول اولیه گریم و میکاپ را یاد بگیرید، مطالعه این مقاله را به شما توصیه می&amp;zwnj;کنیم پس با ما همراه باشید.&amp;nbsp;&lt;/p&gt;\r\n\r\n&lt;section id=&quot;newsbody&quot;&gt;\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;&amp;nbsp;&lt;/p&gt;\r\n\r\n&lt;h2 style=&quot;text-align: justify;&quot;&gt;فرق گریم و آرایش چیست؟&lt;/h2&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;فرق گریم با میکاپ در این است که معمولاً آرایش به&amp;zwnj;صورت رنگ می&amp;zwnj;دهد و سبک آرایش بستگی به مد روز دارد، در واقع پیرو مد بوده و در فصل&amp;zwnj;های مختلف نوع میکاپ تغییر می&amp;zwnj;کند. معمولاً میکاپ بعد از سال&amp;zwnj;ها به&amp;zwnj;اصطلاح دمده می&amp;zwnj;شود. اما در گریم از رنگ و لعاب کمتری استفاده می&amp;zwnj;شود بیشتر به رفع عیوب و زاویه&amp;zwnj;سازی صورت می&amp;zwnj;پردازد. گریم بر اساس فرم صورت هر شخص متفاوت است اما اصول اولیه یکی است. یکی دیگر از تفاوت&amp;zwnj;های&amp;nbsp;&lt;strong&gt;آرایش با گریم&lt;/strong&gt;&amp;nbsp;این است که گریم برخلاف میکاپ باگذشت سال&amp;zwnj;ها زیبایی خود را حفظ می&amp;zwnj;کند، زیرا به اصلاح عیوب چهره پرداخته و بر زیبایی طبیعی صورت تاکید دارد. گریم اغراق&amp;zwnj;آمیز نیست و حالت طبیعی چهره را حفظ می&amp;zwnj;کند؛ بنابراین در بیشتر جاها و مراسم&amp;zwnj;ها می&amp;zwnj;توانید از آن استفاده کنید.&lt;/p&gt;\r\n\r\n&lt;h2 style=&quot;text-align: justify;&quot;&gt;اصول کلی میکاپ&lt;/h2&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;&amp;nbsp;&lt;/p&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;فرق گریم با میکاپ در این است که میکاپ در واقع همان آرایش معمولی است که باتوجه&amp;zwnj;به مد روز تغییر می&amp;zwnj;کند. هرساله با تغییر فصل و سال شاهد میکاپ&amp;zwnj;های جدید هستیم که معمولاً رنگ&amp;zwnj;ها در آن تغییر می&amp;zwnj;کنند. در اینجا اصول کلی میکاپ را برایتان می&amp;zwnj;آوریم:&lt;/p&gt;\r\n\r\n&lt;h3 style=&quot;text-align: justify;&quot;&gt;مرطوب&amp;zwnj;کننده&lt;/h3&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;باید بدانید که از اصول اولیه داشتن یک میکاپ زیبا و تمیز چقدر مهم است که پوست به&amp;zwnj;درستی مرطوب شود.آبرسانی &amp;zwnj;صورت از جمع&amp;zwnj;شدن آرایش در نواحی خشک و یا نفوذ به خطوط و چین&amp;zwnj;وچروک جلوگیری می&amp;zwnj;کند.حتماً قبل از استفاده از کانسیلر مرطوب&amp;zwnj;کننده بزنید. زیرا استفاده از مرطوب&amp;zwnj;کننده تضمین می&amp;zwnj;کند که پرایمر شما یکنواخت&amp;zwnj;تر باشد و ظاهری بی&amp;zwnj;عیب&amp;zwnj;ونقص به شما می&amp;zwnj;دهد.&lt;/p&gt;\r\n\r\n&lt;h3 style=&quot;text-align: justify;&quot;&gt;پرایمر صورت&lt;/h3&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;پرایمرهای صورت به&amp;zwnj;گونه&amp;zwnj;ای طراحی شده&amp;zwnj;اند که هرگونه نقص را از بین ببرد، خطوط ریز، چین&amp;zwnj;وچروک و منافذ بزرگ شده را محو می&amp;zwnj;کند. بسیاری از پرایمرها همچنین دارای مزایای بیشتری هستند، مانند مواد بازتابنده برای ایجاد درخشندگی بیشتر به پوست یا SPF برای محافظت در برابر آفتاب.هنگام استفاده از پرایمر، چند دقیقه به آن زمان دهید تا به خورد پوست شما رود و قبل از اینکه به بقیه روتین آرایش خود ادامه دهید، به&amp;zwnj;درستی تنظیم شود.پرایمرهای آرایشی همچنین ماندگاری آرایش شما را بهبود می&amp;zwnj;بخشد و تضمین می&amp;zwnj;کند که محصولات زیبایی که روی آن می&amp;zwnj;زنید، تکان نخورند، لکه نشوند یا در طول روز محو نشوند. پرایمرهای مختلفی وجود دارد که بسته به نوع پوست و نیازتان می&amp;zwnj;توانید از بین آنها انتخاب کنید.&lt;/p&gt;\r\n\r\n&lt;h3 style=&quot;text-align: justify;&quot;&gt;کرم&amp;zwnj; پودر&lt;/h3&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;کرم&amp;zwnj;پودر یک محصول کرم، مایع، موس یا پودری است که روی کل صورت استفاده می&amp;zwnj;شود تا پایه&amp;zwnj;ای صاف و یکدست در رنگ پوست کاربر ایجاد کند. کرم&amp;zwnj;پودر به&amp;zwnj;طورکلی پوشش کمتری نسبت به کانسیلر ایجاد می&amp;zwnj;کند و در فرمولاسیون&amp;zwnj;هایی فروخته می&amp;zwnj;شود که می&amp;zwnj;توانند پوششی شفاف، مات، شبنم دار یا کامل برای پوست ایجاد کنند. کرم&amp;zwnj;پودر برای آرایش معمولی با کرم&amp;zwnj;پودر برای گریم تفاوت&amp;zwnj;هایی دارد. به&amp;zwnj;طورکلی&amp;nbsp;&lt;strong&gt;فرق کرم گریم با کرم&amp;zwnj;پودر&lt;/strong&gt;&amp;nbsp;در میزان پوشش&amp;zwnj;دهی آن بر روی صورت است.&lt;/p&gt;\r\n\r\n&lt;h3 style=&quot;text-align: justify;&quot;&gt;کانسیلر&lt;/h3&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;کانسیلر یک کرم یا محصول مایع است که برای پوشاندن لک&amp;zwnj;های پوستی استفاده می&amp;zwnj;شود. کانسیلر معمولاً به رنگ پوست کاربر است و پس از آماده&amp;zwnj;سازی صورت استفاده می&amp;zwnj;شود. کانسیلر معمولاً دارای رنگ&amp;zwnj;دانه&amp;zwnj;های شدیدتر، پوشش&amp;zwnj;دهی بیشتر و ضخیم&amp;zwnj;تر از کرم&amp;zwnj;پودر یا پرایمرهای رنگی است. کانسیلر از نظر رنگ&amp;zwnj;دانه و قوام بیشتر از کرم&amp;zwnj;پودر کار می&amp;zwnj;کند، تعدادی فرمولاسیون مختلف که برای سبک&amp;zwnj;های مختلف استفاده در نظر گرفته شده است مانند کانسیلر سبک&amp;zwnj;تر برای چشم&amp;zwnj;ها و کانسیلر سنگین&amp;zwnj;تر برای گریم. همچنین کانسیلرهای اصلاح&amp;zwnj;کننده رنگ که به طور خاص برای متعادل کردن تغییر رنگ پوست طراحی شده&amp;zwnj;اند در بازار مجود است.&lt;/p&gt;\r\n\r\n&lt;h3 style=&quot;text-align: justify;&quot;&gt;رژگونه&lt;/h3&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;محصولی مایع، کرم یا پودری است که در مرکز گونه&amp;zwnj;ها باهدف افزودن یا افزایش رنگ طبیعی از آن استفاده می&amp;zwnj;شود. رژگونه&amp;zwnj;ها معمولاً در سایه&amp;zwnj;های صورتی یا قهوه&amp;zwnj;ای مایل به قهوه&amp;zwnj;ای در دسترس هستند و ممکن است برای برجسته&amp;zwnj;تر نشان&amp;zwnj;دادن استخوان&amp;zwnj;های گونه نیز استفاده شوند.&lt;/p&gt;\r\n\r\n&lt;h3 style=&quot;text-align: justify;&quot;&gt;برنزر&lt;/h3&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;&amp;nbsp;یک محصول پودر، کرم یا مایع است که به پوست رنگ می&amp;zwnj;بخشد، معمولاً در سایه&amp;zwnj;های برنزی یا قهوه&amp;zwnj;ای مایل به زرد که به پوست ظاهری برنزه داده و رنگ صورت را افزایش می&amp;zwnj;دهد. همچنین برنزر، مانند هایلایتر، ممکن است حاوی موادی باشد که جلوه&amp;zwnj;ای درخشان یا براق را ایجاد می&amp;zwnj;کند، و در رنگ&amp;zwnj;های مات، نیمه مات، ساتن یا درخشان ارائه می&amp;zwnj;شود.&lt;/p&gt;\r\n\r\n&lt;h3 style=&quot;text-align: justify;&quot;&gt;هایلایتر&lt;/h3&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;&amp;nbsp;یک محصول مایع، کرم یا پودری است که روی نقاط بلند صورت مانند ابرو، بینی و استخوان گونه اعمال می&amp;zwnj;شود. هایلایتر معمولاً دارای موادی است که جلوه&amp;zwnj;ای درخشان یا براق می&amp;zwnj;دهد. همچنین، می&amp;zwnj;توان از کرم&amp;zwnj;پودر یا کانسیلر با رنگ روشن&amp;zwnj;تر به&amp;zwnj;عنوان هایلایتر استفاده کرد.&lt;/p&gt;\r\n\r\n&lt;h3 style=&quot;text-align: justify;&quot;&gt;مداد ابرو&lt;/h3&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;این محصول برای رنگ کردن، پرکردن و مشخص&amp;zwnj;کردن ابروها استفاده می&amp;zwnj;شود.&lt;/p&gt;\r\n\r\n&lt;h3 style=&quot;text-align: justify;&quot;&gt;سایه چشم&lt;/h3&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;یک محصول پودر، کرم یا مایع است که برای جلب&amp;zwnj;توجه، برجسته&amp;zwnj;کردن و تغییر شکل ناحیه اطراف چشم، روی پلک و فضای زیر ابرو استفاده می&amp;zwnj;شود. سایه چشم معمولاً با استفاده از برس سایه چشم، با موهای کوچک و گرد استفاده می&amp;zwnj;شود، اگرچه فرمولاسیون مایع و کرم نیز ممکن است با انگشتان اعمال شود. سایه چشم تقریباً در هر رنگی موجود است، و همچنین در انواع مختلف، از پوشش&amp;zwnj;های مات با پوشش شفاف گرفته تا پوشش&amp;zwnj;های براق و رنگ&amp;zwnj;دانه&amp;zwnj;ای بالا به فروش می&amp;zwnj;رسد. بسیاری از رنگ&amp;zwnj;های مختلف سایه چشم را می&amp;zwnj;توان با هم ترکیب کرد تا جلوه&amp;zwnj;های متفاوتی به دست آورد.&lt;/p&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;&amp;nbsp;&lt;/p&gt;\r\n\r\n&lt;h3 style=&quot;text-align: justify;&quot;&gt;خط چشم&lt;/h3&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;از این محصول برای افزایش اندازه یا عمق ظاهری چشم استفاده می&amp;zwnj;شود. اگرچه خط چشم معمولاً مشکی است، اما می&amp;zwnj;تواند در رنگ&amp;zwnj;های مختلف از جمله قهوه&amp;zwnj;ای، سفید و آبی باشد. خط چشم می&amp;zwnj;تواند به شکل مداد، ژل یا ماژیکی باشد.&lt;/p&gt;\r\n\r\n&lt;h3 style=&quot;text-align: justify;&quot;&gt;ریمل&lt;/h3&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;برای تیره کردن، بلندکردن، ضخیم کردن یا تقویت مژه&amp;zwnj;ها از طریق استفاده از یک محصول معمولی ضخیم و با قوام کرم که با یک برس ریمل مارپیچ استفاده می&amp;zwnj;شود. ریمل معمولاً مشکی، قهوه&amp;zwnj;ای یا شفاف است، هرچند رنگ&amp;zwnj;های مختلفی وجود دارد که برخی براق هستند. ریمل معمولاً در فرمولاسیون&amp;zwnj;های مختلفی تبلیغ و فروخته می&amp;zwnj;شود که ویژگی&amp;zwnj;هایی مانند ضد آب، افزایش حجم، افزایش طول و افزایش فر را تبلیغ می&amp;zwnj;کند.&lt;/p&gt;\r\n\r\n&lt;h3 style=&quot;text-align: justify;&quot;&gt;مژه مصنوعی&lt;/h3&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;برای بلندکردن، بزرگ کردن و حجم دادن به مژه&amp;zwnj;ها استفاده می&amp;zwnj;شود. به&amp;zwnj;طورکلی از یک نوار کوچک تشکیل شده است که موها اعم از انسان، راسو یا مصنوعی به آن وصل شده است، مژه مصنوعی معمولاً با استفاده از چسب روی خط مژه زده می&amp;zwnj;شود که می&amp;zwnj;تواند در انواع بدون لاتکس و لاتکس باشد. مژه&amp;zwnj;های مصنوعی مغناطیسی که پس از زدن خط چشم مغناطیسی به پلک می&amp;zwnj;چسبند نیز موجود است. طرح&amp;zwnj;ها از نظر طول و رنگ متفاوت هستند. مژه مصنوعی دائمی نیست و به&amp;zwnj;راحتی با انگشتان پاک می&amp;zwnj;شود. اکستنشن مژه یک راه دائمی برای رسیدن به این ظاهر است.&lt;/p&gt;\r\n\r\n&lt;h3 style=&quot;text-align: justify;&quot;&gt;محصولات لب از جمله رژ لب، برق لب، خط لب و بالم لب.&lt;/h3&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;محصولات لب معمولاً به لب&amp;zwnj;ها رنگ و بافت می&amp;zwnj;بخشند و همچنین لب&amp;zwnj;ها را مرطوب می&amp;zwnj;کنند و لبه&amp;zwnj;های خارجی آنها را مشخص می&amp;zwnj;کنند. محصولاتی که به لب&amp;zwnj;ها رنگ و بافت می&amp;zwnj;بخشند، مانند رژلب&amp;zwnj;ها و براق&amp;zwnj;کننده&amp;zwnj;های لب، اغلب در طیف گسترده&amp;zwnj;ای از رنگ&amp;zwnj;ها و همچنین تعدادی پوشش مختلف مانند روکش&amp;zwnj;های مات و روکش&amp;zwnj;های ساتن یا براق هستند. هم محصولات رنگ لب و هم خط لب ممکن است ضد آب باشند و ممکن است مستقیماً روی لب&amp;zwnj;ها، با برس یا با انگشتان اعمال شوند. بالم لب، اگرچه برای مرطوب کردن و محافظت از لب&amp;zwnj;ها طراحی شده است (مانند افزودن محافظت در برابر اشعه ماوراء بنفش)، همچنین ممکن است رنگ به لب&amp;zwnj;ها دهد.&lt;/p&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;&amp;nbsp;&lt;/p&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;پودر صورت&lt;/p&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;پودر فیکس، یا اسپری&amp;zwnj;های فیکس برای &amp;laquo;ست&amp;zwnj;کردن&amp;raquo; زیرسازی یا کانسیلر استفاده می&amp;zwnj;شود که به آن یک روکش مات یا یکدست می&amp;zwnj;بخشد و درعین&amp;zwnj;حال عیوب یا لک&amp;zwnj;های کوچک را نیز پنهان می&amp;zwnj;کند. هم پودرها و هم اسپری&amp;zwnj;های فیکس کننده مدعی هستند که آرایش را از جذب شدن به پوست و یا ذوب شدن آن جلوگیری می&amp;zwnj;کنند. درحالی&amp;zwnj;که اسپری&amp;zwnj;های فیکس کننده معمولاً رنگی نیستند، پودر فیکس در انواع شفاف یا رنگی موجود است و می&amp;zwnj;توان از آنها برای بیک کردن کرم&amp;zwnj;پودر استفاده کرد تا مدت بیشتری روی صورت بماند. پودرهای رنگی صورت را نیز ممکن است به&amp;zwnj;تنهایی و بدون کرم&amp;zwnj;پودر یا کانسیلر استفاده کنید تا یک پوشش بسیار شفاف ایجاد کند.&lt;/p&gt;\r\n\r\n&lt;h2 style=&quot;text-align: justify;&quot;&gt;اصول کلی گریم&lt;/h2&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;همان&amp;zwnj;طور که اشاره کردیم فرق گریم با میکاپ در این است که در گریم از رنگ&amp;zwnj;ها استفاده نمی&amp;zwnj;شود و بیشتر از سایه&amp;zwnj;ها برای زاویه&amp;zwnj;سازی و ایجاد سایه&amp;zwnj;روشن بر روی صورت استفاده می&amp;zwnj;شود. اصل کلی گریم بر پایه لولایت و هایلایت است. در گریم در ابتدا از فون پایه برای پوشش دادن کلی پوست استفاده می&amp;zwnj;شود و همچنین با کمک کانسیلر، جای جوش و زخم پوشش داده شده و کاملاً محو می&amp;zwnj;شود. سپس کار هایلایت و لولایت آغاز می&amp;zwnj;شود. روش&amp;zwnj;ها و لوازم مورداستفاده در گریم عبارت&amp;zwnj;اند از:&lt;/p&gt;\r\n\r\n&lt;h3 style=&quot;text-align: justify;&quot;&gt;برجسته&amp;zwnj;کردن گونه&amp;zwnj;ها در گریم&lt;/h3&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;برای برجسته&amp;zwnj;کردن گونه&amp;zwnj;ها زیر استخوان گونه را تا کنار لب&amp;zwnj;ها تیره کنید ولی روی استخوان گونه را روشن کنید. این&amp;zwnj;جوری گونه&amp;zwnj;ها برجسته&amp;zwnj;تر به نظر می&amp;zwnj;رسند.&lt;/p&gt;\r\n\r\n&lt;h3 style=&quot;text-align: justify;&quot;&gt;باریک کردن بینی با گریم&lt;/h3&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;اگر دوست دارید بینی&amp;zwnj;تان باریک و قلمی شود باید کناره&amp;zwnj;های بینی را تیره و روی تیغه بینی را روشن کرد.&lt;/p&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;&amp;nbsp;&lt;/p&gt;\r\n\r\n&lt;h3 style=&quot;text-align: justify;&quot;&gt;پوشاندن چین و چروک&amp;zwnj;های روی پلک با گریم&lt;/h3&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;برای ازبین&amp;zwnj;بردن و پوشاندن چین&amp;zwnj;وچروک پلک باید از لاولایت استفاده کرد. همچنین قسمت زیر ابرو یعنی همان شکستگی ابرو و گوشه&amp;zwnj;های چشم را هایلایت کرد.&lt;/p&gt;\r\n\r\n&lt;h3 style=&quot;text-align: justify;&quot;&gt;زاویه&amp;zwnj;سازی فک در گریم&lt;/h3&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;برای زاویه&amp;zwnj;سازی فک کافی است زیر استخوان فک را تیره و قسمت بالایی استخوان فک را روشن کنید، همچنین اگر چانه کوچکی دارید و دوست دارید برجسته&amp;zwnj;تر به نظر برسد کمی چانه را روشن&amp;zwnj;تر کنید.&lt;/p&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;در آخر بعد از کانتورینگ صورت با کمک یک اسفنج یا بیوتی بلندرمی توانید تمام سایه&amp;zwnj;ها و مرز بین آن&amp;zwnj;ها را محو کنید تا کانتور صورت طبیعی&amp;zwnj;تر و زیباتر به نظر برسد. بعد از گریم نیاز به آرایش سنگین و غلیظ نیست، زیرا عیوب صورت برطرف شده است.&lt;/p&gt;\r\n&lt;/section&gt;\r\n', 1, NULL, 7, '1402/01/25', '15:41', 1);
 
 -- Dumping structure for table reservation.tbl_blog_related
 CREATE TABLE IF NOT EXISTS `tbl_blog_related` (
@@ -255,7 +263,7 @@ CREATE TABLE IF NOT EXISTS `tbl_branches` (
 -- Dumping data for table reservation.tbl_branches: 1 rows
 DELETE FROM `tbl_branches`;
 /*!40000 ALTER TABLE `tbl_branches` DISABLE KEYS */;
-INSERT INTO `tbl_branches` (`b_id`, `branch_vids_id`, `b_name`, `b_manager`, `b_phone`, `b_address`, `province_id`, `city_id`, `b_date`, `b_status`) VALUES
+INSERT IGNORE INTO `tbl_branches` (`b_id`, `branch_vids_id`, `b_name`, `b_manager`, `b_phone`, `b_address`, `province_id`, `city_id`, `b_date`, `b_status`) VALUES
 	(1000, '1000', 'شعبه اصلی', 'مدیر اصلی', '', '', 11, 153, '1401/01/01', 1);
 /*!40000 ALTER TABLE `tbl_branches` ENABLE KEYS */;
 
@@ -275,7 +283,7 @@ CREATE TABLE IF NOT EXISTS `tbl_cash` (
 -- Dumping data for table reservation.tbl_cash: 1 rows
 DELETE FROM `tbl_cash`;
 /*!40000 ALTER TABLE `tbl_cash` DISABLE KEYS */;
-INSERT INTO `tbl_cash` (`c_id`, `cash_vids_id`, `c_name`, `c_currency`, `c_current_balance`, `c_desc`, `c_date`, `c_status`) VALUES
+INSERT IGNORE INTO `tbl_cash` (`c_id`, `cash_vids_id`, `c_name`, `c_currency`, `c_current_balance`, `c_desc`, `c_date`, `c_status`) VALUES
 	(1, '1000', 'پیش فرض', 1, '0', '', '1401/01/01', 1);
 /*!40000 ALTER TABLE `tbl_cash` ENABLE KEYS */;
 
@@ -295,12 +303,14 @@ CREATE TABLE IF NOT EXISTS `tbl_category` (
   `count` int NOT NULL DEFAULT '0',
   `status` int NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3;
 
--- Dumping data for table reservation.tbl_category: ~0 rows (approximately)
-DELETE FROM `tbl_category`;
-INSERT INTO `tbl_category` (`id`, `c_removable`, `c_type`, `name`, `parent_id`, `description`, `menu_type`, `icon`, `banner_vertical`, `banner_horizontal`, `link`, `count`, `status`) VALUES
-	(1, 0, 'blog', 'بدون دسته', 0, NULL, NULL, '', NULL, NULL, 'no-category', 0, 1);
+-- Dumping data for table reservation.tbl_category: ~4 rows (approximately)
+INSERT IGNORE INTO `tbl_category` (`id`, `c_removable`, `c_type`, `name`, `parent_id`, `description`, `menu_type`, `icon`, `banner_vertical`, `banner_horizontal`, `link`, `count`, `status`) VALUES
+	(1, 0, 'blog', 'بدون دسته', 0, NULL, NULL, '', NULL, NULL, 'no-category', 0, 1),
+	(2, 1, 'blog', 'رنگ مو', 0, NULL, NULL, '', NULL, NULL, 'hair-color', 0, 1),
+	(3, 1, 'blog', 'میکاپ چشم', 0, '', NULL, NULL, NULL, NULL, 'eye-makeup', 0, 1),
+	(4, 1, 'blog', 'میکاپ صورت', 0, '', NULL, NULL, NULL, NULL, 'makeup', 0, 1);
 
 -- Dumping structure for table reservation.tbl_cities
 CREATE TABLE IF NOT EXISTS `tbl_cities` (
@@ -313,8 +323,7 @@ CREATE TABLE IF NOT EXISTS `tbl_cities` (
 ) ENGINE=InnoDB AUTO_INCREMENT=441 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 -- Dumping data for table reservation.tbl_cities: ~440 rows (approximately)
-DELETE FROM `tbl_cities`;
-INSERT INTO `tbl_cities` (`ci_id`, `province_id`, `ci_name`, `ci_status`) VALUES
+INSERT IGNORE INTO `tbl_cities` (`ci_id`, `province_id`, `ci_name`, `ci_status`) VALUES
 	(1, 1, 'تبريز', 1),
 	(2, 1, 'كندوان', 1),
 	(3, 1, 'بندر شرفخانه', 1),
@@ -766,9 +775,8 @@ CREATE TABLE IF NOT EXISTS `tbl_color` (
 ) ENGINE=MyISAM AUTO_INCREMENT=141 DEFAULT CHARSET=utf32;
 
 -- Dumping data for table reservation.tbl_color: 140 rows
-DELETE FROM `tbl_color`;
 /*!40000 ALTER TABLE `tbl_color` DISABLE KEYS */;
-INSERT INTO `tbl_color` (`color_id`, `color_name`, `color_code`, `color_status`) VALUES
+INSERT IGNORE INTO `tbl_color` (`color_id`, `color_name`, `color_code`, `color_status`) VALUES
 	(1, 'مشکی', '#000000', 1),
 	(2, 'سفید', '#ffffff', 1),
 	(3, 'قرمز', '#f44336', 1),
@@ -978,7 +986,7 @@ CREATE TABLE IF NOT EXISTS `tbl_contact_subject` (
 -- Dumping data for table reservation.tbl_contact_subject: 3 rows
 DELETE FROM `tbl_contact_subject`;
 /*!40000 ALTER TABLE `tbl_contact_subject` DISABLE KEYS */;
-INSERT INTO `tbl_contact_subject` (`cs_id`, `cs_title`, `cs_removable`, `cs_create_date`, `cs_status`) VALUES
+INSERT IGNORE INTO `tbl_contact_subject` (`cs_id`, `cs_title`, `cs_removable`, `cs_create_date`, `cs_status`) VALUES
 	(1, 'پیشنهادات', 0, '1400/10/16', 1),
 	(2, 'باگ', 0, '1400/10/16', 1),
 	(3, 'انتقادات', 0, '1400/10/16', 1);
@@ -1017,7 +1025,7 @@ CREATE TABLE IF NOT EXISTS `tbl_cost_type` (
 -- Dumping data for table reservation.tbl_cost_type: 1 rows
 DELETE FROM `tbl_cost_type`;
 /*!40000 ALTER TABLE `tbl_cost_type` DISABLE KEYS */;
-INSERT INTO `tbl_cost_type` (`ct_id`, `cost_category_vids_id`, `title`) VALUES
+INSERT IGNORE INTO `tbl_cost_type` (`ct_id`, `cost_category_vids_id`, `title`) VALUES
 	(1, '1000', 'پیش فرض');
 /*!40000 ALTER TABLE `tbl_cost_type` ENABLE KEYS */;
 
@@ -1034,7 +1042,7 @@ CREATE TABLE IF NOT EXISTS `tbl_currency` (
 -- Dumping data for table reservation.tbl_currency: 6 rows
 DELETE FROM `tbl_currency`;
 /*!40000 ALTER TABLE `tbl_currency` DISABLE KEYS */;
-INSERT INTO `tbl_currency` (`c_id`, `c_name`, `c_short_name`, `c_default`, `c_status`) VALUES
+INSERT IGNORE INTO `tbl_currency` (`c_id`, `c_name`, `c_short_name`, `c_default`, `c_status`) VALUES
 	(1, 'ریال ایران', 'IRR', 1, 1),
 	(2, 'درهم امارات متحدهٔ عربی', 'AED', 0, 1),
 	(3, 'دلار کانادا', 'CAD', 0, 1),
@@ -1064,10 +1072,11 @@ CREATE TABLE IF NOT EXISTS `tbl_customer` (
   `c_verification_code` int DEFAULT NULL,
   `c_status` int NOT NULL DEFAULT '1',
   PRIMARY KEY (`c_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_persian_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_persian_ci;
 
 -- Dumping data for table reservation.tbl_customer: ~0 rows (approximately)
-DELETE FROM `tbl_customer`;
+INSERT IGNORE INTO `tbl_customer` (`c_id`, `customer_vids_id`, `c_name`, `c_family`, `c_display_name`, `c_mobile_num`, `c_phone_num`, `c_email`, `c_cart_no`, `c_birthday`, `province_id`, `city_id`, `c_arithmetic`, `c_image`, `c_about`, `c_registery_date`, `c_verification_code`, `c_status`) VALUES
+	(1, '1000', 'بهار', 'محمدی', 'بهار محمدی', '09012345678', '', 'bm@gmail.com', '', '{"day": "20", "year": "1374", "month": "03"}', 11, 153, 1, 'https://www.gravatar.com/avatar/a8d33b6f87c84cd5891763b0b4c74748?d=identicon&s=50&r=x', '', '1402/01/18', NULL, 1);
 
 -- Dumping structure for table reservation.tbl_customer_bot
 CREATE TABLE IF NOT EXISTS `tbl_customer_bot` (
@@ -1123,7 +1132,7 @@ CREATE TABLE IF NOT EXISTS `tbl_customer_level` (
 -- Dumping data for table reservation.tbl_customer_level: 5 rows
 DELETE FROM `tbl_customer_level`;
 /*!40000 ALTER TABLE `tbl_customer_level` DISABLE KEYS */;
-INSERT INTO `tbl_customer_level` (`cl_id`, `cl_title`, `cl_status`) VALUES
+INSERT IGNORE INTO `tbl_customer_level` (`cl_id`, `cl_title`, `cl_status`) VALUES
 	(1, 'مدیر اصلی', 1),
 	(2, 'کارمند', 1),
 	(3, 'کاربر عادی', 1),
@@ -1237,7 +1246,7 @@ CREATE TABLE IF NOT EXISTS `tbl_domains` (
 
 -- Dumping data for table reservation.tbl_domains: ~31 rows (approximately)
 DELETE FROM `tbl_domains`;
-INSERT INTO `tbl_domains` (`domain_id`, `domain_name`, `domain_title`, `domain_code`, `domain_prority`, `domain_date_created`, `user_id_created`, `domain_date_of_last_revision`, `user_id_last_revision`, `domain_removed`, `domain_status`) VALUES
+INSERT IGNORE INTO `tbl_domains` (`domain_id`, `domain_name`, `domain_title`, `domain_code`, `domain_prority`, `domain_date_created`, `user_id_created`, `domain_date_of_last_revision`, `user_id_last_revision`, `domain_removed`, `domain_status`) VALUES
 	(1, 'yes_no', 'بله', '1', 1, '1401/11/01', 1, '1401/11/01', 1, 0, 1),
 	(2, 'yes_no', 'خیر', '0', 2, '1401/11/01', 1, '1401/11/01', 1, 0, 1),
 	(3, 'status', 'فعال', '1', 1, '1401/11/01', 1, '1401/11/01', 1, 0, 1),
@@ -1279,10 +1288,12 @@ CREATE TABLE IF NOT EXISTS `tbl_faq` (
   `view` int DEFAULT '0',
   `status` int NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3;
 
 -- Dumping data for table reservation.tbl_faq: ~0 rows (approximately)
-DELETE FROM `tbl_faq`;
+INSERT IGNORE INTO `tbl_faq` (`id`, `type`, `question`, `answer`, `view`, `status`) VALUES
+	(1, 'public', 'اسکریپت نوبت دهی ونسا چیست؟', '<p>ونسا&nbsp;بستری برای نوبت&zwnj;دهی آنلاین آرایشگاه&zwnj;های ایران است. با استفاده از ونسا&nbsp;می&zwnj;توانید خدمات مورد نظرتان را در زمان دلخواه خودتان رزرو نمایید. نیازی به هیچ تماسی نیست، با چند کلیک ساده نوبت شما رزرو می&zwnj;شود.</p>\r\n', 0, 1),
+	(2, 'service', 'میکروبلیدینگ بهتر است یا فیبروز؟', '<p>میکروبلیدینگ یه تکنیک هست که به روش فیبروز براتون انجام&zwnj; میشه<br />\r\nبعضی ها بهش میگن بلید بعضی ها میکرو<br />\r\nبعضی ها هم میگن فیبروز</p>\r\n\r\n<p>این ها چندین روش جدا از هم نیستند<br />\r\nیک روش هستند با اسم های مختلف در عامیانه گفته میشن</p>\r\n\r\n<p>حالا این تکنیک روش های مختلفی داره به اسم کانتور بروز، بریزی بروز و&zwnj;.</p>\r\n', 0, 1);
 
 -- Dumping structure for table reservation.tbl_faq_related
 CREATE TABLE IF NOT EXISTS `tbl_faq_related` (
@@ -1330,7 +1341,7 @@ CREATE TABLE IF NOT EXISTS `tbl_holidays` (
 -- Dumping data for table reservation.tbl_holidays: 9 rows
 DELETE FROM `tbl_holidays`;
 /*!40000 ALTER TABLE `tbl_holidays` DISABLE KEYS */;
-INSERT INTO `tbl_holidays` (`h_id`, `h_title`, `h_date`, `h_status`) VALUES
+INSERT IGNORE INTO `tbl_holidays` (`h_id`, `h_title`, `h_date`, `h_status`) VALUES
 	(1, 'روز طبیعت', '01/13', 1),
 	(2, 'تعطیلات رسمی', '01/01', 1),
 	(3, 'تعطیلات رسمی	', '01/02', 1),
@@ -1355,7 +1366,7 @@ CREATE TABLE IF NOT EXISTS `tbl_icons` (
 -- Dumping data for table reservation.tbl_icons: 4 rows
 DELETE FROM `tbl_icons`;
 /*!40000 ALTER TABLE `tbl_icons` DISABLE KEYS */;
-INSERT INTO `tbl_icons` (`i_id`, `i_title`, `i_description`, `i_icon`, `i_status`) VALUES
+INSERT IGNORE INTO `tbl_icons` (`i_id`, `i_title`, `i_description`, `i_icon`, `i_status`) VALUES
 	(1, 'زیبایی مورد نظرت رو تصور کن', 'تجربه یک حس متفاوت', '1679576380_answer-1.png', 1),
 	(2, 'آرایشگر مورد نظرت رو انتخاب کن', 'حس آرامش در کنار بهترین ها', '1679576388_eyeshadow-1-1.png', 1),
 	(3, 'وقت رزرو کن', 'روز مورد نظرتو انتخاب کن', '1679576396_customer-service-1.png', 1),
@@ -1372,10 +1383,31 @@ CREATE TABLE IF NOT EXISTS `tbl_images` (
   `i_order` int NOT NULL DEFAULT '0',
   `i_status` int NOT NULL DEFAULT '1',
   PRIMARY KEY (`i_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb3;
 
--- Dumping data for table reservation.tbl_images: ~0 rows (approximately)
+-- Dumping data for table reservation.tbl_images: ~20 rows (approximately)
 DELETE FROM `tbl_images`;
+INSERT IGNORE INTO `tbl_images` (`i_id`, `post_id`, `i_type`, `i_image`, `i_alt`, `i_order`, `i_status`) VALUES
+	(1, 1, 'service-portfolio', '1680826829_4.jpg', NULL, 1, 1),
+	(2, 1, 'service-portfolio', '1680826871_1519723361.jpg', NULL, 2, 1),
+	(5, 1, 'service-portfolio', '1680833361_talebi-18.jpg', NULL, 4, 1),
+	(7, 1, 'service-portfolio', '1680833635_333.jpg', NULL, 5, 1),
+	(12, 3, 'service-portfolio', '1680834485_104.jpg', NULL, 3, 1),
+	(14, 3, 'service-portfolio', '1680834894_101.jpg', NULL, 2, 1),
+	(15, 3, 'service-portfolio', '1680834983_100.jpg', NULL, 4, 1),
+	(16, 3, 'service-portfolio', '1680835203_102.jpg', NULL, 1, 1),
+	(17, 2, 'service-portfolio', '1680835795_000.jpg', NULL, 1, 1),
+	(18, 2, 'service-portfolio', '1680835797_001.jpg', NULL, 2, 1),
+	(19, 2, 'service-portfolio', '1680835804_002.jpg', NULL, 3, 1),
+	(20, 2, 'service-portfolio', '1680835892_003.jpg', NULL, 4, 1),
+	(21, 2, 'service-portfolio', '1680835897_004.jpg', NULL, 5, 1),
+	(22, 5, 'service-portfolio', '1680836338_03.jpg', NULL, 1, 1),
+	(23, 5, 'service-portfolio', '1680836342_04.jpg', NULL, 2, 1),
+	(24, 5, 'service-portfolio', '1680836347_05.jpg', NULL, 3, 1),
+	(25, 5, 'service-portfolio', '1680836388_لیفت.jpg', NULL, 4, 1),
+	(26, 4, 'service-portfolio', '1680836546_IMG_20190106_174756-scaled.jpg', NULL, 1, 1),
+	(27, 4, 'service-portfolio', '1680836594_راضیه-بزرگی-ابروکار-تهران.jpg', NULL, 2, 1),
+	(30, 4, 'service-portfolio', '1680836985_راضیه-بزرگی-اصلاح-ابرو-با-تیغ-و-قیچی-705x397-1.jpg', NULL, 3, 1);
 
 -- Dumping structure for table reservation.tbl_like
 CREATE TABLE IF NOT EXISTS `tbl_like` (
@@ -1407,11 +1439,11 @@ CREATE TABLE IF NOT EXISTS `tbl_link` (
 -- Dumping data for table reservation.tbl_link: 11 rows
 DELETE FROM `tbl_link`;
 /*!40000 ALTER TABLE `tbl_link` DISABLE KEYS */;
-INSERT INTO `tbl_link` (`l_id`, `l_name`, `l_link`, `l_type`, `l_parent_id`, `l_menu_type`, `l_order`, `l_status`) VALUES
+INSERT IGNORE INTO `tbl_link` (`l_id`, `l_name`, `l_link`, `l_type`, `l_parent_id`, `l_menu_type`, `l_order`, `l_status`) VALUES
     (1, 'صفحه اصلی', '', 'header', 0, NULL, 1, 1),
-    (2, 'خدمات', 'services', 'header', 0, NULL, 2, 1),
-    (3, 'وبلاگ', 'blog', 'header', 0, NULL, 3, 1),
-    (4, 'سوالات متداول', 'faq', 'header', 0, NULL, 4, 1),
+	(2, 'خدمات', 'services', 'header', 0, NULL, 2, 1),
+	(3, 'وبلاگ', 'blog', 'header', 0, NULL, 3, 1),
+	(4, 'سوالات متداول', 'faq', 'header', 0, NULL, 4, 1),
 	(5, 'درباره ما', 'about', 'header', 0, NULL, 5, 1),
 	(6, 'قوانین و مقررات', 'terms', 'header', 0, NULL, 6, 1),
 	(7, 'تماس با ما', 'contact', 'header', 0, NULL, 7, 1),
@@ -1457,7 +1489,7 @@ CREATE TABLE IF NOT EXISTS `tbl_methods_contacting` (
 
 -- Dumping data for table reservation.tbl_methods_contacting: ~18 rows (approximately)
 DELETE FROM `tbl_methods_contacting`;
-INSERT INTO `tbl_methods_contacting` (`mc_id`, `mc_key`, `mc_title`, `mc_link`, `mc_description`, `mc_class`, `mc_color`, `mc_icon`, `mc_priority`, `mc_show_in_float_button`, `mc_show_in_float_button_slider`, `mc_show_in_footer`, `mc_show_in_login_page`, `mc_show_in_mobile`, `mc_show_in_desktop`, `mc_on_click`, `mc_status`) VALUES
+INSERT IGNORE INTO `tbl_methods_contacting` (`mc_id`, `mc_key`, `mc_title`, `mc_link`, `mc_description`, `mc_class`, `mc_color`, `mc_icon`, `mc_priority`, `mc_show_in_float_button`, `mc_show_in_float_button_slider`, `mc_show_in_footer`, `mc_show_in_login_page`, `mc_show_in_mobile`, `mc_show_in_desktop`, `mc_on_click`, `mc_status`) VALUES
 	(1, 'phone', 'شماره تماس', '', '', 'msg-item-phone', '#4EB625', '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M493.4 24.6l-104-24c-11.3-2.6-22.9 3.3-27.5 13.9l-48 112c-4.2 9.8-1.4 21.3 6.9 28l60.6 49.6c-36 76.7-98.9 140.5-177.2 177.2l-49.6-60.6c-6.8-8.3-18.2-11.1-28-6.9l-112 48C3.9 366.5-2 378.1.6 389.4l24 104C27.1 504.2 36.7 512 48 512c256.1 0 464-207.5 464-464 0-11.2-7.7-20.9-18.6-23.4z"></path></svg>', 3, 1, 1, 1, 1, 1, 1, NULL, 0),
 	(2, 'fax', 'فکس', '', '', 'msg-item-fax', '#19cac2', '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M493.4 24.6l-104-24c-11.3-2.6-22.9 3.3-27.5 13.9l-48 112c-4.2 9.8-1.4 21.3 6.9 28l60.6 49.6c-36 76.7-98.9 140.5-177.2 177.2l-49.6-60.6c-6.8-8.3-18.2-11.1-28-6.9l-112 48C3.9 366.5-2 378.1.6 389.4l24 104C27.1 504.2 36.7 512 48 512c256.1 0 464-207.5 464-464 0-11.2-7.7-20.9-18.6-23.4z"></path></svg>', 8, 1, 1, 0, 0, 0, 0, NULL, 0),
 	(3, 'telegram', 'تلگرام', '', '', 'msg-item-telegram-plane', '#20AFDE', '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M446.7 98.6l-67.6 318.8c-5.1 22.5-18.4 28.1-37.3 17.5l-103-75.9-49.7 47.8c-5.5 5.5-10.1 10.1-20.7 10.1l7.4-104.9 190.9-172.5c8.3-7.4-1.8-11.5-12.9-4.1L117.8 284 16.2 252.2c-22.1-6.9-22.5-22.1 4.6-32.7L418.2 66.4c18.4-6.9 34.5 4.1 28.5 32.2z"></path></svg>', 2, 1, 1, 1, 1, 1, 1, NULL, 0),
@@ -1498,9 +1530,9 @@ CREATE TABLE IF NOT EXISTS `tbl_page` (
   PRIMARY KEY (`p_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb3;
 
--- Dumping data for table reservation.tbl_page: ~11 rows (approximately)
+-- Dumping data for table reservation.tbl_page: ~10 rows (approximately)
 DELETE FROM `tbl_page`;
-INSERT INTO `tbl_page` (`p_id`, `type`, `link`, `readonly_link`, `removable`, `writer`, `title`, `main_tag`, `metaDescription`, `cover`, `data_item`, `description`, `view`, `date_created`, `time`, `p_status`) VALUES
+INSERT IGNORE INTO `tbl_page` (`p_id`, `type`, `link`, `readonly_link`, `removable`, `writer`, `title`, `main_tag`, `metaDescription`, `cover`, `data_item`, `description`, `view`, `date_created`, `time`, `p_status`) VALUES
 	(1, 'dashboard', 'dashboard-main', 1, 0, 1, 'داشبورد پیش فرض', NULL, NULL, NULL, '[{"ratio": "3-3-3-3", "columns": [[{"title": "تعداد نوبت‌های ماه", "widget": "count_reservation_this_month"}], [{"title": "تعداد کابران ماه", "widget": "count_users_this_month"}], [{"title": "اعتبار پنل پیامک", "widget": "credit_sms_panel"}]]}, {"ratio": "9-3", "columns": [[{"title": "نمودار نوبت‌های رزرو شده در ماه", "widget": "chart_reservation_this_month"}], [{"title": "ساعت آنالوگ", "widget": "clock"}]]}, {"ratio": "6-6", "columns": [[{"title": "آخرین فعالیت های شما", "widget": "last_activity"}], [{"title": "آخرین مشتریان ثبت شده", "widget": "last_users_register"}]]}, {"ratio": "12", "columns": [[{"title": "آخرین مطالب وبلاگ", "widget": "last_blog_article"}]]}]', NULL, 0, '1400/07/07', '22:26', 3),
 	(2, 'main_page', NULL, 1, 0, 1, 'صفحه اصلی', NULL, NULL, NULL, NULL, NULL, 0, '1400/07/07', '22:26', 2),
 	(3, 'sub_page', 'services', 1, 0, 1, 'خدمات', 'خدمات', 'لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.', '', NULL, '&lt;p&gt;لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.&lt;/p&gt;\r\n\r\n&lt;p&gt;لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.&lt;/p&gt;\r\n', 0, '1400/07/07', '23:27', 2),
@@ -1522,11 +1554,19 @@ CREATE TABLE IF NOT EXISTS `tbl_page_widget` (
   `ip_content` text NOT NULL,
   `ip_status` int NOT NULL,
   PRIMARY KEY (`ip_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf32;
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf32;
 
--- Dumping data for table reservation.tbl_page_widget: 0 rows
+-- Dumping data for table reservation.tbl_page_widget: 7 rows
 DELETE FROM `tbl_page_widget`;
 /*!40000 ALTER TABLE `tbl_page_widget` DISABLE KEYS */;
+INSERT IGNORE INTO `tbl_page_widget` (`ip_id`, `page_id`, `template_id`, `ip_title`, `ip_order`, `ip_content`, `ip_status`) VALUES
+	(1, 2, 1, 'اسلایدر', 1, 'a:2:{s:6:"number";s:1:"1";s:8:"ordering";s:3:"asc";}', 1),
+	(2, 2, 3, 'خدمات', 2, 'a:7:{s:5:"title";s:23:"خدمات مجموعه";s:9:"sort_type";s:6:"latest";s:9:"view_type";s:6:"slider";s:4:"link";s:8:"services";s:10:"link_title";s:30:"مشاهده همه خدمات";s:6:"number";s:2:"10";s:11:"description";s:204:"در این بخش خدمات سالن زیبایی ونسا را مشاهده میکنید که برای رزرو نوبت می توانید خدمت مورد نظر خود را انتخاب نمایید";}', 1),
+	(3, 2, 4, 'بنر تبلیغاتی', 3, 'a:2:{s:6:"number";s:1:"1";s:8:"ordering";s:3:"asc";}', 1),
+	(4, 2, 6, 'شبکه های اجتماعی', 5, 'a:3:{s:4:"link";s:31:"https://instagram.com/ho55ein74";s:10:"link_title";s:47:"مشاهده پست های اینستاگرام";s:11:"description";s:116:"ما هر روز کلی مطالب آموزشی جالب در اینستاگراممون منتشر می‌کنیم!";}', 1),
+	(5, 2, 2, 'مطالب وبلاگ', 6, 'a:8:{s:5:"title";s:40:"جدیدترین مطالب آموزشی";s:9:"sort_type";s:6:"latest";s:9:"view_type";s:6:"slider";s:4:"link";s:4:"blog";s:10:"link_title";s:30:"مشاهده همه مطالب";s:6:"number";s:2:"10";s:11:"description";s:0:"";s:21:"sub_category_products";s:1:"1";}', 1),
+	(6, 2, 5, 'نظرات مشتریان', 7, 'a:4:{s:6:"number";s:2:"10";s:8:"ordering";s:3:"asc";s:5:"title";s:44:"در مورد ونسا چه میشنویم؟";s:11:"description";s:148:"این‌ها، بخش خیلی کوچکی از نظراتی هستند که افراد مختلف در مورد اسکریپت ونسا دارند.";}', 1),
+	(7, 2, 3, 'پربازدیدترین خدمات', 4, 'a:7:{s:5:"title";s:35:"پربازدیدترین خدمات";s:9:"sort_type";s:4:"view";s:9:"view_type";s:7:"slider2";s:4:"link";s:21:"services?orderby=view";s:10:"link_title";s:30:"مشاهده همه خدمات";s:6:"number";s:2:"10";s:11:"description";s:0:"";}', 1);
 /*!40000 ALTER TABLE `tbl_page_widget` ENABLE KEYS */;
 
 -- Dumping structure for table reservation.tbl_payment_log
@@ -1573,7 +1613,7 @@ CREATE TABLE IF NOT EXISTS `tbl_payment_methods` (
 -- Dumping data for table reservation.tbl_payment_methods: 3 rows
 DELETE FROM `tbl_payment_methods`;
 /*!40000 ALTER TABLE `tbl_payment_methods` DISABLE KEYS */;
-INSERT INTO `tbl_payment_methods` (`pay_id`, `pay_default`, `pay_type`, `pay_to`, `user_type`, `pay_title`, `pay_desc`, `pay_icon`, `pay_merchant`, `pay_username`, `pay_password`, `test_status`, `pay_status`) VALUES
+INSERT IGNORE INTO `tbl_payment_methods` (`pay_id`, `pay_default`, `pay_type`, `pay_to`, `user_type`, `pay_title`, `pay_desc`, `pay_icon`, `pay_merchant`, `pay_username`, `pay_password`, `test_status`, `pay_status`) VALUES
 	(1, 0, 'cash', 1000, 0, 'کارت به کارت', 'شما می توانید مبلغ سفارش را به شماره کارت 1234567891011213 به نام تست هستیم واریز و رسید آن را برای پشتیبانی ارسال نمایید', NULL, '', NULL, NULL, 0, 0),
 	(2, 1, 'bank', 1000, 0, 'درگاه زرین پال', '', 'bank-logo/zarinpal.png', NULL, NULL, NULL, 0, 0),
 	(3, 0, 'cash', 1000, 0, 'پرداخت حضوری', '', NULL, '', NULL, NULL, 0, 0);
@@ -1594,7 +1634,7 @@ CREATE TABLE IF NOT EXISTS `tbl_pettycash` (
 -- Dumping data for table reservation.tbl_pettycash: 1 rows
 DELETE FROM `tbl_pettycash`;
 /*!40000 ALTER TABLE `tbl_pettycash` DISABLE KEYS */;
-INSERT INTO `tbl_pettycash` (`p_id`, `pettyCash_vids_id`, `p_name`, `p_currency`, `p_desc`, `p_date`, `p_status`) VALUES
+INSERT IGNORE INTO `tbl_pettycash` (`p_id`, `pettyCash_vids_id`, `p_name`, `p_currency`, `p_desc`, `p_date`, `p_status`) VALUES
 	(1000, '1000', 'پیش فرض', 1, '', '1400/02/16', 1);
 /*!40000 ALTER TABLE `tbl_pettycash` ENABLE KEYS */;
 
@@ -1608,7 +1648,7 @@ CREATE TABLE IF NOT EXISTS `tbl_provinces` (
 
 -- Dumping data for table reservation.tbl_provinces: ~31 rows (approximately)
 DELETE FROM `tbl_provinces`;
-INSERT INTO `tbl_provinces` (`pro_id`, `pro_name`, `pro_status`) VALUES
+INSERT IGNORE INTO `tbl_provinces` (`pro_id`, `pro_name`, `pro_status`) VALUES
 	(1, 'آذربايجان شرقي', 1),
 	(2, 'آذربايجان غربي', 1),
 	(3, 'اردبيل', 1),
@@ -1736,11 +1776,17 @@ CREATE TABLE IF NOT EXISTS `tbl_services` (
   `s_view` int NOT NULL DEFAULT '0',
   `s_status` tinyint NOT NULL DEFAULT '1',
   PRIMARY KEY (`s_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf32;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf32;
 
 -- Dumping data for table reservation.tbl_services: 0 rows
 DELETE FROM `tbl_services`;
 /*!40000 ALTER TABLE `tbl_services` DISABLE KEYS */;
+INSERT IGNORE INTO `tbl_services` (`s_id`, `s_title`, `s_title_en`, `seo_title`, `seo_desc`, `s_recovery_times`, `s_recovery_times_desc`, `s_avg_time_to_do`, `s_durability`, `s_mainKeyword`, `s_slug`, `s_description`, `s_cover`, `s_date_created`, `s_calendar_background_color`, `s_view`, `s_status`) VALUES
+	(1, 'میکاپ و گریم صورت', 'makeup', 'میکاپ و گریم صورت', 'با هنر گریم و میکاپ صورتی متعادل تر و زیباتر را تجربه خواهید کرد. و هدف ما لبخند رضایت شما است.', 0, '', '120 دقیقه', '24 ساعت', 'میکاپ', 'میکاپ-و-گریم-صورت', '&lt;p&gt;هزینه&amp;zwnj;های میکاپ در سالن زیبایی با توجه به لوازم مصرفی، زمان ماندگاری و درخواست مشتری تعیین می&amp;zwnj;گردد.&lt;/p&gt;\r\n\r\n&lt;p&gt;نمونه کارها در سالن بصورت آلبوم موجود است.&lt;/p&gt;\r\n', '1680804884_photo.jpg', '1402/01/17', '#ff0000', 14, 1),
+	(2, 'خدمات ناخن', 'nail', 'خدمات ناخن', 'ترمیم حرفه‌ای‌‌ ناخن با بهترین مواد از جمله خدماتی است که برای زیباتر به‌ نظر رسیدن دست و پای شما در این سالن به بهترین نحو ممکن انجام می‌شود.', 1, '', '60 دقیقه', 'دو ماه', 'ناخن', 'خدمات-ناخن', '&lt;p&gt;ترمیم حرفه&amp;zwnj;ای&amp;zwnj;&amp;zwnj; ناخن با بهترین مواد، پدیکور و مانیکور ناخن (برداشتن گوشت&amp;zwnj;های اضافه دور ناخن و از بین بردن شیارها و زردی&amp;zwnj;های صدف ناخن) از جمله خدماتی است که برای زیباتر به&amp;zwnj; نظر رسیدن دست و پای شما در این سالن به بهترین نحو ممکن انجام می&amp;zwnj;شود.&lt;/p&gt;\r\n', '1680804843_خدمات ناخن.jpeg', '1402/01/17', '#ff0000', 13, 1),
+	(3, 'رنگ مو', 'color hair', 'رنگ مو', 'ارائه خدمات رنگ مو در سالن ونسا با استفاده از مواد و رنگ‌های با کیفیت و برندهای معتبر توسط رنگ کاران مجرب و ماهر صورت می گیرد.', 1, '', '150 دقیقه', 'بیش از یک سال', 'رنگ مو', 'رنگ-مو', '&lt;p&gt;امروزه رنگ مو جزء محبوب ترین و پرطرفدارترین صنعت مد محسوب می شود که سالانه چندین بار تعداد زیادی از بانوان را به سمت سالن های زیبایی می کشاند.&lt;/p&gt;\r\n\r\n&lt;p&gt;خانم ها به دلایل مختلفی همچون ایجاد جذابیت بیشتر، تغییر در چهره، جوان تر به نظر رسیدن، تغییر فصل، مد سال، مخفی کردن موهای سفید و &amp;hellip; موهای خود را رنگ می کنند. خدمات برای زیبایی بخشیدن به موها با رنگ؛ تنوع و سبک های زیادی دارد که از جمله می توان به انواع&lt;strong&gt;&amp;nbsp;رنگ ساده، مش، هایلایت، لولایت، سان&amp;zwnj;لایت، بالیاژ، آمبره، سامبره&lt;/strong&gt;&amp;nbsp;و&amp;hellip; اشاره کرد. مهم ترین چیزی که شما باید در انتخاب رنگ مو به آن توجه کنید هارمونی بین رنگ پوست&amp;zwnj;تان و رنگ مو ا&amp;zwnj;ست.&amp;nbsp;&lt;/p&gt;\r\n\r\n&lt;p&gt;ارائه خدمات رنگ مو در سالن ونسا با استفاده از مواد و رنگ&amp;zwnj;های با کیفیت و برندهای معتبر توسط رنگ کاران مجرب و ماهر صورت می گیرد و کارشناسان رنگ مو ونسا به شما کمک می کنند تا انتخاب خوبی برای رنگ مو خود داشته باشید.&amp;nbsp;&lt;/p&gt;\r\n', '1680805928_رنگ-کردن-مو.jpg', '1402/01/17', '#ff0000', 9, 1),
+	(4, 'اصلاح ابرو', 'eyebrow', 'اصلاح ابرو', 'ابرو عضوی است که در زیبایی چهره بسیار موثر است. پس بایستی فرم ابرو را با سایر خطوط صورت هماهنگ نمود.', 0, '', '30 دقیقه', 'دو ماه', 'اصلاح ابرو', 'اصلاح-ابرو', '&lt;p&gt;ابرو عضوی است که در زیبایی چهره بسیار موثر است. پس بایستی فرم ابرو را با سایر خطوط صورت هماهنگ نمود. داشتن ابروهای متقارن، خوش حالت و مهم&amp;zwnj;تر از همه متناسب با چشم&amp;zwnj;ها و فرم صورت آرزوی هر خانومی است. به شما توصیه می&amp;zwnj;کنیم یکبار اصلاح ابرو های خود را بدست پرسنل با تجربه و آشنا با مد روز سالن زیبایی ونسا بسپارید تا چهره خاص خود را پیدا کنید.&lt;/p&gt;\r\n', '1680807719_Eyebrow-shaping-1.jpg', '1402/01/17', '#ff0000', 13, 1),
+	(5, 'لیفت و لمینت مژه', 'Eyelash', 'لیفت و لمینت مژه', 'لمینت و لیفت مژه ازتکنیک‌هایی هستند که می‌توانید روی مژه‌هایتان اعمال کنید تا مژه‌هایی پرپشت‌تر و خوش حالت‌تر داشته باشید. ', 1, '', '45 دقیقه', 'دو ماه', 'لیفت مژه', 'لیفت-و-لمینت-مژه', '&lt;p id=&quot;toc__10&quot;&gt;لمینت و لیفت مژه ازتکنیک&amp;zwnj;هایی هستند که می&amp;zwnj;توانید روی مژه&amp;zwnj;هایتان اعمال کنید تا مژه&amp;zwnj;هایی پرپشت&amp;zwnj;تر و خوش حالت&amp;zwnj;تر داشته باشید. همچنین با بلند&amp;zwnj;تر و مشکی&amp;zwnj;تر مژه&amp;zwnj;هایتان، چشما&amp;zwnj;هایی گیرا&amp;zwnj;تر داشته باشید. پس از انجام لمینت و لیفت مژه خواهید دید که چه تغییرات آنی و نیمه دائمی در چهره&amp;zwnj;تان ایجاد خواهد شد.&lt;/p&gt;\r\n', '1680807960_3-brovres-proc.jpg', '1402/01/17', '#ff0000', 20, 1);
 /*!40000 ALTER TABLE `tbl_services` ENABLE KEYS */;
 
 -- Dumping structure for table reservation.tbl_services_related_blog
@@ -1805,9 +1851,7 @@ CREATE TABLE IF NOT EXISTS `tbl_services_reservation_log` (
   `activity` varchar(500) DEFAULT NULL,
   `log_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`idusr_activity`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3
-/*!50100 PARTITION BY HASH (`idusr_activity`)
-PARTITIONS 10 */;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- Dumping data for table reservation.tbl_services_reservation_log: ~0 rows (approximately)
 DELETE FROM `tbl_services_reservation_log`;
@@ -1862,11 +1906,19 @@ CREATE TABLE IF NOT EXISTS `tbl_services_staff` (
   `score` float NOT NULL DEFAULT '10',
   `status` int NOT NULL DEFAULT '1',
   PRIMARY KEY (`r_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb3;
 
--- Dumping data for table reservation.tbl_services_staff: 0 rows
+-- Dumping data for table reservation.tbl_services_staff: 7 rows
 DELETE FROM `tbl_services_staff`;
 /*!40000 ALTER TABLE `tbl_services_staff` DISABLE KEYS */;
+INSERT IGNORE INTO `tbl_services_staff` (`r_id`, `staff_vids_id`, `name`, `expertise`, `description`, `no_sheba`, `no_card`, `image`, `score`, `status`) VALUES
+	(1, '1000', 'هانیه غلامی', 'رنگ و لایت', '-', '-', '-', '1680806170_شیدا.jpeg', 10, 1),
+	(2, '1001', 'نازنین بیاتی', 'میکاپ و گریم', '-', '-', '-', '1680806741_نازنین+بیاتی+.jpg', 10, 1),
+	(3, '1002', 'لیندا کیانی', 'کاشت ناخن', '-', '-', '-', '1680806460_linad-kiani-beauty.jpg', 10, 1),
+	(4, '1003', 'الناز حبیبی', 'لیفت و لمینت مژه', '-', '-', '-', '1680819907_الناز+حبیبی (1).jpg', 10, 1),
+	(5, '1004', 'زیبا کرمعلی', 'اصلاح ابرو', '-', '-', '-', '1680820151_55.jpg', 10, 1),
+	(6, '1005', 'هستی مهدوی', 'میکاپ و گریم', '-', '-', '-', '1680820429_hasti-mahdavifar-01.jpg', 10, 1),
+	(7, '1006', 'سارا  رسول زاده', 'لیفت و لمینت مژه', '-', '-', '-', '1680820599_image_2022-08-23_123131413.png', 10, 1);
 /*!40000 ALTER TABLE `tbl_services_staff` ENABLE KEYS */;
 
 -- Dumping structure for table reservation.tbl_services_tag
@@ -1893,11 +1945,19 @@ CREATE TABLE IF NOT EXISTS `tbl_services_tariff` (
   `st_deposit` varchar(11) NOT NULL DEFAULT '0',
   `st_status` tinyint NOT NULL DEFAULT '1',
   PRIMARY KEY (`st_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf32;
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf32;
 
--- Dumping data for table reservation.tbl_services_tariff: 0 rows
+-- Dumping data for table reservation.tbl_services_tariff: 7 rows
 DELETE FROM `tbl_services_tariff`;
 /*!40000 ALTER TABLE `tbl_services_tariff` DISABLE KEYS */;
+INSERT IGNORE INTO `tbl_services_tariff` (`st_id`, `service_id`, `branch_id`, `operator_id`, `st_is_vip`, `st_price`, `st_deposit`, `st_status`) VALUES
+	(1, 1, 1002, 1001, 0, '2000000', '500000', 1),
+	(2, 2, 1001, 1002, 0, '500000', '150000', 1),
+	(3, 3, 1001, 1000, 0, '2000000', '400000', 1),
+	(4, 5, 1002, 1003, 0, '600000', '200000', 1),
+	(5, 4, 1002, 1004, 0, '100000', '50000', 1),
+	(6, 1, 1001, 1005, 0, '2500000', '1000000', 1),
+	(7, 5, 1002, 1006, 0, '600000', '250000', 1);
 /*!40000 ALTER TABLE `tbl_services_tariff` ENABLE KEYS */;
 
 -- Dumping structure for table reservation.tbl_services_timing
@@ -1920,11 +1980,17 @@ CREATE TABLE IF NOT EXISTS `tbl_services_timing` (
   `st_turn_friday` varchar(20) NOT NULL DEFAULT 'not_turn',
   `st_turn_holiday` varchar(20) NOT NULL DEFAULT 'not_turn',
   PRIMARY KEY (`st_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf32;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf32;
 
 -- Dumping data for table reservation.tbl_services_timing: 0 rows
 DELETE FROM `tbl_services_timing`;
 /*!40000 ALTER TABLE `tbl_services_timing` DISABLE KEYS */;
+INSERT IGNORE INTO `tbl_services_timing` (`st_id`, `service_id`, `st_auto_timing_enabled`, `st_date_reservation`, `st_date_reservation_for_admin`, `st_allowed_time_book_repair_appointment`, `st_complete_time_reservation`, `st_turn_default`, `st_turn_custom_date`, `st_turn_saturday`, `st_turn_sunday`, `st_turn_monday`, `st_turn_tuesday`, `st_turn_wednesday`, `st_turn_thursday`, `st_turn_friday`, `st_turn_holiday`) VALUES
+	(1, 1, 0, 20, 90, 0, '5', 'custom', 'custome_date', 'default', 'default', 'custom', 'default', 'default', 'not_turn', 'not_turn', 'not_turn'),
+	(2, 2, 0, 1, 0, 0, '30', 'default', 'custome_date', 'default', 'default', 'default', 'default', 'default', 'default', 'not_turn', 'not_turn'),
+	(3, 3, 0, 1, 0, 0, '30', 'default', 'custome_date', 'default', 'default', 'default', 'default', 'default', 'default', 'not_turn', 'not_turn'),
+	(4, 4, 0, 1, 0, 0, '30', 'default', 'custome_date', 'default', 'default', 'default', 'default', 'default', 'default', 'not_turn', 'not_turn'),
+	(5, 5, 0, 1, 0, 0, '30', 'default', 'custome_date', 'default', 'default', 'default', 'default', 'default', 'default', 'not_turn', 'not_turn');
 /*!40000 ALTER TABLE `tbl_services_timing` ENABLE KEYS */;
 
 -- Dumping structure for table reservation.tbl_services_timing_manage_day
@@ -1939,11 +2005,21 @@ CREATE TABLE IF NOT EXISTS `tbl_services_timing_manage_day` (
   `sm_vip` tinyint NOT NULL DEFAULT '0',
   `sm_status` tinyint NOT NULL DEFAULT '1',
   PRIMARY KEY (`sm_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf32;
+) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf32;
 
 -- Dumping data for table reservation.tbl_services_timing_manage_day: 0 rows
 DELETE FROM `tbl_services_timing_manage_day`;
 /*!40000 ALTER TABLE `tbl_services_timing_manage_day` DISABLE KEYS */;
+INSERT IGNORE INTO `tbl_services_timing_manage_day` (`sm_id`, `service_id`, `sm_title_day`, `sm_time_start`, `sm_time_end`, `sm_capacity`, `sm_description`, `sm_vip`, `sm_status`) VALUES
+	(5, 1, 'default', '10:00', '10:30', 1, '', 0, 1),
+	(4, 1, 'default', '09:00', '10:00', 10, '', 0, 1),
+	(6, 1, 'default', '10:45', '11:30', 1, '', 0, 1),
+	(7, 1, 'default', '12:00', '13:30', 1, '', 0, 1),
+	(8, 1, 'default', '14:30', '15:45', 1, '', 1, 1),
+	(9, 1, 'default', '16:00', '17:00', 1, '', 0, 1),
+	(10, 1, 'monday', '12:00', '13:00', 1, '', 0, 1),
+	(11, 1, 'monday', '13:00', '14:00', 1, '', 0, 1),
+	(12, 1, 'monday', '15:00', '16:00', 1, '', 0, 1);
 /*!40000 ALTER TABLE `tbl_services_timing_manage_day` ENABLE KEYS */;
 
 -- Dumping structure for table reservation.tbl_settings
@@ -1954,9 +2030,9 @@ CREATE TABLE IF NOT EXISTS `tbl_settings` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=106 DEFAULT CHARSET=utf8mb3;
 
--- Dumping data for table reservation.tbl_settings: ~104 rows (approximately)
+-- Dumping data for table reservation.tbl_settings: ~105 rows (approximately)
 DELETE FROM `tbl_settings`;
-INSERT INTO `tbl_settings` (`id`, `key`, `value`) VALUES
+INSERT IGNORE INTO `tbl_settings` (`id`, `key`, `value`) VALUES
 	(1, 'root', ''),
 	(2, 'admin_path', 'manage'),
 	(3, 'show_error', '0'),
@@ -2061,7 +2137,7 @@ INSERT INTO `tbl_settings` (`id`, `key`, `value`) VALUES
 	(102, 'float_contact_mode_select_options', 'regular'),
 	(103, 'float_contact_menu_click_away', '1'),
 	(104, 'bot_status', '0'),
-    (105, 'license_info', 'license_info_set_demo_time');
+    (105, 'license_info', '');
 
 -- Dumping structure for table reservation.tbl_sidebar
 CREATE TABLE IF NOT EXISTS `tbl_sidebar` (
@@ -2081,7 +2157,7 @@ CREATE TABLE IF NOT EXISTS `tbl_sidebar` (
 -- Dumping data for table reservation.tbl_sidebar: 72 rows
 DELETE FROM `tbl_sidebar`;
 /*!40000 ALTER TABLE `tbl_sidebar` DISABLE KEYS */;
-INSERT INTO `tbl_sidebar` (`s_id`, `s_parent_id`, `s_name`, `s_link`, `s_counter_num`, `s_counter_num_type`, `s_icon`, `s_order`, `s_removable`, `s_status`) VALUES
+INSERT IGNORE INTO `tbl_sidebar` (`s_id`, `s_parent_id`, `s_name`, `s_link`, `s_counter_num`, `s_counter_num_type`, `s_icon`, `s_order`, `s_removable`, `s_status`) VALUES
 	(1, 0, 'داشبورد', 'dashboard', 0, NULL, 'fa-dashboard', 1, 0, 1),
 	(2, 0, 'خدمات', '-', 1, 'newReserve#', 'fa-hand-scissors-o', 2, 0, 1),
 	(3, 0, 'وبلاگ', '-', 0, NULL, 'fa-newspaper-o', 5, 0, 1),
@@ -2168,9 +2244,9 @@ CREATE TABLE IF NOT EXISTS `tbl_sidebar_access_list` (
   PRIMARY KEY (`sal_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=225 DEFAULT CHARSET=utf32;
 
--- Dumping data for table reservation.tbl_sidebar_access_list: ~187 rows (approximately)
+-- Dumping data for table reservation.tbl_sidebar_access_list: ~188 rows (approximately)
 DELETE FROM `tbl_sidebar_access_list`;
-INSERT INTO `tbl_sidebar_access_list` (`sal_id`, `sidebar_id_main_part`, `sidebar_menu_id`, `sidebar_id_part`, `sal_title`, `sal_permisson`, `sal_status`) VALUES
+INSERT IGNORE INTO `tbl_sidebar_access_list` (`sal_id`, `sidebar_id_main_part`, `sidebar_menu_id`, `sidebar_id_part`, `sal_title`, `sal_permisson`, `sal_status`) VALUES
 	(1, 2, 14, 15, 'ثبت نوبت جدید', 'service_reservation_add', 1),
 	(2, 2, 15, 15, 'مشاهده لیست', 'service_reservation_list_view', 1),
 	(3, 2, 15, 15, 'ویرایش اطلاعات سرویس و زمان رزرو', 'service_reservation_details_info_edit', 1),
@@ -2368,11 +2444,13 @@ CREATE TABLE IF NOT EXISTS `tbl_slider` (
   `s_create_date` varchar(30) NOT NULL,
   `s_status` tinyint NOT NULL DEFAULT '0',
   PRIMARY KEY (`s_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf32;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf32;
 
 -- Dumping data for table reservation.tbl_slider: 0 rows
 DELETE FROM `tbl_slider`;
 /*!40000 ALTER TABLE `tbl_slider` DISABLE KEYS */;
+INSERT IGNORE INTO `tbl_slider` (`s_id`, `s_title`, `s_type`, `s_create_date`, `s_status`) VALUES
+	(1, 'اسلایدر صفحه اصلی', 0, '1402/01/17', 1);
 /*!40000 ALTER TABLE `tbl_slider` ENABLE KEYS */;
 
 -- Dumping structure for table reservation.tbl_slider_image
@@ -2384,10 +2462,14 @@ CREATE TABLE IF NOT EXISTS `tbl_slider_image` (
   `si_image` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_persian_ci NOT NULL,
   `si_status` tinyint NOT NULL DEFAULT '1',
   PRIMARY KEY (`si_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_persian_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_persian_ci;
 
--- Dumping data for table reservation.tbl_slider_image: ~0 rows (approximately)
+-- Dumping data for table reservation.tbl_slider_image: ~3 rows (approximately)
 DELETE FROM `tbl_slider_image`;
+INSERT IGNORE INTO `tbl_slider_image` (`si_id`, `slider_id`, `si_title`, `si_link`, `si_image`, `si_status`) VALUES
+	(1, 1, '1', ' ', '1680803062_banner-3.jpg', 1),
+	(2, 1, '2', ' ', '1680803077_banner-5.jpg', 1),
+	(3, 1, '3', ' ', '1680803093_makeup slider.jpg', 1);
 
 -- Dumping structure for table reservation.tbl_sources
 CREATE TABLE IF NOT EXISTS `tbl_sources` (
@@ -2402,10 +2484,12 @@ CREATE TABLE IF NOT EXISTS `tbl_sources` (
   `user_id_edit` varchar(200) NOT NULL DEFAULT '-',
   `status` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`so_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
 
 -- Dumping data for table reservation.tbl_sources: ~0 rows (approximately)
 DELETE FROM `tbl_sources`;
+INSERT IGNORE INTO `tbl_sources` (`so_id`, `title`, `link`, `image`, `user_id`, `count`, `date`, `date_edit`, `user_id_edit`, `status`) VALUES
+	(1, 'ونسا', '#', NULL, 1, 4, '1402/01/17', '-', '-', 1);
 
 -- Dumping structure for table reservation.tbl_status
 CREATE TABLE IF NOT EXISTS `tbl_status` (
@@ -2425,7 +2509,7 @@ CREATE TABLE IF NOT EXISTS `tbl_status` (
 
 -- Dumping data for table reservation.tbl_status: ~8 rows (approximately)
 DELETE FROM `tbl_status`;
-INSERT INTO `tbl_status` (`id`, `type`, `title`, `text`, `code`, `show_in_status`, `show_in_sms`, `percent`, `background_color`, `removable`, `status`) VALUES
+INSERT IGNORE INTO `tbl_status` (`id`, `type`, `title`, `text`, `code`, `show_in_status`, `show_in_sms`, `percent`, `background_color`, `removable`, `status`) VALUES
 	(1, 'service', 'در انتظار تایید', 'خدمت [SERVICE] برای روز [DATE] برای شما رزرو و در انتظار تایید ادمین می باشد.\r\nمبلغ پرداختی: [PRICE] تومان\r\nشماره پیگیری: [RCODE]\r\n\r\n[BNAME]', NULL, 1, 1, 10, 'blue', 0, 1),
 	(2, 'service', 'تایید شده', 'سفارش شما با کد پیگیری [RCODE] تایید شد.\r\nباتشکر\r\n[BNAME]', NULL, 1, 1, 30, 'green', 0, 1),
 	(3, 'service', 'در انتظار پرداخت', 'سفارش شما با کد [RCODE] در انتظار پرداخت می باشد.\r\nلطفا در صورت تمایل به تکمیل رزرو پرداخت را انجام دهید.\r\nباتشکر\r\n[BNAME]', NULL, 1, 1, 40, 'blue', 0, 1),
@@ -2450,20 +2534,20 @@ CREATE TABLE IF NOT EXISTS `tbl_storeroom` (
 -- Dumping data for table reservation.tbl_storeroom: 1 rows
 DELETE FROM `tbl_storeroom`;
 /*!40000 ALTER TABLE `tbl_storeroom` DISABLE KEYS */;
-INSERT INTO `tbl_storeroom` (`s_id`, `storeroom_vids_id`, `branch_id`, `s_name`, `s_storekeeper`, `s_date`, `s_status`) VALUES
+INSERT IGNORE INTO `tbl_storeroom` (`s_id`, `storeroom_vids_id`, `branch_id`, `s_name`, `s_storekeeper`, `s_date`, `s_status`) VALUES
 	(1, '1000', 1000, 'انبار مرکزی', 'مدیر اصلی', '1401/12/19', 1);
 /*!40000 ALTER TABLE `tbl_storeroom` ENABLE KEYS */;
 
 -- Dumping structure for table reservation.tbl_storeroom_product
 CREATE TABLE IF NOT EXISTS `tbl_storeroom_product` (
   `sr_id` int NOT NULL AUTO_INCREMENT,
-  `product_vids_id` varchar(100) NOT NULL,
+  `product_vids_id` varchar(100) COLLATE utf8mb3_persian_ci NOT NULL,
   `storeroom_id` int NOT NULL,
-  `sr_name` varchar(1000) NOT NULL,
+  `sr_name` varchar(1000) COLLATE utf8mb3_persian_ci NOT NULL,
   `sr_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `sr_status` tinyint NOT NULL DEFAULT '1',
   PRIMARY KEY (`sr_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_persian_ci;
 
 -- Dumping data for table reservation.tbl_storeroom_product: 0 rows
 DELETE FROM `tbl_storeroom_product`;
@@ -2523,26 +2607,26 @@ CREATE TABLE IF NOT EXISTS `tbl_template` (
   PRIMARY KEY (`t_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=23 DEFAULT CHARSET=utf32;
 
--- Dumping data for table reservation.tbl_template: 19 rows
+-- Dumping data for table reservation.tbl_template: 16 rows
 DELETE FROM `tbl_template`;
 /*!40000 ALTER TABLE `tbl_template` DISABLE KEYS */;
-INSERT INTO `tbl_template` (`t_id`, `t_part`, `t_href`, `t_title`, `t_show_title`, `t_description`, `t_help_txt`, `t_image`, `t_theme`, `t_is_custom`, `t_is_default_widget`, `t_status`) VALUES
-  (16, 'dashboard', 'clock2', 'ساعت آنالوگ 2', 0, NULL, 'نمایش ساعت فعلی', 'clock2.png', 'default', 0, 0, 1),
-  (13, 'dashboard', 'last_users_register', 'آخرین مشتریان ثبت شده', 0, NULL, 'در این قسمت لیست آخرین مشتریان ثبت شده نمایش داده می شود.', 'last-user-register.png', 'default', 0, 1, 1),
-  (14, 'dashboard', 'last_blog_article', 'آخرین مطالب وبلاگ', 0, NULL, 'در این قسمت لیست جدیدترین اخبار و اطلاعیه های سامانه نمایش داده می شود.', 'last-blog-article.png', 'default', 0, 1, 1),
-  (12, 'dashboard', 'last_activity', 'آخرین فعالیت های شما', 0, NULL, 'در این قسمت لیست آخرین فعالیت هایی که انجام داده اید نمایش داده می شود. برای مشاهده لیست کامل فعالیت ها می توانید به بخش سوابق فعالیت کارکنان مراجعه نمایید.', 'last-activity.png', 'default', 0, 1, 1),
-  (11, 'dashboard', 'chart_reservation_this_month', 'نمودار نوبت‌های رزرو شده در ماه', 0, NULL, 'در این قسمت تعمیرات ثبت شده در هر ماه به صورت روزانه نمایش داده می شود. برای مشاهده نمودار در حالات مختلف و گرفتن خروجی می توانید از دکمه های سمت راست استفاده نمایید. همچنین برای مشاهده بازه های مختلف می توانید به بخش گزارش مالی مراجعه نمایید.', 'reservation-chart.png', 'default', 0, 1, 1),
-  (10, 'dashboard', 'credit_sms_panel', 'اعتبار پنل پیامک', 0, NULL, 'در این قسمت تعداد روزهای باقیمانده از اشتراک شما نمایش داده می شود. برای تمدید/ارتقا اشتراک می توانید از دکمه اطلاعات بیشتر استفاده نمایید.', 'credit-sms-panel.png', 'default', 0, 1, 1),
-  (4, 'main', 'banner', 'بنر تبلیغاتی', 0, NULL, NULL, NULL, 'default', 0, 0, 1),
-  (3, 'main', 'service', 'خدمات', 0, NULL, NULL, NULL, 'default', 0, 0, 1),
-  (5, 'main', 'comment', 'نظرات مشتریان', 0, NULL, NULL, NULL, 'default', 0, 0, 1),
-  (2, 'main', 'blog', 'مطالب وبلاگ', 0, NULL, NULL, NULL, 'default', 0, 0, 1),
-  (6, 'main', 'socialmedia', 'شبکه های اجتماعی', 0, NULL, NULL, NULL, 'default', 0, 0, 1),
-  (7, 'main', 'textArea', 'متن', 0, NULL, NULL, NULL, 'default', 0, 0, 1),
-  (8, 'dashboard', 'count_reservation_this_month', 'تعداد نوبت‌های ماه', 0, NULL, 'در این قسمت تعداد تعمیرات ثبت شده در هر ماه نمایش داده می شود.  برای مشاهده لیست کامل تعمیرات می توانید از دکمه اطلاعات بیشتر استفاده نمایید.', 'reservation-count.png', 'default', 0, 1, 1),
-  (9, 'dashboard', 'count_users_this_month', 'تعداد کابران ماه', 0, NULL, 'در این قسمت تعداد مشتری های جدید ثبت شده در هر ماه نمایش داده می شود. برای مشاهده لیست کامل مشتریان می توانید از دکمه اطلاعات بیشتر استفاده نمایید.', 'customer.png', 'default', 0, 1, 1),
-  (1, 'main', 'slider', 'اسلایدر', 0, NULL, NULL, NULL, 'default', 0, 0, 1),
-  (15, 'dashboard', 'clock', 'ساعت آنالوگ', 0, NULL, 'نمایش ساعت فعلی', 'clock.png', 'default', 0, 0, 1);
+INSERT IGNORE INTO `tbl_template` (`t_id`, `t_part`, `t_href`, `t_title`, `t_show_title`, `t_description`, `t_help_txt`, `t_image`, `t_theme`, `t_is_custom`, `t_is_default_widget`, `t_status`) VALUES
+	(16, 'dashboard', 'clock2', 'ساعت آنالوگ 2', 0, NULL, 'نمایش ساعت فعلی', 'clock2.png', 'default', 0, 0, 1),
+	(13, 'dashboard', 'last_users_register', 'آخرین مشتریان ثبت شده', 0, NULL, 'در این قسمت لیست آخرین مشتریان ثبت شده نمایش داده می شود.', 'last-user-register.png', 'default', 0, 1, 1),
+	(14, 'dashboard', 'last_blog_article', 'آخرین مطالب وبلاگ', 0, NULL, 'در این قسمت لیست جدیدترین اخبار و اطلاعیه های سامانه نمایش داده می شود.', 'last-blog-article.png', 'default', 0, 1, 1),
+	(12, 'dashboard', 'last_activity', 'آخرین فعالیت های شما', 0, NULL, 'در این قسمت لیست آخرین فعالیت هایی که انجام داده اید نمایش داده می شود. برای مشاهده لیست کامل فعالیت ها می توانید به بخش سوابق فعالیت کارکنان مراجعه نمایید.', 'last-activity.png', 'default', 0, 1, 1),
+	(11, 'dashboard', 'chart_reservation_this_month', 'نمودار نوبت‌های رزرو شده در ماه', 0, NULL, 'در این قسمت تعمیرات ثبت شده در هر ماه به صورت روزانه نمایش داده می شود. برای مشاهده نمودار در حالات مختلف و گرفتن خروجی می توانید از دکمه های سمت راست استفاده نمایید. همچنین برای مشاهده بازه های مختلف می توانید به بخش گزارش مالی مراجعه نمایید.', 'reservation-chart.png', 'default', 0, 1, 1),
+	(10, 'dashboard', 'credit_sms_panel', 'اعتبار پنل پیامک', 0, NULL, 'در این قسمت تعداد روزهای باقیمانده از اشتراک شما نمایش داده می شود. برای تمدید/ارتقا اشتراک می توانید از دکمه اطلاعات بیشتر استفاده نمایید.', 'credit-sms-panel.png', 'default', 0, 1, 1),
+	(4, 'main', 'banner', 'بنر تبلیغاتی', 0, NULL, NULL, NULL, 'default', 0, 0, 1),
+	(3, 'main', 'service', 'خدمات', 0, NULL, NULL, NULL, 'default', 0, 0, 1),
+	(5, 'main', 'comment', 'نظرات مشتریان', 0, NULL, NULL, NULL, 'default', 0, 0, 1),
+	(2, 'main', 'blog', 'مطالب وبلاگ', 0, NULL, NULL, NULL, 'default', 0, 0, 1),
+	(6, 'main', 'socialmedia', 'شبکه های اجتماعی', 0, NULL, NULL, NULL, 'default', 0, 0, 1),
+	(7, 'main', 'textArea', 'متن', 0, NULL, NULL, NULL, 'default', 0, 0, 1),
+	(8, 'dashboard', 'count_reservation_this_month', 'تعداد نوبت‌های ماه', 0, NULL, 'در این قسمت تعداد تعمیرات ثبت شده در هر ماه نمایش داده می شود.  برای مشاهده لیست کامل تعمیرات می توانید از دکمه اطلاعات بیشتر استفاده نمایید.', 'reservation-count.png', 'default', 0, 1, 1),
+	(9, 'dashboard', 'count_users_this_month', 'تعداد کابران ماه', 0, NULL, 'در این قسمت تعداد مشتری های جدید ثبت شده در هر ماه نمایش داده می شود. برای مشاهده لیست کامل مشتریان می توانید از دکمه اطلاعات بیشتر استفاده نمایید.', 'customer.png', 'default', 0, 1, 1),
+	(1, 'main', 'slider', 'اسلایدر', 0, NULL, NULL, NULL, 'default', 0, 0, 1),
+	(15, 'dashboard', 'clock', 'ساعت آنالوگ', 0, NULL, 'نمایش ساعت فعلی', 'clock.png', 'default', 0, 0, 1);
 /*!40000 ALTER TABLE `tbl_template` ENABLE KEYS */;
 
 -- Dumping structure for table reservation.tbl_vids
@@ -2568,8 +2652,8 @@ CREATE TABLE IF NOT EXISTS `tbl_vids` (
 -- Dumping data for table reservation.tbl_vids: 1 rows
 DELETE FROM `tbl_vids`;
 /*!40000 ALTER TABLE `tbl_vids` DISABLE KEYS */;
-INSERT INTO `tbl_vids` (`vids_id`, `panel_id`, `order_service_id`, `staff_id`, `branch_id`, `customer_id`, `payment_id`, `cost_id`, `cost_category_id`, `bank_id`, `cash_id`, `pettyCash_id`, `storeroom_id`, `product_id`, `admin_id`) VALUES
-	(1, 1000, '10000', '1000', '1001', '1000', '1000', '1000', '1001', '1000', '1001', '1001', '1001', '10000', '1001');
+INSERT IGNORE INTO `tbl_vids` (`vids_id`, `panel_id`, `order_service_id`, `staff_id`, `branch_id`, `customer_id`, `payment_id`, `cost_id`, `cost_category_id`, `bank_id`, `cash_id`, `pettyCash_id`, `storeroom_id`, `product_id`, `admin_id`) VALUES
+	(1, 1000, '10000', '1007', '1003', '1001', '1000', '1000', '1001', '1000', '1001', '1001', '1001', '10000', '1001');
 /*!40000 ALTER TABLE `tbl_vids` ENABLE KEYS */;
 
 -- Dumping structure for table reservation.tbl_view
@@ -2580,7 +2664,7 @@ CREATE TABLE IF NOT EXISTS `tbl_view` (
   `ip` varchar(100) NOT NULL,
   `date` varchar(30) NOT NULL,
   PRIMARY KEY (`v_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb3;
 
 -- Dumping data for table reservation.tbl_view: 0 rows
 DELETE FROM `tbl_view`;
