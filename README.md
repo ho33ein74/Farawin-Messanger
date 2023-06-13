@@ -30,8 +30,8 @@
 - model.php
 
 **install:**
-- index.php
-- do_install.php
+- requirements.php
+- install.class.php
 
 
 برای قابل نصب بودن اسکریپت می بایست در فایل index.php در روت اصلی پروژه در خط 10 مقدار متغیر $app_state برابر با pre_installation قرار بگیرد.
