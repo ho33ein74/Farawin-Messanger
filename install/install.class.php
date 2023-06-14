@@ -54,7 +54,7 @@ class Install
                         $this->error .= 'شماره خطا: ' . $link->connect_errno . '<br />';
                         $this->error .= 'پیام خطا: ' . $link->connect_error;
                     } else {
-                        $debug .= 'تبریک: ارتباط با دیتابیس موفقیت آمیز بود! دیتابیس ' . $d . ' عالیست.<br />';
+                        $debug .= 'تبریک: ارتباط با دیتابیس ' . $d . ' موفقیت آمیز بود!.<br />';
                         $debug .= 'اطلاعات هاست: ' . $link->host_info . '<br />';
                         $this->current_step = 4;
                         $link->close();
