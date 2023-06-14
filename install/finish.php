@@ -9,22 +9,16 @@
 <?php } ?>
 
 <p>
-    <b>پوشه install را حذف کنید</b> و با آدرس <a href="<?php echo $_POST['base_url']; ?>manage"
-        target="_blank"><?php echo $_POST['base_url']; ?>manage</a> به عنوان ادمین وارد شوید.
+    <b>پوشه install را حذف کنید</b> و با آدرس <a href="<?= $_POST['base_url']; ?>manage"
+        target="_blank"><?= $_POST['base_url']; ?>manage</a> به عنوان ادمین وارد شوید.
 </p>
 
 <hr />
 <h4>
-    <b>راهنمای شروع کار با اسکریپت - <a href="https://www.aparat.com/playlist/5969856"
+    <b>برای مشاهده سایت - <a href="<?= $_POST['base_url']; ?>"
             target="_blank">
-            این جا را کلیک کنید
-        </a>
+            اینجا
+        </a>  را کلیک کنید
     </b>
 </h4>
 <hr />
-<h4>
-    <b>به راهنمایی نیاز دارید؟ - <a href="https://t.me/ho55ein74" target="_blank">
-            پشتیبانی تلگرام
-        </a>
-    </b>
-</h4>

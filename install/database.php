@@ -13,9 +13,7 @@
     <input type="text" class="form-control" name="username" style="direction: ltr;text-align: left">
 </div>
 <div class="form-group">
-    <label for="password" class="control-label"><i class="glyphicon glyphicon-info-sign"
-            title='از استفاده از تک کوتیشن (&lsquo;) و دابل کوتیشن(&ldquo;) در رمز عبور دیتابیس خود خودداری کنید'></i>
-        رمز عبور</label>
+    <label for="password" class="control-label">رمز عبور</label>
     <input type="password" class="form-control" name="password" style="direction: ltr;text-align: left">
 </div>
 <hr class="-tw-mx-4" />

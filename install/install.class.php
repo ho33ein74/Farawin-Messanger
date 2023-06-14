@@ -47,6 +47,7 @@ class Install
                     $d = trim($_POST['database']);
 
                     $link = @new mysqli($h, $u, $p, $d);
+                    $link->set_charset("utf8");
 
                     if ($link->connect_errno) {
                         $this->error .= 'خطا: اتصال با دیتابیس ناموفق بود.<br />';
