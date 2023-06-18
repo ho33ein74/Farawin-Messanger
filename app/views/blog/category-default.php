@@ -203,7 +203,7 @@
                                 </div>
                                 <div>
                                     <span class="mb-4 text-biscay-700 dark:text-white text-17 font-bold">پیشنهاد سردبیر</span>
-                                    <p class="font-normal dark:text-gray-920 text-10 text-dark-550">مقالات برگزیده را از این قسمت میتوانید ببینید</p>
+                                    <p class="font-normal dark:text-gray-920 text-13 text-dark-550">مقالات برگزیده را از این قسمت میتوانید ببینید</p>
                                 </div>
                             </div>
                             <div>

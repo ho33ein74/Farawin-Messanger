@@ -66,14 +66,14 @@ trait discountModelTrait
         $order = $this->order($get, $columns);
         $limit = $this->limit($get, $columns);
 
-        $data = $this->sql_exec($bindings, "SELECT * FROM tbl_giftCart $where $order $limit");
+        $data = $this->sql_exec($bindings, "SELECT * FROM tbl_giftcart $where $order $limit");
 
         // Data set length after filtering
-        $resFilterLength = $this->sql_exec($bindings, "SELECT count(g_id) FROM tbl_giftCart $where");
+        $resFilterLength = $this->sql_exec($bindings, "SELECT count(g_id) FROM tbl_giftcart $where");
         $recordsFiltered = $resFilterLength[0][0];
 
         // Total data set length
-        $resTotalLength = $this->sql_exec("SELECT count(g_id) FROM tbl_giftCart");
+        $resTotalLength = $this->sql_exec("SELECT count(g_id) FROM tbl_giftcart");
         $recordsTotal = $resTotalLength[0][0];
 
         $dataSelect = array(
@@ -89,14 +89,14 @@ trait discountModelTrait
     function addGiftCart($post)
     {
         try {
-            $sql = "SELECT * FROM tbl_giftCart WHERE g_title=? and g_code=?";
+            $sql = "SELECT * FROM tbl_giftcart WHERE g_title=? and g_code=?";
             $param = array($post['title'], $post['code']);
             $result = $this->doSelect($sql, $param);
 
             if (sizeof($result) > 0) {
                 $this->response_warning("کارت هدیه دیگری با این مشخصات قبلا ثبت شده است", "exist");
             } else {
-                $sql2 = "INSERT INTO tbl_giftCart (g_title,g_code,g_create_date,g_expire_date,g_amount) VALUES (?,?,?,?,?)";
+                $sql2 = "INSERT INTO tbl_giftcart (g_title,g_code,g_create_date,g_expire_date,g_amount) VALUES (?,?,?,?,?)";
                 $params = [$post['title'], $post['code'], $this->jalali_date(), $post['dateExpire'], $post['amount']];
                 $this->doQuery($sql2, $params);
 
@@ -111,11 +111,11 @@ trait discountModelTrait
     function editGiftCart($post)
     {
         try {
-            $result = $this->doSelect("SELECT * FROM tbl_giftCart WHERE g_id=?", array($post['id']));
+            $result = $this->doSelect("SELECT * FROM tbl_giftcart WHERE g_id=?", array($post['id']));
             if (sizeof($result) <= 0) {
                 $this->response_error("کارت هدیه مورد نظر یافت نشد");
             } else {
-                $sql = "UPDATE tbl_giftCart SET g_title=?, g_code=?, g_expire_date=?, g_amount=?, g_status=? WHERE g_id=?";
+                $sql = "UPDATE tbl_giftcart SET g_title=?, g_code=?, g_expire_date=?, g_amount=?, g_status=? WHERE g_id=?";
                 $params = array($post['titleEdit'], $post['codeEdit'], $post['expireDateEdit'], $post['amountEdit'], $post['statusEdit'], $post['id']);
                 $this->doQuery($sql, $params);
 
@@ -130,9 +130,9 @@ trait discountModelTrait
     function delGiftCart($post)
     {
         try {
-            $result = $this->doSelect("SELECT g_title FROM tbl_giftCart WHERE g_id=?", array($post['id']));
+            $result = $this->doSelect("SELECT g_title FROM tbl_giftcart WHERE g_id=?", array($post['id']));
             if (sizeof($result) > 0) {
-                $this->doQuery("DELETE FROM tbl_giftCart WHERE g_id=?", array($post['id']));
+                $this->doQuery("DELETE FROM tbl_giftcart WHERE g_id=?", array($post['id']));
 
                 $this->ActivityLog("حذف کارت هدیه " . $result['0']['g_title']);
                 $this->response_success("کارت هدیه ".$result['0']['g_title']." باموفقیت حذف شد");

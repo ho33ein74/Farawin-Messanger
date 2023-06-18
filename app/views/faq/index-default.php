@@ -77,7 +77,7 @@
         <div class="container md:px-14">
             <div class="mb-10 text-center">
                 <h1 class="text-white font-bold sm:text-82 text-28 mb-4"><?= $data['page']['title']; ?></h1>
-                <h3 class="text-white font-medium sm:text-3xl text-base">در اینجا سعی می‌کنیم به سوالات متداولی که ممکن است، برای شما پیش بیاید، پاسخ دهیم.</h3>
+                <h3 class="text-white font-medium sm:text-22 text-base">در اینجا سعی می‌کنیم به سوالات متداولی که ممکن است، برای شما پیش بیاید، پاسخ دهیم.</h3>
             </div>
             <div class="bg-white dark:bg-dark-930 dark:shadow-whiteShadow pt-12 md:px-14 px-3 pb-16 rounded-xl shadow-terms-md" x-data="{ question : window.Livewire.find('zj2aZclfAZjK2j6bwnWH').entangle('question') }">
 

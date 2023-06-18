@@ -1011,7 +1011,7 @@
                                                     <div class="col-md-6 mt-2">
                                                         <div class="col-md-12" style="border: 1px solid #eee;border-radius: 7px;">
                                                             <div class="box-header with-border">
-                                                                <h3 dir="rtl" class="box-title">لوگو (حالت روشن):</h3>
+                                                                <h3 dir="rtl" class="box-title">لوگو دسکتاپ (حالت روشن):</h3>
                                                             </div>
                                                             <!-- /.box-header -->
                                                             <div class="box-body">
@@ -1044,7 +1044,7 @@
                                                     <div class="col-md-6 mt-2">
                                                         <div class="col-md-12" style="border: 1px solid #eee;border-radius: 7px;">
                                                             <div class="box-header with-border">
-                                                                <h3 dir="rtl" class="box-title">لوگو کوچک (حالت روشن):</h3>
+                                                                <h3 dir="rtl" class="box-title">لوگو موبایل (حالت روشن):</h3>
                                                             </div>
                                                             <!-- /.box-header -->
                                                             <div class="box-body">
@@ -1077,7 +1077,7 @@
                                                     <div class="col-md-6 mt-2">
                                                         <div class="col-md-12" style="border: 1px solid #eee;border-radius: 7px;">
                                                             <div class="box-header with-border">
-                                                                <h3 dir="rtl" class="box-title">لوگو (حالت تاریک):</h3>
+                                                                <h3 dir="rtl" class="box-title">لوگو دسکتاپ (حالت تاریک):</h3>
                                                             </div>
                                                             <!-- /.box-header -->
                                                             <div class="box-body">
@@ -1110,7 +1110,7 @@
                                                     <div class="col-md-6 mt-2">
                                                         <div class="col-md-12" style="border: 1px solid #eee;border-radius: 7px;">
                                                             <div class="box-header with-border">
-                                                                <h3 dir="rtl" class="box-title">لوگو کوچک (حالت تاریک):</h3>
+                                                                <h3 dir="rtl" class="box-title">لوگو موبایل (حالت تاریک):</h3>
                                                             </div>
                                                             <!-- /.box-header -->
                                                             <div class="box-body">

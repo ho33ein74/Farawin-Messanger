@@ -1330,14 +1330,14 @@ trait accountingModelTrait
     function addpettyCash($post)
     {
         try {
-            $result = $this->doSelect("SELECT * FROM tbl_pettyCash WHERE p_name=?", array($post['name']));
+            $result = $this->doSelect("SELECT * FROM tbl_pettycash WHERE p_name=?", array($post['name']));
 
             if (sizeof($result) > 0) {
                 $this->response_warning("تنخواه گردان دیگری با این مشخصات قبلا ثبت شده است", "exist");
             } else {
                 $vids = $this->getLastId("pettyCash");
 
-                $sql = "INSERT INTO tbl_pettyCash (pettyCash_vids_id, p_name, p_currency, p_desc, p_date, p_status) VALUES (?,?,?,?,?,?)";
+                $sql = "INSERT INTO tbl_pettycash (pettyCash_vids_id, p_name, p_currency, p_desc, p_date, p_status) VALUES (?,?,?,?,?,?)";
                 $params = array($vids, $post['name'], $post['curreny'], $post['desc'], $this->jalali_date("Y/m/d"), 1);
                 $this->doQuery($sql, $params);
 
@@ -1398,14 +1398,14 @@ trait accountingModelTrait
         $order = $this->order($get, $columns);
         $limit = $this->limit($get, $columns);
 
-        $data = $this->sql_exec($bindings, "SELECT c.* FROM tbl_pettyCash c  $where $order $limit");
+        $data = $this->sql_exec($bindings, "SELECT c.* FROM tbl_pettycash c  $where $order $limit");
 
         // Data set length after filtering
-        $resFilterLength = $this->sql_exec($bindings, "SELECT count(pettyCash_vids_id) FROM tbl_pettyCash c $where");
+        $resFilterLength = $this->sql_exec($bindings, "SELECT count(pettyCash_vids_id) FROM tbl_pettycash c $where");
         $recordsFiltered = $resFilterLength[0][0];
 
         // Total data set length
-        $resTotalLength = $this->sql_exec("SELECT count(pettyCash_vids_id) FROM tbl_pettyCash");
+        $resTotalLength = $this->sql_exec("SELECT count(pettyCash_vids_id) FROM tbl_pettycash");
         $recordsTotal = $resTotalLength[0][0];
 
         $dataSelect = array(
@@ -1421,8 +1421,8 @@ trait accountingModelTrait
     function statuspettyCash($post)
     {
         try {
-            $this->doQuery("UPDATE tbl_pettyCash SET p_status=(case when p_status=1 then 0 else 1 end) WHERE pettyCash_vids_id=?", array($post['id']));
-            $result = $this->doSelect("SELECT p_status,p_name FROM tbl_pettyCash WHERE pettyCash_vids_id=?", array($post['id']), 1);
+            $this->doQuery("UPDATE tbl_pettycash SET p_status=(case when p_status=1 then 0 else 1 end) WHERE pettyCash_vids_id=?", array($post['id']));
+            $result = $this->doSelect("SELECT p_status,p_name FROM tbl_pettycash WHERE pettyCash_vids_id=?", array($post['id']), 1);
 
             if ($result['p_status'] == 1) {
                 $this->ActivityLog("فعالسازی وضعیت " . $result['p_name'] . " در بخش تنخواه گردان ها");
@@ -1439,9 +1439,9 @@ trait accountingModelTrait
     function delpettyCash($post)
     {
         try {
-            $result = $this->doSelect("SELECT p_name FROM tbl_pettyCash WHERE pettyCash_vids_id=?", array($post['id']));
+            $result = $this->doSelect("SELECT p_name FROM tbl_pettycash WHERE pettyCash_vids_id=?", array($post['id']));
             if (sizeof($result) > 0) {
-                $this->doQuery("DELETE FROM tbl_pettyCash WHERE pettyCash_vids_id=?", array($post['id']));
+                $this->doQuery("DELETE FROM tbl_pettycash WHERE pettyCash_vids_id=?", array($post['id']));
 
                 $this->ActivityLog("حذف " . $result['0']['p_name'] . " از لیست تنخواه گردان ها");
                 $this->response_success("تنخواه گردان ".$result['0']['p_name']." باموفقیت حذف شد");
@@ -1455,17 +1455,17 @@ trait accountingModelTrait
 
     function getIssetpettyCash($id)
     {
-        $result = $this->doSelect("SELECT pettyCash_vids_id FROM tbl_pettyCash WHERE pettyCash_vids_id= ?", array($id));
+        $result = $this->doSelect("SELECT pettyCash_vids_id FROM tbl_pettycash WHERE pettyCash_vids_id= ?", array($id));
         return $result;
     }
 
     function getpettyCashInfo($attrId = '')
     {
         if ($attrId != '') {
-            $sql = "SELECT * FROM tbl_pettyCash WHERE pettyCash_vids_id=?";
+            $sql = "SELECT * FROM tbl_pettycash WHERE pettyCash_vids_id=?";
             $result = $this->doSelect($sql, array($attrId));
         } else {
-            $sql = "SELECT * FROM tbl_pettyCash";
+            $sql = "SELECT * FROM tbl_pettycash";
             $result = $this->doSelect($sql);
         }
 
@@ -1475,11 +1475,11 @@ trait accountingModelTrait
     function editpettyCash($post)
     {
         try {
-            $result = $this->doSelect("SELECT * FROM tbl_pettyCash WHERE pettyCash_vids_id=?", array($post['id']));
+            $result = $this->doSelect("SELECT * FROM tbl_pettycash WHERE pettyCash_vids_id=?", array($post['id']));
             if (sizeof($result) <= 0) {
                 $this->response_error("تنخواه گردان مورد نظر یافت نشد");
             } else {
-                $sql = "UPDATE tbl_pettyCash SET p_name=?, p_currency=?, p_desc=? WHERE pettyCash_vids_id=?";
+                $sql = "UPDATE tbl_pettycash SET p_name=?, p_currency=?, p_desc=? WHERE pettyCash_vids_id=?";
                 $params = array($post['name'], $post['curreny'], $post['desc'], $post['id']);
                 $this->doQuery($sql, $params);
 

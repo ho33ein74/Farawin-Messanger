@@ -230,13 +230,15 @@
                 </div>
             </div>
 
-            <div class="relative mt-2 flex md:justify-start justify-center">
-                <p class="pl-3 text-center relative z-10 inline-block text-xs text-dark-500 items-center rounded justify-center bg-blue-50 p-2">
-                    <?= $data['getPublicInfo']['copyright']; ?> | طراحی و توسعه <a href="<?= SITE; ?>" rel="nofollow" target="_blank" title="<?= DEVELOPER; ?>"><?= DEVELOPER; ?></a>
-                </p>
+            <?php if($data['getPublicInfo']['copyright']){ ?>
+                <div class="relative mt-2 flex md:justify-start justify-center">
+                    <p class="pl-3 text-center relative z-10 inline-block text-xs text-dark-500 items-center rounded justify-center bg-blue-50 p-2">
+                        <?= $data['getPublicInfo']['copyright']; ?>
+                    </p>
 
-                <span class="absolute border-t border-1 top-2/4 trasform translate-y-2/4 border-chambray-100 w-full z-0 right-0"></span>
-            </div>
+                    <span class="absolute border-t border-1 top-2/4 trasform translate-y-2/4 border-chambray-100 w-full z-0 right-0"></span>
+                </div>
+            <?php } ?>
         </div>
     </div>
 </footer>

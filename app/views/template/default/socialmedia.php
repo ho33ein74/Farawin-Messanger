@@ -1,4 +1,4 @@
-<section class="mb-11 lg:mt-28 mt-28">
+<section class="mb-11 lg:mt-16 mt-16">
     <div class="container">
         <div class="flex xl:flex-row flex-col sm:mx-10 relative items-center justify-end xl:py-12 pb-12 pt-24 sm:px-16 px-9 bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 rounded-3xl">
             <img class="absolute xl:right-0  xl:scale-100 scale-75 right-1/2 transform xl:translate-x-0 translate-x-1/2  xl:-top-20  sm:-top-28 -top-24"

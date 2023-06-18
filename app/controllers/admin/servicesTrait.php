@@ -912,6 +912,21 @@ trait servicesTrait
         }
     }
 
+    function editStaffsList()
+    {
+        $csrf_token = $this->model->check_csrf_token();
+        if ($csrf_token['status']) {
+            $admin_permission = $this->model->admin_permission_check("service_reservation_details_info_edit", $this->checkLoginAdmin);
+            if ($admin_permission) {
+                $this->model->editStaffsList($_POST);
+            } else {
+                $this->noaccess();
+            }
+        } else {
+            $this->model->response_error($csrf_token['msg']);
+        }
+    }
+
     function statusStaff()
     {
         $csrf_token = $this->model->check_csrf_token();
