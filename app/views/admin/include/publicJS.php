@@ -29,7 +29,6 @@
 <script src="public/js/public-js.js"></script>
 
 <script>
-    // ajax init method
     $(document).ajaxStart(function () {
         Pace.restart();
     });
