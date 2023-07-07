@@ -1482,7 +1482,7 @@ foreach ($data['servicesTag'] as $tag) {
             if (obj.hasSetTimes && obj.setTimeItems && obj.setTimeItems.length > 0) {
                 for (var i = 0; i < obj.setTimeItems.length; i++) {
                     if(obj.setTimeItems[i].isVip) {
-                        result += '<li><a title="رزرو VIP" href="' + obj.setTimeItems[i].url + '" class="group items-center flex relative justify-center">' + obj.setTimeItems[i].caption + '<span class="absolute text-white bg-red-450 rounded w-8 h-4 flex items-center justify-center text-xs -top-1 -right-1 pt-1">VIP</span></a></li>';
+                        result += '<li><a title="رزرو VIP" href="' + obj.setTimeItems[i].url + '" class="group items-center flex relative justify-center">' + obj.setTimeItems[i].caption + '<span class="absolute text-white bg-red-450 rounded w-8 h-4 flex items-center justify-center text-xs -top-1 -right-1 pt-1" style="font-size: 0.75rem">VIP</span></a></li>';
                     } else {
                         result += '<li><a href="' + obj.setTimeItems[i].url + '">' + obj.setTimeItems[i].caption + '</a></li>';
                     }

@@ -2334,7 +2334,7 @@ INSERT INTO `tbl_sidebar` (`s_id`, `s_parent_id`, `s_name`, `s_link`, `s_counter
 (7, 0, 'حسابداری', '-', 0, NULL, 'fa-money', 10, 0, 1),
 (10, 0, 'نمایش', '-', 0, NULL, 'fa-television', 12, 0, 1),
 (11, 0, 'سوالات متداول', '-', 0, NULL, 'fa-question', 13, 0, 1),
-(12, 0, 'مدیریت فایل ها', 'filemanager', 0, NULL, 'fa-file', 15, 0, 1),
+(12, 0, 'مدیریت فایل ها', 'filemanager', 0, NULL, 'fa-file', 15, 0, 0),
 (13, 0, 'تنظیمات', '-', 0, NULL, 'fa-cog', 17, 0, 1),
 (14, 2, 'ثبت نوبت جدید', 'reservations/new', 0, NULL, 'fa-plus-square', 3, 0, 1),
 (15, 2, 'لیست رزروها', 'reservations/list', 1, 'newReserve#', 'fa-list', 4, 0, 1),

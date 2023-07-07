@@ -72,7 +72,7 @@
 
             </div>
             <div class="bottom-left">
-                <a href="about" class="text-white ml-4 small font-weight-light">درباره <?= $data['getPublicInfo']['site']; ?></a>
+                <a href="about" class="text-white mr-4 font-weight-light">درباره <?= $data['getPublicInfo']['site']; ?></a>
             </div>
         </div>
 
@@ -132,7 +132,7 @@
                                     <i class="d-inline-block bg-powder radius-10 icon-film"></i>
                                 </a>
                             <?php } ?>
-                            <span class="text-silver small d-block mt-2">ما را در شبکه های اجتماعی دنبال کنید</span>
+                            <span class="text-silver d-block mt-2">ما را در شبکه های اجتماعی دنبال کنید</span>
                         </div>
                     </div>
                 </div>
@@ -149,7 +149,7 @@
                                     <h3 class="d-inline-block text-cloud mb-3">تایید شماره موبایل.</h3>
                                     <img class="d-inline-block" width="39" height="39" src="public/images/sms.png" alt="">
                                 </div>
-                                <span class="text-silver small">کد تایید برای شماره <span id="showPhones"></span> ارسال شد<i class="icon-smile-beam ml-2"></i></span>
+                                <span class="text-silver">کد تایید برای شماره <span id="showPhones"></span> ارسال شد<i class="icon-smile-beam ml-2"></i></span>
 
                                 <div class="form-group mt-3">
                                     <label class="text-cloud">کد تایید را وارد نمایید</label>
@@ -163,7 +163,7 @@
                                     <div class="timer-box">
                                         <img width="33" height="33" src="public/images/progress-check.png" alt="">
                                         <span class="d-inline-block" id="timer"></span>
-                                        <span class="small d-inline-block">ثانیه تا درخواست مجدد کد</span>
+                                        <span class="d-inline-block">ثانیه تا درخواست مجدد کد</span>
                                     </div>
                                     <div class="resend-code">
                                         <a class="small font-weight-bold" id="resend-code" href="javascript:;">
@@ -205,7 +205,7 @@
                                     <i class="d-inline-block bg-powder radius-10 icon-film"></i>
                                 </a>
                             <?php } ?>
-                            <span class="text-silver small d-block mt-2">ما را در شبکه های اجتماعی دنبال کنید</span>
+                            <span class="text-silver d-block mt-2">ما را در شبکه های اجتماعی دنبال کنید</span>
                         </div>
                     </div>
                 </div>
