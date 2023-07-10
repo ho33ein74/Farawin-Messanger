@@ -164,7 +164,7 @@ class Install
                 $sql = "UPDATE tbl_link SET l_link='$base_url' WHERE l_id=1";
                 $link->query($sql);
 
-                $web_title  = $link->escape_string($_POST['web_title']);
+                $web_title = $link->escape_string($_POST['web_title']);
                 $sql = "UPDATE tbl_settings SET `value`='$web_title' WHERE `key` in ('site', 'site_short_name', 'legal_name')";
                 $link->query($sql);
 
@@ -185,7 +185,7 @@ class Install
         }
 
         $current_step = $this->current_step;
-        $steps        = $this->steps();
+        $steps = $this->steps();
 
         require_once('html.php');
     }
@@ -211,7 +211,7 @@ class Install
         $username = trim($_POST['username']);
         $password = addslashes(trim($_POST['password']));
 
-        $config_path    = $this->config_path;
+        $config_path = $this->config_path;
 
         @chmod($config_path, FILE_WRITE_MODE);
 
@@ -250,7 +250,7 @@ class Install
     {
         if (function_exists('random_bytes')) {
             try {
-                return random_bytes((int) $length);
+                return random_bytes((int)$length);
             } catch (Exception $e) {
                 echo $e->getMessage();
 
@@ -261,7 +261,7 @@ class Install
         }
 
         $is_secure = null;
-        $key       = openssl_random_pseudo_bytes($length, $is_secure);
+        $key = openssl_random_pseudo_bytes($length, $is_secure);
 
         return ($is_secure === true) ? $key : false;
     }
@@ -282,28 +282,28 @@ class Install
 
         return [
             [
-                'id'     => 1,
-                'name'   => 'نیازمندی ها',
+                'id' => 1,
+                'name' => 'نیازمندی ها',
                 'status' => $step > 1 ? 'complete' : 'current',
             ],
             [
-                'id'     => 2,
-                'name'   => 'دسترسی ها',
+                'id' => 2,
+                'name' => 'دسترسی ها',
                 'status' => $step < 2 ? 'upcoming' : ($step > 2 ? 'complete' : 'current'),
             ],
             [
-                'id'     => 3,
-                'name'   => 'دیتابیس',
+                'id' => 3,
+                'name' => 'دیتابیس',
                 'status' => $step < 3 ? 'upcoming' : ($step > 3 ? 'complete' : 'current'),
             ],
             [
-                'id'     => 4,
-                'name'   => 'نصب',
+                'id' => 4,
+                'name' => 'نصب',
                 'status' => $step < 4 ? 'upcoming' : ($step > 4 ? 'complete' : 'current'),
             ],
             [
-                'id'     => 5,
-                'name'   => 'اتمام',
+                'id' => 5,
+                'name' => 'اتمام',
                 'status' => $step === 5 ? 'complete' : 'upcoming',
             ],
         ];
