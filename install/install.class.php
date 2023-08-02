@@ -11,6 +11,7 @@ define('FILE_READ_MODE', 0644);
 define('FILE_WRITE_MODE', 0666);
 define('PHPASS_HASH_STRENGTH', 8);
 define('PHPASS_HASH_PORTABLE', false);
+define('INSTALL_DATABASE_METHOD', 2);
 
 class Install
 {
@@ -81,40 +82,39 @@ class Install
                 $this->current_step = 4;
             }
             if ($this->error === '' && isset($_POST['step']) && $_POST['step'] == 4) {
-                include_once('sqlparser.php');
-                $parser = new SqlScriptParser();
-
-                $sqlStatements = $parser->parse('database.sql');
-
                 $h = trim($_POST['hostname']);
                 $u = trim($_POST['username']);
                 $p = trim($_POST['password']);
                 $d = trim($_POST['database']);
-
                 $link = new mysqli($h, $u, $p, $d);
 
-                foreach ($sqlStatements as $statement) {
-                    $distilled = $parser->removeComments($statement);
-                    if (!empty($distilled)) {
-                        $link->query($distilled);
+                if (INSTALL_DATABASE_METHOD == 1) {
+                    include_once('sqlparser.php');
+                    $parser = new SqlScriptParser();
+
+                    $sqlStatements = $parser->parse('database.sql');
+
+                    foreach ($sqlStatements as $statement) {
+                        $distilled = $parser->removeComments($statement);
+                        if (!empty($distilled)) {
+                            $link->query($distilled);
+                        }
                     }
+
+                    // https://stackoverflow.com/questions/20867182/insert-query-executes-successfully-but-data-is-not-inserted-to-the-database
+                    // There is a commit in the database.sql
+                    $link->autocommit(true);
+                } else {
+                    $sql = file_get_contents("database.sql");
+                    $link->multi_query($sql);
+                    do {} while (mysqli_more_results($link) && mysqli_next_result($link));
                 }
 
                 if (!$this->copy_app_config()) {
                     $config_copy_failed = true;
                 }
 
-//                $encryption_key = bin2hex($this->create_key(50));
-                $ciphering = "AES-128-CTR";
-                $iv_length = openssl_cipher_iv_length($ciphering);
-                $options = 0;
-                $encryption_iv = '1234567891011121';
-                $encryption_key = substr(md5(rand()), 0, 50);
-                $this->write_app_config($encryption_key);
-
-                // https://stackoverflow.com/questions/20867182/insert-query-executes-successfully-but-data-is-not-inserted-to-the-database
-                // There is a commit in the database.sql
-                $link->autocommit(true);
+                $this->write_app_config();
 
                 //set admin information to database
                 $firstname = $link->escape_string($_POST['firstname']);
@@ -204,7 +204,7 @@ class Install
         return false;
     }
 
-    private function write_app_config($encryption_key)
+    private function write_app_config()
     {
         $hostname = trim($_POST['hostname']);
         $database = trim($_POST['database']);
@@ -222,6 +222,12 @@ class Install
         $config_file = str_replace('enter_db_username', $username, $config_file);
         $config_file = str_replace('enter_db_password', $password, $config_file);
         $config_file = str_replace('enter_database_name', $database, $config_file);
+
+        $ciphering = "AES-128-CTR";
+        $iv_length = openssl_cipher_iv_length($ciphering);
+        $options = 0;
+        $encryption_iv = '1234567891011121';
+        $encryption_key = substr(md5(rand()), 0, 50);
         $config_file = str_replace('enter_encryption_key', $encryption_key, $config_file);
 
         if (!$fp = fopen($config_path, FOPEN_WRITE_CREATE_DESTRUCTIVE)) {
