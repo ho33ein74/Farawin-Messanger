@@ -88,34 +88,6 @@ class Install
                 $d = trim($_POST['database']);
                 $link = new mysqli($h, $u, $p, $d);
 
-                if (INSTALL_DATABASE_METHOD == 1) {
-                    include_once('sqlparser.php');
-                    $parser = new SqlScriptParser();
-
-                    $sqlStatements = $parser->parse('database.sql');
-
-                    foreach ($sqlStatements as $statement) {
-                        $distilled = $parser->removeComments($statement);
-                        if (!empty($distilled)) {
-                            $link->query($distilled);
-                        }
-                    }
-
-                    // https://stackoverflow.com/questions/20867182/insert-query-executes-successfully-but-data-is-not-inserted-to-the-database
-                    // There is a commit in the database.sql
-                    $link->autocommit(true);
-                } else {
-                    $sql = file_get_contents("database.sql");
-                    $link->multi_query($sql);
-                    do {} while (mysqli_more_results($link) && mysqli_next_result($link));
-                }
-
-                if (!$this->copy_app_config()) {
-                    $config_copy_failed = true;
-                }
-
-                $this->write_app_config();
-
                 //set admin information to database
                 $firstname = $link->escape_string($_POST['firstname']);
                 $lastname = $link->escape_string($_POST['lastname']);
@@ -131,42 +103,84 @@ class Install
                 require_once '../public/library/jdf/jdf.php';
                 $registery_date = jdate('Y/m/d', '', '', 'Asia/Tehran', 'en');
 
-                $sql = "INSERT INTO tbl_admin (
-                       a_name, 
-                       a_username, 
-                       a_password,
-                       a_email,
-                       admin_role_id, 
-                       a_image,
-                       a_desc, 
-                       google_secret_code, 
-                       registery_date,
-                       a_status
-                ) VALUES (
-                      '$firstname $lastname', 
-                      '$username',
-                      '$password',
-                      '$email',
-                      1,
-                      '$url', 
-                      '', 
-                      '$secret', 
-                       '$registery_date', 
-                      1
-                )";
-                $link->query($sql);
-
                 $base_url = trim($_POST['base_url']);
                 $base_url = rtrim($base_url, '/') . '/';
-                $sql = "UPDATE tbl_settings SET `value`='$base_url' WHERE `key`='root'";
-                $link->query($sql);
 
-                $sql = "UPDATE tbl_link SET l_link='$base_url' WHERE l_id=1";
-                $link->query($sql);
+                if (INSTALL_DATABASE_METHOD == 1) {
+                    include_once('sqlparser.php');
+                    $parser = new SqlScriptParser();
 
-                $web_title = $link->escape_string($_POST['web_title']);
-                $sql = "UPDATE tbl_settings SET `value`='$web_title' WHERE `key` in ('site', 'site_short_name', 'legal_name')";
-                $link->query($sql);
+                    $sqlStatements = $parser->parse('database_install_method_1.sql');
+
+                    foreach ($sqlStatements as $statement) {
+                        $distilled = $parser->removeComments($statement);
+                        if (!empty($distilled)) {
+                            $link->query($distilled);
+                        }
+                    }
+
+                    $sql = "INSERT INTO tbl_admin (
+                                       a_name, 
+                                       a_username, 
+                                       a_password,
+                                       a_email,
+                                       admin_role_id, 
+                                       a_image,
+                                       a_desc, 
+                                       google_secret_code, 
+                                       registery_date,
+                                       a_status
+                                ) VALUES (
+                                      '$firstname $lastname', 
+                                      '$username',
+                                      '$password',
+                                      '$email',
+                                      1,
+                                      '$url', 
+                                      '', 
+                                      '$secret', 
+                                       '$registery_date', 
+                                      1
+                                )";
+                    $link->query($sql);
+
+                    $sql = "UPDATE tbl_settings SET `value`='$base_url' WHERE `key`='root'";
+                    $link->query($sql);
+
+                    $sql = "UPDATE tbl_link SET l_link='$base_url' WHERE l_id=1";
+                    $link->query($sql);
+
+                    $web_title = $link->escape_string($_POST['web_title']);
+                    $sql = "UPDATE tbl_settings SET `value`='$web_title' WHERE `key` in ('site', 'site_short_name', 'legal_name')";
+                    $link->query($sql);
+
+                    // https://stackoverflow.com/questions/20867182/insert-query-executes-successfully-but-data-is-not-inserted-to-the-database
+                    // There is a commit in the database_install_method_1.sql
+                    $link->autocommit(true);
+                } else {
+                    $sql = file_get_contents("database_install_method_2.sql");
+
+                    //tbl_admin
+                    $sql = str_replace('admin_name', $firstname . ' ' . $lastname, $sql);
+                    $sql = str_replace('admin_username', $username, $sql);
+                    $sql = str_replace('admin_email', $email, $sql);
+                    $sql = str_replace('admin_password', $password, $sql);
+                    $sql = str_replace('admin_created_at', $registery_date, $sql);
+                    $sql = str_replace('google_secret_code_gen', $secret, $sql);
+
+                    //tbl_setting
+                    $sql = str_replace('root_path', $base_url, $sql);
+                    $sql = str_replace('web_title', $_POST['web_title'], $sql);
+
+                    $link->multi_query($sql);
+                    do {} while (mysqli_more_results($link) && mysqli_next_result($link));
+                }
+
+                if (!$this->copy_app_config()) {
+                    $config_copy_failed = true;
+                }
+
+                $this->write_app_config();
 
                 ///////////////////////////////////////////////
                 // set the app state = installed

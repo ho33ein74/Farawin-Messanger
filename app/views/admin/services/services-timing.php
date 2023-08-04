@@ -80,12 +80,12 @@
                             </div>
                         </div>
 
-                        <div id="tips_custom_day" class="box box-default collapsed-box">
+                        <div id="tips_custom_day" class="box box-default">
                             <div class="box-header with-border" data-widget="collapse">
-                                <i class="fa fa-plus"></i>
+                                <i class="fa fa-minus"></i>
                                 <h3 class="box-title">نکات تب تاریخ دلخواه</h3>
                             </div>
-                            <div class="box-body" style="display: none;">
+                            <div class="box-body" style="display: block;">
                                 <div class="box-header">
                                     <p>
                                         1- چنانچه می خواهید زمانبندی های قابل نمایش در سایت صرفا برای یک تاریخ خاص باشد می توانید از این بخش استفاده نمایید.
@@ -109,12 +109,12 @@
                             </div>
                         </div>
 
-                        <div id="tips_default" style="display: none;" class="box box-default collapsed-box">
+                        <div id="tips_default" style="display: none;"  class="box box-default">
                             <div class="box-header with-border" data-widget="collapse">
-                                <i class="fa fa-plus"></i>
+                                <i class="fa fa-minus"></i>
                                 <h3 class="box-title">نکات تب پیش فرض</h3>
                             </div>
-                            <div class="box-body" style="display: none;">
+                            <div class="box-body" style="display: block;">
                                 <div class="box-header">
                                     <p>
                                         1- برای کارکرد صحیح این بخش پس از تعیین زمان های مورد نظر می بایست تنظیمات روز مورد نظر خود را بر روی گزینه "استفاده از بازه های زمانی پیش فرض" تنظیم نمایید.
@@ -126,12 +126,12 @@
                             </div>
                         </div>
 
-                        <div id="tips_holiday" style="display: none;" class="box box-default collapsed-box">
+                        <div id="tips_holiday" style="display: none;"  class="box box-default">
                             <div class="box-header with-border" data-widget="collapse">
-                                <i class="fa fa-plus"></i>
+                                <i class="fa fa-minus"></i>
                                 <h3 class="box-title">نکات تب تعطیلات</h3>
                             </div>
-                            <div class="box-body" style="display: none;">
+                            <div class="box-body" style="display: block;">
                                 <div class="box-header">
                                     <p>
                                         1- روزهای تعطیل رسمی را می توانید در بخش <a class="btn btn-foursquare" target="_blank" href="<?= ADMIN_PATH; ?>/holidays">مدیریت روزهای تعطیل</a> تعریف کنید.
@@ -145,6 +145,11 @@
                     </div>
 
                     <div class="col-lg-9 col-md-8 col-sm-12 col-xs-12">
+
+                        <div style="background: #ff3c59;padding: 11px 5px 3px 5px;border-radius: 7px;margin-bottom: 10px">
+                            <p style="color: #fff">برای تعریف ساعت های نوبت، ساعت نوبت را می بایست به صورت جداگانه تعریف نمایید به طور مثال از 10:00 الی 11:00 و حتما از طریق ساعت نمایشی، ساعت را انتخاب نمایید.</p>
+                        </div>
+
                         <div class="tab-content content-user-page mt-4" id="myTabContent">
                             <div class="tab-pane fade active in" role="tabpanel" id="turn-days" aria-labelledby="turn-days-tab">
                                 <!-- Custom Tabs -->

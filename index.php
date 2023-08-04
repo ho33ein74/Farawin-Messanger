@@ -7,7 +7,7 @@ $domain = $_SERVER['HTTP_HOST'] . $_SERVER['SCRIPT_NAME'];
 $domain = preg_replace('/index.php.*/', '', $domain); //remove everything after index.php
 
 //set the variable to 'installed' after installation
-$app_state = "installed"; //installed or installed
+$app_state = "installed"; //installed or pre_installation
 
 // Valid PHP Version?
 $minPHPVersion = '7.4';

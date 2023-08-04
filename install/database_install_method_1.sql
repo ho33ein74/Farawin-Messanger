@@ -1690,7 +1690,7 @@ INSERT INTO `tbl_page_widget` (`ip_id`, `page_id`, `template_id`, `ip_title`, `i
 (1, 2, 1, 'اسلایدر', 1, 'a:2:{s:6:\"number\";s:1:\"1\";s:8:\"ordering\";s:3:\"asc\";}', 1),
 (2, 2, 3, 'خدمات', 2, 'a:7:{s:5:\"title\";s:23:\"خدمات مجموعه\";s:9:\"sort_type\";s:6:\"latest\";s:9:\"view_type\";s:6:\"slider\";s:4:\"link\";s:8:\"services\";s:10:\"link_title\";s:30:\"مشاهده همه خدمات\";s:6:\"number\";s:2:\"10\";s:11:\"description\";s:204:\"در این بخش خدمات سالن زیبایی ونسا را مشاهده میکنید که برای رزرو نوبت می توانید خدمت مورد نظر خود را انتخاب نمایید\";}', 1),
 (3, 2, 4, 'بنر تبلیغاتی', 3, 'a:2:{s:6:\"number\";s:1:\"1\";s:8:\"ordering\";s:3:\"asc\";}', 1),
-(4, 2, 6, 'شبکه های اجتماعی', 5, 'a:3:{s:4:\"link\";s:31:\"https://instagram.com/ho55ein74\";s:10:\"link_title\";s:47:\"مشاهده پست های اینستاگرام\";s:11:\"description\";s:116:\"ما هر روز کلی مطالب آموزشی جالب در اینستاگراممون منتشر می‌کنیم!\";}', 1),
+(4, 2, 6, 'شبکه های اجتماعی', 5, 'a:3:{s:4:\"link\";s:31:\"#\";s:10:\"link_title\";s:47:\"مشاهده پست های اینستاگرام\";s:11:\"description\";s:116:\"ما هر روز کلی مطالب آموزشی جالب در اینستاگراممون منتشر می‌کنیم!\";}', 1),
 (5, 2, 2, 'مطالب وبلاگ', 6, 'a:8:{s:5:\"title\";s:40:\"جدیدترین مطالب آموزشی\";s:9:\"sort_type\";s:6:\"latest\";s:9:\"view_type\";s:6:\"slider\";s:4:\"link\";s:4:\"blog\";s:10:\"link_title\";s:30:\"مشاهده همه مطالب\";s:6:\"number\";s:2:\"10\";s:11:\"description\";s:0:\"\";s:21:\"sub_category_products\";s:1:\"1\";}', 1),
 (6, 2, 5, 'نظرات مشتریان', 7, 'a:4:{s:6:\"number\";s:2:\"10\";s:8:\"ordering\";s:3:\"asc\";s:5:\"title\";s:44:\"در مورد ونسا چه میشنویم؟\";s:11:\"description\";s:148:\"این‌ها، بخش خیلی کوچکی از نظراتی هستند که افراد مختلف در مورد اسکریپت ونسا دارند.\";}', 1),
 (7, 2, 3, 'پربازدیدترین خدمات', 4, 'a:7:{s:5:\"title\";s:35:\"پربازدیدترین خدمات\";s:9:\"sort_type\";s:4:\"view\";s:9:\"view_type\";s:7:\"slider2\";s:4:\"link\";s:21:\"services?orderby=view\";s:10:\"link_title\";s:30:\"مشاهده همه خدمات\";s:6:\"number\";s:2:\"10\";s:11:\"description\";s:0:\"\";}', 1);
@@ -2099,13 +2099,13 @@ CREATE TABLE `tbl_services_tariff` (
 --
 
 INSERT INTO `tbl_services_tariff` (`st_id`, `service_id`, `branch_id`, `operator_id`, `st_is_vip`, `st_price`, `st_deposit`, `st_status`) VALUES
-(1, 1, 1002, 1001, 0, '2000000', '500000', 1),
-(2, 2, 1001, 1002, 0, '500000', '150000', 1),
-(3, 3, 1001, 1000, 0, '2000000', '400000', 1),
-(4, 5, 1002, 1003, 0, '600000', '200000', 1),
-(5, 4, 1002, 1004, 0, '100000', '50000', 1),
-(6, 1, 1001, 1005, 0, '2500000', '1000000', 1),
-(7, 5, 1002, 1006, 0, '600000', '250000', 1);
+(1, 1, 1000, 1001, 0, '2000000', '500000', 1),
+(2, 2, 1000, 1002, 0, '500000', '150000', 1),
+(3, 3, 1000, 1000, 0, '2000000', '400000', 1),
+(4, 5, 1000, 1003, 0, '600000', '200000', 1),
+(5, 4, 1000, 1004, 0, '100000', '50000', 1),
+(6, 1, 1000, 1005, 0, '2500000', '1000000', 1),
+(7, 5, 1000, 1006, 0, '600000', '250000', 1);
 
 -- --------------------------------------------------------
 
@@ -2138,11 +2138,11 @@ CREATE TABLE `tbl_services_timing` (
 --
 
 INSERT INTO `tbl_services_timing` (`st_id`, `service_id`, `st_auto_timing_enabled`, `st_date_reservation`, `st_date_reservation_for_admin`, `st_allowed_time_book_repair_appointment`, `st_complete_time_reservation`, `st_turn_default`, `st_turn_custom_date`, `st_turn_saturday`, `st_turn_sunday`, `st_turn_monday`, `st_turn_tuesday`, `st_turn_wednesday`, `st_turn_thursday`, `st_turn_friday`, `st_turn_holiday`) VALUES
-(1, 1, 0, 20, 90, 0, '5', 'custom', 'custome_date', 'default', 'default', 'custom', 'default', 'default', 'not_turn', 'not_turn', 'not_turn'),
-(2, 2, 0, 1, 0, 0, '30', 'default', 'custome_date', 'default', 'default', 'default', 'default', 'default', 'default', 'not_turn', 'not_turn'),
-(3, 3, 0, 1, 0, 0, '30', 'default', 'custome_date', 'default', 'default', 'default', 'default', 'default', 'default', 'not_turn', 'not_turn'),
-(4, 4, 0, 1, 0, 0, '30', 'default', 'custome_date', 'default', 'default', 'default', 'default', 'default', 'default', 'not_turn', 'not_turn'),
-(5, 5, 0, 1, 0, 0, '30', 'default', 'custome_date', 'default', 'default', 'default', 'default', 'default', 'default', 'not_turn', 'not_turn');
+(1, 1, 0, 10, 10, 0, '5', 'custom', 'custome_date', 'default', 'default', 'custom', 'default', 'default', 'not_turn', 'not_turn', 'not_turn'),
+(2, 2, 0, 10, 10, 0, '30', 'default', 'custome_date', 'default', 'default', 'default', 'default', 'default', 'default', 'not_turn', 'not_turn'),
+(3, 3, 0, 10, 10, 0, '30', 'default', 'custome_date', 'default', 'default', 'default', 'default', 'default', 'default', 'not_turn', 'not_turn'),
+(4, 4, 0, 10, 10, 0, '30', 'default', 'custome_date', 'default', 'default', 'default', 'default', 'default', 'default', 'not_turn', 'not_turn'),
+(5, 5, 0, 10, 10, 0, '30', 'default', 'custome_date', 'default', 'default', 'default', 'default', 'default', 'default', 'not_turn', 'not_turn');
 
 -- --------------------------------------------------------
 
@@ -2341,7 +2341,7 @@ INSERT INTO `tbl_sidebar` (`s_id`, `s_parent_id`, `s_name`, `s_link`, `s_counter
 (16, 2, 'افزودن خدمت جدید', 'services/add', 0, NULL, 'fa-plus-square', 5, 0, 1),
 (17, 2, 'مدیریت خدمات', 'services', 0, NULL, 'fa-circle', 6, 0, 1),
 (19, 0, 'کد تخفیف', 'discounts', 0, NULL, 'fa-quote-right', 7, 0, 1),
-(20, 0, 'کارت هدیه', 'giftCart', 0, NULL, 'fa-gift', 8, 0, 1),
+(20, 0, 'کارت هدیه', 'giftCart', 0, NULL, 'fa-gift', 8, 0, 0),
 (22, 2, 'تنظیمات خدمات', '-', 0, NULL, 'fa-cog', 7, 0, 1),
 (23, 22, 'شعبه ها', 'branches', 0, NULL, 'fa-circle', 8, 0, 1),
 (24, 22, 'انبارها', 'storeroom/list', 0, NULL, 'fa-circle', 9, 0, 1),
