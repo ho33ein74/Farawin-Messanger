@@ -53,25 +53,27 @@
         <?php require('app/views/include/default/header.php'); ?>
     </div>
     <div wire:id="52m91JKCESgkf3m5UsDO">
+
+        <div class="container">
             <?php if($data['widget']){ ?>
-            <?php foreach($data['widget'] as $key => $value){ ?>
-                <?php
-                try {
-                    $file = array_keys($value)[0];
+                <?php foreach($data['widget'] as $key => $value){ ?>
+                    <?php
+                    try {
+                        $file = array_keys($value)[0];
 
-                    $contents = $value[$file]['content'];
-                    $name = $file;
-                    if ($value[$file]['view_type'] == "slider" || $value[$file]['view_type'] == "slider2" || $value[$file]['view_type'] == "item" || $value[$file]['view_type'] == "item2") {
-                        $name = $file . "-" . $value[$file]['view_type'];
+                        $contents = $value[$file]['content'];
+                        $name = $file;
+                        if ($value[$file]['view_type'] == "slider" || $value[$file]['view_type'] == "slider2" || $value[$file]['view_type'] == "item" || $value[$file]['view_type'] == "item2") {
+                            $name = $file . "-" . $value[$file]['view_type'];
+                        }
+
+                        require('app/views/template/default/' . $name . '.php');
+                    } catch (Exception $e) {
+                        echo 'خطا: ',  $e->getMessage();
                     }
-
-                    require('app/views/template/default/' . $name . '.php');
-                } catch (Exception $e) {
-                    echo 'خطا: ',  $e->getMessage();
-                }
-                ?>
-            <?php } ?>
-        <?php } else {?>
+                    ?>
+                <?php } ?>
+            <?php } else {?>
                 <section class="pt-15 pb-15">
                     <div class="container">
                         <a class="block w-full overflow-hidden rounded-lg bg-gradient-to-r from-pachim-600 to-pachim-500 hover:from-pachim-500 hover:to-pachim-600 relative ">
@@ -102,7 +104,7 @@
                     </div>
                 </section>
             <?php } ?>
-
+        </div>
     </div>
     <?php require('app/views/include/default/footer.php'); ?>
 </div>
