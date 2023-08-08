@@ -140,6 +140,5 @@
     <script>
         window.Alpine.start();
     </script>
-
 </body>
 </html>
