@@ -19,7 +19,7 @@ class model_services extends Model
 
     function getServices($userId, $get)
     {
-        $sort_type = $this->check_param($get['orderby']);
+        $sort_type = $this->check_param($get['orderby'] ?? "");
         if($sort_type=='oldest') { // قدیمی ترین
             $order = "s.s_id ASC";
         } else if($sort_type=='view') { // پربازدیدترین
@@ -44,12 +44,21 @@ class model_services extends Model
         $_order = "ORDER BY $order";
         $_limit = "LIMIT $start, $perPage";
         $_join = "";
-        return $this->getServiceData(False, $this->checkLogin, $_where, $_order, $_limit, $_input, $_join, False);
+        return $this->getServiceData(
+            False,
+            $this->checkLogin ?? False,
+            $_where,
+            $_order,
+            $_limit,
+            $_input,
+            $_join,
+            False
+        );
     }
 
     function getItemsPagination($get)
     {
-        $sort_type = $this->check_param($get['orderby']);
+        $sort_type = $this->check_param($get['orderby'] ?? "");
         if($sort_type=='oldest') { // قدیمی ترین
             $order = "s.s_id ASC";
         } else if($sort_type=='view') { // پربازدیدترین
@@ -65,14 +74,29 @@ class model_services extends Model
         $_order = "ORDER BY $order";
         $_limit = "";
         $_join = "";
-        $result = $this->getServiceData(False, $this->checkLogin, $_where, $_order, $_limit, $_input, $_join, False);
+        $result = $this->getServiceData(
+            False,
+            $this->checkLogin ?? False,
+            $_where,
+            $_order,
+            $_limit,
+            $_input,
+            $_join,
+            False
+        );
 
         $url = "services";
 
         $url_check = explode("/", htmlspecialchars($get['url']));
-        $pageNo = $url_check[2];
+        $pageNo = $url_check[2] ?? 0;
 
-        return $this->get_all_page_links(sizeof($result), $pageNo, $url, $this->getPublicInfo('service_item_per_page'), $get);
+        return $this->get_all_page_links(
+            sizeof($result),
+            $pageNo,
+            $url,
+            $this->getPublicInfo('service_item_per_page'),
+            $get
+        );
     }
 
     function getServicesRandom($id, $count=3)
@@ -82,7 +106,16 @@ class model_services extends Model
         $_order = "ORDER BY rand() DESC";
         $_limit = "LIMIT ".$count;
         $_join = "";
-        return $this->getServiceData(False, False, $_where, $_order, $_limit, $_input, $_join, False);
+        return $this->getServiceData(
+            False,
+            False,
+            $_where,
+            $_order,
+            $_limit,
+            $_input,
+            $_join,
+            False
+        );
     }
 
     function getCalendarFile($id, $userId)

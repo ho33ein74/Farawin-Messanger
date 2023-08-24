@@ -90,7 +90,7 @@
 
             <div>
                 <div class="flex items-center">
-                    <?php if ($data['userId'] != FALSE) { ?>
+                    <?php if (isset($data['userId']) and $data['userId'] != FALSE) { ?>
                         <div wire:id="CDkYpYesbjvNfezVWCCx" x-data="{ userDropDown : false }" class="relative" :class="userDropDown ? 'z-50' : ' '">
                             <div @click="userDropDown = true , $dispatch('overlay-show')" href="#" class="group w-12 h-12 flex items-center justify-center rounded-full bg-gray-210 dark:bg-dark-920 hover:bg-biscay-700 transition relative cursor-pointer">
                                 <div class="w-12 h-12 bg-gray-300 rounded-full overflow-hidden border-2 border-solid border-gray-80">
@@ -202,7 +202,7 @@
                         </div>
                     <?php } else { ?>
                         <div class="flex bg-blue-700 bg-opacity-10 rounded-lg ">
-                            <a href="<?= htmlspecialchars($_GET['url'])=="" ? "login":"login?backURL=".htmlspecialchars($_GET['url']); ?>" class="text-blue-700 bg-blue-700 bg-opacity-0 hover:bg-opacity-80 transition duration-200 hover:text-white font-medium sm:text-base text-xs inline-flex items-center rounded-lg h-10 pr-3 -ml-3 pl-6">
+                            <a href="<?= htmlspecialchars($_GET['url'] ?? "")=="" ? "login":"login?backURL=".htmlspecialchars($_GET['url'] ?? ""); ?>" class="text-blue-700 bg-blue-700 bg-opacity-0 hover:bg-opacity-80 transition duration-200 hover:text-white font-medium sm:text-base text-xs inline-flex items-center rounded-lg h-10 pr-3 -ml-3 pl-6">
                                 <span class="sm:inline-block hidden">
                                     ورود
                                 </span>
@@ -214,7 +214,7 @@
                                 </span>
                             </a>
 
-                            <a href="<?= htmlspecialchars($_GET['url'])=="" ? "login":"login?backURL=".htmlspecialchars($_GET['url']); ?>" class="sm:inline-flex hidden bg-blue-700 text-white hover:opacity-80  duration-75 font-medium sm:text-base text-xs items-center rounded-lg h-10 px-3 ">
+                            <a href="<?= htmlspecialchars($_GET['url'] ?? "")=="" ? "login":"login?backURL=".htmlspecialchars($_GET['url'] ?? ""); ?>" class="sm:inline-flex hidden bg-blue-700 text-white hover:opacity-80  duration-75 font-medium sm:text-base text-xs items-center rounded-lg h-10 px-3 ">
                                 <span>
                                     عضویت
                                 </span>
@@ -257,7 +257,7 @@
                     </button>
                 </div>
             </form>
-            <?php if($data['userId'] != false){ ?>
+            <?php if(isset($data['userId']) and $data['userId'] != false){ ?>
                 <div class="px-6 w-full mt-5 mb-3 lg:hidden inline-block">
                     <div class="font-bold text-gray-800 py-5 border-t border-b dark:border-opacity-10 border-biscay-100">
                         <div class="w-fit-content mb-5 lg:hidden">
@@ -360,7 +360,7 @@
                 <ul class="flex items-center justify-center lg:flex-row flex-col lg:w-auto w-full lg:pt-0 pt-6">
                     <?php if(sizeof($data['getHeaderMenu'])>0){ ?>
                         <?php foreach($data['getHeaderMenu'] as $item){ ?>
-                            <?php if(@sizeof($item['children'])>0){ ?>
+                            <?php if(isset($item['children']) and sizeof($item['children'])>0){ ?>
                                 <?php if($item['menu_type'] == 2){ ?>
                                     <li class="lg:mr-6 lg:inline-block flex items-center lg:w-auto w-full lg:mb-0 mb-7">
                                         <div x-data="{ active : false }" @click="active = !active" @click.away="active = false" href="#" class="flex lg:items-center lg:flex-row flex-col items-start text-base font-medium text-biscay-700 group hover:text-biscay-500 relative">

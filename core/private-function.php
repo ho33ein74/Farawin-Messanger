@@ -2,7 +2,7 @@
 
 trait privateTrait
 {
-    function getPublicInfo($value = '')
+    static function getPublicInfo($value = '')
     {
         if ($value == "") {
             $sql = "SELECT `key`,`value` FROM tbl_settings";

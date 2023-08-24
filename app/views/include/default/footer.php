@@ -28,7 +28,10 @@
                         <?php } ?>
 
                         <ul class="flex sm:pr-8 self-center ">
-                            <?php if ($data['getMethodsContacting']['youtube']['mc_show_in_footer'] == "1" and $data['getMethodsContacting']['youtube']['mc_link'] != NULL) { ?>
+                            <?php if (
+                                    (isset($data['getMethodsContacting']['youtube']['mc_show_in_footer']) and $data['getMethodsContacting']['youtube']['mc_show_in_footer'] == "1") and
+                                    (isset($data['getMethodsContacting']['youtube']['mc_link']) and $data['getMethodsContacting']['youtube']['mc_link'] != NULL)
+                            ) { ?>
                                 <li>
                                     <a href="<?= $data['getMethodsContacting']['youtube']['mc_link']; ?>" class="group flex items-center rounded justify-center w-10 h-10 bg-blue-50 group hover:bg-blue-700 transition duration-300 ease-linear">
                                         <svg width="19" height="14" viewBox="0 0 19 14" fill="none"
@@ -39,7 +42,10 @@
                                     </a>
                                 </li>
                             <?php } ?>
-                            <?php if ($data['getMethodsContacting']['facebook']['mc_show_in_footer'] == "1" and $data['getMethodsContacting']['facebook']['mc_link'] != NULL) { ?>
+                            <?php if (
+                                    (isset($data['getMethodsContacting']['facebook']['mc_show_in_footer']) and $data['getMethodsContacting']['facebook']['mc_show_in_footer'] == "1") and
+                                    (isset($data['getMethodsContacting']['facebook']['mc_link']) and $data['getMethodsContacting']['facebook']['mc_link'] != NULL)
+                            ) { ?>
                                 <li class="mr-2">
                                     <a href="<?= $data['getMethodsContacting']['facebook']['mc_link']; ?>" class="group flex items-center rounded justify-center w-10 h-10 bg-blue-50 group hover:bg-blue-700 transition duration-300 ease-linear">
                                         <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -49,7 +55,10 @@
                                     </a>
                                 </li>
                             <?php } ?>
-                            <?php if ($data['getMethodsContacting']['twitter']['mc_show_in_footer'] == "1" and $data['getMethodsContacting']['twitter']['mc_link'] != NULL) { ?>
+                            <?php if (
+                                    (isset($data['getMethodsContacting']['twitter']['mc_show_in_footer']) and $data['getMethodsContacting']['twitter']['mc_show_in_footer'] == "1") and
+                                    (isset($data['getMethodsContacting']['twitter']['mc_link']) and $data['getMethodsContacting']['twitter']['mc_link'] != NULL)
+                            ) { ?>
                                 <li class="mr-2">
                                     <a href="<?= $data['getMethodsContacting']['twitter']['mc_link']; ?>" class="group flex items-center rounded justify-center w-10 h-10 bg-blue-50 group hover:bg-blue-700 transition duration-300 ease-linear">
                                         <svg width="19" height="15" viewBox="0 0 19 15" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -59,7 +68,10 @@
                                     </a>
                                 </li>
                             <?php } ?>
-                            <?php if ($data['getMethodsContacting']['instagram']['mc_show_in_footer'] == "1" and $data['getMethodsContacting']['instagram']['mc_link'] != NULL) { ?>
+                            <?php if (
+                                    (isset($data['getMethodsContacting']['instagram']['mc_show_in_footer']) and $data['getMethodsContacting']['instagram']['mc_show_in_footer'] == "1") and
+                                    (isset($data['getMethodsContacting']['instagram']['mc_link']) and $data['getMethodsContacting']['instagram']['mc_link'] != NULL)
+                            ) { ?>
                                 <li class="mr-2">
                                     <a href="<?= $data['getMethodsContacting']['instagram']['mc_link']; ?>" class="group flex items-center rounded justify-center w-10 h-10 bg-blue-50 group hover:bg-blue-700 transition duration-300 ease-linear">
                                         <svg width="17" height="17" viewBox="0 0 17 17" fill="none"
@@ -74,7 +86,10 @@
                                     </a>
                                 </li>
                             <?php } ?>
-                            <?php if ($data['getMethodsContacting']['telegram']['mc_show_in_footer'] == "1" and $data['getMethodsContacting']['telegram']['mc_link'] != NULL) { ?>
+                            <?php if (
+                                    (isset($data['getMethodsContacting']['telegram']['mc_show_in_footer']) and $data['getMethodsContacting']['telegram']['mc_show_in_footer'] == "1") and
+                                    (isset($data['getMethodsContacting']['telegram']['mc_link']) and $data['getMethodsContacting']['telegram']['mc_link'] != NULL)
+                            ) { ?>
                                 <li class="mr-2">
                                     <a href="<?= $data['getMethodsContacting']['telegram']['mc_link']; ?>" class="group flex items-center rounded justify-center w-10 h-10 bg-blue-50 group hover:bg-blue-700 transition duration-300 ease-linear">
                                         <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -130,7 +145,10 @@
                     </div>
 
                     <ul>
-                        <?php if ($data['getMethodsContacting']['email']['mc_show_in_footer'] == "1") { ?>
+                        <?php if (
+                                isset($data['getMethodsContacting']['email']['mc_show_in_footer']) and
+                                $data['getMethodsContacting']['email']['mc_show_in_footer'] == "1"
+                        ) { ?>
                             <li class="flex items-center justify-between mb-7 last:mb-0">
                                 <span class="flex items-center">
                                      <span class="relative ml-3">
@@ -147,7 +165,10 @@
                                 </a>
                             </li>
                         <?php } ?>
-                        <?php if ($data['getMethodsContacting']['telegram']['mc_link'] != NULL) { ?>
+                        <?php if (
+                                isset($data['getMethodsContacting']['telegram']['mc_link']) and
+                                $data['getMethodsContacting']['telegram']['mc_link'] != NULL
+                        ) { ?>
                             <li class="flex items-center justify-between mb-7 last:mb-0">
                                 <span class="flex items-center">
                                     <span class="relative ml-3">
@@ -163,7 +184,10 @@
                                    href="<?= $data['getMethodsContacting']['telegram']['mc_link']; ?>"><?= str_replace("https://t.me/", "", str_replace("https://telegram.me/", "", $data['getMethodsContacting']['telegram']['mc_link'])); ?></a>
                             </li>
                         <?php } ?>
-                        <?php if ($data['getMethodsContacting']['phone']['mc_link'] != NULL) { ?>
+                        <?php if (
+                                isset($data['getMethodsContacting']['phone']['mc_link']) and
+                                $data['getMethodsContacting']['phone']['mc_link'] != NULL
+                        ) { ?>
                             <li class="flex items-center justify-between mb-7 last:mb-0">
                                 <span class="flex items-center">
                                     <span class="relative ml-3">
@@ -179,7 +203,10 @@
                                 </a>
                             </li>
                         <?php } ?>
-                        <?php if ($data['getMethodsContacting']['instagram']['mc_link'] != NULL) { ?>
+                        <?php if (
+                                isset($data['getMethodsContacting']['instagram']['mc_link']) and
+                                $data['getMethodsContacting']['instagram']['mc_link'] != NULL
+                        ) { ?>
                             <li class="flex items-center justify-between mb-7 last:mb-0">
                                 <span class="flex items-center">
                                     <span class="relative ml-3">

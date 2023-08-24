@@ -683,7 +683,7 @@ foreach ($data['servicesTag'] as $tag) {
                                     </h4>
 
                                     <div class="flex flex-wrap  justify-center sm:w-fit-content w-full relative">
-                                        <?php if ($data['userId'] != FALSE) { ?>
+                                        <?php if (isset($data['userId']) and $data['userId'] != FALSE) { ?>
                                             <button @click="$dispatch('show-send-comment' , { id :  0 })" class="group border justify-center sm:mt-0 mt-4 sm:w-fit-content w-full border-blue-700 bg-blue-700 text-sm dark:hover:bg-transparent dark:hover:text-white dark:hover:border-white text-white px-3 h-12 rounded flex items-center font-semibold transition duration-200 hover:bg-white hover:text-blue-700 hover:shadow-sm">
                                                 افزودن دیدگاه و پرسش جدید
                                                 <svg class="mr-1" width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -696,29 +696,7 @@ foreach ($data['servicesTag'] as $tag) {
                                     </div>
                                 </div>
 
-                                <?php if ($data['userId'] == FALSE) { ?>
-                                    <div class="py-4 md:px-8 px-5 flex justify-between items-center md:flex-row flex-col bg-customOrange-550 rounded-lg mb-6">
-                                        <h3 class="text-xl text-white font-medium flex items-center md:mb-0 mb-5">
-                                            <span class="ml-4">
-                                                <svg width="21" height="22" viewBox="0 0 21 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path fill="currentColor" d="M0 17.4167C0 21.191 1.77971 22 10.0833 22C18.387 22 20.1667 21.191 20.1667 17.4167C20.1667 13.6423 18.387 12.8333 10.0833 12.8333C1.77971 12.8333 0 13.6423 0 17.4167Z"/>
-                                                    <path fill="currentColor" d="M4.58333 5.5C4.58333 8.53757 7.04577 11 10.0833 11C13.1209 11 15.5833 8.53757 15.5833 5.5C15.5833 2.46243 13.1209 0 10.0833 0C7.04577 0 4.58333 2.46243 4.58333 5.5Z"/>
-                                                </svg>
-                                            </span>
-                                            برای ارسال دیدگاه لازم است وارد شده یا ثبت‌نام کنید
-                                        </h3>
-
-                                        <a class="sm:text-xl text-lg text-white font-semibold flex items-center underline hover:text-gray-700 duration-200 transition " href="<?= htmlspecialchars($_GET['url'])=="" ? "login":"login?backURL=".htmlspecialchars($_GET['url']); ?>">
-                                            ورود یا ثبت‌نام
-                                            <span class="mr-4">
-                                                <svg width="18" height="12" viewBox="0 0 18 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path fill="currentColor" opacity="0.4" d="M12.7975 4.80957L16.4967 4.48242C17.3269 4.48242 18 5.16206 18 6.00032C18 6.83858 17.3269 7.51822 16.4967 7.51822L12.7975 7.19107C12.1463 7.19107 11.6183 6.65793 11.6183 6.00032C11.6183 5.34161 12.1463 4.80957 12.7975 4.80957Z"/>
-                                                    <path fill="currentColor" d="M0.37534 4.86984C0.433157 4.81146 0.649155 4.56471 0.852061 4.35983C2.03568 3.07656 5.12619 0.978153 6.7429 0.335965C6.98835 0.233523 7.60907 0.0154213 7.94179 0C8.25924 0 8.56251 0.0738021 8.8516 0.219203C9.21269 0.422985 9.50068 0.74463 9.65995 1.12355C9.76141 1.38572 9.92068 2.17331 9.92068 2.18763C10.0789 3.04792 10.165 4.44685 10.165 5.99339C10.165 7.46503 10.0789 8.80668 9.94904 9.68129C9.93486 9.69671 9.77559 10.6738 9.60214 11.0086C9.28469 11.6211 8.66397 12 7.99961 12H7.94179C7.50871 11.9857 6.5989 11.6057 6.5989 11.5924C5.06837 10.9502 2.05096 8.95319 0.837879 7.62585C0.837879 7.62585 0.495338 7.28438 0.346976 7.07178C0.115706 6.76556 7.15256e-05 6.38663 7.15256e-05 6.00771C7.15256e-05 5.58473 0.129888 5.19148 0.37534 4.86984Z"/>
-                                                </svg>
-                                            </span>
-                                        </a>
-                                    </div>
-                                <?php } else { ?>
+                                <?php if (!empty($data['userId']) and $data['userId'] != FALSE) { ?>
                                     <div wire:id="item-<?= $data['attrId']; ?>" wire:initial-data="{&quot;fingerprint&quot;:{&quot;id&quot;:&quot;item-<?= $data['attrId']; ?>&quot;,&quot;name&quot;:&quot;user\/sendComment&quot;,&quot;type&quot;:&quot;service&quot;,&quot;itemID&quot;:&quot;<?= $data['attrId']; ?>&quot;,&quot;locale&quot;:&quot;fa&quot;,&quot;path&quot;:&quot;services\/<?= $data['services']['s_slug'] ?>&quot;,&quot;method&quot;:&quot;GET&quot;,&quot;v&quot;:&quot;acj&quot;},&quot;effects&quot;:{&quot;listeners&quot;:[]},&quot;serverMemo&quot;:{&quot;children&quot;:{&quot;201045181&quot;:{&quot;id&quot;:&quot;X5EAUqbyw6oZ4xvzwW9P&quot;,&quot;tag&quot;:&quot;div&quot;}},&quot;errors&quot;:[],&quot;htmlHash&quot;:&quot;f5aee777&quot;,&quot;data&quot;:{&quot;formId&quot;:&quot;6290e73640e6b&quot;,&quot;subject&quot;:[],&quot;show&quot;:false,&quot;message&quot;:null,&quot;parentId&quot;:0,&quot;loading&quot;:null,&quot;user&quot;:[]},&quot;dataMeta&quot;:{&quot;models&quot;:{&quot;subject&quot;:{&quot;class&quot;:&quot;App\\Article&quot;,&quot;id&quot;:5950,&quot;relations&quot;:[&quot;rates&quot;,&quot;categories&quot;,&quot;tags&quot;,&quot;user&quot;],&quot;connection&quot;:&quot;mysql&quot;},&quot;user&quot;:{&quot;class&quot;:&quot;App\\User&quot;,&quot;id&quot;:2,&quot;relations&quot;:[],&quot;connection&quot;:&quot;mysql&quot;}}},&quot;checksum&quot;:&quot;2456e05255b5c359932e11b203dd8fb935bbbd205142f6f87cee6eb59e7ce535&quot;}}" x-data="{ show : 0  , message : window.Livewire.find('item-<?= $data['attrId']; ?>').entangle('message').defer }" x-on:show-send-comment.window="if($event.detail.id === 0) show = 1" x-on:hide-send-comment.window="show = 0">
                                         <div class="border border-gray-210 dark:border-opacity-10  rounded-lg mb-8 pt-9 pb-8 md:px-7 px-4" x-show="show" style="display: none">
 
@@ -825,7 +803,28 @@ foreach ($data['servicesTag'] as $tag) {
 
                                             </div>
                                         </div>
+                                    </div>
+                                <?php } else { ?>
+                                    <div class="py-4 md:px-8 px-5 flex justify-between items-center md:flex-row flex-col bg-customOrange-550 rounded-lg mb-6">
+                                        <h3 class="text-xl text-white font-medium flex items-center md:mb-0 mb-5">
+                                            <span class="ml-4">
+                                                <svg width="21" height="22" viewBox="0 0 21 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill="currentColor" d="M0 17.4167C0 21.191 1.77971 22 10.0833 22C18.387 22 20.1667 21.191 20.1667 17.4167C20.1667 13.6423 18.387 12.8333 10.0833 12.8333C1.77971 12.8333 0 13.6423 0 17.4167Z"/>
+                                                    <path fill="currentColor" d="M4.58333 5.5C4.58333 8.53757 7.04577 11 10.0833 11C13.1209 11 15.5833 8.53757 15.5833 5.5C15.5833 2.46243 13.1209 0 10.0833 0C7.04577 0 4.58333 2.46243 4.58333 5.5Z"/>
+                                                </svg>
+                                            </span>
+                                            برای ارسال دیدگاه لازم است وارد شده یا ثبت‌نام کنید
+                                        </h3>
 
+                                        <a class="sm:text-xl text-lg text-white font-semibold flex items-center underline hover:text-gray-700 duration-200 transition " href="<?= htmlspecialchars($_GET['url'])=="" ? "login":"login?backURL=".htmlspecialchars($_GET['url']); ?>">
+                                            ورود یا ثبت‌نام
+                                            <span class="mr-4">
+                                                <svg width="18" height="12" viewBox="0 0 18 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill="currentColor" opacity="0.4" d="M12.7975 4.80957L16.4967 4.48242C17.3269 4.48242 18 5.16206 18 6.00032C18 6.83858 17.3269 7.51822 16.4967 7.51822L12.7975 7.19107C12.1463 7.19107 11.6183 6.65793 11.6183 6.00032C11.6183 5.34161 12.1463 4.80957 12.7975 4.80957Z"/>
+                                                    <path fill="currentColor" d="M0.37534 4.86984C0.433157 4.81146 0.649155 4.56471 0.852061 4.35983C2.03568 3.07656 5.12619 0.978153 6.7429 0.335965C6.98835 0.233523 7.60907 0.0154213 7.94179 0C8.25924 0 8.56251 0.0738021 8.8516 0.219203C9.21269 0.422985 9.50068 0.74463 9.65995 1.12355C9.76141 1.38572 9.92068 2.17331 9.92068 2.18763C10.0789 3.04792 10.165 4.44685 10.165 5.99339C10.165 7.46503 10.0789 8.80668 9.94904 9.68129C9.93486 9.69671 9.77559 10.6738 9.60214 11.0086C9.28469 11.6211 8.66397 12 7.99961 12H7.94179C7.50871 11.9857 6.5989 11.6057 6.5989 11.5924C5.06837 10.9502 2.05096 8.95319 0.837879 7.62585C0.837879 7.62585 0.495338 7.28438 0.346976 7.07178C0.115706 6.76556 7.15256e-05 6.38663 7.15256e-05 6.00771C7.15256e-05 5.58473 0.129888 5.19148 0.37534 4.86984Z"/>
+                                                </svg>
+                                            </span>
+                                        </a>
                                     </div>
                                 <?php } ?>
 

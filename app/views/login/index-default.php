@@ -112,22 +112,41 @@
                             </div>
                         </div>
                         <div class="mt-4 text-center social-media">
-                            <?php if ($data['getMethodsContacting']['telegram']['mc_show_in_login_page'] == "1" AND $data['getMethodsContacting']['telegram']['mc_link'] != NULL) { ?>
+                            <?php if (
+                                isset($data['getMethodsContacting']['telegram']) and
+                                $data['getMethodsContacting']['telegram']['mc_show_in_login_page'] == "1" and
+                                $data['getMethodsContacting']['telegram']['mc_link'] != NULL
+                            ) { ?>
                                 <a href="<?= $data['getMethodsContacting']['telegram']['mc_link']; ?>" target="_blank" class="telegram text-silver mx-2">
                                     <i class="d-inline-block bg-powder radius-10 icon-telegram-plane"></i>
                                 </a>
                             <?php } ?>
-                            <?php if ($data['getMethodsContacting']['linkedin']['mc_show_in_login_page'] == "1" AND $data['getMethodsContacting']['linkedin']['mc_link'] != NULL) { ?>
+
+                            <?php if (
+                                isset($data['getMethodsContacting']['linkedin']) and
+                                $data['getMethodsContacting']['linkedin']['mc_show_in_login_page'] == "1" and
+                                $data['getMethodsContacting']['linkedin']['mc_link'] != NULL
+                            ) { ?>
                                 <a href="<?= $data['getMethodsContacting']['linkedin']['mc_link']; ?>" target="_blank" class="linkedin text-silver mx-2">
                                     <i class="d-inline-block bg-powder radius-10 icon-linkedin-in"></i>
                                 </a>
                             <?php } ?>
-                            <?php if ($data['getMethodsContacting']['instagram']['mc_show_in_login_page'] == "1" AND $data['getMethodsContacting']['instagram']['mc_link'] != NULL) { ?>
+
+                            <?php if (
+                                isset($data['getMethodsContacting']['instagram']) and
+                                $data['getMethodsContacting']['instagram']['mc_show_in_login_page'] == "1" and
+                                $data['getMethodsContacting']['instagram']['mc_link'] != NULL
+                            ) { ?>
                                 <a href="<?= $data['getMethodsContacting']['instagram']['mc_link']; ?>" target="_blank" class="instagram text-silver mx-2">
                                     <i class="d-inline-block bg-powder radius-10 icon-instagram"></i>
                                 </a>
                             <?php } ?>
-                            <?php if ($data['getMethodsContacting']['aparat']['mc_show_in_login_page'] == "1" AND $data['getMethodsContacting']['aparat']['mc_link'] != NULL) { ?>
+
+                            <?php if (
+                                isset($data['getMethodsContacting']['instagram']) and
+                                $data['getMethodsContacting']['aparat']['mc_show_in_login_page'] == "1" and
+                                $data['getMethodsContacting']['aparat']['mc_link'] != NULL
+                            ) { ?>
                                 <a href="<?= $data['getMethodsContacting']['aparat']['mc_link']; ?>" target="_blank" class="aparat text-silver mx-2">
                                     <i class="d-inline-block bg-powder radius-10 icon-film"></i>
                                 </a>

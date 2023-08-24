@@ -162,19 +162,19 @@
                         </div>
                         <ul x-transition="" x-show="show" class="pt-5 border-t border-gray-80 dark:border-white dark:border-opacity-10 border-opacity-60 mt-5 ">
                             <li class="flex items-center mb-4 last:mb-0">
-                                <input class="dark:bg-gray-400 text-gray-800 w-6 h-6 ml-3 bg-gray-100 border-0 border-transparent cursor-pointer ring-0" id="order-latest" type="radio" <?= (htmlspecialchars($_GET['orderby'])=="" or htmlspecialchars($_GET['orderby'])=="latest") ? "checked":"" ?> name="order" value="<?= Model::add_parameters_to_url($_SERVER['REQUEST_URI'], array('orderby' => 'latest'), "add") ?>">
+                                <input class="dark:bg-gray-400 text-gray-800 w-6 h-6 ml-3 bg-gray-100 border-0 border-transparent cursor-pointer ring-0" id="order-latest" type="radio" <?= (htmlspecialchars($_GET['orderby'] ?? "")=="" or htmlspecialchars($_GET['orderby'] ?? "")=="latest") ? "checked":"" ?> name="order" value="<?= Model::add_parameters_to_url($_SERVER['REQUEST_URI'], array('orderby' => 'latest'), "add") ?>">
                                 <label class="dark:text-gray-920 text-gray-800 text-base font-medium cursor-pointer" for="order-latest">جدید&zwnj;ترین</label>
                             </li>
                             <li class="flex items-center mb-4 last:mb-0">
-                                <input class="dark:bg-gray-400 text-gray-800 w-6 h-6 ml-3 bg-gray-100 border-0 border-transparent cursor-pointer ring-0" id="order-view" type="radio" <?= htmlspecialchars($_GET['orderby'])=="view" ? "checked":"" ?> name="order" value="<?= Model::add_parameters_to_url($_SERVER['REQUEST_URI'], array('orderby' => 'view'), "add") ?>">
+                                <input class="dark:bg-gray-400 text-gray-800 w-6 h-6 ml-3 bg-gray-100 border-0 border-transparent cursor-pointer ring-0" id="order-view" type="radio" <?= htmlspecialchars($_GET['orderby'] ?? "")=="view" ? "checked":"" ?> name="order" value="<?= Model::add_parameters_to_url($_SERVER['REQUEST_URI'], array('orderby' => 'view'), "add") ?>">
                                 <label class="dark:text-gray-920 text-gray-800 text-base font-medium cursor-pointer" for="order-view">پربازدیدترین</label>
                             </li>
                             <li class="flex items-center mb-4 last:mb-0">
-                                <input class="dark:bg-gray-400 text-gray-800 w-6 h-6 ml-3 bg-gray-100 border-0 border-transparent cursor-pointer ring-0" id="order-rating" type="radio" <?= htmlspecialchars($_GET['orderby'])=="controversial" ? "checked":"" ?> name="order" value="<?= Model::add_parameters_to_url($_SERVER['REQUEST_URI'], array('orderby' => 'controversial'), "add") ?>">
+                                <input class="dark:bg-gray-400 text-gray-800 w-6 h-6 ml-3 bg-gray-100 border-0 border-transparent cursor-pointer ring-0" id="order-rating" type="radio" <?= htmlspecialchars($_GET['orderby'] ?? "")=="controversial" ? "checked":"" ?> name="order" value="<?= Model::add_parameters_to_url($_SERVER['REQUEST_URI'], array('orderby' => 'controversial'), "add") ?>">
                                 <label class="dark:text-gray-920 text-gray-800 text-base font-medium cursor-pointer" for="order-rating">پربحث&zwnj;ترین</label>
                             </li>
                             <li class="flex items-center mb-4 last:mb-0">
-                                <input class="dark:bg-gray-400 text-gray-800 w-6 h-6 ml-3 bg-gray-100 border-0 border-transparent cursor-pointer ring-0" id="order-oldest" type="radio" <?= htmlspecialchars($_GET['orderby'])=="oldest" ? "checked":"" ?> name="order" value="<?= Model::add_parameters_to_url($_SERVER['REQUEST_URI'], array('orderby' => 'oldest'), "add") ?>">
+                                <input class="dark:bg-gray-400 text-gray-800 w-6 h-6 ml-3 bg-gray-100 border-0 border-transparent cursor-pointer ring-0" id="order-oldest" type="radio" <?= htmlspecialchars($_GET['orderby'] ?? "")=="oldest" ? "checked":"" ?> name="order" value="<?= Model::add_parameters_to_url($_SERVER['REQUEST_URI'], array('orderby' => 'oldest'), "add") ?>">
                                 <label class="dark:text-gray-920 text-gray-800 text-base font-medium cursor-pointer" for="order-oldest">قدیمی&zwnj;ترین</label>
                             </li>
                         </ul>
@@ -239,7 +239,7 @@
                 <div class="xl:col-span-18 lg:col-span-16 lg:order-2 col-span-12 order-1 mb-5">
                     <div class="flex items-center mb-4 ">
                         <img src="public/images/archive_image.png" alt="آرشیو مطالب"/>
-                        <h1 class="text-biscay-700 dark:text-white sm:text-3xl text-2xl font-bold" id="articles-page">آرشیو مطالب <?= ($_GET['author']!="" and is_numeric($_GET['author'])) ? $data['getNews']['0']['writer']:"" ?></h1>
+                        <h1 class="text-biscay-700 dark:text-white sm:text-3xl text-2xl font-bold" id="articles-page">آرشیو مطالب <?= (isset($_GET['author']) and $_GET['author']!="" and is_numeric($_GET['author'])) ? $data['getNews']['0']['writer']:"" ?></h1>
                     </div>
                     <div class="grid xl:grid-cols-3 lg:grid-cols-2 sm:grid-cols-2 grid-cols-1 lg:gap-8 md:gap-16 sm:gap-4 sm:gap-y-4 gap-y-8">
                         <?php if(sizeof($data['getNews'])>0){ ?>

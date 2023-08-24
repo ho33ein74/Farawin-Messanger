@@ -276,8 +276,10 @@
                                 ) { ?>
                                         <div class="lg:flex pt-8 pb-11 lg:space-y-0 space-y-6 bg-white dark:bg-dark-930 dark:shadow-whiteShadow rounded-2xl relative z-10 shadow-sm h-full">
                                             <div class="lg:px-11 w-full px-5 space-y-6 lg:border-l dark:border-opacity-10 dark:border-gray-920 border-gray-300 dark:border-gray-920 border-opacity-25 lg:text-right text-center">
-
-                                                <?php if ($data['getMethodsContacting']['phone']['mc_link'] != NULL) { ?>
+                                                <?php if (
+                                                        isset($data['getMethodsContacting']['phone']['mc_link']) and
+                                                        $data['getMethodsContacting']['phone']['mc_link'] != NULL
+                                                ) { ?>
                                                     <div class=" flex transition duration-200 opacity-20 send_suggest_contact_us">
                                                         <i class="lg:flex hidden bg-gray-800 dark:bg-white rounded-full w-2 h-2 ml-2 mt-3"></i>
                                                         <div class="lg:w-11/12 w-full">
@@ -290,7 +292,10 @@
                                                         </div>
                                                     </div>
                                                 <?php } ?>
-                                                <?php if ($data['getPublicInfo']['address'] != NULL) { ?>
+                                                <?php if (
+                                                        isset($data['getPublicInfo']['address']) and
+                                                        $data['getPublicInfo']['address'] != NULL
+                                                ) { ?>
                                                     <div class=" flex transition duration-200 opacity-20 send_suggest_contact_us">
                                                         <i class="lg:flex hidden bg-gray-800 dark:bg-white rounded-full w-2 h-2 ml-2 mt-3"></i>
                                                         <div class="lg:w-11/12 w-full">
@@ -304,7 +309,10 @@
                                                     </div>
                                                 <?php } ?>
 
-                                                <?php if ($data['getMethodsContacting']['email']['mc_link'] != NULL) { ?>
+                                                <?php if (
+                                                        isset($data['getMethodsContacting']['email']['mc_link']) and
+                                                        $data['getMethodsContacting']['email']['mc_link'] != NULL
+                                                ) { ?>
                                                     <div class=" flex transition duration-200 opacity-20 send_suggest_contact_us">
                                                         <i class="lg:flex hidden bg-gray-800 dark:bg-white rounded-full w-2 h-2 ml-2 mt-3"></i>
                                                         <div class="lg:w-11/12 w-full">
@@ -341,7 +349,10 @@
                                                                 شبکه های اجتماعی
                                                             </h5>
                                                             <ul class="flex ">
-                                                                <?php if ($data['getMethodsContacting']['youtube']['mc_link'] != NULL) { ?>
+                                                                <?php if (
+                                                                    isset($data['getMethodsContacting']['youtube']['mc_link']) and
+                                                                    $data['getMethodsContacting']['youtube']['mc_link'] != NULL
+                                                                ) { ?>
                                                                     <li class="sm:ml-6 ml-3 last:ml-0 ">
                                                                         <a class="sm:w-16 sm:h-16 w-12 h-12  bg-blue-700 bg-opacity-10 rounded-lg flex items-center justify-center group transition duration-200 hover:bg-opacity-100" href="<?= $data['getMethodsContacting']['youtube']['mc_link']; ?>">
                                                                             <svg class="transform scale-75" width="35" height="25" viewBox="0 0 35 25" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -350,7 +361,11 @@
                                                                         </a>
                                                                     </li>
                                                                 <?php } ?>
-                                                                <?php if ($data['getMethodsContacting']['facebook']['mc_link'] != NULL) { ?>
+
+                                                                <?php if (
+                                                                    isset($data['getMethodsContacting']['facebook']['mc_link']) and
+                                                                    $data['getMethodsContacting']['facebook']['mc_link'] != NULL
+                                                                ) { ?>
                                                                     <li class="sm:ml-6 ml-3 last:ml-0 ">
                                                                         <a class="sm:w-16 sm:h-16 w-12 h-12  bg-blue-700 bg-opacity-10 rounded-lg flex items-center justify-center group transition duration-200 hover:bg-opacity-100" href="<?= $data['getMethodsContacting']['facebook']['mc_link']; ?>">
                                                                             <svg class="transform scale-75" width="30" height="29" viewBox="0 0 30 29" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -359,7 +374,11 @@
                                                                         </a>
                                                                     </li>
                                                                 <?php } ?>
-                                                                <?php if ($data['getMethodsContacting']['twitter']['mc_link'] != NULL) { ?>
+
+                                                                <?php if (
+                                                                    isset($data['getMethodsContacting']['twitter']['mc_link']) and
+                                                                    $data['getMethodsContacting']['twitter']['mc_link'] != NULL
+                                                                ) { ?>
                                                                     <li class="sm:ml-6 ml-3 last:ml-0 ">
                                                                         <a class="sm:w-16 sm:h-16 w-12 h-12  bg-blue-700 bg-opacity-10 rounded-lg flex items-center justify-center group transition duration-200 hover:bg-opacity-100" href="<?= $data['getMethodsContacting']['twitter']['mc_link']; ?>">
                                                                             <svg class="transform scale-75" width="33" height="27" viewBox="0 0 33 27" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -369,7 +388,11 @@
                                                                         </a>
                                                                     </li>
                                                                 <?php } ?>
-                                                                <?php if ($data['getMethodsContacting']['instagram']['mc_link'] != NULL) { ?>
+
+                                                                <?php if (
+                                                                    isset($data['getMethodsContacting']['instagram']['mc_link']) and
+                                                                    $data['getMethodsContacting']['instagram']['mc_link'] != NULL
+                                                                ) { ?>
                                                                     <li class="sm:ml-6 ml-3 last:ml-0 ">
                                                                         <a class="sm:w-16 sm:h-16 w-12 h-12  bg-blue-700 bg-opacity-10 rounded-lg flex items-center justify-center group transition duration-200 hover:bg-opacity-100" href="<?= $data['getMethodsContacting']['instagram']['mc_link']; ?>">
                                                                             <svg class="transform scale-75" width="30" height="29" viewBox="0 0 30 29" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -381,7 +404,11 @@
                                                                         </a>
                                                                     </li>
                                                                 <?php } ?>
-                                                                <?php if ($data['getMethodsContacting']['telegram']['mc_link'] != NULL) { ?>
+
+                                                                <?php if (
+                                                                isset($data['getMethodsContacting']['telegram']['mc_link']) and
+                                                                $data['getMethodsContacting']['telegram']['mc_link'] != NULL
+                                                                ) { ?>
                                                                     <li class="sm:ml-6 ml-3 last:ml-0 ">
                                                                         <a class="sm:w-16 sm:h-16 w-12 h-12  bg-blue-700 bg-opacity-10 rounded-lg flex items-center justify-center group transition duration-200 hover:bg-opacity-100" href="<?= $data['getMethodsContacting']['telegram']['mc_link']; ?>">
                                                                             <svg class="transform scale-75" width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -63,10 +63,12 @@
                         try {
                             $file = array_keys($value)[0];
 
-                            $contents = $value[$file]['content'];
+                            $contents = $value[$file]['content'] ?? "";
                             $name = $file;
-                            if ($value[$file]['view_type'] == "slider" || $value[$file]['view_type'] == "slider2" || $value[$file]['view_type'] == "item" || $value[$file]['view_type'] == "item2") {
-                                $name = $file . "-" . $value[$file]['view_type'];
+                            if(isset($value[$file]['view_type'])) {
+                                if ($value[$file]['view_type'] == "slider" || $value[$file]['view_type'] == "slider2" || $value[$file]['view_type'] == "item" || $value[$file]['view_type'] == "item2") {
+                                    $name = $file . "-" . $value[$file]['view_type'];
+                                }
                             }
 
                             require('app/views/template/default/' . $name . '.php');
