@@ -10,7 +10,7 @@ class Page extends Controller
     function index()
     {
         $page = $this->model->getPage($_GET['url']);
-        if($page['title']!=NULL) {
+        if(sizeof($page['title'])>0) {
             $this->model->calViewer($page['p_id'], $_SERVER['REMOTE_ADDR'], "page");
 
             $data = array('page' => $page);

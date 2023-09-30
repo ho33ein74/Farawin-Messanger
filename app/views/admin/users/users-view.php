@@ -94,8 +94,8 @@
                     <!-- Custom Tabs (Pulled to the right) -->
                     <div class="nav-tabs-custom">
                         <ul data-step="4" data-intro="از این قسمت می توانید لیست نوبت های رزرو شده را مشاهده نمایید."  class="nav nav-tabs pull-right">
-                            <li class="active"><a href="#tab_documents" data-toggle="tab" aria-expanded="true">اسناد و مدارک</a></li>
-                            <li class=""><a href="#tab_services" data-toggle="tab" aria-expanded="false">نوبت های رزرو شده</a></li>
+                            <li class="active"><a href="<?= $_SERVER['REQUEST_URI']; ?>#tab_documents" data-toggle="tab" aria-expanded="true">اسناد و مدارک</a></li>
+                            <li class=""><a href="<?= $_SERVER['REQUEST_URI']; ?>#tab_services" data-toggle="tab" aria-expanded="false">نوبت های رزرو شده</a></li>
                         </ul>
                         <div class="tab-content">
                             <div class="tab-pane active" id="tab_documents">

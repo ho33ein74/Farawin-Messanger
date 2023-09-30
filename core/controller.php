@@ -75,7 +75,7 @@
                                             $license_info['license_order_id']
                                         );
 
-                                        if ($result == "OK") {
+                                        if ($result['message'] == "OK") {
                                             $this->model->rtl_theme_set_session_check_expire(
                                                 $license_info['license_username'],
                                                 $license_info['license_order_id']

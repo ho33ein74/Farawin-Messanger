@@ -90,13 +90,13 @@
                             <div class="box-body pl-0">
                                 <ul class="nav nav-tabs" id="myTabs" role="tablist">
                                     <li role="presentation" class="active">
-                                        <a href="#methodsContacting" role="tab" id="methodsContacting-tab" data-toggle="tab" aria-controls="methodsContacting" aria-expanded="true">لیست راه های ارتباطی</a>
+                                        <a href="<?= $_SERVER['REQUEST_URI']; ?>#methodsContacting" role="tab" id="methodsContacting-tab" data-toggle="tab" aria-controls="methodsContacting" aria-expanded="true">لیست راه های ارتباطی</a>
                                     </li>
                                     <li role="presentation" class="">
-                                        <a href="#floatButton" id="floatButton-tab" role="tab" data-toggle="tab" aria-controls="floatButton" aria-expanded="false">دکمه شناور</a>
+                                        <a href="<?= $_SERVER['REQUEST_URI']; ?>#floatButton" id="floatButton-tab" role="tab" data-toggle="tab" aria-controls="floatButton" aria-expanded="false">دکمه شناور</a>
                                     </li>
                                     <li role="presentation" class="">
-                                        <a href="#floatButtonMenu" id="floatButtonMenu-tab" role="tab" data-toggle="tab" aria-controls="floatButtonMenu" aria-expanded="false">منوی دکمه شناور</a>
+                                        <a href="<?= $_SERVER['REQUEST_URI']; ?>#floatButtonMenu" id="floatButtonMenu-tab" role="tab" data-toggle="tab" aria-controls="floatButtonMenu" aria-expanded="false">منوی دکمه شناور</a>
                                     </li>
                                 </ul>
                             </div>

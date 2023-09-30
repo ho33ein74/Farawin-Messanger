@@ -54,34 +54,34 @@
                             <div class="box-body pl-0">
                                 <ul class="nav nav-tabs" id="myTabs" role="tablist">
                                     <li role="presentation" class="active">
-                                        <a href="#information" id="information-tab" role="tab" data-toggle="tab" aria-controls="information" aria-expanded="true">عمومی</a>
+                                        <a href="<?= $_SERVER['REQUEST_URI']; ?>#information" id="information-tab" role="tab" data-toggle="tab" aria-controls="information" aria-expanded="true">عمومی</a>
                                     </li>
                                     <li role="presentation" class="">
-                                        <a href="#businessInformation" id="businessInformation-tab" role="tab" data-toggle="tab" aria-controls="businessInformation" aria-expanded="false">اطلاعات کسب و کار</a>
+                                        <a href="<?= $_SERVER['REQUEST_URI']; ?>#businessInformation" id="businessInformation-tab" role="tab" data-toggle="tab" aria-controls="businessInformation" aria-expanded="false">اطلاعات کسب و کار</a>
                                     </li>
                                     <li role="presentation" class="">
-                                        <a href="#header" id="header-tab" role="tab" data-toggle="tab" aria-controls="header" aria-expanded="false">پیام اطلاع رسانی</a>
+                                        <a href="<?= $_SERVER['REQUEST_URI']; ?>#header" id="header-tab" role="tab" data-toggle="tab" aria-controls="header" aria-expanded="false">پیام اطلاع رسانی</a>
                                     </li>
                                     <li role="presentation" class="">
-                                        <a href="#footer" id="footer-tab" role="tab" data-toggle="tab" aria-controls="footer" aria-expanded="false">فوتر</a>
+                                        <a href="<?= $_SERVER['REQUEST_URI']; ?>#footer" id="footer-tab" role="tab" data-toggle="tab" aria-controls="footer" aria-expanded="false">فوتر</a>
                                     </li>
                                     <li role="presentation" class="">
-                                        <a href="#logoes" role="tab" id="logoes-tab" data-toggle="tab" aria-controls="logoes" aria-expanded="false">لوگو و تصاویر</a>
+                                        <a href="<?= $_SERVER['REQUEST_URI']; ?>#logoes" role="tab" id="logoes-tab" data-toggle="tab" aria-controls="logoes" aria-expanded="false">لوگو و تصاویر</a>
                                     </li>
                                     <li role="presentation" class="">
-                                        <a href="#comments" role="tab" id="comments-tab" data-toggle="tab" aria-controls="comments" aria-expanded="false">دیدگاه</a>
+                                        <a href="<?= $_SERVER['REQUEST_URI']; ?>#comments" role="tab" id="comments-tab" data-toggle="tab" aria-controls="comments" aria-expanded="false">دیدگاه</a>
                                     </li>
                                     <li role="presentation" class="">
-                                        <a href="#payment" role="tab" id="payment-tab" data-toggle="tab" aria-controls="payment" aria-expanded="false">روش های پرداخت</a>
+                                        <a href="<?= $_SERVER['REQUEST_URI']; ?>#payment" role="tab" id="payment-tab" data-toggle="tab" aria-controls="payment" aria-expanded="false">روش های پرداخت</a>
                                     </li>
                                     <li role="presentation" class="">
-                                        <a href="#sms" role="tab" id="sms-tab" data-toggle="tab" aria-controls="sms" aria-expanded="false">پنل پیامک</a>
+                                        <a href="<?= $_SERVER['REQUEST_URI']; ?>#sms" role="tab" id="sms-tab" data-toggle="tab" aria-controls="sms" aria-expanded="false">پنل پیامک</a>
                                     </li>
                                     <li role="presentation" class="">
-                                        <a href="#telegramBot" role="tab" id="telegramBot-tab" data-toggle="tab" aria-controls="telegramBot" aria-expanded="false">ربات تلگرام</a>
+                                        <a href="<?= $_SERVER['REQUEST_URI']; ?>#telegramBot" role="tab" id="telegramBot-tab" data-toggle="tab" aria-controls="telegramBot" aria-expanded="false">ربات تلگرام</a>
                                     </li>
                                     <li role="presentation" class="">
-                                        <a href="#recaptcha" role="tab" id="recaptcha-tab" data-toggle="tab" aria-controls="recaptcha" aria-expanded="false">ریکپچا گوگل</a>
+                                        <a href="<?= $_SERVER['REQUEST_URI']; ?>#recaptcha" role="tab" id="recaptcha-tab" data-toggle="tab" aria-controls="recaptcha" aria-expanded="false">ریکپچا گوگل</a>
                                     </li>
                                 </ul>
                             </div>

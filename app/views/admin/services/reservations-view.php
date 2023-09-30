@@ -578,7 +578,7 @@ foreach ($data['paymentLog'] as $item) {
                                             <div class="box-header with-border">
                                                 <h4 class="box-title">
                                                     <a data-toggle="collapse" data-parent="#accordion"
-                                                       href="#collapse_<?= $i; ?>" style="color: #000">
+                                                       href="<?= $_SERVER['REQUEST_URI']; ?>#collapse_<?= $i; ?>" style="color: #000">
                                                         <?php if( $item['afterpay']!="بیعانه"){ ?>
                                                             شماره پیگیری <?= $item['afterpay']; ?> - <?= number_format($item['price']); ?> تومان
                                                         <?php } else {  ?>

@@ -74,12 +74,19 @@ class Model
                 break;
         }
 
-        return $message;
+        return array(
+            "message" => $message,
+            "sandbox" => $sand_box,
+        );
     }
 
-    public function rtl_theme_set_session_check_expire($username, $order_id, $type='product')
+    public function rtl_theme_set_session_check_expire($username, $order_id, $sand_box=0, $type='product')
     {
-        $duration = time() + (24 * 60 * 60 * 7);
+        if($sand_box == 1){
+            $duration = time() + (24 * 60 * 60 * 365);
+        } else {
+            $duration = time() + (24 * 60 * 60 * 7);
+        }
 
         $sql = "UPDATE tbl_settings SET `value`=? WHERE `key`=?";
         $data = array(

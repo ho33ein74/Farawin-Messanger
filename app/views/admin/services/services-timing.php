@@ -70,11 +70,11 @@
                             <div class="box-body pl-0">
                                 <ul class="nav nav-tabs" id="myTabs" role="tablist">
                                     <li role="presentation" class="active">
-                                        <a href="#turn-days" role="tab" id="turn-days-tab" data-toggle="tab" aria-controls="turn-days" aria-expanded="true">بازه های زمانی</a>
+                                        <a href="<?= $_SERVER['REQUEST_URI']; ?>#turn-days" role="tab" id="turn-days-tab" data-toggle="tab" aria-controls="turn-days" aria-expanded="true">بازه های زمانی</a>
                                     </li>
 
                                     <li role="presentation">
-                                        <a href="#turn-setting" role="tab" id="turn-setting-tab" data-toggle="tab" aria-controls="turn-setting" aria-expanded="false">تنظیمات</a>
+                                        <a href="<?= $_SERVER['REQUEST_URI']; ?>#turn-setting" role="tab" id="turn-setting-tab" data-toggle="tab" aria-controls="turn-setting" aria-expanded="false">تنظیمات</a>
                                     </li>
                                 </ul>
                             </div>
@@ -155,16 +155,16 @@
                                 <!-- Custom Tabs -->
                                 <div class="nav-tabs-custom">
                                     <ul class="nav nav-tabs">
-                                        <li class="active"><a href="#tab_custom_day" data-toggle="tab" aria-expanded="true">تاریخ دلخواه</a></li>
-                                        <li><a href="#tab_default" data-toggle="tab" aria-expanded="false">پیش فرض</a></li>
-                                        <li><a href="#tab_holiday" data-toggle="tab" aria-expanded="false">تعطیلات</a></li>
-                                        <li><a href="#tab_saturday" data-toggle="tab" aria-expanded="false">شنبه</a></li>
-                                        <li><a href="#tab_sunday" data-toggle="tab" aria-expanded="false">یکشنبه</a></li>
-                                        <li><a href="#tab_monday" data-toggle="tab" aria-expanded="false">دوشنبه</a></li>
-                                        <li><a href="#tab_tuesday" data-toggle="tab" aria-expanded="true">سه شنبه</a></li>
-                                        <li><a href="#tab_wednesday" data-toggle="tab" aria-expanded="false">چهارشنبه</a></li>
-                                        <li><a href="#tab_thursday" data-toggle="tab" aria-expanded="false">پنج شنبه</a></li>
-                                        <li><a href="#tab_friday" data-toggle="tab" aria-expanded="false">جمعه</a></li>
+                                        <li class="active"><a href="<?= $_SERVER['REQUEST_URI']; ?>#tab_custom_day" data-toggle="tab" aria-expanded="true">تاریخ دلخواه</a></li>
+                                        <li><a href="<?= $_SERVER['REQUEST_URI']; ?>#tab_default" data-toggle="tab" aria-expanded="false">پیش فرض</a></li>
+                                        <li><a href="<?= $_SERVER['REQUEST_URI']; ?>#tab_holiday" data-toggle="tab" aria-expanded="false">تعطیلات</a></li>
+                                        <li><a href="<?= $_SERVER['REQUEST_URI']; ?>#tab_saturday" data-toggle="tab" aria-expanded="false">شنبه</a></li>
+                                        <li><a href="<?= $_SERVER['REQUEST_URI']; ?>#tab_sunday" data-toggle="tab" aria-expanded="false">یکشنبه</a></li>
+                                        <li><a href="<?= $_SERVER['REQUEST_URI']; ?>#tab_monday" data-toggle="tab" aria-expanded="false">دوشنبه</a></li>
+                                        <li><a href="<?= $_SERVER['REQUEST_URI']; ?>#tab_tuesday" data-toggle="tab" aria-expanded="true">سه شنبه</a></li>
+                                        <li><a href="<?= $_SERVER['REQUEST_URI']; ?>#tab_wednesday" data-toggle="tab" aria-expanded="false">چهارشنبه</a></li>
+                                        <li><a href="<?= $_SERVER['REQUEST_URI']; ?>#tab_thursday" data-toggle="tab" aria-expanded="false">پنج شنبه</a></li>
+                                        <li><a href="<?= $_SERVER['REQUEST_URI']; ?>#tab_friday" data-toggle="tab" aria-expanded="false">جمعه</a></li>
                                     </ul>
 
                                     <div class="tab-content">

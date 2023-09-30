@@ -53,8 +53,8 @@
                 <div class="col-md-9">
                     <div class="nav-tabs-custom">
                         <ul class="nav nav-tabs">
-                            <li class="active"><a href="#tab_0" data-toggle="tab" aria-expanded="true">خدمت</a></li>
-                            <li><a href="#tab_1" data-toggle="tab" aria-expanded="false">سئو</a></li>
+                            <li class="active"><a href="<?= $_SERVER['REQUEST_URI']; ?>#tab_0" data-toggle="tab" aria-expanded="true">خدمت</a></li>
+                            <li><a href="<?= $_SERVER['REQUEST_URI']; ?>#tab_1" data-toggle="tab" aria-expanded="false">سئو</a></li>
                         </ul>
                         <div class="tab-content">
                             <div class="tab-pane active" id="tab_0">

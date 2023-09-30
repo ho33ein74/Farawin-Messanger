@@ -44,8 +44,8 @@
                     <!-- Custom Tabs (Pulled to the right) -->
                     <div class="nav-tabs-custom">
                         <ul data-intro="در این بخش شما می توانید اطلاعات کسب و کار خود و تنظیمات کلی سایت را مدیریت کنید."  class="nav nav-tabs">
-                            <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="true">لیست نقش ها</a></li>
-                            <li class=""><a href="#tab_2" data-toggle="tab" aria-expanded="false">افزودن نقش جدید</a></li>
+                            <li class="active"><a href="<?= $_SERVER['REQUEST_URI']; ?>#tab_1" data-toggle="tab" aria-expanded="true">لیست نقش ها</a></li>
+                            <li class=""><a href="<?= $_SERVER['REQUEST_URI']; ?>#tab_2" data-toggle="tab" aria-expanded="false">افزودن نقش جدید</a></li>
                         </ul>
                         <div class="tab-content">
                             <!-- /.mange role -->
