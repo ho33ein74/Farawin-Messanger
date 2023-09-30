@@ -64,7 +64,6 @@ class model_index extends Model
                     ($content['number'] ?? "")
                 );
             } else if($item['template_id']==6){
-                file_put_contents("txt.json", print_r($content, true));
                 $data[$i]['socialmedia']['link'] = $content['link'] ?? "";
                 $data[$i]['socialmedia']['link_title'] = $content['link_title'] ?? "";
                 $data[$i]['socialmedia']['description'] = $content['description'] ?? "";
