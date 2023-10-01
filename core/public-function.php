@@ -169,7 +169,8 @@ trait publicTrait
             $newQuery = array_diff($existingParams, $newParams);
         }
 
-        $newUrl = $url['host'] . ($url['path'] ?? '');
+        $newUrl = $url['host']  ?? '';
+        $newUrl .= $url['path'] ?? '';
         if ($newQuery) {
             $newUrl .= '?' . http_build_query($newQuery);
         }
@@ -318,24 +319,6 @@ trait publicTrait
     {
         //password bayad 8 raghami va daraye add,horof bozorg bashe
         return preg_match('/^(?=^.{8,}$)((?=.*[A-Za-z0-9])(?=.*[A-Z])(?=.*[a-z]))^.*$/', $password);
-    }
-
-    public static function validate_token($token = NULL)
-    {
-        if ($token != NULL) {
-            $sql = "SELECT `key` FROM tbl_api_keys WHERE `key`= ?";
-            $param = array($token);
-            $result = self::doSelect($sql, $param);
-
-            //check for lenght
-            if (sizeof($result) > 0) {
-                return true;
-            } else {
-                return false;
-            }
-        } else {
-            return false;
-        }
     }
 
     public static function validate_mobile($mobile)

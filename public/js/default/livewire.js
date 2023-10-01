@@ -2054,18 +2054,18 @@
             }
         }, {
             key: "showHtmlModal", value: function (html) {
-                var _this2 = this, page = document.createElement("html");
-                page.innerHTML = html, page.querySelectorAll("a").forEach((function (a) {
-                    return a.setAttribute("target", "_top")
-                }));
-                var modal = document.getElementById("livewire-error");
-                void 0 !== modal && null != modal ? modal.innerHTML = "" : ((modal = document.createElement("div")).id = "livewire-error", modal.style.position = "fixed", modal.style.width = "100vw", modal.style.height = "100vh", modal.style.padding = "50px", modal.style.backgroundColor = "rgba(0, 0, 0, .6)", modal.style.zIndex = 2e5);
-                var iframe = document.createElement("iframe");
-                iframe.style.backgroundColor = "#17161A", iframe.style.borderRadius = "5px", iframe.style.width = "100%", iframe.style.height = "100%", modal.appendChild(iframe), document.body.prepend(modal), document.body.style.overflow = "hidden", iframe.contentWindow.document.open(), iframe.contentWindow.document.write(page.outerHTML), iframe.contentWindow.document.close(), modal.addEventListener("click", (function () {
-                    return _this2.hideHtmlModal(modal)
-                })), modal.setAttribute("tabindex", 0), modal.addEventListener("keydown", (function (e) {
-                    "Escape" === e.key && _this2.hideHtmlModal(modal)
-                })), modal.focus()
+                // var _this2 = this, page = document.createElement("html");
+                // page.innerHTML = html, page.querySelectorAll("a").forEach((function (a) {
+                //     return a.setAttribute("target", "_top")
+                // }));
+                // var modal = document.getElementById("livewire-error");
+                // void 0 !== modal && null != modal ? modal.innerHTML = "" : ((modal = document.createElement("div")).id = "livewire-error", modal.style.position = "fixed", modal.style.width = "100vw", modal.style.height = "100vh", modal.style.padding = "50px", modal.style.backgroundColor = "rgba(0, 0, 0, .6)", modal.style.zIndex = 2e5);
+                // var iframe = document.createElement("iframe");
+                // iframe.style.backgroundColor = "#17161A", iframe.style.borderRadius = "5px", iframe.style.width = "100%", iframe.style.height = "100%", modal.appendChild(iframe), document.body.prepend(modal), document.body.style.overflow = "hidden", iframe.contentWindow.document.open(), iframe.contentWindow.document.write(page.outerHTML), iframe.contentWindow.document.close(), modal.addEventListener("click", (function () {
+                //     return _this2.hideHtmlModal(modal)
+                // })), modal.setAttribute("tabindex", 0), modal.addEventListener("keydown", (function (e) {
+                //     "Escape" === e.key && _this2.hideHtmlModal(modal)
+                // })), modal.focus()
             }
         }, {
             key: "hideHtmlModal", value: function (modal) {

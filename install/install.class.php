@@ -172,8 +172,12 @@ class Install
                     $sql = str_replace('root_path', $base_url, $sql);
                     $sql = str_replace('web_title', $_POST['web_title'], $sql);
 
-                    $link->multi_query($sql);
-                    do {} while (mysqli_more_results($link) && mysqli_next_result($link));
+                    try {
+                        $link->multi_query($sql);
+                        do {} while (mysqli_more_results($link) && mysqli_next_result($link));
+                    } catch (Exception $e) {
+                        file_put_contents("error.json", print_r($e->getMessage(), true).PHP_EOL, FILE_APPEND);
+                    }
                 }
 
                 if (!$this->copy_app_config()) {
@@ -186,7 +190,7 @@ class Install
                 // set the app state = installed
                 $index_file_path = "../index.php";
                 $index_file = file_get_contents($index_file_path);
-                $index_file = preg_replace('/pre_installation/', 'installed', $index_file, 1); //replace the first occurence of 'pre_installation'
+                $index_file = preg_replace('/app_state = "pre_installation"/', 'app_state = "installed"', $index_file, 1); //replace the first occurence of 'pre_installation'
                 file_put_contents($index_file_path, $index_file);
 
                 unset($_COOKIE['adminId']);

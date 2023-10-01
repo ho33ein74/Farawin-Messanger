@@ -15,6 +15,7 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 -- Dumping structure for table reservation.tbl_admin
+DROP TABLE IF EXISTS `tbl_admin`;
 CREATE TABLE IF NOT EXISTS `tbl_admin` (
   `a_id` int NOT NULL AUTO_INCREMENT,
   `admin_role_id` int NOT NULL DEFAULT '0',
@@ -33,15 +34,16 @@ CREATE TABLE IF NOT EXISTS `tbl_admin` (
   PRIMARY KEY (`a_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
 
--- Dumping data for table reservation.tbl_admin: ~0 rows (approximately)
+-- Dumping data for table reservation.tbl_admin: ~1 rows (approximately)
 INSERT IGNORE INTO `tbl_admin` (`a_id`, `admin_role_id`, `a_name`, `a_username`, `a_email`, `a_password`, `a_selected_dashboard_id`, `telegram_id`, `a_image`, `a_desc`, `google_secret_code`, `google_auth_status`, `registery_date`, `a_status`) VALUES
     (1, 1, 'admin_name', 'admin_username', 'admin_email', 'admin_password', 'dashboard-main', NULL, NULL, NULL, 'google_secret_code_gen', 0, 'admin_created_at', 1);
 
 -- Dumping structure for table reservation.tbl_admin_activity
+DROP TABLE IF EXISTS `tbl_admin_activity`;
 CREATE TABLE IF NOT EXISTS `tbl_admin_activity` (
   `idusr_activity` int NOT NULL AUTO_INCREMENT,
   `admin_id` int unsigned DEFAULT NULL,
-  `data_changed` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
+  `data_changed` longtext CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci,
   `ip` varchar(30) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
   `platform` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
   `browser` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
@@ -51,6 +53,7 @@ CREATE TABLE IF NOT EXISTS `tbl_admin_activity` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 ROW_FORMAT=COMPACT;
 
 -- Dumping structure for table reservation.tbl_admin_role
+DROP TABLE IF EXISTS `tbl_admin_role`;
 CREATE TABLE IF NOT EXISTS `tbl_admin_role` (
   `ar_id` int NOT NULL AUTO_INCREMENT,
   `ar_title` varchar(250) NOT NULL,
@@ -58,7 +61,7 @@ CREATE TABLE IF NOT EXISTS `tbl_admin_role` (
   `ar_create_date` varchar(50) DEFAULT NULL,
   `ar_status` tinyint NOT NULL DEFAULT '1',
   PRIMARY KEY (`ar_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf32;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
 
 -- Dumping data for table reservation.tbl_admin_role: 1 rows
 /*!40000 ALTER TABLE `tbl_admin_role` DISABLE KEYS */;
@@ -67,6 +70,7 @@ INSERT IGNORE INTO `tbl_admin_role` (`ar_id`, `ar_title`, `ar_removable`, `ar_cr
 /*!40000 ALTER TABLE `tbl_admin_role` ENABLE KEYS */;
 
 -- Dumping structure for table reservation.tbl_admin_role_access
+DROP TABLE IF EXISTS `tbl_admin_role_access`;
 CREATE TABLE IF NOT EXISTS `tbl_admin_role_access` (
   `aa_id` int NOT NULL AUTO_INCREMENT,
   `role_id` int NOT NULL,
@@ -79,36 +83,8 @@ CREATE TABLE IF NOT EXISTS `tbl_admin_role_access` (
 /*!40000 ALTER TABLE `tbl_admin_role_access` DISABLE KEYS */;
 /*!40000 ALTER TABLE `tbl_admin_role_access` ENABLE KEYS */;
 
--- Dumping structure for table reservation.tbl_api_keys
-CREATE TABLE IF NOT EXISTS `tbl_api_keys` (
-  `idapi_keys` int unsigned NOT NULL,
-  `name` varchar(150) CHARACTER SET latin1 COLLATE latin1_general_ci DEFAULT NULL,
-  `key` varchar(100) CHARACTER SET latin1 COLLATE latin1_general_ci DEFAULT NULL,
-  `log_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
-
--- Dumping data for table reservation.tbl_api_keys: ~2 rows (approximately)
-INSERT IGNORE INTO `tbl_api_keys` (`idapi_keys`, `name`, `key`, `log_time`) VALUES
-	(1, 'app', 'KRxn7ThW8XsBTMa3CZ0dPFUU6NFpmuC4dvb54gEFk2kNnZ5ftxNRlA4b9EFFDf9a4kT6Jv46z586vMU2gZGSaEYjRdHDRW6GuMGh', '2019-01-27 01:19:02'),
-	(2, 'test', 'ghfghfbfgbfhgfhgfhgfh546gf46f5g4f45g6gf45gfghfghfbfgbfhgfhgfhgfh546gf46f5g4f45g6gf45gfghfghfbfgbfhgf', '2022-01-12 19:45:10');
-
--- Dumping structure for table reservation.tbl_app_versions
-CREATE TABLE IF NOT EXISTS `tbl_app_versions` (
-  `idsys_versions` int unsigned NOT NULL,
-  `update_state` enum('force','recommend','normal') DEFAULT 'normal',
-  `version_number` int DEFAULT NULL,
-  `version_name` varchar(45) DEFAULT NULL,
-  `os` enum('android','ios','web') DEFAULT NULL,
-  `download_link_vas` varchar(500) DEFAULT NULL,
-  `download_link_bazar` varchar(500) DEFAULT NULL COMMENT 'bazaar intent call',
-  `change_log` text,
-  `public_desc` text,
-  `log_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
-
--- Dumping data for table reservation.tbl_app_versions: ~0 rows (approximately)
-
 -- Dumping structure for table reservation.tbl_banks
+DROP TABLE IF EXISTS `tbl_banks`;
 CREATE TABLE IF NOT EXISTS `tbl_banks` (
   `b_id` int NOT NULL AUTO_INCREMENT,
   `bank_vids_id` varchar(100) NOT NULL,
@@ -128,7 +104,7 @@ CREATE TABLE IF NOT EXISTS `tbl_banks` (
   `b_removable` enum('0','1') NOT NULL DEFAULT '1',
   `b_status` tinyint NOT NULL DEFAULT '0',
   PRIMARY KEY (`b_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf32;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
 
 -- Dumping data for table reservation.tbl_banks: 1 rows
 /*!40000 ALTER TABLE `tbl_banks` DISABLE KEYS */;
@@ -137,6 +113,7 @@ INSERT IGNORE INTO `tbl_banks` (`b_id`, `bank_vids_id`, `b_name`, `b_logo`, `b_b
 /*!40000 ALTER TABLE `tbl_banks` ENABLE KEYS */;
 
 -- Dumping structure for table reservation.tbl_banner
+DROP TABLE IF EXISTS `tbl_banner`;
 CREATE TABLE IF NOT EXISTS `tbl_banner` (
   `b_id` int NOT NULL AUTO_INCREMENT,
   `b_title` varchar(250) NOT NULL,
@@ -144,7 +121,7 @@ CREATE TABLE IF NOT EXISTS `tbl_banner` (
   `b_create_date` varchar(30) NOT NULL,
   `b_status` tinyint NOT NULL DEFAULT '0',
   PRIMARY KEY (`b_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf32;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3;
 
 -- Dumping data for table reservation.tbl_banner: 2 rows
 /*!40000 ALTER TABLE `tbl_banner` DISABLE KEYS */;
@@ -154,6 +131,7 @@ INSERT IGNORE INTO `tbl_banner` (`b_id`, `b_title`, `b_type`, `b_create_date`, `
 /*!40000 ALTER TABLE `tbl_banner` ENABLE KEYS */;
 
 -- Dumping structure for table reservation.tbl_banner_image
+DROP TABLE IF EXISTS `tbl_banner_image`;
 CREATE TABLE IF NOT EXISTS `tbl_banner_image` (
   `bi_id` int NOT NULL AUTO_INCREMENT,
   `banner_id` int NOT NULL,
@@ -162,7 +140,7 @@ CREATE TABLE IF NOT EXISTS `tbl_banner_image` (
   `bi_link` varchar(250) DEFAULT NULL,
   `bi_status` int NOT NULL DEFAULT '1',
   PRIMARY KEY (`bi_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf32;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3;
 
 -- Dumping data for table reservation.tbl_banner_image: 3 rows
 /*!40000 ALTER TABLE `tbl_banner_image` DISABLE KEYS */;
@@ -173,6 +151,7 @@ INSERT IGNORE INTO `tbl_banner_image` (`bi_id`, `banner_id`, `bi_image`, `bi_des
 /*!40000 ALTER TABLE `tbl_banner_image` ENABLE KEYS */;
 
 -- Dumping structure for table reservation.tbl_blog
+DROP TABLE IF EXISTS `tbl_blog`;
 CREATE TABLE IF NOT EXISTS `tbl_blog` (
   `n_id` int NOT NULL AUTO_INCREMENT,
   `cat_id` int NOT NULL,
@@ -202,43 +181,47 @@ INSERT IGNORE INTO `tbl_blog` (`n_id`, `cat_id`, `slug`, `seo_title`, `seo_desc`
 	(3, 4, 'تفاوت-میکاپ-و-گریم-چیست؟', 'تفاوت میکاپ و گریم چیست؟', 'اگر به آرایشگاه مراجعه کرده باشید، حتماً واژه‌هایی مثل گریم، میکاپ و آرایش را شنیده‌اید و به این فکر کرده‌اید که این سه چه تفاوت‌هایی با یکدیگر دارند.', 1, 1, 'تفاوت میکاپ و گریم چیست؟', 'میکاپ', 'اگر به آرایشگاه مراجعه کرده باشید، حتماً واژه‌هایی مثل گریم، میکاپ و آرایش را شنیده‌اید و به این فکر کرده‌اید که این سه چه تفاوت‌هایی با یکدیگر دارند. در این مقاله ما به بررسی فرق گریم با میکاپ پرداخته‌ایم. اگر دوست دارید با تفاوت‌های آن‌ها آشنا شوید و اصول اولیه گریم و میکاپ را یاد بگیرید، مطالعه این مقاله را به شما توصیه می‌کنیم پس با ما همراه باشید. ', '1681474273_53ed278d23186933bf70898b51965a45.jpeg', '&lt;p style=&quot;text-align: justify;&quot;&gt;اگر به آرایشگاه مراجعه کرده باشید، حتماً واژه&amp;zwnj;هایی مثل گریم، میکاپ و آرایش را شنیده&amp;zwnj;اید و به این فکر کرده&amp;zwnj;اید که این سه چه تفاوت&amp;zwnj;هایی با یکدیگر دارند. در این مقاله ما به بررسی فرق گریم با میکاپ پرداخته&amp;zwnj;ایم. اگر دوست دارید با تفاوت&amp;zwnj;های آن&amp;zwnj;ها آشنا شوید و اصول اولیه گریم و میکاپ را یاد بگیرید، مطالعه این مقاله را به شما توصیه می&amp;zwnj;کنیم پس با ما همراه باشید.&amp;nbsp;&lt;/p&gt;\r\n\r\n&lt;section id=&quot;newsbody&quot;&gt;\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;&amp;nbsp;&lt;/p&gt;\r\n\r\n&lt;h2 style=&quot;text-align: justify;&quot;&gt;فرق گریم و آرایش چیست؟&lt;/h2&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;فرق گریم با میکاپ در این است که معمولاً آرایش به&amp;zwnj;صورت رنگ می&amp;zwnj;دهد و سبک آرایش بستگی به مد روز دارد، در واقع پیرو مد بوده و در فصل&amp;zwnj;های مختلف نوع میکاپ تغییر می&amp;zwnj;کند. معمولاً میکاپ بعد از سال&amp;zwnj;ها به&amp;zwnj;اصطلاح دمده می&amp;zwnj;شود. اما در گریم از رنگ و لعاب کمتری استفاده می&amp;zwnj;شود بیشتر به رفع عیوب و زاویه&amp;zwnj;سازی صورت می&amp;zwnj;پردازد. گریم بر اساس فرم صورت هر شخص متفاوت است اما اصول اولیه یکی است. یکی دیگر از تفاوت&amp;zwnj;های&amp;nbsp;&lt;strong&gt;آرایش با گریم&lt;/strong&gt;&amp;nbsp;این است که گریم برخلاف میکاپ باگذشت سال&amp;zwnj;ها زیبایی خود را حفظ می&amp;zwnj;کند، زیرا به اصلاح عیوب چهره پرداخته و بر زیبایی طبیعی صورت تاکید دارد. گریم اغراق&amp;zwnj;آمیز نیست و حالت طبیعی چهره را حفظ می&amp;zwnj;کند؛ بنابراین در بیشتر جاها و مراسم&amp;zwnj;ها می&amp;zwnj;توانید از آن استفاده کنید.&lt;/p&gt;\r\n\r\n&lt;h2 style=&quot;text-align: justify;&quot;&gt;اصول کلی میکاپ&lt;/h2&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;&amp;nbsp;&lt;/p&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;فرق گریم با میکاپ در این است که میکاپ در واقع همان آرایش معمولی است که باتوجه&amp;zwnj;به مد روز تغییر می&amp;zwnj;کند. هرساله با تغییر فصل و سال شاهد میکاپ&amp;zwnj;های جدید هستیم که معمولاً رنگ&amp;zwnj;ها در آن تغییر می&amp;zwnj;کنند. در اینجا اصول کلی میکاپ را برایتان می&amp;zwnj;آوریم:&lt;/p&gt;\r\n\r\n&lt;h3 style=&quot;text-align: justify;&quot;&gt;مرطوب&amp;zwnj;کننده&lt;/h3&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;باید بدانید که از اصول اولیه داشتن یک میکاپ زیبا و تمیز چقدر مهم است که پوست به&amp;zwnj;درستی مرطوب شود.آبرسانی &amp;zwnj;صورت از جمع&amp;zwnj;شدن آرایش در نواحی خشک و یا نفوذ به خطوط و چین&amp;zwnj;وچروک جلوگیری می&amp;zwnj;کند.حتماً قبل از استفاده از کانسیلر مرطوب&amp;zwnj;کننده بزنید. زیرا استفاده از مرطوب&amp;zwnj;کننده تضمین می&amp;zwnj;کند که پرایمر شما یکنواخت&amp;zwnj;تر باشد و ظاهری بی&amp;zwnj;عیب&amp;zwnj;ونقص به شما می&amp;zwnj;دهد.&lt;/p&gt;\r\n\r\n&lt;h3 style=&quot;text-align: justify;&quot;&gt;پرایمر صورت&lt;/h3&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;پرایمرهای صورت به&amp;zwnj;گونه&amp;zwnj;ای طراحی شده&amp;zwnj;اند که هرگونه نقص را از بین ببرد، خطوط ریز، چین&amp;zwnj;وچروک و منافذ بزرگ شده را محو می&amp;zwnj;کند. بسیاری از پرایمرها همچنین دارای مزایای بیشتری هستند، مانند مواد بازتابنده برای ایجاد درخشندگی بیشتر به پوست یا SPF برای محافظت در برابر آفتاب.هنگام استفاده از پرایمر، چند دقیقه به آن زمان دهید تا به خورد پوست شما رود و قبل از اینکه به بقیه روتین آرایش خود ادامه دهید، به&amp;zwnj;درستی تنظیم شود.پرایمرهای آرایشی همچنین ماندگاری آرایش شما را بهبود می&amp;zwnj;بخشد و تضمین می&amp;zwnj;کند که محصولات زیبایی که روی آن می&amp;zwnj;زنید، تکان نخورند، لکه نشوند یا در طول روز محو نشوند. پرایمرهای مختلفی وجود دارد که بسته به نوع پوست و نیازتان می&amp;zwnj;توانید از بین آنها انتخاب کنید.&lt;/p&gt;\r\n\r\n&lt;h3 style=&quot;text-align: justify;&quot;&gt;کرم&amp;zwnj; پودر&lt;/h3&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;کرم&amp;zwnj;پودر یک محصول کرم، مایع، موس یا پودری است که روی کل صورت استفاده می&amp;zwnj;شود تا پایه&amp;zwnj;ای صاف و یکدست در رنگ پوست کاربر ایجاد کند. کرم&amp;zwnj;پودر به&amp;zwnj;طورکلی پوشش کمتری نسبت به کانسیلر ایجاد می&amp;zwnj;کند و در فرمولاسیون&amp;zwnj;هایی فروخته می&amp;zwnj;شود که می&amp;zwnj;توانند پوششی شفاف، مات، شبنم دار یا کامل برای پوست ایجاد کنند. کرم&amp;zwnj;پودر برای آرایش معمولی با کرم&amp;zwnj;پودر برای گریم تفاوت&amp;zwnj;هایی دارد. به&amp;zwnj;طورکلی&amp;nbsp;&lt;strong&gt;فرق کرم گریم با کرم&amp;zwnj;پودر&lt;/strong&gt;&amp;nbsp;در میزان پوشش&amp;zwnj;دهی آن بر روی صورت است.&lt;/p&gt;\r\n\r\n&lt;h3 style=&quot;text-align: justify;&quot;&gt;کانسیلر&lt;/h3&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;کانسیلر یک کرم یا محصول مایع است که برای پوشاندن لک&amp;zwnj;های پوستی استفاده می&amp;zwnj;شود. کانسیلر معمولاً به رنگ پوست کاربر است و پس از آماده&amp;zwnj;سازی صورت استفاده می&amp;zwnj;شود. کانسیلر معمولاً دارای رنگ&amp;zwnj;دانه&amp;zwnj;های شدیدتر، پوشش&amp;zwnj;دهی بیشتر و ضخیم&amp;zwnj;تر از کرم&amp;zwnj;پودر یا پرایمرهای رنگی است. کانسیلر از نظر رنگ&amp;zwnj;دانه و قوام بیشتر از کرم&amp;zwnj;پودر کار می&amp;zwnj;کند، تعدادی فرمولاسیون مختلف که برای سبک&amp;zwnj;های مختلف استفاده در نظر گرفته شده است مانند کانسیلر سبک&amp;zwnj;تر برای چشم&amp;zwnj;ها و کانسیلر سنگین&amp;zwnj;تر برای گریم. همچنین کانسیلرهای اصلاح&amp;zwnj;کننده رنگ که به طور خاص برای متعادل کردن تغییر رنگ پوست طراحی شده&amp;zwnj;اند در بازار مجود است.&lt;/p&gt;\r\n\r\n&lt;h3 style=&quot;text-align: justify;&quot;&gt;رژگونه&lt;/h3&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;محصولی مایع، کرم یا پودری است که در مرکز گونه&amp;zwnj;ها باهدف افزودن یا افزایش رنگ طبیعی از آن استفاده می&amp;zwnj;شود. رژگونه&amp;zwnj;ها معمولاً در سایه&amp;zwnj;های صورتی یا قهوه&amp;zwnj;ای مایل به قهوه&amp;zwnj;ای در دسترس هستند و ممکن است برای برجسته&amp;zwnj;تر نشان&amp;zwnj;دادن استخوان&amp;zwnj;های گونه نیز استفاده شوند.&lt;/p&gt;\r\n\r\n&lt;h3 style=&quot;text-align: justify;&quot;&gt;برنزر&lt;/h3&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;&amp;nbsp;یک محصول پودر، کرم یا مایع است که به پوست رنگ می&amp;zwnj;بخشد، معمولاً در سایه&amp;zwnj;های برنزی یا قهوه&amp;zwnj;ای مایل به زرد که به پوست ظاهری برنزه داده و رنگ صورت را افزایش می&amp;zwnj;دهد. همچنین برنزر، مانند هایلایتر، ممکن است حاوی موادی باشد که جلوه&amp;zwnj;ای درخشان یا براق را ایجاد می&amp;zwnj;کند، و در رنگ&amp;zwnj;های مات، نیمه مات، ساتن یا درخشان ارائه می&amp;zwnj;شود.&lt;/p&gt;\r\n\r\n&lt;h3 style=&quot;text-align: justify;&quot;&gt;هایلایتر&lt;/h3&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;&amp;nbsp;یک محصول مایع، کرم یا پودری است که روی نقاط بلند صورت مانند ابرو، بینی و استخوان گونه اعمال می&amp;zwnj;شود. هایلایتر معمولاً دارای موادی است که جلوه&amp;zwnj;ای درخشان یا براق می&amp;zwnj;دهد. همچنین، می&amp;zwnj;توان از کرم&amp;zwnj;پودر یا کانسیلر با رنگ روشن&amp;zwnj;تر به&amp;zwnj;عنوان هایلایتر استفاده کرد.&lt;/p&gt;\r\n\r\n&lt;h3 style=&quot;text-align: justify;&quot;&gt;مداد ابرو&lt;/h3&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;این محصول برای رنگ کردن، پرکردن و مشخص&amp;zwnj;کردن ابروها استفاده می&amp;zwnj;شود.&lt;/p&gt;\r\n\r\n&lt;h3 style=&quot;text-align: justify;&quot;&gt;سایه چشم&lt;/h3&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;یک محصول پودر، کرم یا مایع است که برای جلب&amp;zwnj;توجه، برجسته&amp;zwnj;کردن و تغییر شکل ناحیه اطراف چشم، روی پلک و فضای زیر ابرو استفاده می&amp;zwnj;شود. سایه چشم معمولاً با استفاده از برس سایه چشم، با موهای کوچک و گرد استفاده می&amp;zwnj;شود، اگرچه فرمولاسیون مایع و کرم نیز ممکن است با انگشتان اعمال شود. سایه چشم تقریباً در هر رنگی موجود است، و همچنین در انواع مختلف، از پوشش&amp;zwnj;های مات با پوشش شفاف گرفته تا پوشش&amp;zwnj;های براق و رنگ&amp;zwnj;دانه&amp;zwnj;ای بالا به فروش می&amp;zwnj;رسد. بسیاری از رنگ&amp;zwnj;های مختلف سایه چشم را می&amp;zwnj;توان با هم ترکیب کرد تا جلوه&amp;zwnj;های متفاوتی به دست آورد.&lt;/p&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;&amp;nbsp;&lt;/p&gt;\r\n\r\n&lt;h3 style=&quot;text-align: justify;&quot;&gt;خط چشم&lt;/h3&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;از این محصول برای افزایش اندازه یا عمق ظاهری چشم استفاده می&amp;zwnj;شود. اگرچه خط چشم معمولاً مشکی است، اما می&amp;zwnj;تواند در رنگ&amp;zwnj;های مختلف از جمله قهوه&amp;zwnj;ای، سفید و آبی باشد. خط چشم می&amp;zwnj;تواند به شکل مداد، ژل یا ماژیکی باشد.&lt;/p&gt;\r\n\r\n&lt;h3 style=&quot;text-align: justify;&quot;&gt;ریمل&lt;/h3&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;برای تیره کردن، بلندکردن، ضخیم کردن یا تقویت مژه&amp;zwnj;ها از طریق استفاده از یک محصول معمولی ضخیم و با قوام کرم که با یک برس ریمل مارپیچ استفاده می&amp;zwnj;شود. ریمل معمولاً مشکی، قهوه&amp;zwnj;ای یا شفاف است، هرچند رنگ&amp;zwnj;های مختلفی وجود دارد که برخی براق هستند. ریمل معمولاً در فرمولاسیون&amp;zwnj;های مختلفی تبلیغ و فروخته می&amp;zwnj;شود که ویژگی&amp;zwnj;هایی مانند ضد آب، افزایش حجم، افزایش طول و افزایش فر را تبلیغ می&amp;zwnj;کند.&lt;/p&gt;\r\n\r\n&lt;h3 style=&quot;text-align: justify;&quot;&gt;مژه مصنوعی&lt;/h3&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;برای بلندکردن، بزرگ کردن و حجم دادن به مژه&amp;zwnj;ها استفاده می&amp;zwnj;شود. به&amp;zwnj;طورکلی از یک نوار کوچک تشکیل شده است که موها اعم از انسان، راسو یا مصنوعی به آن وصل شده است، مژه مصنوعی معمولاً با استفاده از چسب روی خط مژه زده می&amp;zwnj;شود که می&amp;zwnj;تواند در انواع بدون لاتکس و لاتکس باشد. مژه&amp;zwnj;های مصنوعی مغناطیسی که پس از زدن خط چشم مغناطیسی به پلک می&amp;zwnj;چسبند نیز موجود است. طرح&amp;zwnj;ها از نظر طول و رنگ متفاوت هستند. مژه مصنوعی دائمی نیست و به&amp;zwnj;راحتی با انگشتان پاک می&amp;zwnj;شود. اکستنشن مژه یک راه دائمی برای رسیدن به این ظاهر است.&lt;/p&gt;\r\n\r\n&lt;h3 style=&quot;text-align: justify;&quot;&gt;محصولات لب از جمله رژ لب، برق لب، خط لب و بالم لب.&lt;/h3&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;محصولات لب معمولاً به لب&amp;zwnj;ها رنگ و بافت می&amp;zwnj;بخشند و همچنین لب&amp;zwnj;ها را مرطوب می&amp;zwnj;کنند و لبه&amp;zwnj;های خارجی آنها را مشخص می&amp;zwnj;کنند. محصولاتی که به لب&amp;zwnj;ها رنگ و بافت می&amp;zwnj;بخشند، مانند رژلب&amp;zwnj;ها و براق&amp;zwnj;کننده&amp;zwnj;های لب، اغلب در طیف گسترده&amp;zwnj;ای از رنگ&amp;zwnj;ها و همچنین تعدادی پوشش مختلف مانند روکش&amp;zwnj;های مات و روکش&amp;zwnj;های ساتن یا براق هستند. هم محصولات رنگ لب و هم خط لب ممکن است ضد آب باشند و ممکن است مستقیماً روی لب&amp;zwnj;ها، با برس یا با انگشتان اعمال شوند. بالم لب، اگرچه برای مرطوب کردن و محافظت از لب&amp;zwnj;ها طراحی شده است (مانند افزودن محافظت در برابر اشعه ماوراء بنفش)، همچنین ممکن است رنگ به لب&amp;zwnj;ها دهد.&lt;/p&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;&amp;nbsp;&lt;/p&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;پودر صورت&lt;/p&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;پودر فیکس، یا اسپری&amp;zwnj;های فیکس برای &amp;laquo;ست&amp;zwnj;کردن&amp;raquo; زیرسازی یا کانسیلر استفاده می&amp;zwnj;شود که به آن یک روکش مات یا یکدست می&amp;zwnj;بخشد و درعین&amp;zwnj;حال عیوب یا لک&amp;zwnj;های کوچک را نیز پنهان می&amp;zwnj;کند. هم پودرها و هم اسپری&amp;zwnj;های فیکس کننده مدعی هستند که آرایش را از جذب شدن به پوست و یا ذوب شدن آن جلوگیری می&amp;zwnj;کنند. درحالی&amp;zwnj;که اسپری&amp;zwnj;های فیکس کننده معمولاً رنگی نیستند، پودر فیکس در انواع شفاف یا رنگی موجود است و می&amp;zwnj;توان از آنها برای بیک کردن کرم&amp;zwnj;پودر استفاده کرد تا مدت بیشتری روی صورت بماند. پودرهای رنگی صورت را نیز ممکن است به&amp;zwnj;تنهایی و بدون کرم&amp;zwnj;پودر یا کانسیلر استفاده کنید تا یک پوشش بسیار شفاف ایجاد کند.&lt;/p&gt;\r\n\r\n&lt;h2 style=&quot;text-align: justify;&quot;&gt;اصول کلی گریم&lt;/h2&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;همان&amp;zwnj;طور که اشاره کردیم فرق گریم با میکاپ در این است که در گریم از رنگ&amp;zwnj;ها استفاده نمی&amp;zwnj;شود و بیشتر از سایه&amp;zwnj;ها برای زاویه&amp;zwnj;سازی و ایجاد سایه&amp;zwnj;روشن بر روی صورت استفاده می&amp;zwnj;شود. اصل کلی گریم بر پایه لولایت و هایلایت است. در گریم در ابتدا از فون پایه برای پوشش دادن کلی پوست استفاده می&amp;zwnj;شود و همچنین با کمک کانسیلر، جای جوش و زخم پوشش داده شده و کاملاً محو می&amp;zwnj;شود. سپس کار هایلایت و لولایت آغاز می&amp;zwnj;شود. روش&amp;zwnj;ها و لوازم مورداستفاده در گریم عبارت&amp;zwnj;اند از:&lt;/p&gt;\r\n\r\n&lt;h3 style=&quot;text-align: justify;&quot;&gt;برجسته&amp;zwnj;کردن گونه&amp;zwnj;ها در گریم&lt;/h3&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;برای برجسته&amp;zwnj;کردن گونه&amp;zwnj;ها زیر استخوان گونه را تا کنار لب&amp;zwnj;ها تیره کنید ولی روی استخوان گونه را روشن کنید. این&amp;zwnj;جوری گونه&amp;zwnj;ها برجسته&amp;zwnj;تر به نظر می&amp;zwnj;رسند.&lt;/p&gt;\r\n\r\n&lt;h3 style=&quot;text-align: justify;&quot;&gt;باریک کردن بینی با گریم&lt;/h3&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;اگر دوست دارید بینی&amp;zwnj;تان باریک و قلمی شود باید کناره&amp;zwnj;های بینی را تیره و روی تیغه بینی را روشن کرد.&lt;/p&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;&amp;nbsp;&lt;/p&gt;\r\n\r\n&lt;h3 style=&quot;text-align: justify;&quot;&gt;پوشاندن چین و چروک&amp;zwnj;های روی پلک با گریم&lt;/h3&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;برای ازبین&amp;zwnj;بردن و پوشاندن چین&amp;zwnj;وچروک پلک باید از لاولایت استفاده کرد. همچنین قسمت زیر ابرو یعنی همان شکستگی ابرو و گوشه&amp;zwnj;های چشم را هایلایت کرد.&lt;/p&gt;\r\n\r\n&lt;h3 style=&quot;text-align: justify;&quot;&gt;زاویه&amp;zwnj;سازی فک در گریم&lt;/h3&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;برای زاویه&amp;zwnj;سازی فک کافی است زیر استخوان فک را تیره و قسمت بالایی استخوان فک را روشن کنید، همچنین اگر چانه کوچکی دارید و دوست دارید برجسته&amp;zwnj;تر به نظر برسد کمی چانه را روشن&amp;zwnj;تر کنید.&lt;/p&gt;\r\n\r\n&lt;p style=&quot;text-align: justify;&quot;&gt;در آخر بعد از کانتورینگ صورت با کمک یک اسفنج یا بیوتی بلندرمی توانید تمام سایه&amp;zwnj;ها و مرز بین آن&amp;zwnj;ها را محو کنید تا کانتور صورت طبیعی&amp;zwnj;تر و زیباتر به نظر برسد. بعد از گریم نیاز به آرایش سنگین و غلیظ نیست، زیرا عیوب صورت برطرف شده است.&lt;/p&gt;\r\n&lt;/section&gt;\r\n', 1, NULL, 8, '1402/01/25', '15:41', 1);
 
 -- Dumping structure for table reservation.tbl_blog_related
+DROP TABLE IF EXISTS `tbl_blog_related`;
 CREATE TABLE IF NOT EXISTS `tbl_blog_related` (
   `br_id` int NOT NULL AUTO_INCREMENT,
   `blog_id` int NOT NULL,
   `br_related_id` int NOT NULL,
   PRIMARY KEY (`br_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf32;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
 
 -- Dumping data for table reservation.tbl_blog_related: 0 rows
 /*!40000 ALTER TABLE `tbl_blog_related` DISABLE KEYS */;
 /*!40000 ALTER TABLE `tbl_blog_related` ENABLE KEYS */;
 
 -- Dumping structure for table reservation.tbl_blog_tag
+DROP TABLE IF EXISTS `tbl_blog_tag`;
 CREATE TABLE IF NOT EXISTS `tbl_blog_tag` (
   `pt_id` int NOT NULL AUTO_INCREMENT,
   `pt_post_id` int NOT NULL,
   `pt_tag_id` int NOT NULL,
   PRIMARY KEY (`pt_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf32;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
 
 -- Dumping data for table reservation.tbl_blog_tag: 0 rows
 /*!40000 ALTER TABLE `tbl_blog_tag` DISABLE KEYS */;
 /*!40000 ALTER TABLE `tbl_blog_tag` ENABLE KEYS */;
 
 -- Dumping structure for table reservation.tbl_bookmarks
+DROP TABLE IF EXISTS `tbl_bookmarks`;
 CREATE TABLE IF NOT EXISTS `tbl_bookmarks` (
   `b_id` int NOT NULL AUTO_INCREMENT,
   `b_type` varchar(20) NOT NULL,
   `item_id` int NOT NULL,
   `user_id` int NOT NULL,
   PRIMARY KEY (`b_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf32;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
 
 -- Dumping data for table reservation.tbl_bookmarks: 0 rows
 /*!40000 ALTER TABLE `tbl_bookmarks` DISABLE KEYS */;
 /*!40000 ALTER TABLE `tbl_bookmarks` ENABLE KEYS */;
 
 -- Dumping structure for table reservation.tbl_branches
+DROP TABLE IF EXISTS `tbl_branches`;
 CREATE TABLE IF NOT EXISTS `tbl_branches` (
   `b_id` int NOT NULL AUTO_INCREMENT,
   `branch_vids_id` varchar(100) NOT NULL,
@@ -251,7 +234,7 @@ CREATE TABLE IF NOT EXISTS `tbl_branches` (
   `b_date` varchar(50) DEFAULT NULL,
   `b_status` tinyint NOT NULL DEFAULT '1',
   PRIMARY KEY (`b_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=1001 DEFAULT CHARSET=utf32;
+) ENGINE=MyISAM AUTO_INCREMENT=1001 DEFAULT CHARSET=utf8mb3;
 
 -- Dumping data for table reservation.tbl_branches: 1 rows
 /*!40000 ALTER TABLE `tbl_branches` DISABLE KEYS */;
@@ -260,6 +243,7 @@ INSERT IGNORE INTO `tbl_branches` (`b_id`, `branch_vids_id`, `b_name`, `b_manage
 /*!40000 ALTER TABLE `tbl_branches` ENABLE KEYS */;
 
 -- Dumping structure for table reservation.tbl_cash
+DROP TABLE IF EXISTS `tbl_cash`;
 CREATE TABLE IF NOT EXISTS `tbl_cash` (
   `c_id` int NOT NULL AUTO_INCREMENT,
   `cash_vids_id` varchar(100) NOT NULL,
@@ -270,7 +254,7 @@ CREATE TABLE IF NOT EXISTS `tbl_cash` (
   `c_date` varchar(50) NOT NULL,
   `c_status` tinyint NOT NULL DEFAULT '1',
   PRIMARY KEY (`c_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf32;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
 
 -- Dumping data for table reservation.tbl_cash: 1 rows
 /*!40000 ALTER TABLE `tbl_cash` DISABLE KEYS */;
@@ -279,6 +263,7 @@ INSERT IGNORE INTO `tbl_cash` (`c_id`, `cash_vids_id`, `c_name`, `c_currency`, `
 /*!40000 ALTER TABLE `tbl_cash` ENABLE KEYS */;
 
 -- Dumping structure for table reservation.tbl_category
+DROP TABLE IF EXISTS `tbl_category`;
 CREATE TABLE IF NOT EXISTS `tbl_category` (
   `id` int NOT NULL AUTO_INCREMENT,
   `c_removable` tinyint NOT NULL DEFAULT '1',
@@ -304,14 +289,15 @@ INSERT IGNORE INTO `tbl_category` (`id`, `c_removable`, `c_type`, `name`, `paren
 	(4, 1, 'blog', 'میکاپ صورت', 0, '', NULL, NULL, NULL, NULL, 'makeup', 0, 1);
 
 -- Dumping structure for table reservation.tbl_cities
+DROP TABLE IF EXISTS `tbl_cities`;
 CREATE TABLE IF NOT EXISTS `tbl_cities` (
   `ci_id` int unsigned NOT NULL AUTO_INCREMENT,
   `province_id` int unsigned NOT NULL,
-  `ci_name` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
+  `ci_name` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
   `ci_status` tinyint NOT NULL DEFAULT '1',
   PRIMARY KEY (`ci_id`),
   KEY `cities_province_id_foreign` (`province_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=441 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=441 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 -- Dumping data for table reservation.tbl_cities: ~440 rows (approximately)
 INSERT IGNORE INTO `tbl_cities` (`ci_id`, `province_id`, `ci_name`, `ci_status`) VALUES
@@ -757,13 +743,14 @@ INSERT IGNORE INTO `tbl_cities` (`ci_id`, `province_id`, `ci_name`, `ci_status`)
 	(440, 31, 'زارچ', 1);
 
 -- Dumping structure for table reservation.tbl_color
+DROP TABLE IF EXISTS `tbl_color`;
 CREATE TABLE IF NOT EXISTS `tbl_color` (
   `color_id` int NOT NULL AUTO_INCREMENT,
   `color_name` varchar(100) NOT NULL,
   `color_code` varchar(50) NOT NULL,
   `color_status` tinyint NOT NULL DEFAULT '1',
   PRIMARY KEY (`color_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=141 DEFAULT CHARSET=utf32;
+) ENGINE=MyISAM AUTO_INCREMENT=141 DEFAULT CHARSET=utf8mb3;
 
 -- Dumping data for table reservation.tbl_color: 140 rows
 /*!40000 ALTER TABLE `tbl_color` DISABLE KEYS */;
@@ -911,6 +898,7 @@ INSERT IGNORE INTO `tbl_color` (`color_id`, `color_name`, `color_code`, `color_s
 /*!40000 ALTER TABLE `tbl_color` ENABLE KEYS */;
 
 -- Dumping structure for table reservation.tbl_comments
+DROP TABLE IF EXISTS `tbl_comments`;
 CREATE TABLE IF NOT EXISTS `tbl_comments` (
   `cm_id` int NOT NULL AUTO_INCREMENT,
   `cm_answer_id` int NOT NULL,
@@ -934,19 +922,21 @@ CREATE TABLE IF NOT EXISTS `tbl_comments` (
 -- Dumping data for table reservation.tbl_comments: ~0 rows (approximately)
 
 -- Dumping structure for table reservation.tbl_comment_like
+DROP TABLE IF EXISTS `tbl_comment_like`;
 CREATE TABLE IF NOT EXISTS `tbl_comment_like` (
   `cl_id` int NOT NULL AUTO_INCREMENT,
   `comment_id` int NOT NULL,
   `user_id` int NOT NULL,
   `cl_type` varchar(10) NOT NULL DEFAULT 'like',
   PRIMARY KEY (`cl_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf32;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
 
 -- Dumping data for table reservation.tbl_comment_like: 0 rows
 /*!40000 ALTER TABLE `tbl_comment_like` DISABLE KEYS */;
 /*!40000 ALTER TABLE `tbl_comment_like` ENABLE KEYS */;
 
 -- Dumping structure for table reservation.tbl_contact
+DROP TABLE IF EXISTS `tbl_contact`;
 CREATE TABLE IF NOT EXISTS `tbl_contact` (
   `co_id` int NOT NULL AUTO_INCREMENT,
   `co_title` varchar(500) NOT NULL,
@@ -962,6 +952,7 @@ CREATE TABLE IF NOT EXISTS `tbl_contact` (
 -- Dumping data for table reservation.tbl_contact: ~0 rows (approximately)
 
 -- Dumping structure for table reservation.tbl_contact_subject
+DROP TABLE IF EXISTS `tbl_contact_subject`;
 CREATE TABLE IF NOT EXISTS `tbl_contact_subject` (
   `cs_id` int NOT NULL AUTO_INCREMENT,
   `cs_title` varchar(255) NOT NULL,
@@ -969,7 +960,7 @@ CREATE TABLE IF NOT EXISTS `tbl_contact_subject` (
   `cs_create_date` varchar(50) NOT NULL,
   `cs_status` tinyint NOT NULL DEFAULT '1',
   PRIMARY KEY (`cs_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf32;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3;
 
 -- Dumping data for table reservation.tbl_contact_subject: 3 rows
 /*!40000 ALTER TABLE `tbl_contact_subject` DISABLE KEYS */;
@@ -980,6 +971,7 @@ INSERT IGNORE INTO `tbl_contact_subject` (`cs_id`, `cs_title`, `cs_removable`, `
 /*!40000 ALTER TABLE `tbl_contact_subject` ENABLE KEYS */;
 
 -- Dumping structure for table reservation.tbl_cost
+DROP TABLE IF EXISTS `tbl_cost`;
 CREATE TABLE IF NOT EXISTS `tbl_cost` (
   `c_id` int NOT NULL AUTO_INCREMENT,
   `cost_vids_id` varchar(100) NOT NULL,
@@ -994,13 +986,14 @@ CREATE TABLE IF NOT EXISTS `tbl_cost` (
   `date_created` varchar(50) DEFAULT NULL,
   `status` tinyint NOT NULL DEFAULT '1',
   PRIMARY KEY (`c_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf32;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
 
 -- Dumping data for table reservation.tbl_cost: 0 rows
 /*!40000 ALTER TABLE `tbl_cost` DISABLE KEYS */;
 /*!40000 ALTER TABLE `tbl_cost` ENABLE KEYS */;
 
 -- Dumping structure for table reservation.tbl_cost_type
+DROP TABLE IF EXISTS `tbl_cost_type`;
 CREATE TABLE IF NOT EXISTS `tbl_cost_type` (
   `ct_id` int NOT NULL AUTO_INCREMENT,
   `cost_category_vids_id` varchar(100) NOT NULL,
@@ -1022,7 +1015,7 @@ CREATE TABLE IF NOT EXISTS `tbl_currency` (
   `c_default` tinyint NOT NULL DEFAULT '0',
   `c_status` tinyint NOT NULL DEFAULT '1',
   PRIMARY KEY (`c_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf32;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb3;
 
 -- Dumping data for table reservation.tbl_currency: 6 rows
 /*!40000 ALTER TABLE `tbl_currency` DISABLE KEYS */;
@@ -1036,38 +1029,40 @@ INSERT IGNORE INTO `tbl_currency` (`c_id`, `c_name`, `c_short_name`, `c_default`
 /*!40000 ALTER TABLE `tbl_currency` ENABLE KEYS */;
 
 -- Dumping structure for table reservation.tbl_customer
+DROP TABLE IF EXISTS `tbl_customer`;
 CREATE TABLE IF NOT EXISTS `tbl_customer` (
   `c_id` int NOT NULL AUTO_INCREMENT,
-  `customer_vids_id` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_persian_ci NOT NULL,
-  `c_name` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_persian_ci DEFAULT NULL,
-  `c_family` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_persian_ci DEFAULT NULL,
-  `c_display_name` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_persian_ci DEFAULT NULL,
+  `customer_vids_id` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
+  `c_name` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
+  `c_family` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
+  `c_display_name` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
   `c_mobile_num` varchar(11) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
-  `c_phone_num` varchar(20) CHARACTER SET utf8mb3 COLLATE utf8mb3_persian_ci DEFAULT NULL,
-  `c_email` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_persian_ci DEFAULT NULL,
-  `c_cart_no` varchar(20) CHARACTER SET utf8mb3 COLLATE utf8mb3_persian_ci DEFAULT '-',
+  `c_phone_num` varchar(20) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
+  `c_email` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
+  `c_cart_no` varchar(20) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT '-',
   `c_birthday` json DEFAULT NULL,
   `province_id` int NOT NULL DEFAULT '0',
   `city_id` int NOT NULL DEFAULT '0',
   `c_arithmetic` tinyint NOT NULL DEFAULT '1' COMMENT '1=good;2=bad',
   `c_image` varchar(1000) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL DEFAULT '0',
-  `c_about` varchar(4000) CHARACTER SET utf8mb3 COLLATE utf8mb3_persian_ci DEFAULT NULL,
-  `c_registery_date` varchar(30) CHARACTER SET utf8mb3 COLLATE utf8mb3_persian_ci NOT NULL,
+  `c_about` varchar(4000) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
+  `c_registery_date` varchar(30) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
   `c_verification_code` int DEFAULT NULL,
   `c_status` int NOT NULL DEFAULT '1',
   PRIMARY KEY (`c_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_persian_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
--- Dumping data for table reservation.tbl_customer: ~0 rows (approximately)
+-- Dumping data for table reservation.tbl_customer: ~1 rows (approximately)
 INSERT IGNORE INTO `tbl_customer` (`c_id`, `customer_vids_id`, `c_name`, `c_family`, `c_display_name`, `c_mobile_num`, `c_phone_num`, `c_email`, `c_cart_no`, `c_birthday`, `province_id`, `city_id`, `c_arithmetic`, `c_image`, `c_about`, `c_registery_date`, `c_verification_code`, `c_status`) VALUES
 	(1, '1000', 'بهار', 'محمدی', 'بهار محمدی', '09012345678', '', 'bm@gmail.com', '', '{"day": "20", "year": "1374", "month": "03"}', 11, 153, 1, 'https://www.gravatar.com/avatar/a8d33b6f87c84cd5891763b0b4c74748?d=identicon&s=50&r=x', '', '1402/01/18', NULL, 1);
 
 -- Dumping structure for table reservation.tbl_customer_bot
+DROP TABLE IF EXISTS `tbl_customer_bot`;
 CREATE TABLE IF NOT EXISTS `tbl_customer_bot` (
   `id` int NOT NULL AUTO_INCREMENT,
   `status` tinyint(1) NOT NULL DEFAULT '1',
   `username` varchar(1000) DEFAULT NULL,
-  `first_name` varchar(1000) CHARACTER SET utf32 COLLATE utf32_general_ci DEFAULT NULL,
+  `first_name` varchar(1000) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
   `last_name` varchar(1000) DEFAULT NULL,
   `date_created` varchar(50) DEFAULT NULL,
   `last_query` varchar(1000) DEFAULT NULL,
@@ -1088,6 +1083,7 @@ CREATE TABLE IF NOT EXISTS `tbl_customer_bot` (
 /*!40000 ALTER TABLE `tbl_customer_bot` ENABLE KEYS */;
 
 -- Dumping structure for table reservation.tbl_customer_document
+DROP TABLE IF EXISTS `tbl_customer_document`;
 CREATE TABLE IF NOT EXISTS `tbl_customer_document` (
   `cd_id` int NOT NULL AUTO_INCREMENT,
   `admin_id` int NOT NULL,
@@ -1097,19 +1093,20 @@ CREATE TABLE IF NOT EXISTS `tbl_customer_document` (
   `cd_create_date` varchar(20) NOT NULL,
   `cd_status` tinyint NOT NULL DEFAULT '1',
   PRIMARY KEY (`cd_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf32;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
 
 -- Dumping data for table reservation.tbl_customer_document: 0 rows
 /*!40000 ALTER TABLE `tbl_customer_document` DISABLE KEYS */;
 /*!40000 ALTER TABLE `tbl_customer_document` ENABLE KEYS */;
 
 -- Dumping structure for table reservation.tbl_customer_level
+DROP TABLE IF EXISTS `tbl_customer_level`;
 CREATE TABLE IF NOT EXISTS `tbl_customer_level` (
   `cl_id` int NOT NULL AUTO_INCREMENT,
   `cl_title` varchar(200) NOT NULL,
   `cl_status` tinyint NOT NULL DEFAULT '1',
   PRIMARY KEY (`cl_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf32;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb3;
 
 -- Dumping data for table reservation.tbl_customer_level: 5 rows
 /*!40000 ALTER TABLE `tbl_customer_level` DISABLE KEYS */;
@@ -1122,6 +1119,7 @@ INSERT IGNORE INTO `tbl_customer_level` (`cl_id`, `cl_title`, `cl_status`) VALUE
 /*!40000 ALTER TABLE `tbl_customer_level` ENABLE KEYS */;
 
 -- Dumping structure for table reservation.tbl_customer_reservations
+DROP TABLE IF EXISTS `tbl_customer_reservations`;
 CREATE TABLE IF NOT EXISTS `tbl_customer_reservations` (
   `cr_id` int NOT NULL AUTO_INCREMENT,
   `service_id` int NOT NULL,
@@ -1129,13 +1127,14 @@ CREATE TABLE IF NOT EXISTS `tbl_customer_reservations` (
   `cr_time` varchar(10) NOT NULL,
   `customer_id` int NOT NULL,
   PRIMARY KEY (`cr_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf32;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
 
 -- Dumping data for table reservation.tbl_customer_reservations: 0 rows
 /*!40000 ALTER TABLE `tbl_customer_reservations` DISABLE KEYS */;
 /*!40000 ALTER TABLE `tbl_customer_reservations` ENABLE KEYS */;
 
 -- Dumping structure for table reservation.tbl_discounts
+DROP TABLE IF EXISTS `tbl_discounts`;
 CREATE TABLE IF NOT EXISTS `tbl_discounts` (
   `dc_id` int NOT NULL AUTO_INCREMENT,
   `dc_title` varchar(500) NOT NULL,
@@ -1156,39 +1155,42 @@ CREATE TABLE IF NOT EXISTS `tbl_discounts` (
   `dc_description` varchar(1000) NOT NULL,
   `dc_status` tinyint NOT NULL DEFAULT '1' COMMENT '1=active;2=used;0=deactive',
   PRIMARY KEY (`dc_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf32;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
 
 -- Dumping data for table reservation.tbl_discounts: 0 rows
 /*!40000 ALTER TABLE `tbl_discounts` DISABLE KEYS */;
 /*!40000 ALTER TABLE `tbl_discounts` ENABLE KEYS */;
 
 -- Dumping structure for table reservation.tbl_discounts_service
+DROP TABLE IF EXISTS `tbl_discounts_service`;
 CREATE TABLE IF NOT EXISTS `tbl_discounts_service` (
   `dcc_id` int NOT NULL AUTO_INCREMENT,
   `dc_id` int NOT NULL,
   `service_id` int NOT NULL,
   `dcc_status` tinyint NOT NULL DEFAULT '1',
   PRIMARY KEY (`dcc_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf32;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
 
 -- Dumping data for table reservation.tbl_discounts_service: 0 rows
 /*!40000 ALTER TABLE `tbl_discounts_service` DISABLE KEYS */;
 /*!40000 ALTER TABLE `tbl_discounts_service` ENABLE KEYS */;
 
 -- Dumping structure for table reservation.tbl_discounts_staff
+DROP TABLE IF EXISTS `tbl_discounts_staff`;
 CREATE TABLE IF NOT EXISTS `tbl_discounts_staff` (
   `ds_id` int NOT NULL AUTO_INCREMENT,
   `dc_id` int NOT NULL,
   `staff_id` int NOT NULL,
   `ds_status` tinyint NOT NULL DEFAULT '1',
   PRIMARY KEY (`ds_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf32;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
 
 -- Dumping data for table reservation.tbl_discounts_staff: 0 rows
 /*!40000 ALTER TABLE `tbl_discounts_staff` DISABLE KEYS */;
 /*!40000 ALTER TABLE `tbl_discounts_staff` ENABLE KEYS */;
 
 -- Dumping structure for table reservation.tbl_discounts_user_used
+DROP TABLE IF EXISTS `tbl_discounts_user_used`;
 CREATE TABLE IF NOT EXISTS `tbl_discounts_user_used` (
   `du_id` int NOT NULL AUTO_INCREMENT,
   `user_id` int NOT NULL,
@@ -1197,28 +1199,29 @@ CREATE TABLE IF NOT EXISTS `tbl_discounts_user_used` (
   `du_used_date` varchar(20) NOT NULL,
   `du_status` tinyint NOT NULL DEFAULT '1',
   PRIMARY KEY (`du_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf32;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
 
 -- Dumping data for table reservation.tbl_discounts_user_used: 0 rows
 /*!40000 ALTER TABLE `tbl_discounts_user_used` DISABLE KEYS */;
 /*!40000 ALTER TABLE `tbl_discounts_user_used` ENABLE KEYS */;
 
 -- Dumping structure for table reservation.tbl_domains
+DROP TABLE IF EXISTS `tbl_domains`;
 CREATE TABLE IF NOT EXISTS `tbl_domains` (
   `domain_id` int NOT NULL AUTO_INCREMENT,
-  `domain_name` varchar(250) CHARACTER SET utf32 COLLATE utf32_general_ci NOT NULL COMMENT 'کلید',
-  `domain_title` varchar(250) CHARACTER SET utf32 COLLATE utf32_general_ci NOT NULL COMMENT 'عنوان',
-  `domain_code` varchar(250) CHARACTER SET utf32 COLLATE utf32_general_ci NOT NULL DEFAULT '' COMMENT 'مقدار',
+  `domain_name` varchar(250) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL COMMENT 'کلید',
+  `domain_title` varchar(250) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL COMMENT 'عنوان',
+  `domain_code` varchar(250) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL DEFAULT '' COMMENT 'مقدار',
   `domain_prority` int NOT NULL COMMENT 'ترتیب',
-  `domain_date_created` varchar(10) CHARACTER SET utf32 COLLATE utf32_general_ci NOT NULL COMMENT 'تاریخ ثبت',
+  `domain_date_created` varchar(10) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL COMMENT 'تاریخ ثبت',
   `user_id_created` int NOT NULL COMMENT 'کاربر ثبت کننده',
-  `domain_date_of_last_revision` varchar(10) CHARACTER SET utf32 COLLATE utf32_general_ci NOT NULL COMMENT 'تاریخ آخرین ویرایش',
+  `domain_date_of_last_revision` varchar(10) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL COMMENT 'تاریخ آخرین ویرایش',
   `user_id_last_revision` int NOT NULL COMMENT 'کاربر آخرین ویرایش',
   `domain_removed` tinyint DEFAULT '0',
   `domain_status` tinyint NOT NULL DEFAULT '1' COMMENT 'وضعیت',
   PRIMARY KEY (`domain_id`) USING BTREE,
   KEY `udt_id` (`domain_id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf32 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8mb3 ROW_FORMAT=DYNAMIC;
 
 -- Dumping data for table reservation.tbl_domains: ~31 rows (approximately)
 INSERT IGNORE INTO `tbl_domains` (`domain_id`, `domain_name`, `domain_title`, `domain_code`, `domain_prority`, `domain_date_created`, `user_id_created`, `domain_date_of_last_revision`, `user_id_last_revision`, `domain_removed`, `domain_status`) VALUES
@@ -1255,6 +1258,7 @@ INSERT IGNORE INTO `tbl_domains` (`domain_id`, `domain_name`, `domain_title`, `d
 	(33, 'float_contact_mode_select_options', 'Single menu item', 'single', 1, '1401/11/01', 1, '1401/11/01', 1, 0, 1);
 
 -- Dumping structure for table reservation.tbl_faq
+DROP TABLE IF EXISTS `tbl_faq`;
 CREATE TABLE IF NOT EXISTS `tbl_faq` (
   `id` int NOT NULL AUTO_INCREMENT,
   `type` varchar(20) NOT NULL DEFAULT 'public',
@@ -1271,6 +1275,7 @@ INSERT IGNORE INTO `tbl_faq` (`id`, `type`, `question`, `answer`, `view`, `statu
 	(2, 'service', 'میکروبلیدینگ بهتر است یا فیبروز؟', '<p>میکروبلیدینگ یه تکنیک هست که به روش فیبروز براتون انجام&zwnj; میشه<br />\r\nبعضی ها بهش میگن بلید بعضی ها میکرو<br />\r\nبعضی ها هم میگن فیبروز</p>\r\n\r\n<p>این ها چندین روش جدا از هم نیستند<br />\r\nیک روش هستند با اسم های مختلف در عامیانه گفته میشن</p>\r\n\r\n<p>حالا این تکنیک روش های مختلفی داره به اسم کانتور بروز، بریزی بروز و&zwnj;.</p>\r\n', 0, 1);
 
 -- Dumping structure for table reservation.tbl_faq_related
+DROP TABLE IF EXISTS `tbl_faq_related`;
 CREATE TABLE IF NOT EXISTS `tbl_faq_related` (
   `fr_id` int NOT NULL AUTO_INCREMENT,
   `type` varchar(20) NOT NULL DEFAULT '',
@@ -1278,13 +1283,14 @@ CREATE TABLE IF NOT EXISTS `tbl_faq_related` (
   `item_id` int NOT NULL,
   `fr_status` tinyint NOT NULL DEFAULT '1',
   PRIMARY KEY (`fr_id`) USING BTREE
-) ENGINE=MyISAM DEFAULT CHARSET=utf32 ROW_FORMAT=FIXED;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3 ROW_FORMAT=FIXED;
 
 -- Dumping data for table reservation.tbl_faq_related: 0 rows
 /*!40000 ALTER TABLE `tbl_faq_related` DISABLE KEYS */;
 /*!40000 ALTER TABLE `tbl_faq_related` ENABLE KEYS */;
 
 -- Dumping structure for table reservation.tbl_giftcart
+DROP TABLE IF EXISTS `tbl_giftcart`;
 CREATE TABLE IF NOT EXISTS `tbl_giftcart` (
   `g_id` int NOT NULL AUTO_INCREMENT,
   `g_code` varchar(100) NOT NULL,
@@ -1296,20 +1302,21 @@ CREATE TABLE IF NOT EXISTS `tbl_giftcart` (
   `user_id` int DEFAULT NULL,
   `g_status` tinyint NOT NULL DEFAULT '1',
   PRIMARY KEY (`g_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf32;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
 
 -- Dumping data for table reservation.tbl_giftcart: 0 rows
 /*!40000 ALTER TABLE `tbl_giftcart` DISABLE KEYS */;
 /*!40000 ALTER TABLE `tbl_giftcart` ENABLE KEYS */;
 
 -- Dumping structure for table reservation.tbl_holidays
+DROP TABLE IF EXISTS `tbl_holidays`;
 CREATE TABLE IF NOT EXISTS `tbl_holidays` (
   `h_id` int NOT NULL AUTO_INCREMENT,
   `h_title` varchar(1000) NOT NULL,
   `h_date` varchar(10) NOT NULL,
   `h_status` tinyint NOT NULL DEFAULT '1',
   PRIMARY KEY (`h_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf32;
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb3;
 
 -- Dumping data for table reservation.tbl_holidays: 9 rows
 /*!40000 ALTER TABLE `tbl_holidays` DISABLE KEYS */;
@@ -1326,6 +1333,7 @@ INSERT IGNORE INTO `tbl_holidays` (`h_id`, `h_title`, `h_date`, `h_status`) VALU
 /*!40000 ALTER TABLE `tbl_holidays` ENABLE KEYS */;
 
 -- Dumping structure for table reservation.tbl_icons
+DROP TABLE IF EXISTS `tbl_icons`;
 CREATE TABLE IF NOT EXISTS `tbl_icons` (
   `i_id` int NOT NULL AUTO_INCREMENT,
   `i_title` varchar(1000) NOT NULL,
@@ -1333,7 +1341,7 @@ CREATE TABLE IF NOT EXISTS `tbl_icons` (
   `i_icon` varchar(255) NOT NULL,
   `i_status` tinyint NOT NULL DEFAULT '1',
   PRIMARY KEY (`i_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf32;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3;
 
 -- Dumping data for table reservation.tbl_icons: 4 rows
 /*!40000 ALTER TABLE `tbl_icons` DISABLE KEYS */;
@@ -1345,6 +1353,7 @@ INSERT IGNORE INTO `tbl_icons` (`i_id`, `i_title`, `i_description`, `i_icon`, `i
 /*!40000 ALTER TABLE `tbl_icons` ENABLE KEYS */;
 
 -- Dumping structure for table reservation.tbl_images
+DROP TABLE IF EXISTS `tbl_images`;
 CREATE TABLE IF NOT EXISTS `tbl_images` (
   `i_id` int NOT NULL AUTO_INCREMENT,
   `post_id` int DEFAULT NULL,
@@ -1380,19 +1389,21 @@ INSERT IGNORE INTO `tbl_images` (`i_id`, `post_id`, `i_type`, `i_image`, `i_alt`
 	(30, 4, 'service-portfolio', '1680836985_راضیه-بزرگی-اصلاح-ابرو-با-تیغ-و-قیچی-705x397-1.jpg', NULL, 3, 1);
 
 -- Dumping structure for table reservation.tbl_like
+DROP TABLE IF EXISTS `tbl_like`;
 CREATE TABLE IF NOT EXISTS `tbl_like` (
   `l_id` int NOT NULL AUTO_INCREMENT,
   `l_type` varchar(20) NOT NULL,
   `item_id` int NOT NULL,
   `user_id` int NOT NULL,
   PRIMARY KEY (`l_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf32;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
 
 -- Dumping data for table reservation.tbl_like: 0 rows
 /*!40000 ALTER TABLE `tbl_like` DISABLE KEYS */;
 /*!40000 ALTER TABLE `tbl_like` ENABLE KEYS */;
 
 -- Dumping structure for table reservation.tbl_link
+DROP TABLE IF EXISTS `tbl_link`;
 CREATE TABLE IF NOT EXISTS `tbl_link` (
   `l_id` int NOT NULL AUTO_INCREMENT,
   `l_name` varchar(250) NOT NULL,
@@ -1403,7 +1414,7 @@ CREATE TABLE IF NOT EXISTS `tbl_link` (
   `l_order` int NOT NULL,
   `l_status` tinyint NOT NULL DEFAULT '1',
   PRIMARY KEY (`l_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf32;
+) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb3;
 
 -- Dumping data for table reservation.tbl_link: 11 rows
 /*!40000 ALTER TABLE `tbl_link` DISABLE KEYS */;
@@ -1422,6 +1433,7 @@ INSERT IGNORE INTO `tbl_link` (`l_id`, `l_name`, `l_link`, `l_type`, `l_parent_i
 /*!40000 ALTER TABLE `tbl_link` ENABLE KEYS */;
 
 -- Dumping structure for table reservation.tbl_message
+DROP TABLE IF EXISTS `tbl_message`;
 CREATE TABLE IF NOT EXISTS `tbl_message` (
   `m_id` int NOT NULL,
   `text` varchar(4000) NOT NULL,
@@ -1432,15 +1444,16 @@ CREATE TABLE IF NOT EXISTS `tbl_message` (
 -- Dumping data for table reservation.tbl_message: ~0 rows (approximately)
 
 -- Dumping structure for table reservation.tbl_methods_contacting
+DROP TABLE IF EXISTS `tbl_methods_contacting`;
 CREATE TABLE IF NOT EXISTS `tbl_methods_contacting` (
   `mc_id` int NOT NULL AUTO_INCREMENT,
   `mc_key` varchar(250) NOT NULL,
-  `mc_title` varchar(250) CHARACTER SET utf32 COLLATE utf32_general_ci NOT NULL COMMENT 'عنوان',
-  `mc_link` varchar(250) CHARACTER SET utf32 COLLATE utf32_general_ci DEFAULT NULL COMMENT 'لینک',
-  `mc_description` varchar(1000) CHARACTER SET utf32 COLLATE utf32_general_ci DEFAULT '' COMMENT 'توضیحات',
+  `mc_title` varchar(250) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL COMMENT 'عنوان',
+  `mc_link` varchar(250) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL COMMENT 'لینک',
+  `mc_description` varchar(1000) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT '' COMMENT 'توضیحات',
   `mc_class` varchar(50) DEFAULT '',
   `mc_color` varchar(15) DEFAULT '',
-  `mc_icon` longtext CHARACTER SET utf32 COLLATE utf32_general_ci,
+  `mc_icon` longtext CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci,
   `mc_priority` int DEFAULT '1' COMMENT 'ترتیب',
   `mc_show_in_float_button` tinyint NOT NULL DEFAULT '0' COMMENT 'نمایش در دکمه شناور',
   `mc_show_in_float_button_slider` tinyint NOT NULL DEFAULT '0' COMMENT 'نمایش در اسلایدر دکمه شناور',
@@ -1452,7 +1465,7 @@ CREATE TABLE IF NOT EXISTS `tbl_methods_contacting` (
   `mc_status` tinyint NOT NULL DEFAULT '1' COMMENT 'وضعیت',
   PRIMARY KEY (`mc_id`) USING BTREE,
   KEY `mc_id` (`mc_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf32 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb3 ROW_FORMAT=DYNAMIC;
 
 -- Dumping data for table reservation.tbl_methods_contacting: ~18 rows (approximately)
 INSERT IGNORE INTO `tbl_methods_contacting` (`mc_id`, `mc_key`, `mc_title`, `mc_link`, `mc_description`, `mc_class`, `mc_color`, `mc_icon`, `mc_priority`, `mc_show_in_float_button`, `mc_show_in_float_button_slider`, `mc_show_in_footer`, `mc_show_in_login_page`, `mc_show_in_mobile`, `mc_show_in_desktop`, `mc_on_click`, `mc_status`) VALUES
@@ -1476,6 +1489,7 @@ INSERT IGNORE INTO `tbl_methods_contacting` (`mc_id`, `mc_key`, `mc_title`, `mc_
 	(18, 'email_form', 'فرم ایمیل', '', '', 'msg-item-comments-alt-solid', '#000000', '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path fill="currentColor" d="M416 224V64c0-35.3-28.7-64-64-64H64C28.7 0 0 28.7 0 64v160c0 35.3 28.7 64 64 64v54.2c0 8 9.1 12.6 15.5 7.8l82.8-62.1H352c35.3.1 64-28.6 64-63.9zm96-64h-64v64c0 52.9-43.1 96-96 96H192v64c0 35.3 28.7 64 64 64h125.7l82.8 62.1c6.4 4.8 15.5.2 15.5-7.8V448h32c35.3 0 64-28.7 64-64V224c0-35.3-28.7-64-64-64z"></path></svg>', 5, 1, 1, 0, 0, 0, 0, 'email', -1);
 
 -- Dumping structure for table reservation.tbl_page
+DROP TABLE IF EXISTS `tbl_page`;
 CREATE TABLE IF NOT EXISTS `tbl_page` (
   `p_id` int NOT NULL AUTO_INCREMENT,
   `type` enum('main_page','dashboard','sub_page') DEFAULT 'sub_page',
@@ -1510,6 +1524,7 @@ INSERT IGNORE INTO `tbl_page` (`p_id`, `type`, `link`, `readonly_link`, `removab
 	(10, 'sub_page', 'about', 1, 0, 1, 'درباره ما', 'درباره ما', 'لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.', NULL, NULL, '&lt;p&gt;لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.&lt;/p&gt;\r\n', 1, '1400/07/07', '22:26', 1);
 
 -- Dumping structure for table reservation.tbl_page_widget
+DROP TABLE IF EXISTS `tbl_page_widget`;
 CREATE TABLE IF NOT EXISTS `tbl_page_widget` (
   `ip_id` int NOT NULL AUTO_INCREMENT,
   `page_id` int NOT NULL,
@@ -1519,7 +1534,7 @@ CREATE TABLE IF NOT EXISTS `tbl_page_widget` (
   `ip_content` text NOT NULL,
   `ip_status` int NOT NULL,
   PRIMARY KEY (`ip_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf32;
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb3;
 
 -- Dumping data for table reservation.tbl_page_widget: 7 rows
 /*!40000 ALTER TABLE `tbl_page_widget` DISABLE KEYS */;
@@ -1533,11 +1548,9 @@ INSERT IGNORE INTO `tbl_page_widget` (`ip_id`, `page_id`, `template_id`, `ip_tit
 	(7, 2, 3, 'پربازدیدترین خدمات', 4, 'a:7:{s:5:"title";s:35:"پربازدیدترین خدمات";s:9:"sort_type";s:4:"view";s:9:"view_type";s:7:"slider2";s:4:"link";s:21:"services?orderby=view";s:10:"link_title";s:30:"مشاهده همه خدمات";s:6:"number";s:2:"10";s:11:"description";s:0:"";}', 1);
 /*!40000 ALTER TABLE `tbl_page_widget` ENABLE KEYS */;
 
---
--- Table structure for table `tbl_payment_log`
---
-
-CREATE TABLE `tbl_payment_log` (
+-- Dumping structure for table reservation.tbl_payment_log
+DROP TABLE IF EXISTS `tbl_payment_log`;
+CREATE TABLE IF NOT EXISTS `tbl_payment_log` (
   `p_id` int NOT NULL,
   `payment_vids_id` varchar(100) NOT NULL,
   `order_vids_id` varchar(100) NOT NULL,
@@ -1559,6 +1572,7 @@ CREATE TABLE `tbl_payment_log` (
 -- Dumping data for table reservation.tbl_payment_log: ~0 rows (approximately)
 
 -- Dumping structure for table reservation.tbl_payment_methods
+DROP TABLE IF EXISTS `tbl_payment_methods`;
 CREATE TABLE IF NOT EXISTS `tbl_payment_methods` (
   `pay_id` int NOT NULL AUTO_INCREMENT,
   `pay_default` tinyint NOT NULL DEFAULT '0',
@@ -1574,7 +1588,7 @@ CREATE TABLE IF NOT EXISTS `tbl_payment_methods` (
   `test_status` tinyint NOT NULL DEFAULT '0',
   `pay_status` tinyint NOT NULL DEFAULT '1',
   PRIMARY KEY (`pay_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf32;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3;
 
 -- Dumping data for table reservation.tbl_payment_methods: 3 rows
 /*!40000 ALTER TABLE `tbl_payment_methods` DISABLE KEYS */;
@@ -1585,6 +1599,7 @@ INSERT IGNORE INTO `tbl_payment_methods` (`pay_id`, `pay_default`, `pay_type`, `
 /*!40000 ALTER TABLE `tbl_payment_methods` ENABLE KEYS */;
 
 -- Dumping structure for table reservation.tbl_pettycash
+DROP TABLE IF EXISTS `tbl_pettycash`;
 CREATE TABLE IF NOT EXISTS `tbl_pettycash` (
   `p_id` int NOT NULL AUTO_INCREMENT,
   `pettyCash_vids_id` varchar(100) NOT NULL,
@@ -1594,7 +1609,7 @@ CREATE TABLE IF NOT EXISTS `tbl_pettycash` (
   `p_date` varchar(50) NOT NULL,
   `p_status` tinyint NOT NULL DEFAULT '1',
   PRIMARY KEY (`p_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=1001 DEFAULT CHARSET=utf32;
+) ENGINE=MyISAM AUTO_INCREMENT=1001 DEFAULT CHARSET=utf8mb3;
 
 -- Dumping data for table reservation.tbl_pettycash: 1 rows
 /*!40000 ALTER TABLE `tbl_pettycash` DISABLE KEYS */;
@@ -1603,12 +1618,13 @@ INSERT IGNORE INTO `tbl_pettycash` (`p_id`, `pettyCash_vids_id`, `p_name`, `p_cu
 /*!40000 ALTER TABLE `tbl_pettycash` ENABLE KEYS */;
 
 -- Dumping structure for table reservation.tbl_provinces
+DROP TABLE IF EXISTS `tbl_provinces`;
 CREATE TABLE IF NOT EXISTS `tbl_provinces` (
   `pro_id` int unsigned NOT NULL AUTO_INCREMENT,
-  `pro_name` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
+  `pro_name` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
   `pro_status` tinyint NOT NULL DEFAULT '1',
   PRIMARY KEY (`pro_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 -- Dumping data for table reservation.tbl_provinces: ~31 rows (approximately)
 INSERT IGNORE INTO `tbl_provinces` (`pro_id`, `pro_name`, `pro_status`) VALUES
@@ -1645,6 +1661,7 @@ INSERT IGNORE INTO `tbl_provinces` (`pro_id`, `pro_name`, `pro_status`) VALUES
 	(31, 'يزد', 1);
 
 -- Dumping structure for table reservation.tbl_rating
+DROP TABLE IF EXISTS `tbl_rating`;
 CREATE TABLE IF NOT EXISTS `tbl_rating` (
   `r_id` int NOT NULL AUTO_INCREMENT,
   `r_type` varchar(20) NOT NULL,
@@ -1652,13 +1669,14 @@ CREATE TABLE IF NOT EXISTS `tbl_rating` (
   `user_id` int NOT NULL,
   `r_rate` int DEFAULT '0',
   PRIMARY KEY (`r_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf32;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
 
 -- Dumping data for table reservation.tbl_rating: 0 rows
 /*!40000 ALTER TABLE `tbl_rating` DISABLE KEYS */;
 /*!40000 ALTER TABLE `tbl_rating` ENABLE KEYS */;
 
 -- Dumping structure for table reservation.tbl_ratings
+DROP TABLE IF EXISTS `tbl_ratings`;
 CREATE TABLE IF NOT EXISTS `tbl_ratings` (
   `r_id` int NOT NULL AUTO_INCREMENT,
   `service_id` int NOT NULL,
@@ -1666,13 +1684,14 @@ CREATE TABLE IF NOT EXISTS `tbl_ratings` (
   `create_date` varchar(50) NOT NULL,
   `r_status` tinyint NOT NULL DEFAULT '1',
   PRIMARY KEY (`r_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf32;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
 
 -- Dumping data for table reservation.tbl_ratings: 0 rows
 /*!40000 ALTER TABLE `tbl_ratings` DISABLE KEYS */;
 /*!40000 ALTER TABLE `tbl_ratings` ENABLE KEYS */;
 
 -- Dumping structure for table reservation.tbl_redirect
+DROP TABLE IF EXISTS `tbl_redirect`;
 CREATE TABLE IF NOT EXISTS `tbl_redirect` (
   `r_id` bigint unsigned NOT NULL AUTO_INCREMENT,
   `old_url` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -1688,6 +1707,7 @@ CREATE TABLE IF NOT EXISTS `tbl_redirect` (
 /*!40000 ALTER TABLE `tbl_redirect` ENABLE KEYS */;
 
 -- Dumping structure for table reservation.tbl_score
+DROP TABLE IF EXISTS `tbl_score`;
 CREATE TABLE IF NOT EXISTS `tbl_score` (
   `id` int NOT NULL,
   `user_id` int NOT NULL,
@@ -1699,6 +1719,7 @@ CREATE TABLE IF NOT EXISTS `tbl_score` (
 -- Dumping data for table reservation.tbl_score: ~0 rows (approximately)
 
 -- Dumping structure for table reservation.tbl_searches
+DROP TABLE IF EXISTS `tbl_searches`;
 CREATE TABLE IF NOT EXISTS `tbl_searches` (
   `s_id` int NOT NULL AUTO_INCREMENT,
   `s_phrase` varchar(1000) NOT NULL,
@@ -1708,11 +1729,14 @@ CREATE TABLE IF NOT EXISTS `tbl_searches` (
   `s_management_selection` tinyint NOT NULL DEFAULT '0',
   `s_date` varchar(50) NOT NULL,
   PRIMARY KEY (`s_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf32;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
 
--- --------------------------------------------------------
+-- Dumping data for table reservation.tbl_searches: 0 rows
+/*!40000 ALTER TABLE `tbl_searches` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_searches` ENABLE KEYS */;
 
 -- Dumping structure for table reservation.tbl_services
+DROP TABLE IF EXISTS `tbl_services`;
 CREATE TABLE IF NOT EXISTS `tbl_services` (
   `s_id` int NOT NULL AUTO_INCREMENT,
   `s_title` varchar(250) NOT NULL,
@@ -1732,7 +1756,7 @@ CREATE TABLE IF NOT EXISTS `tbl_services` (
   `s_view` int NOT NULL DEFAULT '0',
   `s_status` tinyint NOT NULL DEFAULT '1',
   PRIMARY KEY (`s_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf32;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb3;
 
 -- Dumping data for table reservation.tbl_services: 5 rows
 /*!40000 ALTER TABLE `tbl_services` DISABLE KEYS */;
@@ -1745,19 +1769,21 @@ INSERT IGNORE INTO `tbl_services` (`s_id`, `s_title`, `s_title_en`, `seo_title`,
 /*!40000 ALTER TABLE `tbl_services` ENABLE KEYS */;
 
 -- Dumping structure for table reservation.tbl_services_related_blog
+DROP TABLE IF EXISTS `tbl_services_related_blog`;
 CREATE TABLE IF NOT EXISTS `tbl_services_related_blog` (
   `srb_id` int NOT NULL AUTO_INCREMENT,
   `service_id` int NOT NULL,
   `blog_id` int NOT NULL,
   `srb_status` tinyint NOT NULL DEFAULT '1',
   PRIMARY KEY (`srb_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf32;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
 
 -- Dumping data for table reservation.tbl_services_related_blog: 0 rows
 /*!40000 ALTER TABLE `tbl_services_related_blog` DISABLE KEYS */;
 /*!40000 ALTER TABLE `tbl_services_related_blog` ENABLE KEYS */;
 
 -- Dumping structure for table reservation.tbl_services_reservation
+DROP TABLE IF EXISTS `tbl_services_reservation`;
 CREATE TABLE IF NOT EXISTS `tbl_services_reservation` (
   `sre_id` int NOT NULL AUTO_INCREMENT,
   `reason_create` varchar(20) DEFAULT NULL,
@@ -1774,8 +1800,8 @@ CREATE TABLE IF NOT EXISTS `tbl_services_reservation` (
   `beforepay` varchar(255) NOT NULL DEFAULT '-',
   `afterpay` varchar(255) NOT NULL DEFAULT '-',
   `payment_method_id` int DEFAULT NULL,
-  `sre_date_payment` varchar(30) CHARACTER SET utf32 COLLATE utf32_general_ci DEFAULT NULL,
-  `sre_time_payment` varchar(10) CHARACTER SET utf32 COLLATE utf32_general_ci DEFAULT NULL,
+  `sre_date_payment` varchar(30) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
+  `sre_time_payment` varchar(10) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
   `sre_is_need_to_prepayment` tinyint NOT NULL DEFAULT '1',
   `sre_price_prepayment` varchar(15) NOT NULL DEFAULT '0',
   `sre_price_payment` varchar(15) NOT NULL DEFAULT '0',
@@ -1789,13 +1815,17 @@ CREATE TABLE IF NOT EXISTS `tbl_services_reservation` (
   `sre_done_date` varchar(30) DEFAULT NULL,
   `sre_status` tinyint NOT NULL DEFAULT '0',
   PRIMARY KEY (`sre_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf32;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3;
 
--- Dumping data for table reservation.tbl_services_reservation: 0 rows
+-- Dumping data for table reservation.tbl_services_reservation: 2 rows
 /*!40000 ALTER TABLE `tbl_services_reservation` DISABLE KEYS */;
+INSERT IGNORE INTO `tbl_services_reservation` (`sre_id`, `reason_create`, `user_id`, `service_id`, `branch_id`, `staff_id`, `order_service_vids_id`, `sre_date`, `sre_time`, `sre_day`, `sre_vip`, `sre_pay`, `beforepay`, `afterpay`, `payment_method_id`, `sre_date_payment`, `sre_time_payment`, `sre_is_need_to_prepayment`, `sre_price_prepayment`, `sre_price_payment`, `sre_price_total`, `sre_off_code`, `sre_off_code_price`, `sre_date_create`, `sre_time_create`, `sre_timestamp_expire`, `sre_accounting_description`, `sre_done_date`, `sre_status`) VALUES
+	(1, NULL, 1001, 1, 1000, 1001, '100110001', '1402/06/11', '10:00', 'شنبه', 0, 0, '-', '-', 1, NULL, NULL, 1, '500000', '0', '2000000', NULL, '0', '1402/06/07', '22:00:06', '1693330506', NULL, NULL, 1),
+	(2, NULL, 1001, 1, 1000, 1005, '100110002', '1402/06/14', '10:45', 'سه شنبه', 0, 0, '-', '-', 1, NULL, NULL, 1, '1000000', '0', '2500000', NULL, '0', '1402/06/12', '22:12:41', '1693763261', NULL, NULL, 1);
 /*!40000 ALTER TABLE `tbl_services_reservation` ENABLE KEYS */;
 
 -- Dumping structure for table reservation.tbl_services_reservation_log
+DROP TABLE IF EXISTS `tbl_services_reservation_log`;
 CREATE TABLE IF NOT EXISTS `tbl_services_reservation_log` (
   `idusr_activity` int NOT NULL AUTO_INCREMENT,
   `admin_id` int unsigned DEFAULT NULL,
@@ -1809,6 +1839,7 @@ CREATE TABLE IF NOT EXISTS `tbl_services_reservation_log` (
 -- Dumping data for table reservation.tbl_services_reservation_log: ~0 rows (approximately)
 
 -- Dumping structure for table reservation.tbl_services_reservation_product
+DROP TABLE IF EXISTS `tbl_services_reservation_product`;
 CREATE TABLE IF NOT EXISTS `tbl_services_reservation_product` (
   `srp_id` int NOT NULL AUTO_INCREMENT,
   `reservation_id` varchar(250) NOT NULL,
@@ -1827,6 +1858,7 @@ CREATE TABLE IF NOT EXISTS `tbl_services_reservation_product` (
 /*!40000 ALTER TABLE `tbl_services_reservation_product` ENABLE KEYS */;
 
 -- Dumping structure for table reservation.tbl_services_reservation_staff
+DROP TABLE IF EXISTS `tbl_services_reservation_staff`;
 CREATE TABLE IF NOT EXISTS `tbl_services_reservation_staff` (
   `os_id` int NOT NULL AUTO_INCREMENT,
   `order_service_vids_id` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
@@ -1844,6 +1876,7 @@ CREATE TABLE IF NOT EXISTS `tbl_services_reservation_staff` (
 /*!40000 ALTER TABLE `tbl_services_reservation_staff` ENABLE KEYS */;
 
 -- Dumping structure for table reservation.tbl_services_staff
+DROP TABLE IF EXISTS `tbl_services_staff`;
 CREATE TABLE IF NOT EXISTS `tbl_services_staff` (
   `r_id` int NOT NULL AUTO_INCREMENT,
   `staff_vids_id` varchar(100) NOT NULL,
@@ -1871,18 +1904,20 @@ INSERT IGNORE INTO `tbl_services_staff` (`r_id`, `staff_vids_id`, `name`, `exper
 /*!40000 ALTER TABLE `tbl_services_staff` ENABLE KEYS */;
 
 -- Dumping structure for table reservation.tbl_services_tag
+DROP TABLE IF EXISTS `tbl_services_tag`;
 CREATE TABLE IF NOT EXISTS `tbl_services_tag` (
   `pt_id` int NOT NULL AUTO_INCREMENT,
   `service_id` int NOT NULL,
   `tag_id` int NOT NULL,
   PRIMARY KEY (`pt_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf32;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
 
 -- Dumping data for table reservation.tbl_services_tag: 0 rows
 /*!40000 ALTER TABLE `tbl_services_tag` DISABLE KEYS */;
 /*!40000 ALTER TABLE `tbl_services_tag` ENABLE KEYS */;
 
 -- Dumping structure for table reservation.tbl_services_tariff
+DROP TABLE IF EXISTS `tbl_services_tariff`;
 CREATE TABLE IF NOT EXISTS `tbl_services_tariff` (
   `st_id` int NOT NULL AUTO_INCREMENT,
   `service_id` int NOT NULL,
@@ -1893,7 +1928,7 @@ CREATE TABLE IF NOT EXISTS `tbl_services_tariff` (
   `st_deposit` varchar(11) NOT NULL DEFAULT '0',
   `st_status` tinyint NOT NULL DEFAULT '1',
   PRIMARY KEY (`st_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf32;
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb3;
 
 -- Dumping data for table reservation.tbl_services_tariff: 7 rows
 /*!40000 ALTER TABLE `tbl_services_tariff` DISABLE KEYS */;
@@ -1908,6 +1943,7 @@ INSERT IGNORE INTO `tbl_services_tariff` (`st_id`, `service_id`, `branch_id`, `o
 /*!40000 ALTER TABLE `tbl_services_tariff` ENABLE KEYS */;
 
 -- Dumping structure for table reservation.tbl_services_timing
+DROP TABLE IF EXISTS `tbl_services_timing`;
 CREATE TABLE IF NOT EXISTS `tbl_services_timing` (
   `st_id` int NOT NULL AUTO_INCREMENT,
   `service_id` int NOT NULL,
@@ -1917,7 +1953,7 @@ CREATE TABLE IF NOT EXISTS `tbl_services_timing` (
   `st_allowed_time_book_repair_appointment` int NOT NULL DEFAULT '0',
   `st_complete_time_reservation` varchar(5) NOT NULL DEFAULT '30' COMMENT 'minutes',
   `st_turn_default` varchar(20) NOT NULL DEFAULT 'default',
-  `st_turn_custom_date` varchar(20) CHARACTER SET utf32 COLLATE utf32_general_ci NOT NULL DEFAULT 'custome_date',
+  `st_turn_custom_date` varchar(20) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL DEFAULT 'custome_date',
   `st_turn_saturday` varchar(20) NOT NULL DEFAULT 'default',
   `st_turn_sunday` varchar(20) NOT NULL DEFAULT 'default',
   `st_turn_monday` varchar(20) NOT NULL DEFAULT 'default',
@@ -1927,7 +1963,7 @@ CREATE TABLE IF NOT EXISTS `tbl_services_timing` (
   `st_turn_friday` varchar(20) NOT NULL DEFAULT 'not_turn',
   `st_turn_holiday` varchar(20) NOT NULL DEFAULT 'not_turn',
   PRIMARY KEY (`st_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf32;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb3;
 
 -- Dumping data for table reservation.tbl_services_timing: 5 rows
 /*!40000 ALTER TABLE `tbl_services_timing` DISABLE KEYS */;
@@ -1940,6 +1976,7 @@ INSERT IGNORE INTO `tbl_services_timing` (`st_id`, `service_id`, `st_auto_timing
 /*!40000 ALTER TABLE `tbl_services_timing` ENABLE KEYS */;
 
 -- Dumping structure for table reservation.tbl_services_timing_manage_day
+DROP TABLE IF EXISTS `tbl_services_timing_manage_day`;
 CREATE TABLE IF NOT EXISTS `tbl_services_timing_manage_day` (
   `sm_id` int NOT NULL AUTO_INCREMENT,
   `service_id` int NOT NULL,
@@ -1951,7 +1988,7 @@ CREATE TABLE IF NOT EXISTS `tbl_services_timing_manage_day` (
   `sm_vip` tinyint NOT NULL DEFAULT '0',
   `sm_status` tinyint NOT NULL DEFAULT '1',
   PRIMARY KEY (`sm_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf32;
+) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb3;
 
 -- Dumping data for table reservation.tbl_services_timing_manage_day: 9 rows
 /*!40000 ALTER TABLE `tbl_services_timing_manage_day` DISABLE KEYS */;
@@ -1968,6 +2005,7 @@ INSERT IGNORE INTO `tbl_services_timing_manage_day` (`sm_id`, `service_id`, `sm_
 /*!40000 ALTER TABLE `tbl_services_timing_manage_day` ENABLE KEYS */;
 
 -- Dumping structure for table reservation.tbl_settings
+DROP TABLE IF EXISTS `tbl_settings`;
 CREATE TABLE IF NOT EXISTS `tbl_settings` (
   `id` int NOT NULL AUTO_INCREMENT,
   `key` text,
@@ -2085,6 +2123,7 @@ INSERT IGNORE INTO `tbl_settings` (`id`, `key`, `value`, `default_value`) VALUES
 	(105, 'license_info', '', '');
 
 -- Dumping structure for table reservation.tbl_sidebar
+DROP TABLE IF EXISTS `tbl_sidebar`;
 CREATE TABLE IF NOT EXISTS `tbl_sidebar` (
   `s_id` int NOT NULL AUTO_INCREMENT,
   `s_parent_id` int NOT NULL DEFAULT '0',
@@ -2177,16 +2216,17 @@ INSERT IGNORE INTO `tbl_sidebar` (`s_id`, `s_parent_id`, `s_name`, `s_link`, `s_
 /*!40000 ALTER TABLE `tbl_sidebar` ENABLE KEYS */;
 
 -- Dumping structure for table reservation.tbl_sidebar_access_list
+DROP TABLE IF EXISTS `tbl_sidebar_access_list`;
 CREATE TABLE IF NOT EXISTS `tbl_sidebar_access_list` (
   `sal_id` int NOT NULL AUTO_INCREMENT,
   `sidebar_id_main_part` int NOT NULL COMMENT 'آیدی منوی اصلی',
   `sidebar_menu_id` int NOT NULL COMMENT 'آیدی لینک مورد نظر در جدول sidebar',
   `sidebar_id_part` int NOT NULL COMMENT 'آیدی منویی که لینک در آن نمایش داده شود',
-  `sal_title` varchar(100) CHARACTER SET utf32 COLLATE utf32_general_ci NOT NULL,
-  `sal_permisson` varchar(100) CHARACTER SET utf32 COLLATE utf32_general_ci NOT NULL,
+  `sal_title` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
+  `sal_permisson` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
   `sal_status` tinyint DEFAULT '1',
   PRIMARY KEY (`sal_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=225 DEFAULT CHARSET=utf32;
+) ENGINE=InnoDB AUTO_INCREMENT=225 DEFAULT CHARSET=utf8mb3;
 
 -- Dumping data for table reservation.tbl_sidebar_access_list: ~188 rows (approximately)
 INSERT IGNORE INTO `tbl_sidebar_access_list` (`sal_id`, `sidebar_id_main_part`, `sidebar_menu_id`, `sidebar_id_part`, `sal_title`, `sal_permisson`, `sal_status`) VALUES
@@ -2380,6 +2420,7 @@ INSERT IGNORE INTO `tbl_sidebar_access_list` (`sal_id`, `sidebar_id_main_part`, 
 	(224, 13, 99, 99, 'فعالسازی لایسنس', 'license_view', 1);
 
 -- Dumping structure for table reservation.tbl_slider
+DROP TABLE IF EXISTS `tbl_slider`;
 CREATE TABLE IF NOT EXISTS `tbl_slider` (
   `s_id` int NOT NULL AUTO_INCREMENT,
   `s_title` varchar(250) NOT NULL,
@@ -2387,7 +2428,7 @@ CREATE TABLE IF NOT EXISTS `tbl_slider` (
   `s_create_date` varchar(30) NOT NULL,
   `s_status` tinyint NOT NULL DEFAULT '0',
   PRIMARY KEY (`s_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf32;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
 
 -- Dumping data for table reservation.tbl_slider: 1 rows
 /*!40000 ALTER TABLE `tbl_slider` DISABLE KEYS */;
@@ -2396,15 +2437,16 @@ INSERT IGNORE INTO `tbl_slider` (`s_id`, `s_title`, `s_type`, `s_create_date`, `
 /*!40000 ALTER TABLE `tbl_slider` ENABLE KEYS */;
 
 -- Dumping structure for table reservation.tbl_slider_image
+DROP TABLE IF EXISTS `tbl_slider_image`;
 CREATE TABLE IF NOT EXISTS `tbl_slider_image` (
   `si_id` int NOT NULL AUTO_INCREMENT,
   `slider_id` int NOT NULL,
-  `si_title` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_persian_ci NOT NULL,
-  `si_link` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_persian_ci NOT NULL,
-  `si_image` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_persian_ci NOT NULL,
+  `si_title` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
+  `si_link` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
+  `si_image` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
   `si_status` tinyint NOT NULL DEFAULT '1',
   PRIMARY KEY (`si_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_persian_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 -- Dumping data for table reservation.tbl_slider_image: ~3 rows (approximately)
 INSERT IGNORE INTO `tbl_slider_image` (`si_id`, `slider_id`, `si_title`, `si_link`, `si_image`, `si_status`) VALUES
@@ -2413,6 +2455,7 @@ INSERT IGNORE INTO `tbl_slider_image` (`si_id`, `slider_id`, `si_title`, `si_lin
 	(3, 1, '3', ' ', '1680803093_makeup slider.jpg', 1);
 
 -- Dumping structure for table reservation.tbl_sources
+DROP TABLE IF EXISTS `tbl_sources`;
 CREATE TABLE IF NOT EXISTS `tbl_sources` (
   `so_id` int NOT NULL AUTO_INCREMENT,
   `title` varchar(1000) NOT NULL,
@@ -2427,25 +2470,26 @@ CREATE TABLE IF NOT EXISTS `tbl_sources` (
   PRIMARY KEY (`so_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
 
--- Dumping data for table reservation.tbl_sources: ~0 rows (approximately)
+-- Dumping data for table reservation.tbl_sources: ~1 rows (approximately)
 INSERT IGNORE INTO `tbl_sources` (`so_id`, `title`, `link`, `image`, `user_id`, `count`, `date`, `date_edit`, `user_id_edit`, `status`) VALUES
 	(1, 'ونسا', '#', NULL, 1, 4, '1402/01/17', '-', '-', 1);
 
 -- Dumping structure for table reservation.tbl_status
+DROP TABLE IF EXISTS `tbl_status`;
 CREATE TABLE IF NOT EXISTS `tbl_status` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `type` varchar(10) CHARACTER SET utf8mb3 COLLATE utf8mb3_persian_ci NOT NULL DEFAULT 'sale',
-  `title` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_persian_ci NOT NULL,
-  `text` varchar(1000) CHARACTER SET utf8mb3 COLLATE utf8mb3_persian_ci DEFAULT NULL,
+  `type` varchar(10) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL DEFAULT 'sale',
+  `title` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
+  `text` varchar(1000) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
   `code` int DEFAULT NULL,
   `show_in_status` tinyint DEFAULT '1',
   `show_in_sms` tinyint DEFAULT '1',
   `percent` int DEFAULT '0',
-  `background_color` varchar(20) CHARACTER SET utf8mb3 COLLATE utf8mb3_persian_ci DEFAULT NULL,
+  `background_color` varchar(20) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
   `removable` tinyint NOT NULL DEFAULT '1',
   `status` tinyint NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_persian_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 -- Dumping data for table reservation.tbl_status: ~8 rows (approximately)
 INSERT IGNORE INTO `tbl_status` (`id`, `type`, `title`, `text`, `code`, `show_in_status`, `show_in_sms`, `percent`, `background_color`, `removable`, `status`) VALUES
@@ -2459,6 +2503,7 @@ INSERT IGNORE INTO `tbl_status` (`id`, `type`, `title`, `text`, `code`, `show_in
 	(8, 'service', 'کد پیگیری درخواست', 'کد پیگیری درخواست رزرو شما [RCODE] می‌باشد.\r\nباتشکر\r\n[BNAME]', NULL, 0, 1, 0, NULL, 0, 1);
 
 -- Dumping structure for table reservation.tbl_storeroom
+DROP TABLE IF EXISTS `tbl_storeroom`;
 CREATE TABLE IF NOT EXISTS `tbl_storeroom` (
   `s_id` int NOT NULL AUTO_INCREMENT,
   `storeroom_vids_id` varchar(100) NOT NULL,
@@ -2468,7 +2513,7 @@ CREATE TABLE IF NOT EXISTS `tbl_storeroom` (
   `s_date` varchar(50) DEFAULT NULL,
   `s_status` tinyint NOT NULL DEFAULT '1',
   PRIMARY KEY (`s_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf32;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
 
 -- Dumping data for table reservation.tbl_storeroom: 1 rows
 /*!40000 ALTER TABLE `tbl_storeroom` DISABLE KEYS */;
@@ -2477,21 +2522,23 @@ INSERT IGNORE INTO `tbl_storeroom` (`s_id`, `storeroom_vids_id`, `branch_id`, `s
 /*!40000 ALTER TABLE `tbl_storeroom` ENABLE KEYS */;
 
 -- Dumping structure for table reservation.tbl_storeroom_product
+DROP TABLE IF EXISTS `tbl_storeroom_product`;
 CREATE TABLE IF NOT EXISTS `tbl_storeroom_product` (
   `sr_id` int NOT NULL AUTO_INCREMENT,
-  `product_vids_id` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_persian_ci NOT NULL,
+  `product_vids_id` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
   `storeroom_id` int NOT NULL,
-  `sr_name` varchar(1000) CHARACTER SET utf8mb3 COLLATE utf8mb3_persian_ci NOT NULL,
+  `sr_name` varchar(1000) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
   `sr_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `sr_status` tinyint NOT NULL DEFAULT '1',
   PRIMARY KEY (`sr_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_persian_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 -- Dumping data for table reservation.tbl_storeroom_product: 0 rows
 /*!40000 ALTER TABLE `tbl_storeroom_product` DISABLE KEYS */;
 /*!40000 ALTER TABLE `tbl_storeroom_product` ENABLE KEYS */;
 
 -- Dumping structure for table reservation.tbl_storeroom_product_inventory
+DROP TABLE IF EXISTS `tbl_storeroom_product_inventory`;
 CREATE TABLE IF NOT EXISTS `tbl_storeroom_product_inventory` (
   `spi_id` int NOT NULL AUTO_INCREMENT,
   `storeroom_id` int NOT NULL,
@@ -2503,13 +2550,14 @@ CREATE TABLE IF NOT EXISTS `tbl_storeroom_product_inventory` (
   `spi_existing_completion_date` varchar(50) DEFAULT NULL,
   `spi_status` tinyint NOT NULL DEFAULT '1',
   PRIMARY KEY (`spi_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf32;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
 
 -- Dumping data for table reservation.tbl_storeroom_product_inventory: 0 rows
 /*!40000 ALTER TABLE `tbl_storeroom_product_inventory` DISABLE KEYS */;
 /*!40000 ALTER TABLE `tbl_storeroom_product_inventory` ENABLE KEYS */;
 
 -- Dumping structure for table reservation.tbl_tags
+DROP TABLE IF EXISTS `tbl_tags`;
 CREATE TABLE IF NOT EXISTS `tbl_tags` (
   `t_id` int NOT NULL AUTO_INCREMENT,
   `tag` varchar(1000) NOT NULL,
@@ -2526,21 +2574,22 @@ CREATE TABLE IF NOT EXISTS `tbl_tags` (
 -- Dumping data for table reservation.tbl_tags: ~0 rows (approximately)
 
 -- Dumping structure for table reservation.tbl_template
+DROP TABLE IF EXISTS `tbl_template`;
 CREATE TABLE IF NOT EXISTS `tbl_template` (
   `t_id` int NOT NULL AUTO_INCREMENT,
-  `t_part` enum('dashboard','main') CHARACTER SET utf32 COLLATE utf32_general_ci DEFAULT NULL,
+  `t_part` enum('dashboard','main') CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
   `t_href` varchar(50) DEFAULT NULL,
   `t_title` varchar(250) NOT NULL,
   `t_show_title` tinyint DEFAULT '0',
   `t_description` varchar(1000) DEFAULT NULL,
-  `t_help_txt` varchar(1000) CHARACTER SET utf32 COLLATE utf32_general_ci DEFAULT NULL,
-  `t_image` varchar(100) CHARACTER SET utf32 COLLATE utf32_general_ci DEFAULT NULL,
+  `t_help_txt` varchar(1000) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
+  `t_image` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
   `t_theme` varchar(20) NOT NULL DEFAULT 'default',
   `t_is_custom` tinyint DEFAULT '0',
   `t_is_default_widget` tinyint DEFAULT '0',
   `t_status` int NOT NULL,
   PRIMARY KEY (`t_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=23 DEFAULT CHARSET=utf32;
+) ENGINE=MyISAM AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb3;
 
 -- Dumping data for table reservation.tbl_template: 16 rows
 /*!40000 ALTER TABLE `tbl_template` DISABLE KEYS */;
@@ -2564,6 +2613,7 @@ INSERT IGNORE INTO `tbl_template` (`t_id`, `t_part`, `t_href`, `t_title`, `t_sho
 /*!40000 ALTER TABLE `tbl_template` ENABLE KEYS */;
 
 -- Dumping structure for table reservation.tbl_vids
+DROP TABLE IF EXISTS `tbl_vids`;
 CREATE TABLE IF NOT EXISTS `tbl_vids` (
   `vids_id` int NOT NULL AUTO_INCREMENT,
   `panel_id` int NOT NULL,
@@ -2581,7 +2631,7 @@ CREATE TABLE IF NOT EXISTS `tbl_vids` (
   `product_id` varchar(100) NOT NULL DEFAULT '1000',
   `admin_id` varchar(100) NOT NULL DEFAULT '1000',
   PRIMARY KEY (`vids_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf32;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
 
 -- Dumping data for table reservation.tbl_vids: 1 rows
 /*!40000 ALTER TABLE `tbl_vids` DISABLE KEYS */;
@@ -2590,6 +2640,7 @@ INSERT IGNORE INTO `tbl_vids` (`vids_id`, `panel_id`, `order_service_id`, `staff
 /*!40000 ALTER TABLE `tbl_vids` ENABLE KEYS */;
 
 -- Dumping structure for table reservation.tbl_view
+DROP TABLE IF EXISTS `tbl_view`;
 CREATE TABLE IF NOT EXISTS `tbl_view` (
   `v_id` int NOT NULL AUTO_INCREMENT,
   `item_id` int NOT NULL,
@@ -2597,7 +2648,7 @@ CREATE TABLE IF NOT EXISTS `tbl_view` (
   `ip` varchar(100) NOT NULL,
   `date` varchar(30) NOT NULL,
   PRIMARY KEY (`v_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb3;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
