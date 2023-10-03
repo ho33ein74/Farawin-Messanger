@@ -273,9 +273,9 @@ $categoryParsedAry = array(
                     "name": "<?= $data['getBlog'][0]['title']; ?>",
                     "url": "<?= URL ?>blog/article/<?= $data['getBlog'][0]['slug'] ?>"
                 },
-                "ratingValue": "<?= $data['scoreItem']['sum'] / $data['scoreItem']['count'] ?>",
+                "ratingValue": "0",
                 "bestRating": "5",
-                "ratingCount": "<?= $data['scoreItem']['count'] ?>"
+                "ratingCount": "0"
             }
         }
 

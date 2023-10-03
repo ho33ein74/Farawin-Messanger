@@ -1105,7 +1105,7 @@
                                         </div>
                                         <!-- /.box-header -->
                                         <div class="box-body">
-                                            <div class="d-flex justify-content-between align-items-center py-5 pb-2">
+                                            <div class="d-flex justify-content-between align-items-center py-5 pb-2" style="display: none !important;">
                                                 <label for="switcher-1">
                                                     فعال بودن حالت نوبت دهی خودکار؟
                                                 </label>
@@ -1120,9 +1120,9 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <p class="text-muted mb-4">در صورتی که این قابلیت را فعال نمایید سیستم به صورت اتوماتیک، از بین زمان بندی های ارائه شده اولین زمان خالی را به مشتری اختصاص خواهد داد.</p>
+                                            <p style="display: none !important;" class="text-muted mb-4">در صورتی که این قابلیت را فعال نمایید سیستم به صورت اتوماتیک، از بین زمان بندی های ارائه شده اولین زمان خالی را به مشتری اختصاص خواهد داد.</p>
 
-                                            <hr/>
+                                            <hr style="display: none !important;"/>
                                             <div class="d-flex justify-content-between align-items-center py-5">
                                                 <label for="switcher-2">
                                                     نمایش تعداد روزهای فعال برای رزرو نوبت

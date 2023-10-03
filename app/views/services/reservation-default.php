@@ -221,9 +221,9 @@ foreach ($data['servicesTag'] as $tag) {
                     "name": "<?= $data['services']['seo_title'] ?>",
                     "url": "<?= URL ?>services/<?= $data['services']['s_slug'] ?>"
                 },
-                "ratingValue": "<?= $data['scoreItem']['sum']/$data['scoreItem']['count'] ?>",
+                "ratingValue": "0",
                 "bestRating": "5",
-                "ratingCount": "<?= $data['scoreItem']['count'] ?>"
+                "ratingCount": "0"
             }
         }
     </script>
