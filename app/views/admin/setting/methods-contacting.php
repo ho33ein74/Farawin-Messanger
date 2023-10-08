@@ -701,7 +701,6 @@
         $("#show_in_desktopEdit").val(info.show_in_desktop).change();
 
         const popup = ["16", "17", "18"];
-        console.log("id", info.id);
         if(popup.includes(info.id)){
             $("#show_in_footerEdit").prop('disabled', true);
             $("#show_in_login_pageEdit").prop('disabled', true);

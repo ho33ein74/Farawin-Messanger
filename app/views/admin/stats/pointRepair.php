@@ -154,7 +154,6 @@
 
         table.columns().every(function () {
             var column = this;
-            console.log(column);
             $('input', this.footer()).on('keyup change', function () {
                 if (column.search() !== this.value) {
                     column.search(this.value).draw();

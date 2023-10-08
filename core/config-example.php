@@ -12,10 +12,6 @@ const VERSION = "1.0.0";
 //don't change this param
 const KEY = 'enter_encryption_key';
 
-//Developer
-const DEVELOPER = "یونیکس تیم";
-const SITE = "https://unix-team.ir";
-
 //Default user test for enamad
 // * important: Ensure that this section is disabled after Enamad has been tested
 const ENAMAD_USER_ACTIVE = 0;

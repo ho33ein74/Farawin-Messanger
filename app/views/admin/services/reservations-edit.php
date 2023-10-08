@@ -432,7 +432,6 @@
                         whatToDoNext(res);
                     }
                 },
-                error: function () { console.log('error'); }
             });
         } else {
             $.wnoty({type: 'error', message: 'وضعیت شما آفلاین می باشد و امکان دریافت زمان ها وجود ندارد.'});
