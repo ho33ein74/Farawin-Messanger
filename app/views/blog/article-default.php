@@ -779,31 +779,20 @@ $categoryParsedAry = array(
                                     </div>
 
                                     <?php if (isset($data['userId']) and $data['userId'] != FALSE) { ?>
-                                        <div wire:id="item-<?= $data['attrId']; ?>"
-                                             wire:initial-data="{&quot;fingerprint&quot;:{&quot;id&quot;:&quot;item-<?= $data['attrId']; ?>&quot;,&quot;name&quot;:&quot;user\/sendComment&quot;,&quot;type&quot;:&quot;blog&quot;,&quot;itemID&quot;:&quot;<?= $data['attrId']; ?>&quot;,&quot;locale&quot;:&quot;fa&quot;,&quot;path&quot;:&quot;blog\/article\/<?= $data['getBlog'][0]['slug'] ?>&quot;,&quot;method&quot;:&quot;GET&quot;,&quot;v&quot;:&quot;acj&quot;},&quot;effects&quot;:{&quot;listeners&quot;:[]},&quot;serverMemo&quot;:{&quot;children&quot;:{&quot;201045181&quot;:{&quot;id&quot;:&quot;X5EAUqbyw6oZ4xvzwW9P&quot;,&quot;tag&quot;:&quot;div&quot;}},&quot;errors&quot;:[],&quot;htmlHash&quot;:&quot;f5aee777&quot;,&quot;data&quot;:{&quot;formId&quot;:&quot;6290e73640e6b&quot;,&quot;subject&quot;:[],&quot;show&quot;:false,&quot;message&quot;:null,&quot;parentId&quot;:0,&quot;loading&quot;:null,&quot;user&quot;:[]},&quot;dataMeta&quot;:{&quot;models&quot;:{&quot;subject&quot;:{&quot;class&quot;:&quot;App\\Article&quot;,&quot;id&quot;:5950,&quot;relations&quot;:[&quot;rates&quot;,&quot;categories&quot;,&quot;tags&quot;,&quot;user&quot;],&quot;connection&quot;:&quot;mysql&quot;},&quot;user&quot;:{&quot;class&quot;:&quot;App\\User&quot;,&quot;id&quot;:2,&quot;relations&quot;:[],&quot;connection&quot;:&quot;mysql&quot;}}},&quot;checksum&quot;:&quot;2456e05255b5c359932e11b203dd8fb935bbbd205142f6f87cee6eb59e7ce535&quot;}}"
-                                             x-data="{ show : 0  , message : window.Livewire.find('item-<?= $data['attrId']; ?>').entangle('message').defer }"
-                                             x-on:show-send-comment.window="if($event.detail.id === 0) show = 1"
-                                             x-on:hide-send-comment.window="show = 0">
-                                            <div class="border border-gray-210 dark:border-opacity-10  rounded-lg mb-8 pt-9 pb-8 md:px-7 px-4"
-                                                 x-show="show" style="display: none">
+                                        <div wire:id="<?= md5($data['attrId']); ?>" wire:initial-data="{&quot;fingerprint&quot;:{&quot;id&quot;:&quot;<?= md5($data['attrId']); ?>&quot;,&quot;name&quot;:&quot;user\/sendComment&quot;,&quot;type&quot;:&quot;blog&quot;,&quot;itemID&quot;:&quot;<?= $data['attrId']; ?>&quot;,&quot;locale&quot;:&quot;fa&quot;,&quot;path&quot;:&quot;blog\/article\/<?= $data['getBlog'][0]['slug'] ?>&quot;,&quot;method&quot;:&quot;GET&quot;,&quot;v&quot;:&quot;acj&quot;},&quot;effects&quot;:{&quot;listeners&quot;:[]},&quot;serverMemo&quot;:{&quot;children&quot;:{&quot;1768091662&quot;:{&quot;id&quot;:&quot;PLyQj70ND7bh0xhTqSNg&quot;,&quot;tag&quot;:&quot;div&quot;}},&quot;errors&quot;:[],&quot;htmlHash&quot;:&quot;ab57c173&quot;,&quot;data&quot;:{&quot;formId&quot;:&quot;6522fecb8c2c9&quot;,&quot;subject&quot;:[],&quot;show&quot;:false,&quot;message&quot;:null,&quot;parentId&quot;:0,&quot;loading&quot;:null,&quot;user&quot;:[]},&quot;dataMeta&quot;:{&quot;models&quot;:{&quot;subject&quot;:{&quot;class&quot;:&quot;App\\Article&quot;,&quot;id&quot;:6285,&quot;relations&quot;:[&quot;rates&quot;,&quot;categories&quot;,&quot;tags&quot;,&quot;user&quot;],&quot;connection&quot;:&quot;mysql&quot;,&quot;collectionClass&quot;:null},&quot;user&quot;:{&quot;class&quot;:&quot;App\\User&quot;,&quot;id&quot;:2,&quot;relations&quot;:[],&quot;connection&quot;:&quot;mysql&quot;,&quot;collectionClass&quot;:null}}},&quot;checksum&quot;:&quot;6deb204e3ab4a0434a28808cbc680d5bffb151da0aa74dfdd7dd16a0ea1117bb&quot;}}" x-data="{ show : 0  , message : window.Livewire.find('<?= md5($data['attrId']); ?>').entangle('message').defer }" x-on:show-send-comment.window="if($event.detail.id === 0) show = 1" x-on:hide-send-comment.window="show = 0">
+                                            <div class="border border-gray-210 dark:border-opacity-10  rounded-lg mb-8 pt-9 pb-8 md:px-7 px-4" x-show="show" x-cloak>
 
                                                 <div class="border-b border-gray-210 dark:border-opacity-10">
                                                     <div class="flex mb-4 space-x-2 space-x-reverse">
-                                                        <div wire:id="X5EAUqbyw6oZ4xvzwW9P"
-                                                             wire:initial-data="{&quot;fingerprint&quot;:{&quot;id&quot;:&quot;X5EAUqbyw6oZ4xvzwW9P&quot;,&quot;name&quot;:&quot;layouts.avatar&quot;,&quot;locale&quot;:&quot;fa&quot;,&quot;path&quot;:&quot;articles\/web-design-commandments&quot;,&quot;method&quot;:&quot;GET&quot;,&quot;v&quot;:&quot;acj&quot;},&quot;effects&quot;:{&quot;listeners&quot;:[],&quot;path&quot;:&quot;<?= URL ?>blog/article/<?= $data['getBlog'][0]['slug'] ?>&quot;},&quot;serverMemo&quot;:{&quot;children&quot;:[],&quot;errors&quot;:[],&quot;htmlHash&quot;:&quot;02ca236f&quot;,&quot;data&quot;:{&quot;user&quot;:[],&quot;style&quot;:&quot;&quot;,&quot;size&quot;:&quot;w-14 h-14&quot;,&quot;borderSize&quot;:&quot;border-4&quot;,&quot;statusColor&quot;:&quot;text-gray-700&quot;,&quot;borderColor&quot;:&quot;border-green-700&quot;,&quot;page&quot;:1,&quot;paginators&quot;:{&quot;page&quot;:1}},&quot;dataMeta&quot;:{&quot;models&quot;:{&quot;user&quot;:{&quot;class&quot;:&quot;App\\User&quot;,&quot;id&quot;:8195,&quot;relations&quot;:[],&quot;connection&quot;:&quot;mysql&quot;}}},&quot;checksum&quot;:&quot;981c52c60a80803083eecbb393e0f55721aaf915764e0f120bd849e0300db16f&quot;}}"
-                                                             class="relative hvr-ripple-out" style=""
-                                                             x-data="{ hover : false}" @mouseenter="hover = true"
-                                                             @mouseleave="hover = false">
+                                                        <div wire:id="PLyQj70ND7bh0xhTqSNg" wire:initial-data="{&quot;fingerprint&quot;:{&quot;id&quot;:&quot;PLyQj70ND7bh0xhTqSNg&quot;,&quot;name&quot;:&quot;layouts.avatar&quot;,&quot;locale&quot;:&quot;fa&quot;,&quot;path&quot;:&quot;articles\/backend-projects-for-senior-developers&quot;,&quot;method&quot;:&quot;GET&quot;,&quot;v&quot;:&quot;acj&quot;},&quot;effects&quot;:{&quot;listeners&quot;:[],&quot;path&quot;:&quot;https:\/\/roocket.ir\/articles\/backend-projects-for-senior-developers&quot;},&quot;serverMemo&quot;:{&quot;children&quot;:[],&quot;errors&quot;:[],&quot;htmlHash&quot;:&quot;02ca236f&quot;,&quot;data&quot;:{&quot;user&quot;:[],&quot;style&quot;:&quot;&quot;,&quot;size&quot;:&quot;w-14 h-14&quot;,&quot;borderSize&quot;:&quot;border-4&quot;,&quot;statusColor&quot;:&quot;text-gray-700&quot;,&quot;borderColor&quot;:&quot;border-green-700&quot;,&quot;page&quot;:1,&quot;paginators&quot;:{&quot;page&quot;:1}},&quot;dataMeta&quot;:{&quot;models&quot;:{&quot;user&quot;:{&quot;class&quot;:&quot;App\\User&quot;,&quot;id&quot;:8195,&quot;relations&quot;:[],&quot;connection&quot;:&quot;mysql&quot;,&quot;collectionClass&quot;:null}}},&quot;checksum&quot;:&quot;17e4210ce44fb350fa5c65d72c98b582131ca14de77162ebc1c20c21551df035&quot;}}" class="relative hvr-ripple-out" style="" x-data="{ hover : false}" @mouseenter="hover = true" @mouseleave="hover = false">
                                                             <div class="w-14 h-14 bg-gray-300 group relative rounded-full overflow-hidden border-4 border-solid border-green-700">
                                                                 <a>
-                                                                    <img class="transition duration-200 transform group-hover:scale-110 w-full h-full"
-                                                                         src="<?= $data['infoUser']['c_image'] ?>"
-                                                                         alt="تصویر <?= $data['infoUser']['c_display_name'] ?>">
+                                                                    <img class="transition duration-200 transform group-hover:scale-110 w-full h-full" src="<?= $data['infoUser']['c_image'] ?>" alt="تصویر <?= $data['infoUser']['c_display_name'] ?>">
                                                                     <div class="w-full h-full absolute top-0 right-0 bg-biscay-700 bg-opacity-20 z-0"></div>
                                                                 </a>
                                                             </div>
                                                         </div>
-                                                        <!-- Livewire Component wire-end:eI12Me5yrwTW3bSHtjke -->
+                                                        <!-- Livewire Component wire-end:PLyQj70ND7bh0xhTqSNg -->
                                                         <div class="flex relative justify-center flex-col space-y-1">
                                                             <h6 class="font-semibold text-xl text-chambray-700 dark:text-white leading-6">
                                                                 <a>
@@ -814,176 +803,92 @@ $categoryParsedAry = array(
                                                     </div>
                                                 </div>
                                                 <div>
-                                                    <div class="mt-5" x-show="show" style="display: none">
+                                                    <div class="mt-5" x-show="show" x-cloak>
                                                         <div class="space-y-3">
-                                                            <form class="form" id="form-6290e73640e6b"
-                                                                  wire:submit.prevent="onSubmit">
-                                                                <div @editor-6290e73640e6b-content-update.window="message = $event.detail.content">
+                                                            <form class="form" id="form-6522fecb8c2c9" wire:submit.prevent="onSubmit">
+                                                                <div @editor-6522fecb8c2c9-content-update.window="message = $event.detail.content">
                                                                     <div>
                                                                         <div class="" x-data="editorData()"
-                                                                             x-init="$watch('content' , v => $dispatch(`editor-6290e73640e6b-content-update` , { content : v}) )">
+                                                                             x-init="$watch('content' , v => $dispatch(`editor-6522fecb8c2c9-content-update` , { content : v}) )">
                                                                             <div class="flex justify-end items-end">
-                                                                                <span class="mute-text mb-1 font-bold text-gray-500 relative"
-                                                                                      x-show="window.wordsCount(content) > 0"
-                                                                                      x-text="window.wordsCount(content) + ' کلمه'"
-                                                                                      style="display: none;">0 کلمه</span>
+                                                                                <span class="mute-text mb-1 font-bold text-gray-500 relative" x-show="window.wordsCount(content) > 0"
+                                                                                      x-text="window.wordsCount(content) + ' کلمه'">0 کلمه‌</span>
                                                                             </div>
                                                                             <div class="unix-editor">
-                                                                                <div class="flex justify-between sm:flex-row flex-col editor-section mb-4"
-                                                                                     id="editor_section_head"
+                                                                                <div class="flex justify-between sm:flex-row flex-col editor-section mb-4" id="editor_section_head"
                                                                                      ref="buttons-section">
                                                                                     <div class="group flex items-center rounded-md bg-opacity-5  py-2 w-fit-content sm:mb-0 mb-4  cursor-pointer relative justify-center bg-gray-500 dark:bg-dark-900 dark:hover:bg-blue-700 hover:bg-blue-550 transition duration-200 px-2"
-                                                                                         :class="{ 'active': help }"
-                                                                                         x-on:click="help = !help">
-                                                                                        <div class="flex items-center"
-                                                                                             x-data="{ hover : false }">
-                                                                                            <span class="ml-2"
-                                                                                                  @mouseenter="hover = true"
-                                                                                                  @mouseleave="hover = false">
-                                                                                                <svg class="w-6 text-biscay-700 dark:text-white group-hover:text-white"
-                                                                                                     width="24"
-                                                                                                     height="24"
-                                                                                                     viewBox="0 0 24 24"
-                                                                                                     fill="none"
-                                                                                                     xmlns="http://www.w3.org/2000/svg">
-                                                                                                    <path opacity="0.4"
-                                                                                                          d="M7.809 2H16.19C19.23 2 21 3.78 21 6.83V17.16C21 20.26 19.23 22 16.19 22H7.809C4.72 22 3 20.26 3 17.16V6.83C3 3.78 4.72 2 7.809 2Z"
-                                                                                                          fill="currentColor"></path>
-                                                                                                    <path fill-rule="evenodd"
-                                                                                                          clip-rule="evenodd"
-                                                                                                          d="M15.92 6.6499V6.6599C16.351 6.6599 16.7 7.0099 16.7 7.4399C16.7 7.8699 16.351 8.2199 15.92 8.2199H12.931C12.5 8.2199 12.15 7.8699 12.15 7.4289C12.15 6.9999 12.5 6.6499 12.931 6.6499H15.92ZM8.08004 12.7399H15.92C16.351 12.7399 16.7 12.3899 16.7 11.9599C16.7 11.5299 16.351 11.1789 15.92 11.1789H8.08004C7.65004 11.1789 7.30004 11.5299 7.30004 11.9599C7.30004 12.3899 7.65004 12.7399 8.08004 12.7399ZM8.08004 17.3099H15.92C16.22 17.3499 16.51 17.1999 16.67 16.9499C16.83 16.6899 16.83 16.3599 16.67 16.1099C16.51 15.8499 16.22 15.7099 15.92 15.7399H8.08004C7.68104 15.7799 7.38004 16.1199 7.38004 16.5299C7.38004 16.9289 7.68104 17.2699 8.08004 17.3099Z"
-                                                                                                          fill="currentColor"></path>
-                                                                                                </svg>
-                                                                                            </span>
+                                                                                         :class="{ 'active': help }" x-on:click="help = !help" x-cloak>
+                                                                                        <div class="flex items-center" x-data="{ hover : false }">
+                                                                                                <span class="ml-2" @mouseenter="hover = true" @mouseleave="hover = false">
+                                                                                                    <svg class="w-6 text-biscay-700 dark:text-white
+                                                                                                    group-hover:text-white" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                                                        <path opacity="0.4" d="M7.809 2H16.19C19.23 2 21 3.78 21 6.83V17.16C21 20.26 19.23 22 16.19 22H7.809C4.72 22 3 20.26 3 17.16V6.83C3 3.78 4.72 2 7.809 2Z" fill="currentColor" />
+                                                                                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M15.92 6.6499V6.6599C16.351 6.6599 16.7 7.0099 16.7 7.4399C16.7 7.8699 16.351 8.2199 15.92 8.2199H12.931C12.5 8.2199 12.15 7.8699 12.15 7.4289C12.15 6.9999 12.5 6.6499 12.931 6.6499H15.92ZM8.08004 12.7399H15.92C16.351 12.7399 16.7 12.3899 16.7 11.9599C16.7 11.5299 16.351 11.1789 15.92 11.1789H8.08004C7.65004 11.1789 7.30004 11.5299 7.30004 11.9599C7.30004 12.3899 7.65004 12.7399 8.08004 12.7399ZM8.08004 17.3099H15.92C16.22 17.3499 16.51 17.1999 16.67 16.9499C16.83 16.6899 16.83 16.3599 16.67 16.1099C16.51 15.8499 16.22 15.7099 15.92 15.7399H8.08004C7.68104 15.7799 7.38004 16.1199 7.38004 16.5299C7.38004 16.9289 7.68104 17.2699 8.08004 17.3099Z" fill="currentColor" />
+                                                                                                    </svg>
+                                                                                                </span>
                                                                                             <span class="font-semibold text-sm text-biscay-700 dark:text-white group-hover:text-white transition duration-200">راهنما</span>
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
-                                                                                <div class="bg-blue-700 dark:bg-dark-900 bg-opacity-10 border-b border-solid border-blue-200 hidden"
-                                                                                     :class="{ 'hidden' : ! help }">
+                                                                                <div class="bg-blue-700 dark:bg-dark-900 bg-opacity-10 border-b border-solid border-blue-200"
+                                                                                     :class="{ 'hidden' : ! help }" x-cloak>
                                                                                     <ul class="flex flex-wrap items-start w-full">
                                                                                         <li class="p-3 font-medium text-blue-700 dark:text-blue-450 dark:hover:text-white cursor-pointer hover:underline"
-                                                                                            id="link"
-                                                                                            x-on:click="helpsection = 'link'"
-                                                                                            :class="{ 'active' : helpsection === 'link' }">
-                                                                                            لینک
-                                                                                        </li>
+                                                                                            id="link" x-on:click="helpsection = 'link'" :class="{ 'active' : helpsection === 'link' }">لینک</li>
                                                                                     </ul>
                                                                                     <template x-if="helpsection != ''">
                                                                                         <div class="content-area px-4 text-gray-400">
-                                                                                            <template
-                                                                                                    x-if="helpsection === 'link'">
+                                                                                            <template x-if="helpsection === 'link'">
                                                                                                 <div>
-                                                                                                    <p>برای وارد کردن
-                                                                                                        لینک می‌توانید
-                                                                                                        خیلی ساده فقط
-                                                                                                        لینک‌تان را کپی
-                                                                                                        کنید و نیاز به
-                                                                                                        کار خاصی نیست،
-                                                                                                        مابقی رو ما
-                                                                                                        برای‌تان انجام
-                                                                                                        میدهیم و یا از
-                                                                                                        دکمه افزودن لینک
-                                                                                                        در منوی بالا
-                                                                                                        استفاده
-                                                                                                        نمایید</p>
+                                                                                                    <p>راحت‌ترین راه برای وارد کردن لینک استفاده از دکمه افزودن لینک در بالاست، اما اگر احساس
+                                                                                                        می‌کنید که نیاز به ویژگی‌های دیگه‌ای از <strong>MarkDown</strong> دارید میتونید به متن
+                                                                                                        زیر دقت کنید.</p>
+                                                                                                    <p>برای وارد کردن لینک می‌توانید خیلی ساده فقط لینک‌تان را کپی کنید و نیاز به کار خاصی نیست، مابقی رو ما برای‌تان انجام میدهیم و یا از دکمه افزودن لینک در منوی بالا استفاده نمایید</p>
                                                                                                 </div>
                                                                                             </template>
                                                                                         </div>
                                                                                     </template>
                                                                                 </div>
-                                                                                <textarea
-                                                                                        @editor-6290e73640e6b-content-init.window="content = $event.detail.content"
-                                                                                        @focus="$dispatch('guide' , { status : 'body' });content = $event.target.value"
-                                                                                        @blur="content = $event.target.value"
-                                                                                        x-model="content"
-                                                                                        class="leading-loose w-full p-4 text-base dark:placeholder-gray-920 dark:text-white placeholder-gray-400 dark:border-dark-900 border-gray-100 dark:bg-dark-900   "
-                                                                                        x-ref="textarea"
-                                                                                        id="editor-textarea-6290e73640e6b"
-                                                                                        data-editor="240" type="text"
-                                                                                        rows="10"
-                                                                                        placeholder="متن مورد نظر خود را وارد کنید ...">
-                                                                                </textarea>
-
-                                                                                <div id="markdown-preview"
-                                                                                     class="hidden bg-gray-210 bg-opacity-80 dark:bg-opacity-30 cursor-not-allowed overflow-y-auto px-4 mb-4 content-area scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-300 scrollbar-thumb-rounded"
-                                                                                     style="height: 240px; overflow-y: auto; display: none;"></div>
+                                                                                    <textarea @editor-6522fecb8c2c9-content-init.window="content = $event.detail.content"
+                                                                                              @focus="$dispatch('guide' , { status : 'body' });content = $event.target.value"
+                                                                                              @blur="content = $event.target.value" x-model="content"
+                                                                                              class="leading-loose w-full p-4 text-base dark:placeholder-gray-920 dark:text-white placeholder-gray-400 dark:border-dark-900 border-gray-100 dark:bg-dark-900   "
+                                                                                              x-ref="textarea" id="editor-textarea-6522fecb8c2c9" data-editor="240" type="text"
+                                                                                              rows="10" placeholder="متن مورد نظر خود را وارد کنید ...">
+                                                                                    </textarea>
                                                                             </div>
-                                                                            <span class="text-red-500 mt-1 block font-semibold text-sm"></span>
                                                                         </div>
                                                                     </div>
-                                                                    <div class="flex sm:flex-row flex-col justify-between items-center mt-7"
-                                                                         x-data="editorPreview('6290e73640e6b')">
-                                                                        <div class="flex items-center sm:mb-0 mb-5"
-                                                                             x-bind="togglePreview">
+                                                                    <div class="flex sm:flex-row flex-col justify-between items-center mt-7" x-data="editorPreview('6522fecb8c2c9')">
+                                                                        <div class="flex items-center sm:mb-0 mb-5" x-bind="togglePreview">
                                                                             <span class="text-base text-biscay-700 dark:text-white ml-4 font-semibold">پیش نمایش متن</span>
-                                                                            <button type="button"
-                                                                                    :class="{' !bg-blue-700':preview}"
-                                                                                    class="w-14 h-7 bg-gray-300 dark:bg-gray-200 bg-opacity-30 transition-all duration-300 rounded-full relative">
-                                                                                <i class="w-5 h-5 bg-biscay-700 rounded-full absolute right-1 transition-all duration-300 top-1"
-                                                                                   :class="{'right-8 !bg-white':preview}"></i>
+                                                                            <button type="button" :class="{' !bg-blue-700':preview}" class="w-14 h-7 bg-gray-300 dark:bg-gray-200 bg-opacity-30 transition-all duration-300 rounded-full relative">
+                                                                                <i class="w-5 h-5 bg-biscay-700 rounded-full absolute right-1 transition-all duration-300 top-1" :class="{'right-8 !bg-white':preview}"></i>
                                                                             </button>
                                                                         </div>
                                                                         <div class="flex items-center">
-                                                                            <button wire:loading.remove=""
-                                                                                    wire:target="onSubmit"
-                                                                                    class="w-24 h-10 bg-blue-700 border-blue-700 border text-white text-sm font-bold ml-4 rounded-md transition duration-200 dark:hover:bg-transparent hover:bg-white hover:text-blue-700">
-                                                                                ثبت دیدگاه
-                                                                            </button>
-                                                                            <button wire:loading.flex=""
-                                                                                    wire:target="onSubmit" type="button"
-                                                                                    class="w-24 h-10 bg-flex justify-center items-center bg-blue-700 border-blue-700 border text-white text-sm font-bold ml-4 rounded-md transition duration-200">
-                                                                                <svg class="w-5" version="1.1"
-                                                                                     xmlns="http://www.w3.org/2000/svg"
-                                                                                     xmlns:xlink="http://www.w3.org/1999/xlink"
-                                                                                     viewBox="25 25 50 50">
+                                                                            <button wire:loading.remove wire:target="onSubmit" class="w-24 h-10 bg-blue-700 border-blue-700 border text-white text-sm font-bold ml-4 rounded-md transition duration-200 dark:hover:bg-transparent hover:bg-white hover:text-blue-700">ثبت دیدگاه</button>
+                                                                            <button wire:loading.flex wire:target="onSubmit" type="button" class="w-24 h-10 bg-flex justify-center items-center bg-blue-700 border-blue-700 border text-white text-sm font-bold ml-4 rounded-md transition duration-200">
+                                                                                <svg class="w-5" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="25 25 50 50">
 
-                                                                                    <circle class="stroke-current text-white text-opacity-30"
-                                                                                            cx="50" cy="50" r="20"
-                                                                                            fill="none" stroke-width="8"
-                                                                                            stroke-linecap="round"
-                                                                                            stroke-dashoffset="0"
-                                                                                            stroke-dasharray="200, 300">
+                                                                                    <circle class="stroke-current text-white text-opacity-30" cx="50" cy="50" r="20" fill="none" stroke-width="8" stroke-linecap="round" stroke-dashoffset="0" stroke-dasharray="200, 300">
 
                                                                                     </circle>
-                                                                                    <circle class="stroke-current text-white"
-                                                                                            cx="50" cy="50" r="20"
-                                                                                            fill="none" stroke-width="8"
-                                                                                            stroke-linecap="round"
-                                                                                            stroke-dashoffset="0"
-                                                                                            stroke-dasharray="100, 200">
-                                                                                        <animateTransform
-                                                                                                attributeName="transform"
-                                                                                                attributeType="XML"
-                                                                                                type="rotate"
-                                                                                                from="0 50 50"
-                                                                                                to="360 50 50"
-                                                                                                dur="2.5s"
-                                                                                                repeatCount="indefinite"></animateTransform>
-                                                                                        <animate
-                                                                                                attributeName="stroke-dashoffset"
-                                                                                                values="0;-30;-124"
-                                                                                                dur="1.25s"
-                                                                                                repeatCount="indefinite"></animate>
-                                                                                        <animate
-                                                                                                attributeName="stroke-dasharray"
-                                                                                                values="0,200;110,200;110,200"
-                                                                                                dur="1.25s"
-                                                                                                repeatCount="indefinite"></animate>
+                                                                                    <circle class="stroke-current text-white" cx="50" cy="50" r="20" fill="none" stroke-width="8" stroke-linecap="round" stroke-dashoffset="0" stroke-dasharray="100, 200">
+                                                                                        <animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0 50 50" to="360 50 50" dur="2.5s" repeatCount="indefinite"></animateTransform>
+                                                                                        <animate attributeName="stroke-dashoffset" values="0;-30;-124" dur="1.25s" repeatCount="indefinite"></animate>
+                                                                                        <animate attributeName="stroke-dasharray" values="0,200;110,200;110,200" dur="1.25s" repeatCount="indefinite"></animate>
                                                                                     </circle>
                                                                                 </svg>
                                                                             </button>
-                                                                            <button type="button" @click="show = 0"
-                                                                                    class="w-24 h-10 border border-gray-300 text-gray-300 text-sm font-bold rounded-md transition duration-200 hover:bg-gray-300 hover:text-white">
-                                                                                انصراف
-                                                                            </button>
+                                                                            <button type="button" @click="show = 0" class="w-24 h-10 border border-gray-300 text-gray-300 text-sm font-bold rounded-md transition duration-200 hover:bg-gray-300 hover:text-white">انصراف</button>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </form>
                                                         </div>
                                                     </div>
-
                                                 </div>
                                             </div>
 
@@ -1053,10 +958,8 @@ $categoryParsedAry = array(
                                                 </div>
                                                 <?php if ($data['comment']['count'] > 0) { ?>
                                                     <?php foreach ($data['comment']['comments'] as $comment) { ?>
-                                                        <div wire:target="gotoPage,previousPage,nextPage"
-                                                             wire:loading.remove>
-                                                            <div wire:id="Jp5vmE0tFWJOgNJM1qkZ"
-                                                                 wire:initial-data="{&quot;fingerprint&quot;:{&quot;id&quot;:&quot;Jp5vmE0tFWJOgNJM1qkZ&quot;,&quot;name&quot;:&quot;comments.single&quot;,&quot;locale&quot;:&quot;fa&quot;,&quot;path&quot;:&quot;blog\/article\/<?= $data['getBlog'][0]['slug'] ?>&quot;,&quot;method&quot;:&quot;GET&quot;,&quot;v&quot;:&quot;acj&quot;},&quot;effects&quot;:{&quot;listeners&quot;:[&quot;hide-answer-box&quot;]},&quot;serverMemo&quot;:{&quot;children&quot;:{&quot;94810&quot;:{&quot;id&quot;:&quot;IqB4kl1fr6DHD1vye4PL&quot;,&quot;tag&quot;:&quot;div&quot;},&quot;352569411&quot;:{&quot;id&quot;:&quot;comment-<?= $data['attrId']; ?>&quot;,&quot;tag&quot;:&quot;div&quot;},&quot;1280451358&quot;:{&quot;id&quot;:&quot;gIDz97WpH7VvfvYJs5fE&quot;,&quot;tag&quot;:&quot;div&quot;},&quot;l1956554873-1&quot;:{&quot;id&quot;:&quot;508efbPmuyf9Ojnqprkv&quot;,&quot;tag&quot;:&quot;button&quot;}},&quot;errors&quot;:[],&quot;htmlHash&quot;:&quot;8127ffc2&quot;,&quot;data&quot;:{&quot;comment&quot;:[],&quot;subject&quot;:[],&quot;answerBox&quot;:true,&quot;class&quot;:null,&quot;childComments&quot;:[],&quot;moreComments&quot;:false},&quot;dataMeta&quot;:{&quot;models&quot;:{&quot;comment&quot;:{&quot;class&quot;:&quot;App\\Comment&quot;,&quot;id&quot;:<?= $comment['comment']['cm_id'] ?>,&quot;relations&quot;:[&quot;comments&quot;,&quot;comments.user&quot;,&quot;user&quot;],&quot;connection&quot;:&quot;mysql&quot;},&quot;subject&quot;:{&quot;class&quot;:&quot;App\\Article&quot;,&quot;id&quot;:878,&quot;relations&quot;:[&quot;rates&quot;,&quot;categories&quot;,&quot;tags&quot;,&quot;user&quot;],&quot;connection&quot;:&quot;mysql&quot;}},&quot;modelCollections&quot;:{&quot;childComments&quot;:{&quot;class&quot;:&quot;App\\Comment&quot;,&quot;id&quot;:[9481],&quot;relations&quot;:[&quot;user&quot;,&quot;comment&quot;,&quot;comment.user&quot;],&quot;connection&quot;:&quot;mysql&quot;}}},&quot;checksum&quot;:&quot;64dac198601663ef6dbf583900bcffe7cc3f4f912f11faab9fdb02e2fbd617b8&quot;}}">
+                                                        <div wire:target="gotoPage,previousPage,nextPage" wire:loading.remove>
+                                                            <div wire:id="Jp5vmE0tFWJOgNJM1qkZ" wire:initial-data="{&quot;fingerprint&quot;:{&quot;id&quot;:&quot;Jp5vmE0tFWJOgNJM1qkZ&quot;,&quot;name&quot;:&quot;comments.single&quot;,&quot;locale&quot;:&quot;fa&quot;,&quot;path&quot;:&quot;blog\/article\/<?= $data['getBlog'][0]['slug'] ?>&quot;,&quot;method&quot;:&quot;GET&quot;,&quot;v&quot;:&quot;acj&quot;},&quot;effects&quot;:{&quot;listeners&quot;:[&quot;hide-answer-box&quot;]},&quot;serverMemo&quot;:{&quot;children&quot;:{&quot;94810&quot;:{&quot;id&quot;:&quot;IqB4kl1fr6DHD1vye4PL&quot;,&quot;tag&quot;:&quot;div&quot;},&quot;352569411&quot;:{&quot;id&quot;:&quot;comment-<?= $data['attrId']; ?>&quot;,&quot;tag&quot;:&quot;div&quot;},&quot;1280451358&quot;:{&quot;id&quot;:&quot;gIDz97WpH7VvfvYJs5fE&quot;,&quot;tag&quot;:&quot;div&quot;},&quot;l1956554873-1&quot;:{&quot;id&quot;:&quot;508efbPmuyf9Ojnqprkv&quot;,&quot;tag&quot;:&quot;button&quot;}},&quot;errors&quot;:[],&quot;htmlHash&quot;:&quot;8127ffc2&quot;,&quot;data&quot;:{&quot;comment&quot;:[],&quot;subject&quot;:[],&quot;answerBox&quot;:true,&quot;class&quot;:null,&quot;childComments&quot;:[],&quot;moreComments&quot;:false},&quot;dataMeta&quot;:{&quot;models&quot;:{&quot;comment&quot;:{&quot;class&quot;:&quot;App\\Comment&quot;,&quot;id&quot;:<?= $comment['comment']['cm_id'] ?>,&quot;relations&quot;:[&quot;comments&quot;,&quot;comments.user&quot;,&quot;user&quot;],&quot;connection&quot;:&quot;mysql&quot;},&quot;subject&quot;:{&quot;class&quot;:&quot;App\\Article&quot;,&quot;id&quot;:878,&quot;relations&quot;:[&quot;rates&quot;,&quot;categories&quot;,&quot;tags&quot;,&quot;user&quot;],&quot;connection&quot;:&quot;mysql&quot;}},&quot;modelCollections&quot;:{&quot;childComments&quot;:{&quot;class&quot;:&quot;App\\Comment&quot;,&quot;id&quot;:[9481],&quot;relations&quot;:[&quot;user&quot;,&quot;comment&quot;,&quot;comment.user&quot;],&quot;connection&quot;:&quot;mysql&quot;}}},&quot;checksum&quot;:&quot;64dac198601663ef6dbf583900bcffe7cc3f4f912f11faab9fdb02e2fbd617b8&quot;}}">
                                                                 <div class="sm:p-6 p-3 border border-gray-210 dark:border-opacity-0 rounded-lg mb-5 bg-white dark:bg-dark-900 ">
                                                                     <div class="flex sm:flex-row flex-col justify-between border-b border-gray-210 dark:border-opacity-20">
                                                                         <div class="flex ">
@@ -1139,8 +1042,6 @@ $categoryParsedAry = array(
                                                                         var converter = new showdown.Converter();
                                                                         var text = document.getElementById("commentText-<?= $comment['comment']['cm_id'] ?>").innerHTML;
                                                                         var html = converter.makeHtml(text);
-                                                                        console.log(text);
-                                                                        console.log(html);
                                                                         document.getElementById("commentText-<?= $comment['comment']['cm_id'] ?>").innerHTML = html;
                                                                     </script>
                                                                     <style>
@@ -1261,13 +1162,8 @@ $categoryParsedAry = array(
                                                                     <?php } ?>
                                                                 <?php } ?>
 
-                                                                <div class="mr-8"
-                                                                     id="answer-<?= $comment['comment']['cm_id'] ?>">
-                                                                    <div wire:id="comment-<?= $data['attrId']; ?>"
-                                                                         wire:initial-data="{&quot;fingerprint&quot;:{&quot;id&quot;:&quot;comment-<?= $data['attrId']; ?>&quot;,&quot;name&quot;:&quot;user\/sendComment&quot;,&quot;type&quot;:&quot;blog&quot;,&quot;itemID&quot;:&quot;<?= $data['attrId']; ?>&quot;,&quot;locale&quot;:&quot;fa&quot;,&quot;path&quot;:&quot;blog\/article\/<?= $data['getBlog'][0]['slug'] ?>&quot;,&quot;method&quot;:&quot;GET&quot;,&quot;v&quot;:&quot;acj&quot;},&quot;effects&quot;:{&quot;listeners&quot;:[]},&quot;serverMemo&quot;:{&quot;children&quot;:{&quot;630157211&quot;:{&quot;id&quot;:&quot;w501jzyu4Bj7KOW283O9<?= $comment['comment']['cm_id'] ?>&quot;,&quot;tag&quot;:&quot;div&quot;}},&quot;errors&quot;:[],&quot;htmlHash&quot;:&quot;6bcad290&quot;,&quot;data&quot;:{&quot;formId&quot;:&quot;6293dd217bc94<?= $comment['comment']['cm_id'] ?>&quot;,&quot;subject&quot;:[],&quot;show&quot;:false,&quot;message&quot;:null,&quot;parentId&quot;:<?= $comment['comment']['cm_id'] ?>,&quot;loading&quot;:null,&quot;user&quot;:[]},&quot;dataMeta&quot;:{&quot;models&quot;:{&quot;subject&quot;:{&quot;class&quot;:&quot;App\\Article&quot;,&quot;id&quot;:878,&quot;relations&quot;:[&quot;rates&quot;,&quot;categories&quot;,&quot;tags&quot;,&quot;user&quot;],&quot;connection&quot;:&quot;mysql&quot;},&quot;user&quot;:{&quot;class&quot;:&quot;App\\User&quot;,&quot;id&quot;:2,&quot;relations&quot;:[],&quot;connection&quot;:&quot;mysql&quot;}}},&quot;checksum&quot;:&quot;aec71f7b3c828612dd18deb6838b63b9e3caa5ebbd50aedac4ed7be60f6b705d&quot;}}"
-                                                                         x-data="{ show : 0  , message : window.Livewire.find('comment-<?= $data['attrId']; ?>').entangle('message').defer }"
-                                                                         x-on:show-send-comment.window="if($event.detail.id === <?= $comment['comment']['cm_id'] ?>) show = 1"
-                                                                         x-on:hide-send-comment.window="show = 0">
+                                                                <div class="mr-8" id="answer-<?= $comment['comment']['cm_id'] ?>">
+                                                                    <div wire:id="comment-<?= $data['attrId']; ?>" wire:initial-data="{&quot;fingerprint&quot;:{&quot;id&quot;:&quot;comment-<?= $data['attrId']; ?>&quot;,&quot;name&quot;:&quot;user\/sendComment&quot;,&quot;type&quot;:&quot;blog&quot;,&quot;itemID&quot;:&quot;<?= $data['attrId']; ?>&quot;,&quot;locale&quot;:&quot;fa&quot;,&quot;path&quot;:&quot;blog\/article\/<?= $data['getBlog'][0]['slug'] ?>&quot;,&quot;method&quot;:&quot;GET&quot;,&quot;v&quot;:&quot;acj&quot;},&quot;effects&quot;:{&quot;listeners&quot;:[]},&quot;serverMemo&quot;:{&quot;children&quot;:{&quot;630157211&quot;:{&quot;id&quot;:&quot;w501jzyu4Bj7KOW283O9<?= $comment['comment']['cm_id'] ?>&quot;,&quot;tag&quot;:&quot;div&quot;}},&quot;errors&quot;:[],&quot;htmlHash&quot;:&quot;6bcad290&quot;,&quot;data&quot;:{&quot;formId&quot;:&quot;6293dd217bc94<?= $comment['comment']['cm_id'] ?>&quot;,&quot;subject&quot;:[],&quot;show&quot;:false,&quot;message&quot;:null,&quot;parentId&quot;:<?= $comment['comment']['cm_id'] ?>,&quot;loading&quot;:null,&quot;user&quot;:[]},&quot;dataMeta&quot;:{&quot;models&quot;:{&quot;subject&quot;:{&quot;class&quot;:&quot;App\\Article&quot;,&quot;id&quot;:878,&quot;relations&quot;:[&quot;rates&quot;,&quot;categories&quot;,&quot;tags&quot;,&quot;user&quot;],&quot;connection&quot;:&quot;mysql&quot;},&quot;user&quot;:{&quot;class&quot;:&quot;App\\User&quot;,&quot;id&quot;:2,&quot;relations&quot;:[],&quot;connection&quot;:&quot;mysql&quot;}}},&quot;checksum&quot;:&quot;aec71f7b3c828612dd18deb6838b63b9e3caa5ebbd50aedac4ed7be60f6b705d&quot;}}" x-data="{ show : 0  , message : window.Livewire.find('comment-<?= $data['attrId']; ?>').entangle('message').defer }" x-on:show-send-comment.window="if($event.detail.id === <?= $comment['comment']['cm_id'] ?>) show = 1" x-on:hide-send-comment.window="show = 0">
                                                                         <div class="border border-gray-210 dark:border-opacity-10 bg-gray-210 bg-opacity-20 dark:bg-dark-950 dark:bg-opacity-50 rounded-lg mb-8 pt-9 pb-8 md:px-7 px-4"
                                                                              x-show="show" x-cloak>
                                                                             <div class="border-b border-gray-210 dark:border-opacity-10">
@@ -1305,8 +1201,7 @@ $categoryParsedAry = array(
                                                                                               wire:submit.prevent="onSubmit">
                                                                                             <div @editor-6293dd217bc94<?= $comment['comment']['cm_id'] ?>-content-update.window="message = $event.detail.content">
                                                                                                 <div>
-                                                                                                    <div class=""
-                                                                                                         x-data="editorData()"
+                                                                                                    <div class="" x-data="editorData()"
                                                                                                          x-init="$watch('content' , v => $dispatch(`editor-6293dd217bc94<?= $comment['comment']['cm_id'] ?>-content-update` , { content : v}) )">
                                                                                                         <div class="flex justify-end items-end">
                                                                                                             <span class="mute-text mb-1 font-bold text-gray-500 relative"
@@ -1359,139 +1254,46 @@ $categoryParsedAry = array(
                                                                                                                 <template
                                                                                                                         x-if="helpsection != ''">
                                                                                                                     <div class="content-area px-4 text-gray-400">
-                                                                                                                        <template
-                                                                                                                                x-if="helpsection === 'link'">
+                                                                                                                        <template x-if="helpsection === 'link'">
                                                                                                                             <div>
-                                                                                                                                <p>
-                                                                                                                                    برای
-                                                                                                                                    وارد
-                                                                                                                                    کردن
-                                                                                                                                    لینک
-                                                                                                                                    می‌توانید
-                                                                                                                                    خیلی
-                                                                                                                                    ساده
-                                                                                                                                    فقط
-                                                                                                                                    لینک‌تان
-                                                                                                                                    را
-                                                                                                                                    کپی
-                                                                                                                                    کنید
-                                                                                                                                    و
-                                                                                                                                    نیاز
-                                                                                                                                    به
-                                                                                                                                    کار
-                                                                                                                                    خاصی
-                                                                                                                                    نیست،
-                                                                                                                                    مابقی
-                                                                                                                                    رو
-                                                                                                                                    ما
-                                                                                                                                    برای‌تان
-                                                                                                                                    انجام
-                                                                                                                                    میدهیم
-                                                                                                                                    و
-                                                                                                                                    یا
-                                                                                                                                    از
-                                                                                                                                    دکمه
-                                                                                                                                    افزودن
-                                                                                                                                    لینک
-                                                                                                                                    در
-                                                                                                                                    منوی
-                                                                                                                                    بالا
-                                                                                                                                    استفاده
-                                                                                                                                    نمایید</p>
+                                                                                                                                <p>برای وارد کردن لینک می‌توانید  خیلی ساده فقط لینک‌تان را کپی کنید و نیاز به کار خاصی نیست، مابقی رو ما برای‌تان انجام میدهیم و یا از دکمه افزودن لینک در منوی بالا استفاده نمایید</p>
                                                                                                                             </div>
                                                                                                                         </template>
                                                                                                                     </div>
                                                                                                                 </template>
                                                                                                             </div>
-                                                                                                            <textarea
-                                                                                                                    @editor-6293dd217bc94<?= $comment['comment']['cm_id'] ?>-content-init.window="content = $event.detail.content"
-                                                                                                                    @focus="$dispatch('guide' , { status : 'body' });content = $event.target.value"
-                                                                                                                    @blur="content = $event.target.value"
-                                                                                                                    x-model="content"
-                                                                                                                    class="leading-loose w-full p-4 text-base dark:placeholder-gray-920 dark:text-white placeholder-gray-400 dark:border-dark-900 border-gray-100 dark:bg-dark-900   "
-                                                                                                                    x-ref="textarea"
-                                                                                                                    id="editor-textarea-6293dd217bc94<?= $comment['comment']['cm_id'] ?>"
-                                                                                                                    data-editor="240"
-                                                                                                                    type="text"
-                                                                                                                    rows="10"
-                                                                                                                    placeholder="متن مورد نظر خود را وارد کنید ..."></textarea>
+                                                                                                            <textarea @editor-6293dd217bc94<?= $comment['comment']['cm_id'] ?>-content-init.window="content = $event.detail.content"
+                                                                                                                      @focus="$dispatch('guide' , { status : 'body' });content = $event.target.value"
+                                                                                                                      @blur="content = $event.target.value" x-model="content"
+                                                                                                                      class="leading-loose w-full p-4 text-base dark:placeholder-gray-920 dark:text-white placeholder-gray-400 dark:border-dark-900 border-gray-100 dark:bg-dark-900   "
+                                                                                                                      x-ref="textarea" id="editor-textarea-6293dd217bc94<?= $comment['comment']['cm_id'] ?>" data-editor="240" type="text"
+                                                                                                                      rows="10" placeholder="متن مورد نظر خود را وارد کنید ..."></textarea>
                                                                                                         </div>
                                                                                                     </div>
                                                                                                 </div>
-                                                                                                <div class="flex sm:flex-row flex-col justify-between items-center mt-7"
-                                                                                                     x-data="editorPreview('6293dd217bc94<?= $comment['comment']['cm_id'] ?>')">
-                                                                                                    <div class="flex items-center sm:mb-0 mb-5"
-                                                                                                         x-bind="togglePreview">
+                                                                                                <div class="flex sm:flex-row flex-col justify-between items-center mt-7" x-data="editorPreview('6293dd217bc94<?= $comment['comment']['cm_id'] ?>')">
+                                                                                                    <div class="flex items-center sm:mb-0 mb-5" x-bind="togglePreview">
                                                                                                         <span class="text-base text-biscay-700 dark:text-white ml-4 font-semibold">پیش نمایش متن</span>
-                                                                                                        <button type="button"
-                                                                                                                :class="{' !bg-blue-700':preview}"
-                                                                                                                class="w-14 h-7 bg-gray-300 dark:bg-gray-200 bg-opacity-30 transition-all duration-300 rounded-full relative">
-                                                                                                            <i class="w-5 h-5 bg-biscay-700 rounded-full absolute right-1 transition-all duration-300 top-1"
-                                                                                                               :class="{'right-8 !bg-white':preview}"></i>
+                                                                                                        <button type="button" :class="{' !bg-blue-700':preview}" class="w-14 h-7 bg-gray-300 dark:bg-gray-200 bg-opacity-30 transition-all duration-300 rounded-full relative">
+                                                                                                            <i class="w-5 h-5 bg-biscay-700 rounded-full absolute right-1 transition-all duration-300 top-1" :class="{'right-8 !bg-white':preview}"></i>
                                                                                                         </button>
                                                                                                     </div>
                                                                                                     <div class="flex items-center">
-                                                                                                        <button wire:loading.remove
-                                                                                                                wire:target="onSubmit"
-                                                                                                                class="w-24 h-10 bg-blue-700 border-blue-700 border text-white text-sm font-bold ml-4 rounded-md transition duration-200 dark:hover:bg-transparent hover:bg-white hover:text-blue-700">
-                                                                                                            ثبت دیدگاه
-                                                                                                        </button>
-                                                                                                        <button wire:loading.flex
-                                                                                                                wire:target="onSubmit"
-                                                                                                                type="button"
-                                                                                                                class="w-24 h-10 bg-flex justify-center items-center bg-blue-700 border-blue-700 border text-white text-sm font-bold ml-4 rounded-md transition duration-200">
-                                                                                                            <svg class="w-5"
-                                                                                                                 version="1.1"
-                                                                                                                 xmlns="http://www.w3.org/2000/svg"
-                                                                                                                 xmlns:xlink="http://www.w3.org/1999/xlink"
-                                                                                                                 viewBox="25 25 50 50">
+                                                                                                        <button wire:loading.remove wire:target="onSubmit" class="w-24 h-10 bg-blue-700 border-blue-700 border text-white text-sm font-bold ml-4 rounded-md transition duration-200 dark:hover:bg-transparent hover:bg-white hover:text-blue-700">ثبت دیدگاه</button>
+                                                                                                        <button wire:loading.flex wire:target="onSubmit" type="button" class="w-24 h-10 bg-flex justify-center items-center bg-blue-700 border-blue-700 border text-white text-sm font-bold ml-4 rounded-md transition duration-200">
+                                                                                                            <svg class="w-5" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="25 25 50 50">
 
-                                                                                                                <circle class="stroke-current text-white text-opacity-30"
-                                                                                                                        cx="50"
-                                                                                                                        cy="50"
-                                                                                                                        r="20"
-                                                                                                                        fill="none"
-                                                                                                                        stroke-width="8"
-                                                                                                                        stroke-linecap="round"
-                                                                                                                        stroke-dashoffset="0"
-                                                                                                                        stroke-dasharray="200, 300">
+                                                                                                                <circle class="stroke-current text-white text-opacity-30" cx="50" cy="50" r="20" fill="none" stroke-width="8" stroke-linecap="round" stroke-dashoffset="0" stroke-dasharray="200, 300">
 
                                                                                                                 </circle>
-                                                                                                                <circle class="stroke-current text-white"
-                                                                                                                        cx="50"
-                                                                                                                        cy="50"
-                                                                                                                        r="20"
-                                                                                                                        fill="none"
-                                                                                                                        stroke-width="8"
-                                                                                                                        stroke-linecap="round"
-                                                                                                                        stroke-dashoffset="0"
-                                                                                                                        stroke-dasharray="100, 200">
-                                                                                                                    <animateTransform
-                                                                                                                            attributeName="transform"
-                                                                                                                            attributeType="XML"
-                                                                                                                            type="rotate"
-                                                                                                                            from="0 50 50"
-                                                                                                                            to="360 50 50"
-                                                                                                                            dur="2.5s"
-                                                                                                                            repeatCount="indefinite"></animateTransform>
-                                                                                                                    <animate
-                                                                                                                            attributeName="stroke-dashoffset"
-                                                                                                                            values="0;-30;-124"
-                                                                                                                            dur="1.25s"
-                                                                                                                            repeatCount="indefinite"></animate>
-                                                                                                                    <animate
-                                                                                                                            attributeName="stroke-dasharray"
-                                                                                                                            values="0,200;110,200;110,200"
-                                                                                                                            dur="1.25s"
-                                                                                                                            repeatCount="indefinite"></animate>
+                                                                                                                <circle class="stroke-current text-white" cx="50" cy="50" r="20" fill="none" stroke-width="8" stroke-linecap="round" stroke-dashoffset="0" stroke-dasharray="100, 200">
+                                                                                                                    <animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0 50 50" to="360 50 50" dur="2.5s" repeatCount="indefinite"></animateTransform>
+                                                                                                                    <animate attributeName="stroke-dashoffset" values="0;-30;-124" dur="1.25s" repeatCount="indefinite"></animate>
+                                                                                                                    <animate attributeName="stroke-dasharray" values="0,200;110,200;110,200" dur="1.25s" repeatCount="indefinite"></animate>
                                                                                                                 </circle>
                                                                                                             </svg>
                                                                                                         </button>
-                                                                                                        <button type="button"
-                                                                                                                @click="show = 0"
-                                                                                                                class="w-24 h-10 border border-gray-300 text-gray-300 text-sm font-bold rounded-md transition duration-200 hover:bg-gray-300 hover:text-white">
-                                                                                                            انصراف
-                                                                                                        </button>
+                                                                                                        <button type="button" @click="show = 0" class="w-24 h-10 border border-gray-300 text-gray-300 text-sm font-bold rounded-md transition duration-200 hover:bg-gray-300 hover:text-white">انصراف</button>
                                                                                                     </div>
                                                                                                 </div>
                                                                                             </div>

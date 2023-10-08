@@ -697,7 +697,7 @@ foreach ($data['servicesTag'] as $tag) {
                                 </div>
 
                                 <?php if (!empty($data['userId']) and $data['userId'] != FALSE) { ?>
-                                    <div wire:id="item-<?= $data['attrId']; ?>" wire:initial-data="{&quot;fingerprint&quot;:{&quot;id&quot;:&quot;item-<?= $data['attrId']; ?>&quot;,&quot;name&quot;:&quot;user\/sendComment&quot;,&quot;type&quot;:&quot;service&quot;,&quot;itemID&quot;:&quot;<?= $data['attrId']; ?>&quot;,&quot;locale&quot;:&quot;fa&quot;,&quot;path&quot;:&quot;services\/<?= $data['services']['s_slug'] ?>&quot;,&quot;method&quot;:&quot;GET&quot;,&quot;v&quot;:&quot;acj&quot;},&quot;effects&quot;:{&quot;listeners&quot;:[]},&quot;serverMemo&quot;:{&quot;children&quot;:{&quot;201045181&quot;:{&quot;id&quot;:&quot;X5EAUqbyw6oZ4xvzwW9P&quot;,&quot;tag&quot;:&quot;div&quot;}},&quot;errors&quot;:[],&quot;htmlHash&quot;:&quot;f5aee777&quot;,&quot;data&quot;:{&quot;formId&quot;:&quot;6290e73640e6b&quot;,&quot;subject&quot;:[],&quot;show&quot;:false,&quot;message&quot;:null,&quot;parentId&quot;:0,&quot;loading&quot;:null,&quot;user&quot;:[]},&quot;dataMeta&quot;:{&quot;models&quot;:{&quot;subject&quot;:{&quot;class&quot;:&quot;App\\Article&quot;,&quot;id&quot;:5950,&quot;relations&quot;:[&quot;rates&quot;,&quot;categories&quot;,&quot;tags&quot;,&quot;user&quot;],&quot;connection&quot;:&quot;mysql&quot;},&quot;user&quot;:{&quot;class&quot;:&quot;App\\User&quot;,&quot;id&quot;:2,&quot;relations&quot;:[],&quot;connection&quot;:&quot;mysql&quot;}}},&quot;checksum&quot;:&quot;2456e05255b5c359932e11b203dd8fb935bbbd205142f6f87cee6eb59e7ce535&quot;}}" x-data="{ show : 0  , message : window.Livewire.find('item-<?= $data['attrId']; ?>').entangle('message').defer }" x-on:show-send-comment.window="if($event.detail.id === 0) show = 1" x-on:hide-send-comment.window="show = 0">
+                                    <div wire:id="item-<?= $data['attrId']; ?>" wire:initial-data="{&quot;fingerprint&quot;:{&quot;id&quot;:&quot;item-<?= $data['attrId']; ?>&quot;,&quot;name&quot;:&quot;user\/sendComment&quot;,&quot;type&quot;:&quot;service&quot;,&quot;itemID&quot;:&quot;<?= $data['attrId']; ?>&quot;,&quot;locale&quot;:&quot;fa&quot;,&quot;path&quot;:&quot;services\/<?= $data['services']['s_slug'] ?>&quot;,&quot;method&quot;:&quot;GET&quot;,&quot;v&quot;:&quot;acj&quot;},&quot;effects&quot;:{&quot;listeners&quot;:[]},&quot;serverMemo&quot;:{&quot;children&quot;:{&quot;201045181&quot;:{&quot;id&quot;:&quot;X5EAUqbyw6oZ4xvzwW9P&quot;,&quot;tag&quot;:&quot;div&quot;}},&quot;errors&quot;:[],&quot;htmlHash&quot;:&quot;f5aee777&quot;,&quot;data&quot;:{&quot;formId&quot;:&quot;6522fecb8c2c9&quot;,&quot;subject&quot;:[],&quot;show&quot;:false,&quot;message&quot;:null,&quot;parentId&quot;:0,&quot;loading&quot;:null,&quot;user&quot;:[]},&quot;dataMeta&quot;:{&quot;models&quot;:{&quot;subject&quot;:{&quot;class&quot;:&quot;App\\Article&quot;,&quot;id&quot;:5950,&quot;relations&quot;:[&quot;rates&quot;,&quot;categories&quot;,&quot;tags&quot;,&quot;user&quot;],&quot;connection&quot;:&quot;mysql&quot;},&quot;user&quot;:{&quot;class&quot;:&quot;App\\User&quot;,&quot;id&quot;:2,&quot;relations&quot;:[],&quot;connection&quot;:&quot;mysql&quot;}}},&quot;checksum&quot;:&quot;2456e05255b5c359932e11b203dd8fb935bbbd205142f6f87cee6eb59e7ce535&quot;}}" x-data="{ show : 0  , message : window.Livewire.find('item-<?= $data['attrId']; ?>').entangle('message').defer }" x-on:show-send-comment.window="if($event.detail.id === 0) show = 1" x-on:hide-send-comment.window="show = 0">
                                         <div class="border border-gray-210 dark:border-opacity-10  rounded-lg mb-8 pt-9 pb-8 md:px-7 px-4" x-show="show" style="display: none">
 
                                             <div class="border-b border-gray-210 dark:border-opacity-10">
@@ -723,10 +723,10 @@ foreach ($data['servicesTag'] as $tag) {
                                             <div>
                                                 <div class="mt-5" x-show="show" style="display: none">
                                                     <div class="space-y-3">
-                                                        <form class="form" id="form-6290e73640e6b" wire:submit.prevent="onSubmit">
-                                                            <div @editor-6290e73640e6b-content-update.window="message = $event.detail.content">
+                                                        <form class="form" id="form-6522fecb8c2c9" wire:submit.prevent="onSubmit">
+                                                            <div @editor-6522fecb8c2c9-content-update.window="message = $event.detail.content">
                                                                 <div>
-                                                                    <div class="" x-data="editorData()" x-init="$watch('content' , v => $dispatch(`editor-6290e73640e6b-content-update` , { content : v}) )">
+                                                                    <div class="" x-data="editorData()" x-init="$watch('content' , v => $dispatch(`editor-6522fecb8c2c9-content-update` , { content : v}) )">
                                                                         <div class="flex justify-end items-end">
                                                                             <span class="mute-text mb-1 font-bold text-gray-500 relative" x-show="window.wordsCount(content) > 0" x-text="window.wordsCount(content) + ' کلمه'" style="display: none;">0 کلمه</span>
                                                                         </div>
@@ -752,17 +752,20 @@ foreach ($data['servicesTag'] as $tag) {
                                                                                     <div class="content-area px-4 text-gray-400">
                                                                                         <template x-if="helpsection === 'link'">
                                                                                             <div>
+                                                                                                <p>راحت‌ترین راه برای وارد کردن لینک استفاده از دکمه افزودن لینک در بالاست، اما اگر احساس
+                                                                                                    می‌کنید که نیاز به ویژگی‌های دیگه‌ای از <strong>MarkDown</strong> دارید میتونید به متن
+                                                                                                    زیر دقت کنید.</p>
                                                                                                 <p>برای وارد کردن لینک می‌توانید  خیلی ساده فقط لینک‌تان را کپی کنید و نیاز به کار خاصی نیست، مابقی رو ما برای‌تان انجام میدهیم و یا از دکمه افزودن لینک در منوی بالا استفاده نمایید</p>
                                                                                             </div>
                                                                                         </template>
                                                                                     </div>
                                                                                 </template>
                                                                             </div>
-                                                                            <textarea @editor-6290e73640e6b-content-init.window="content = $event.detail.content"
+                                                                            <textarea @editor-6522fecb8c2c9-content-init.window="content = $event.detail.content"
                                                                                       @focus="$dispatch('guide' , { status : 'body' });content = $event.target.value"
                                                                                       @blur="content = $event.target.value" x-model="content"
                                                                                       class="leading-loose w-full p-4 text-base dark:placeholder-gray-920 dark:text-white placeholder-gray-400 dark:border-dark-900 border-gray-100 dark:bg-dark-900   "
-                                                                                      x-ref="textarea" id="editor-textarea-6290e73640e6b" data-editor="240" type="text"
+                                                                                      x-ref="textarea" id="editor-textarea-6522fecb8c2c9" data-editor="240" type="text"
                                                                                       rows="10" placeholder="متن مورد نظر خود را وارد کنید ...">
                                                                                 </textarea>
 
@@ -771,7 +774,7 @@ foreach ($data['servicesTag'] as $tag) {
                                                                         <span class="text-red-500 mt-1 block font-semibold text-sm"></span>
                                                                     </div>
                                                                 </div>
-                                                                <div class="flex sm:flex-row flex-col justify-between items-center mt-7" x-data="editorPreview('6290e73640e6b')">
+                                                                <div class="flex sm:flex-row flex-col justify-between items-center mt-7" x-data="editorPreview('6522fecb8c2c9')">
                                                                     <div class="flex items-center sm:mb-0 mb-5" x-bind="togglePreview">
                                                                         <span class="text-base text-biscay-700 dark:text-white ml-4 font-semibold">پیش نمایش متن</span>
                                                                         <button type="button" :class="{' !bg-blue-700':preview}" class="w-14 h-7 bg-gray-300 dark:bg-gray-200 bg-opacity-30 transition-all duration-300 rounded-full relative">
@@ -1065,7 +1068,8 @@ foreach ($data['servicesTag'] as $tag) {
                                                                                                                 <animate attributeName="stroke-dashoffset" values="0;-30;-124" dur="1.25s" repeatCount="indefinite"></animate>
                                                                                                                 <animate attributeName="stroke-dasharray" values="0,200;110,200;110,200" dur="1.25s" repeatCount="indefinite"></animate>
                                                                                                             </circle>
-                                                                                                        </svg>                                            </button>
+                                                                                                        </svg>
+                                                                                                    </button>
                                                                                                     <button type="button" @click="show = 0" class="w-24 h-10 border border-gray-300 text-gray-300 text-sm font-bold rounded-md transition duration-200 hover:bg-gray-300 hover:text-white">انصراف</button>
                                                                                                 </div>
                                                                                             </div>

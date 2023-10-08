@@ -471,7 +471,7 @@ class model_user extends Model
                             ],
                             "dispatches" => [
                                 [
-                                    "event" => "editor-6290e73640e6b-content-init",
+                                    "event" => "editor-6522fecb8c2c9-content-init",
                                     "data" => [
                                         "content" => ""
                                     ]
@@ -488,16 +488,17 @@ class model_user extends Model
                         "serverMemo" => [
                             "children" => [
                                 [
-                                    "id" => "V452HjndVFEbhkPh55e1",
+                                    "id" => "wTmiQ6ug7gVdNklFRXkh",
                                     "tag" => "div"
                                 ]
                             ],
+                            "errors" => [],
                             "htmlHash" => "c096dcda",
                             "data" => [
                                 "message" => "",
                                 "loading" => null
                             ],
-                            "checksum" => "f782d1298d95483b7fd1a603304b2dacc6e680c61664f168ecd1198d1141d672"
+                            "checksum" => "5f942aa2cbc67af1f628b74fe2d67a0a39dd1387a94fb2db1f94901b827634a4"
                         ]
                     ];
                 }
