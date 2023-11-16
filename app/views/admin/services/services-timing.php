@@ -180,7 +180,7 @@
                                                 <input type="hidden" name="service_id" value="<?= $data['attrId'] ?>">
                                                 <input type="hidden" name="day" value="default">
                                                 <input type="hidden" name="default_program" value="custom">
-                                                <input type="hidden" id="count_default" name="count_default" value="<?= sizeof($data['servicesTimingManageDay']['default']) ?>">
+                                                <input type="hidden" id="count_default" name="count_default" value="<?= @sizeof($data['servicesTimingManageDay']['default']) ?>">
 
                                                 <div class="py-5">
                                                     <p class="font-weight-bold mb-2">بازه های زمانی پیش فرض</p>
@@ -199,7 +199,7 @@
                                                                 </tr>
                                                                 </thead>
                                                                 <tbody id="tbody-default">
-                                                                <?php if(sizeof($data['servicesTimingManageDay']['default'])>0){ ?>
+                                                                <?php if(@sizeof($data['servicesTimingManageDay']['default'])>0){ ?>
                                                                     <?php $i=0; foreach($data['servicesTimingManageDay']['default'] as $item){ ?>
                                                                         <tr>
                                                                             <td>
@@ -247,7 +247,7 @@
                                             <form id="holidayForm" onsubmit="return false;">
                                                 <input type="hidden" name="service_id" value="<?= $data['attrId'] ?>">
                                                 <input type="hidden" name="day" value="holiday">
-                                                <input type="hidden" id="count_holiday" name="count_holiday" value="<?= sizeof($data['servicesTimingManageDay']['holiday']) ?>">
+                                                <input type="hidden" id="count_holiday" name="count_holiday" value="<?= @sizeof($data['servicesTimingManageDay']['holiday']) ?>">
 
                                                 <div class="py-5">
                                                     <p class="font-weight-bold mb-2">برنامه روزهای تعطیل</p>
@@ -345,7 +345,7 @@
                                         <div class="tab-pane" id="tab_saturday">
                                             <form id="saturdayForm" onsubmit="return false;">
                                                 <input type="hidden" name="service_id" value="<?= $data['attrId'] ?>">
-                                                <input type="hidden" id="count_saturday" name="count_saturday" value="<?= sizeof($data['servicesTimingManageDay']['saturday']) ?>">
+                                                <input type="hidden" id="count_saturday" name="count_saturday" value="<?= @sizeof($data['servicesTimingManageDay']['saturday']) ?>">
                                                 <input type="hidden" name="day" value="saturday">
 
                                                 <div class="py-5">
@@ -354,7 +354,7 @@
                                                         <div class="form-group mb-1">
                                                             <label>
                                                                 <div class="iradio_flat-green">
-                                                                    <input type="radio" name="saturday_program" value="default" class="flat-red" <?= $data['servicesTiming'][0]['st_turn_saturday'] == "default" ? "checked":""; ?>>
+                                                                    <input type="radio" name="saturday_program" value="default" class="flat-red" <?= @$data['servicesTiming'][0]['st_turn_saturday'] == "default" ? "checked":""; ?>>
                                                                 </div>
                                                                 استفاده از بازه های زمانی پیش فرض
                                                             </label>
@@ -362,7 +362,7 @@
                                                         <div class="form-group mb-1">
                                                             <label>
                                                                 <div class="iradio_flat-green">
-                                                                    <input type="radio" name="saturday_program" value="custom_date" class="flat-red" <?= $data['servicesTiming'][0]['st_turn_saturday'] == "custom_date" ? "checked":""; ?>>
+                                                                    <input type="radio" name="saturday_program" value="custom_date" class="flat-red" <?= @$data['servicesTiming'][0]['st_turn_saturday'] == "custom_date" ? "checked":""; ?>>
                                                                 </div>
                                                                 استفاده از تاریخ های دلخواه تعریف شده
                                                             </label>
@@ -370,7 +370,7 @@
                                                         <div class="form-group mb-1">
                                                             <label>
                                                                 <div class="iradio_flat-green">
-                                                                    <input type="radio" name="saturday_program" value="holiday" class="flat-red" <?= $data['servicesTiming'][0]['st_turn_saturday'] == "holiday" ? "checked":""; ?>>
+                                                                    <input type="radio" name="saturday_program" value="holiday" class="flat-red" <?= @$data['servicesTiming'][0]['st_turn_saturday'] == "holiday" ? "checked":""; ?>>
                                                                 </div>
                                                                 استفاده از بازه های زمانی روزهای تعطیل
                                                             </label>
@@ -378,7 +378,7 @@
                                                         <div class="form-group mb-1">
                                                             <label>
                                                                 <div class="iradio_flat-green">
-                                                                    <input type="radio" name="saturday_program" value="not_turn" class="flat-red" <?= $data['servicesTiming'][0]['st_turn_saturday'] == "not_turn" ? "checked":""; ?>>
+                                                                    <input type="radio" name="saturday_program" value="not_turn" class="flat-red" <?= @$data['servicesTiming'][0]['st_turn_saturday'] == "not_turn" ? "checked":""; ?>>
                                                                 </div>
                                                                 عدم نوبت دهی
                                                             </label>
@@ -386,7 +386,7 @@
                                                         <div class="form-group mb-1">
                                                             <label>
                                                                 <div class="iradio_flat-green">
-                                                                    <input type="radio" name="saturday_program" value="custom" class="flat-red" <?= $data['servicesTiming'][0]['st_turn_saturday'] == "custom" ? "checked":""; ?>>
+                                                                    <input type="radio" name="saturday_program" value="custom" class="flat-red" <?= @$data['servicesTiming'][0]['st_turn_saturday'] == "custom" ? "checked":""; ?>>
                                                                 </div>
                                                                 تعریف بازه های زمانی دلخواه به صورت کلی
                                                             </label>
@@ -405,7 +405,7 @@
                                                                 </tr>
                                                                 </thead>
                                                                 <tbody id="tbody-saturday">
-                                                                <?php if(sizeof($data['servicesTimingManageDay']['saturday'])>0){ ?>
+                                                                <?php if(@sizeof($data['servicesTimingManageDay']['saturday'])>0){ ?>
                                                                     <?php $i=0; foreach($data['servicesTimingManageDay']['saturday'] as $item){ ?>
                                                                         <tr>
                                                                             <td>
@@ -452,7 +452,7 @@
                                         <div class="tab-pane" id="tab_sunday">
                                             <form id="sundayForm" onsubmit="return false;">
                                                 <input type="hidden" name="service_id" value="<?= $data['attrId'] ?>">
-                                                <input type="hidden" id="count_sunday" name="count_sunday" value="<?= sizeof($data['servicesTimingManageDay']['sunday']) ?>">
+                                                <input type="hidden" id="count_sunday" name="count_sunday" value="<?= @sizeof($data['servicesTimingManageDay']['sunday']) ?>">
                                                 <input type="hidden" name="day" value="sunday">
 
                                                 <div class="py-5">
@@ -461,7 +461,7 @@
                                                         <div class="form-group mb-1">
                                                             <label>
                                                                 <div class="iradio_flat-green">
-                                                                    <input type="radio" name="sunday_program" value="default" class="flat-red" <?= $data['servicesTiming'][0]['st_turn_sunday'] == "default" ? "checked":""; ?>>
+                                                                    <input type="radio" name="sunday_program" value="default" class="flat-red" <?= @$data['servicesTiming'][0]['st_turn_sunday'] == "default" ? "checked":""; ?>>
                                                                 </div>
                                                                 استفاده از بازه های زمانی پیش فرض
                                                             </label>
@@ -469,7 +469,7 @@
                                                         <div class="form-group mb-1">
                                                             <label>
                                                                 <div class="iradio_flat-green">
-                                                                    <input type="radio" name="sunday_program" value="custom_date" class="flat-red" <?= $data['servicesTiming'][0]['st_turn_sunday'] == "custom_date" ? "checked":""; ?>>
+                                                                    <input type="radio" name="sunday_program" value="custom_date" class="flat-red" <?= @$data['servicesTiming'][0]['st_turn_sunday'] == "custom_date" ? "checked":""; ?>>
                                                                 </div>
                                                                 استفاده از تاریخ های دلخواه تعریف شده
                                                             </label>
@@ -477,7 +477,7 @@
                                                         <div class="form-group mb-1">
                                                             <label>
                                                                 <div class="iradio_flat-green">
-                                                                    <input type="radio" name="sunday_program" value="holiday" class="flat-red" <?= $data['servicesTiming'][0]['st_turn_sunday'] == "holiday" ? "checked":""; ?>>
+                                                                    <input type="radio" name="sunday_program" value="holiday" class="flat-red" <?= @$data['servicesTiming'][0]['st_turn_sunday'] == "holiday" ? "checked":""; ?>>
                                                                 </div>
                                                                 استفاده از بازه های زمانی روزهای تعطیل
                                                             </label>
@@ -485,7 +485,7 @@
                                                         <div class="form-group mb-1">
                                                             <label>
                                                                 <div class="iradio_flat-green">
-                                                                    <input type="radio" name="sunday_program" value="not_turn" class="flat-red" <?= $data['servicesTiming'][0]['st_turn_sunday'] == "not_turn" ? "checked":""; ?>>
+                                                                    <input type="radio" name="sunday_program" value="not_turn" class="flat-red" <?= @$data['servicesTiming'][0]['st_turn_sunday'] == "not_turn" ? "checked":""; ?>>
                                                                 </div>
                                                                 عدم نوبت دهی
                                                             </label>
@@ -493,12 +493,12 @@
                                                         <div class="form-group mb-1">
                                                             <label>
                                                                 <div class="iradio_flat-green">
-                                                                    <input type="radio" name="sunday_program" value="custom" class="flat-red" <?= $data['servicesTiming'][0]['st_turn_sunday'] == "custom" ? "checked":""; ?>>
+                                                                    <input type="radio" name="sunday_program" value="custom" class="flat-red" <?= @$data['servicesTiming'][0]['st_turn_sunday'] == "custom" ? "checked":""; ?>>
                                                                 </div>
                                                                 تعریف بازه های زمانی دلخواه به صورت کلی
                                                             </label>
                                                         </div>
-                                                        <div class="table-responsive" id="table-sunday" style="<?= $data['servicesTiming'][0]['st_turn_sunday'] == "custom" ? "display: block;":"display: none;"; ?>">
+                                                        <div class="table-responsive" id="table-sunday" style="<?= @$data['servicesTiming'][0]['st_turn_sunday'] == "custom" ? "display: block;":"display: none;"; ?>">
                                                             <table class="table">
                                                                 <thead>
                                                                 <tr>
@@ -568,7 +568,7 @@
                                                         <div class="form-group mb-1">
                                                             <label>
                                                                 <div class="iradio_flat-green">
-                                                                    <input type="radio" name="monday_program" value="default" class="flat-red" <?= $data['servicesTiming'][0]['st_turn_monday'] == "default" ? "checked":""; ?>>
+                                                                    <input type="radio" name="monday_program" value="default" class="flat-red" <?= @$data['servicesTiming'][0]['st_turn_monday'] == "default" ? "checked":""; ?>>
                                                                 </div>
                                                                 استفاده از بازه های زمانی پیش فرض
                                                             </label>
@@ -576,7 +576,7 @@
                                                         <div class="form-group mb-1">
                                                             <label>
                                                                 <div class="iradio_flat-green">
-                                                                    <input type="radio" name="monday_program" value="custom_date" class="flat-red" <?= $data['servicesTiming'][0]['st_turn_monday'] == "custom_date" ? "checked":""; ?>>
+                                                                    <input type="radio" name="monday_program" value="custom_date" class="flat-red" <?= @$data['servicesTiming'][0]['st_turn_monday'] == "custom_date" ? "checked":""; ?>>
                                                                 </div>
                                                                 استفاده از تاریخ های دلخواه تعریف شده
                                                             </label>
@@ -584,7 +584,7 @@
                                                         <div class="form-group mb-1">
                                                             <label>
                                                                 <div class="iradio_flat-green">
-                                                                    <input type="radio" name="monday_program" value="holiday" class="flat-red" <?= $data['servicesTiming'][0]['st_turn_monday'] == "holiday" ? "checked":""; ?>>
+                                                                    <input type="radio" name="monday_program" value="holiday" class="flat-red" <?= @$data['servicesTiming'][0]['st_turn_monday'] == "holiday" ? "checked":""; ?>>
                                                                 </div>
                                                                 استفاده از بازه های زمانی روزهای تعطیل
                                                             </label>
@@ -592,7 +592,7 @@
                                                         <div class="form-group mb-1">
                                                             <label>
                                                                 <div class="iradio_flat-green">
-                                                                    <input type="radio" name="monday_program" value="not_turn" class="flat-red" <?= $data['servicesTiming'][0]['st_turn_monday'] == "not_turn" ? "checked":""; ?>>
+                                                                    <input type="radio" name="monday_program" value="not_turn" class="flat-red" <?= @$data['servicesTiming'][0]['st_turn_monday'] == "not_turn" ? "checked":""; ?>>
                                                                 </div>
                                                                 عدم نوبت دهی
                                                             </label>
@@ -600,7 +600,7 @@
                                                         <div class="form-group mb-1">
                                                             <label>
                                                                 <div class="iradio_flat-green">
-                                                                    <input type="radio" name="monday_program" value="custom" class="flat-red" <?= $data['servicesTiming'][0]['st_turn_monday'] == "custom" ? "checked":""; ?>>
+                                                                    <input type="radio" name="monday_program" value="custom" class="flat-red" <?= @$data['servicesTiming'][0]['st_turn_monday'] == "custom" ? "checked":""; ?>>
                                                                 </div>
                                                                 تعریف بازه های زمانی دلخواه به صورت کلی
                                                             </label>
@@ -675,7 +675,7 @@
                                                         <div class="form-group mb-1">
                                                             <label>
                                                                 <div class="iradio_flat-green">
-                                                                    <input type="radio" name="tuesday_program" value="default" class="flat-red" <?= $data['servicesTiming'][0]['st_turn_tuesday'] == "default" ? "checked":""; ?>>
+                                                                    <input type="radio" name="tuesday_program" value="default" class="flat-red" <?= @$data['servicesTiming'][0]['st_turn_tuesday'] == "default" ? "checked":""; ?>>
                                                                 </div>
                                                                 استفاده از بازه های زمانی پیش فرض
                                                             </label>
@@ -683,7 +683,7 @@
                                                         <div class="form-group mb-1">
                                                             <label>
                                                                 <div class="iradio_flat-green">
-                                                                    <input type="radio" name="tuesday_program" value="custom_date" class="flat-red" <?= $data['servicesTiming'][0]['st_turn_tuesday'] == "custom_date" ? "checked":""; ?>>
+                                                                    <input type="radio" name="tuesday_program" value="custom_date" class="flat-red" <?= @$data['servicesTiming'][0]['st_turn_tuesday'] == "custom_date" ? "checked":""; ?>>
                                                                 </div>
                                                                 استفاده از تاریخ های دلخواه تعریف شده
                                                             </label>
@@ -691,7 +691,7 @@
                                                         <div class="form-group mb-1">
                                                             <label>
                                                                 <div class="iradio_flat-green">
-                                                                    <input type="radio" name="tuesday_program" value="holiday" class="flat-red" <?= $data['servicesTiming'][0]['st_turn_tuesday'] == "holiday" ? "checked":""; ?>>
+                                                                    <input type="radio" name="tuesday_program" value="holiday" class="flat-red" <?= @$data['servicesTiming'][0]['st_turn_tuesday'] == "holiday" ? "checked":""; ?>>
                                                                 </div>
                                                                 استفاده از بازه های زمانی روزهای تعطیل
                                                             </label>
@@ -699,7 +699,7 @@
                                                         <div class="form-group mb-1">
                                                             <label>
                                                                 <div class="iradio_flat-green">
-                                                                    <input type="radio" name="tuesday_program" value="not_turn" class="flat-red" <?= $data['servicesTiming'][0]['st_turn_tuesday'] == "not_turn" ? "checked":""; ?>>
+                                                                    <input type="radio" name="tuesday_program" value="not_turn" class="flat-red" <?= @$data['servicesTiming'][0]['st_turn_tuesday'] == "not_turn" ? "checked":""; ?>>
                                                                 </div>
                                                                 عدم نوبت دهی
                                                             </label>
@@ -707,7 +707,7 @@
                                                         <div class="form-group mb-1">
                                                             <label>
                                                                 <div class="iradio_flat-green">
-                                                                    <input type="radio" name="tuesday_program" value="custom" class="flat-red" <?= $data['servicesTiming'][0]['st_turn_tuesday'] == "custom" ? "checked":""; ?>>
+                                                                    <input type="radio" name="tuesday_program" value="custom" class="flat-red" <?= @$data['servicesTiming'][0]['st_turn_tuesday'] == "custom" ? "checked":""; ?>>
                                                                 </div>
                                                                 تعریف بازه های زمانی دلخواه به صورت کلی
                                                             </label>
@@ -782,7 +782,7 @@
                                                         <div class="form-group mb-1">
                                                             <label>
                                                                 <div class="iradio_flat-green">
-                                                                    <input type="radio" name="wednesday_program" value="default" class="flat-red" <?= $data['servicesTiming'][0]['st_turn_wednesday'] == "default" ? "checked":""; ?>>
+                                                                    <input type="radio" name="wednesday_program" value="default" class="flat-red" <?= @$data['servicesTiming'][0]['st_turn_wednesday'] == "default" ? "checked":""; ?>>
                                                                 </div>
                                                                 استفاده از بازه های زمانی پیش فرض
                                                             </label>
@@ -790,7 +790,7 @@
                                                         <div class="form-group mb-1">
                                                             <label>
                                                                 <div class="iradio_flat-green">
-                                                                    <input type="radio" name="wednesday_program" value="custom_date" class="flat-red" <?= $data['servicesTiming'][0]['st_turn_wednesday'] == "custom_date" ? "checked":""; ?>>
+                                                                    <input type="radio" name="wednesday_program" value="custom_date" class="flat-red" <?= @$data['servicesTiming'][0]['st_turn_wednesday'] == "custom_date" ? "checked":""; ?>>
                                                                 </div>
                                                                 استفاده از تاریخ های دلخواه تعریف شده
                                                             </label>
@@ -798,7 +798,7 @@
                                                         <div class="form-group mb-1">
                                                             <label>
                                                                 <div class="iradio_flat-green">
-                                                                    <input type="radio" name="wednesday_program" value="holiday" class="flat-red" <?= $data['servicesTiming'][0]['st_turn_wednesday'] == "holiday" ? "checked":""; ?>>
+                                                                    <input type="radio" name="wednesday_program" value="holiday" class="flat-red" <?= @$data['servicesTiming'][0]['st_turn_wednesday'] == "holiday" ? "checked":""; ?>>
                                                                 </div>
                                                                 استفاده از بازه های زمانی روزهای تعطیل
                                                             </label>
@@ -806,7 +806,7 @@
                                                         <div class="form-group mb-1">
                                                             <label>
                                                                 <div class="iradio_flat-green">
-                                                                    <input type="radio" name="wednesday_program" value="not_turn" class="flat-red" <?= $data['servicesTiming'][0]['st_turn_wednesday'] == "not_turn" ? "checked":""; ?>>
+                                                                    <input type="radio" name="wednesday_program" value="not_turn" class="flat-red" <?= @$data['servicesTiming'][0]['st_turn_wednesday'] == "not_turn" ? "checked":""; ?>>
                                                                 </div>
                                                                 عدم نوبت دهی
                                                             </label>
@@ -814,7 +814,7 @@
                                                         <div class="form-group mb-1">
                                                             <label>
                                                                 <div class="iradio_flat-green">
-                                                                    <input type="radio" name="wednesday_program" value="custom" class="flat-red" <?= $data['servicesTiming'][0]['st_turn_wednesday'] == "custom" ? "checked":""; ?>>
+                                                                    <input type="radio" name="wednesday_program" value="custom" class="flat-red" <?= @$data['servicesTiming'][0]['st_turn_wednesday'] == "custom" ? "checked":""; ?>>
                                                                 </div>
                                                                 تعریف بازه های زمانی دلخواه به صورت کلی
                                                             </label>
@@ -889,7 +889,7 @@
                                                         <div class="form-group mb-1">
                                                             <label>
                                                                 <div class="iradio_flat-green">
-                                                                    <input type="radio" name="thursday_program" value="default" class="flat-red" <?= $data['servicesTiming'][0]['st_turn_thursday'] == "default" ? "checked":""; ?>>
+                                                                    <input type="radio" name="thursday_program" value="default" class="flat-red" <?= @$data['servicesTiming'][0]['st_turn_thursday'] == "default" ? "checked":""; ?>>
                                                                 </div>
                                                                 استفاده از بازه های زمانی پیش فرض
                                                             </label>
@@ -897,7 +897,7 @@
                                                         <div class="form-group mb-1">
                                                             <label>
                                                                 <div class="iradio_flat-green">
-                                                                    <input type="radio" name="thursday_program" value="custom_date" class="flat-red" <?= $data['servicesTiming'][0]['st_turn_thursday'] == "custom_date" ? "checked":""; ?>>
+                                                                    <input type="radio" name="thursday_program" value="custom_date" class="flat-red" <?= @$data['servicesTiming'][0]['st_turn_thursday'] == "custom_date" ? "checked":""; ?>>
                                                                 </div>
                                                                 استفاده از تاریخ های دلخواه تعریف شده
                                                             </label>
@@ -905,7 +905,7 @@
                                                         <div class="form-group mb-1">
                                                             <label>
                                                                 <div class="iradio_flat-green">
-                                                                    <input type="radio" name="thursday_program" value="holiday" class="flat-red" <?= $data['servicesTiming'][0]['st_turn_thursday'] == "holiday" ? "checked":""; ?>>
+                                                                    <input type="radio" name="thursday_program" value="holiday" class="flat-red" <?= @$data['servicesTiming'][0]['st_turn_thursday'] == "holiday" ? "checked":""; ?>>
                                                                 </div>
                                                                 استفاده از بازه های زمانی روزهای تعطیل
                                                             </label>
@@ -913,7 +913,7 @@
                                                         <div class="form-group mb-1">
                                                             <label>
                                                                 <div class="iradio_flat-green">
-                                                                    <input type="radio" name="thursday_program" value="not_turn" class="flat-red" <?= $data['servicesTiming'][0]['st_turn_thursday'] == "not_turn" ? "checked":""; ?>>
+                                                                    <input type="radio" name="thursday_program" value="not_turn" class="flat-red" <?= @$data['servicesTiming'][0]['st_turn_thursday'] == "not_turn" ? "checked":""; ?>>
                                                                 </div>
                                                                 عدم نوبت دهی
                                                             </label>
@@ -921,7 +921,7 @@
                                                         <div class="form-group mb-1">
                                                             <label>
                                                                 <div class="iradio_flat-green">
-                                                                    <input type="radio" name="thursday_program" value="custom" class="flat-red" <?= $data['servicesTiming'][0]['st_turn_thursday'] == "custom" ? "checked":""; ?>>
+                                                                    <input type="radio" name="thursday_program" value="custom" class="flat-red" <?= @$data['servicesTiming'][0]['st_turn_thursday'] == "custom" ? "checked":""; ?>>
                                                                 </div>
                                                                 تعریف بازه های زمانی دلخواه به صورت کلی
                                                             </label>
@@ -996,7 +996,7 @@
                                                         <div class="form-group mb-1">
                                                             <label>
                                                                 <div class="iradio_flat-green">
-                                                                    <input type="radio" name="friday_program" value="default" class="flat-red" <?= $data['servicesTiming'][0]['st_turn_friday'] == "default" ? "checked":""; ?>>
+                                                                    <input type="radio" name="friday_program" value="default" class="flat-red" <?= @$data['servicesTiming'][0]['st_turn_friday'] == "default" ? "checked":""; ?>>
                                                                 </div>
                                                                 استفاده از بازه های زمانی پیش فرض
                                                             </label>
@@ -1004,7 +1004,7 @@
                                                         <div class="form-group mb-1">
                                                             <label>
                                                                 <div class="iradio_flat-green">
-                                                                    <input type="radio" name="friday_program" value="custom_date" class="flat-red" <?= $data['servicesTiming'][0]['st_turn_friday'] == "custom_date" ? "checked":""; ?>>
+                                                                    <input type="radio" name="friday_program" value="custom_date" class="flat-red" <?= @$data['servicesTiming'][0]['st_turn_friday'] == "custom_date" ? "checked":""; ?>>
                                                                 </div>
                                                                 استفاده از تاریخ های دلخواه تعریف شده
                                                             </label>
@@ -1012,7 +1012,7 @@
                                                         <div class="form-group mb-1">
                                                             <label>
                                                                 <div class="iradio_flat-green">
-                                                                    <input type="radio" name="friday_program" value="holiday" class="flat-red" <?= $data['servicesTiming'][0]['st_turn_friday'] == "holiday" ? "checked":""; ?>>
+                                                                    <input type="radio" name="friday_program" value="holiday" class="flat-red" <?= @$data['servicesTiming'][0]['st_turn_friday'] == "holiday" ? "checked":""; ?>>
                                                                 </div>
                                                                 استفاده از بازه های زمانی روزهای تعطیل
                                                             </label>
@@ -1020,7 +1020,7 @@
                                                         <div class="form-group mb-1">
                                                             <label>
                                                                 <div class="iradio_flat-green">
-                                                                    <input type="radio" name="friday_program" value="not_turn" class="flat-red" <?= $data['servicesTiming'][0]['st_turn_friday'] == "not_turn" ? "checked":""; ?>>
+                                                                    <input type="radio" name="friday_program" value="not_turn" class="flat-red" <?= @$data['servicesTiming'][0]['st_turn_friday'] == "not_turn" ? "checked":""; ?>>
                                                                 </div>
                                                                 عدم نوبت دهی
                                                             </label>
@@ -1028,7 +1028,7 @@
                                                         <div class="form-group mb-1">
                                                             <label>
                                                                 <div class="iradio_flat-green">
-                                                                    <input type="radio" name="friday_program" value="custom" class="flat-red" <?= $data['servicesTiming'][0]['st_turn_friday'] == "custom" ? "checked":""; ?>>
+                                                                    <input type="radio" name="friday_program" value="custom" class="flat-red" <?= @$data['servicesTiming'][0]['st_turn_friday'] == "custom" ? "checked":""; ?>>
                                                                 </div>
                                                                 تعریف بازه های زمانی دلخواه به صورت کلی
                                                             </label>
@@ -1129,7 +1129,7 @@
                                                 </label>
 
                                                 <div class="input-group">
-                                                    <input style="direction: ltr;border-radius: 0 3px 3px 0;text-align:left" type="text" value="<?= $data['servicesTiming'][0]['st_date_reservation'] ?>" class="form-control" style="direction: ltr;text-align: left" id="timing_date_reservation" name="timing_date_reservation" placeholder="به عنوان مثال 2" required>
+                                                    <input style="direction: ltr;border-radius: 0 3px 3px 0;text-align:left" type="text" value="<?= @$data['servicesTiming'][0]['st_date_reservation'] ?>" class="form-control" style="direction: ltr;text-align: left" id="timing_date_reservation" name="timing_date_reservation" placeholder="به عنوان مثال 2" required>
                                                     <span style="border-radius: 3px 0 0 3px" class="input-group-addon">روز</span>
                                                 </div>
                                             </div>
@@ -1141,7 +1141,7 @@
                                                 </label>
 
                                                 <div class="input-group">
-                                                    <input style="direction: ltr;border-radius: 0 3px 3px 0;text-align:left" type="text" value="<?= $data['servicesTiming'][0]['st_date_reservation_for_admin'] ?>" class="form-control" style="direction: ltr;text-align: left" id="timing_date_reservation_for_admin" name="timing_date_reservation_for_admin" placeholder="به عنوان مثال 2" required>
+                                                    <input style="direction: ltr;border-radius: 0 3px 3px 0;text-align:left" type="text" value="<?= @$data['servicesTiming'][0]['st_date_reservation_for_admin'] ?>" class="form-control" style="direction: ltr;text-align: left" id="timing_date_reservation_for_admin" name="timing_date_reservation_for_admin" placeholder="به عنوان مثال 2" required>
                                                     <span style="border-radius: 3px 0 0 3px" class="input-group-addon">روز</span>
                                                 </div>
                                             </div>
@@ -1153,7 +1153,7 @@
                                                 </label>
 
                                                 <div class="input-group">
-                                                    <input style="direction: ltr;border-radius: 0 3px 3px 0;text-align:left" type="text" value="<?= $data['servicesTiming'][0]['st_complete_time_reservation'] ?>" class="form-control" style="direction: ltr;text-align: left" id="complete_time_reservation" name="complete_time_reservation" placeholder="به عنوان مثال 30" required>
+                                                    <input style="direction: ltr;border-radius: 0 3px 3px 0;text-align:left" type="text" value="<?= @$data['servicesTiming'][0]['st_complete_time_reservation'] ?>" class="form-control" style="direction: ltr;text-align: left" id="complete_time_reservation" name="complete_time_reservation" placeholder="به عنوان مثال 30" required>
                                                     <span style="border-radius: 3px 0 0 3px" class="input-group-addon">دقیقه</span>
                                                 </div>
                                             </div>
@@ -1166,7 +1166,7 @@
                                                 </label>
 
                                                 <div class="input-group">
-                                                    <input style="direction: ltr;border-radius: 0 3px 3px 0;text-align:left" type="text" value="<?= $data['servicesTiming'][0]['st_allowed_time_book_repair_appointment'] ?>" class="form-control" style="direction: ltr;text-align: left" id="allowed_time_book_repair_appointment" name="allowed_time_book_repair_appointment" placeholder="به عنوان مثال 30" required>
+                                                    <input style="direction: ltr;border-radius: 0 3px 3px 0;text-align:left" type="text" value="<?= @$data['servicesTiming'][0]['st_allowed_time_book_repair_appointment'] ?>" class="form-control" style="direction: ltr;text-align: left" id="allowed_time_book_repair_appointment" name="allowed_time_book_repair_appointment" placeholder="به عنوان مثال 30" required>
                                                     <span style="border-radius: 3px 0 0 3px" class="input-group-addon">روز</span>
                                                 </div>
                                             </div>
