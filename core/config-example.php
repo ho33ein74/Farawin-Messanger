@@ -6,7 +6,7 @@ const DATABASE = "enter_database_name";
 const SERVER_NAME = "enter_hostname";
 
 //Version
-const VERSION = "1.0.0";
+const VERSION = "1.0.1";
 
 //Encrypt Key
 //don't change this param
