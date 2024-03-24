@@ -72,12 +72,12 @@ INSERT IGNORE INTO `tbl_admin_role` (`ar_id`, `ar_title`, `ar_removable`, `ar_cr
 -- Dumping structure for table reservation.tbl_admin_role_access
 DROP TABLE IF EXISTS `tbl_admin_role_access`;
 CREATE TABLE IF NOT EXISTS `tbl_admin_role_access` (
-  `aa_id` int NOT NULL AUTO_INCREMENT,
-  `role_id` int NOT NULL,
-  `path` varchar(100) NOT NULL,
-  PRIMARY KEY (`aa_id`),
-  UNIQUE KEY `aa_id` (`aa_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
+ `aa_id` int(11) NOT NULL,
+ `role_id` int(11) NOT NULL,
+ `path` varchar(100) CHARACTER SET utf32 COLLATE utf32_general_ci NOT NULL,
+ PRIMARY KEY (`aa_id`),
+ UNIQUE KEY `aa_id` (`aa_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 -- Dumping data for table reservation.tbl_admin_role_access: 0 rows
 /*!40000 ALTER TABLE `tbl_admin_role_access` DISABLE KEYS */;
