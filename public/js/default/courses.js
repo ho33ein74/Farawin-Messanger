@@ -1,1 +1,0 @@
-new Swiper(".learning_path_slider_courses",{slidesPerView:"auto",spaceBetween:27,slidesPerGroup:1,navigation:{nextEl:".learning_path_wrapper_courses .swiper-button-next",prevEl:".learning_path_wrapper_courses .swiper-button-prev"}});

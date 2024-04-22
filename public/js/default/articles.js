@@ -1,1 +1,0 @@
-new Swiper(".article_page_slider",{slidesPerView:3,slidesPerGroup:1,spaceBetween:37,loopFillGroupWithBlank:!0,autoHeight:!1,navigation:{nextEl:".article_page_slider_top .swiper-button-next",prevEl:".article_page_slider_top .swiper-button-prev"},breakpoints:{0:{slidesPerView:1},640:{slidesPerView:2},1280:{slidesPerView:3}}});

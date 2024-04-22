@@ -14,26 +14,9 @@ class Login extends Controller
 
     function index()
     {
-        $getIcons = $this->model->getIcons();
-
-        $data = array('icons' => $getIcons);
-        $this->view('login/index', $data);
+        $this->view('login/index');
     }
 
-    public function mobile()
-    {
-        $this->model->mobileLogin($_POST);
-    }
-
-    public function verifyMobile()
-    {
-        $this->model->verifyMobileLogin($_POST);
-    }
-
-    public function resendCode()
-    {
-        $this->model->resendCode($_POST);
-    }
 }
 
 ?>
