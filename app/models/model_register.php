@@ -8,7 +8,6 @@ class model_register extends model
     }
     function insert_data($post)
     {
-
         $sql = "SELECT * FROM tbl_users WHERE username=?";
         $params = array($post['username']);
         $result = $this->doSelect($sql, $params);
@@ -20,7 +19,7 @@ class model_register extends model
 
             echo "ok";
         } else {
-
+            echo "error";
         }
     }
 
