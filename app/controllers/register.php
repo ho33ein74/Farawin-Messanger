@@ -16,5 +16,9 @@ class register extends  Controller
     {
         $this->view('register/index');
     }
+    function insert_data()
+    {
+        $this->model->insert_data($_POST);
+    }
 
 }
