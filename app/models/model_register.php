@@ -13,6 +13,9 @@ class model_register extends model
         $result = $this->doSelect($sql, $params);
 
         if (sizeof($result) == 0) {
+            if($post['password']!=$post['confirm_password']){
+                echo "error";
+            }
             $sql = "INSERT INTO tbl_users (username,password,register_date) VALUES (?,?,?)";
             $params = array($post['username'], md5($post['password']), self::jalali_date("Y/m/d"));
             $this->doQuery($sql, $params);
