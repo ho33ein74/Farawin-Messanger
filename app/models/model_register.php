@@ -13,14 +13,17 @@ class model_register extends model
         $result = $this->doSelect($sql, $params);
 
         if (sizeof($result) == 0) {
-            if($post['password']!=$post['confirm_password']){
+            if($post['password']!=$post['confirm-password']){
                 echo "error";
-            }
-            $sql = "INSERT INTO tbl_users (username,password,register_date) VALUES (?,?,?)";
-            $params = array($post['username'], md5($post['password']), self::jalali_date("Y/m/d"));
-            $this->doQuery($sql, $params);
+            } else {
+                $sql = "INSERT INTO tbl_users (username,password,register_date) VALUES (?,?,?)";
+                $params = array($post['username'], md5($post['password']), self::jalali_date("Y/m/d"));
+                $this->doQuery($sql, $params);
 
-            echo "ok";
+                echo "ok";
+
+                header("Location:" . URL);
+            }
         } else {
             echo "error";
         }
