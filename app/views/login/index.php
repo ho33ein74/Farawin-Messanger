@@ -16,6 +16,19 @@
 <script src="public/js/jquery-3.4.1.min.js"/></script>
 
 <script>
+    function CheckPassword(inputtxt)
+    {
+        var passw = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
+        if(inputtxt.value.match(passw))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
     $("#btn").on('click',function (){
           var username = document.getElementById("username").value;
           var password = document.getElementById("password").value;
@@ -24,6 +37,8 @@
               $("#showError").text("Username is empty");
           } else if (password == ""){
               $("#showError").text("Password is empty");
+          } else if (!CheckPassword(password)){
+              $("#showError").text("Password is not secure");
           } else {
               $.ajax({
                   url: "<?= URL; ?>login/check_data",
